@@ -1,0 +1,211 @@
+[
+	{
+		"type": "p",
+		"name": "modal",
+		"label": "{Boolean}",
+		"desc": "Sets the dialog disaply mode",
+		"defaultValue": "true",
+		"script": "alertify.{component}('Modal: false').setting('modal', false);",
+		"toggle": { "value": false }
+	},
+	
+	{
+		"type": "p",
+		"name": "movable",
+		"label": "{Boolean}",
+		"desc": "Gets or sets a value indicating whether the dialog is movable.",
+		"defaultValue": "true",
+		"script": "alertify.{component}('Movable: false').setting('movable', false);",
+		"toggle": { "value": false }
+	},
+	
+	{
+		"type": "p",
+		"name": "resizable",
+		"label": "{Boolean}",
+		"desc": "Gets or sets a value indicating whether the dialog is resizable.",
+		"defaultValue": "false",
+		"script": "alertify.{component}('Resizable: false').setting('resizable', true);",
+		"toggle": { "value": true }
+	},
+	
+	{
+		"type": "p",
+		"name": "closable",
+		"label": "{Boolean}",
+		"desc": "Gets or sets a value indicating whether the <b>Close</b> button is displayed in the header of the dialog. (clicking the dimmer will also trigger a close command)",
+		"defaultValue": "true",
+		"script": "alertify.{component}('Closable: false').setting('closable', false);",
+		"toggle": { "value": false }
+	},
+	
+	{
+		"type": "p",
+		"name": "maximizable",
+		"label": "{Boolean}",
+		"desc": "Gets or sets a value indicating whether the <b>Maximize</b> button is displayed in the header of the dialog.",
+		"defaultValue": "true",
+		"script": "alertify.{component}('Maximizable: false').setting('maximizable', false);",
+		"toggle": { "value": false }
+	},
+	
+	{
+		"type": "p",
+		"name": "pinnable",
+		"label": "{Boolean}",
+		"desc": "Gets or sets a value indicating whether the <b>Pin</b> button is displayed in the header of the dialog (modeless only).",
+		"defaultValue": "true",
+		"script": "alertify.{component}('Modeless: false, Pinnable: false. Try scrolling the page!').setting({'pinnable': false, 'modal':true});",
+		"toggle": { "value": false }
+	},
+
+	{
+		"type": "p",
+		"name": "transition",
+		"label": "{String}",
+		"desc": "Gets or sets the transition effect to be used when showing/hiding the dialog",
+		"defaultValue": "alertify.defaults.transition:pulse",
+		"script": "alertify.dialog('{component}').setting({transition:'pulse',message: 'Transition effect: pulse'}).show();",
+		"list": {
+			"value": "pulse",
+			"items": [ "slide", "zoom", "flipx", "flipy", "fade", "pulse" ]
+		}
+	},	
+
+	{
+		"type": "p",
+		"name": "onshow",
+		"label": "{Function}",
+		"desc": "Gets or sets a function to invoke when the dialog is shown",
+		"defaultValue": "undefined",
+		"script": [
+			"alertify.{component}().setting({onshow:function(){ alertify.message('{component} was shown.')}});",
+			"alertify.{component}('Demo');"
+		]
+	},
+
+	{
+		"type": "p",
+		"name": "onclose",
+		"label": "{Function}",
+		"desc": "Gets or sets a function to invoke when the dialog is closed",
+		"defaultValue": "undefined",
+		"script":"alertify.{component}('Demo').setting({onshow:null, onclose:function(){ alertify.message('{component} was closed.')}});"
+
+	},
+
+	{
+		"type": "p",
+		"name": "overflow",
+		"label": "{Boolean}",
+		"desc": "Gets or sets a value indicating whether the content overflow is managed by the dialog or not.",
+		"defaultValue": "true",
+		"script": "alertify.{component}().setting('overflow',false);",
+		"exec": false
+	},
+	
+	
+	{
+		"type": "p",
+		"name": "padding",
+		"label": "{Boolean}",
+		"desc": "Gets or sets a value indicating whether the content padding is managed by the dialog or not.",
+		"defaultValue": "true",
+		"script": "alertify.{component}().setting('padding',false);",
+		"exec": false
+	},
+	
+	
+	{
+		"type": "m",
+		"name": "maximize",
+		"label": "chainable",
+		"desc": "Maximizes the dialog.",
+		"params": [],
+		"script": "alertify.{component}('This is a maximized dialog').maximize();"
+	},
+	
+	{
+		"type": "m",
+		"name": "restore",
+		"label": "chainable",
+		"desc": "Restores the maximized dialog.",
+		"params": [],
+		"script": [
+			"var div = document.createElement('div');",
+			"div.innerHTML = 'This will be resored in 3 seconds';",
+			"//show maximized dialog",
+			"var {component} = alertify.{component}(div).maximize();",
+			"//restore the dialog after 3 seconds",
+			"var i = 3;",
+			"var interval = setInterval(function(){",
+			"  if(--i == 0){",
+			"    clearInterval(interval);",
+			"    //restore the dialog",
+			"    {component}.restore().setting('message','Dialog restored.');",
+			"  }else{",
+			"    div.innerHTML = 'This will be resored in ' + i + ' seconds.';",
+			"  }",
+			"}, 1000);"
+		]
+	},
+	
+	{
+		"type": "m",
+		"name": "pin",
+		"label": "chainable",
+		"desc": " Pins a modeless dialog to the screen, preventing it from moving with body scroll.",
+		"params": [],
+		"script": "alertify.{component}('This is a modeless dialog, pinned to the screen.').setting('modal', false).pin();"
+	},
+	
+	{
+		"type": "m",
+		"name": "unpin",
+		"label": "chainable",
+		"desc": " Un-pins a modeless dialog from the screen, allowing it to move with body scroll.",
+		"params": [],
+		"script": "alertify.{component}('This is a modeless dialog, not pinned to the screen.').setting('modal', false).unpin();"
+	},
+	{
+		"type": "m",
+		"name": "isOpen",
+		"label": "{Boolean}",
+		"desc": "Gets a value that indicates whether the dialog is open.",
+		"params": [],
+		"script": "var isOpen = alertify.{component}().isOpen();",
+		"exec": false
+	},
+
+	{
+		"type": "m",
+		"name": "isModal",
+		"label": "{Boolean}",
+		"desc": "Gets a value that indicates whether the dialog is modal.",
+		"params": [],
+		"script": "var isModal = alertify.{component}().isModal();",
+		"exec": false
+	},
+	
+	{
+		"type": "m",
+		"name": "isMaximized",
+		"label": "{Boolean}",
+		"desc": "Gets a value that indicates whether the dialog is maximized.",
+		"params": [],
+		"script": "var isModal = alertify.{component}().isMaximized();",
+		"exec": false
+	},
+	
+	{
+		"type": "m",
+		"name": "isPinned",
+		"label": "{Boolean}",
+		"desc": "Gets a value that indicates whether the dialog is pinned.",
+		"params": [],
+		"script": "var isModal = alertify.{component}().isPinned();",
+		"exec": false
+	}
+	
+]
+

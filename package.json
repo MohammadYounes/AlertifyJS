@@ -1,0 +1,51 @@
+{
+  "name": "AlertifyJS",
+  "version": "0.0.0",
+  "description": "AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.",
+  "homepage": "http://alertifyjs.com",
+  "keywords": [
+    "alert",
+    "confirm",
+    "prompt",
+    "dialog",
+    "alertify",
+    "javascript framework",
+		"pretty dialogs"
+  ],
+  "author": "Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com)",
+  "bugs": {
+    "url": "https://github.com/MohammadYounes/AlertifyJS/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:MohammadYounes/AlertifyJS.git"
+  },
+  "devDependencies": {
+	"grunt": "~0.4.1",
+    "grunt-cli": "~0.1",
+    "grunt-rtlcss":"x.x.x",
+    "grunt-autoprefixer": "x.x.x",
+    "grunt-contrib-less":"x.x.x",
+	"grunt-contrib-cssmin": "x.x.x",
+	"grunt-contrib-copy": "x.x.x",
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-connect": "~0.5.0",
+	"grunt-contrib-compress": "x.x.x",
+    "docpad": "~6.69.0",
+    "docpad-plugin-eco": "~2.0.3",
+    "docpad-plugin-marked": "~2.2.1",
+    "docpad-plugin-partials": "~2.9.1",
+    "docpad-plugin-highlightjs": "~2.2.2",
+		"docpad-plugin-livereload": "~2.6.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/mit-license.php"
+    }
+  ]
+}

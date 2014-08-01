@@ -1,0 +1,67 @@
+<div class="segment">
+
+	<h2 id="<%= @name %>">
+		<a href="#<%= @name %>">
+			<i class="fa fa-<%= if @type == 'p' then 'cog' else 'wrench' %>"></i>
+		</a>
+		<%= @name %>
+		<%if @type == 'm' :%>
+		(
+			<%for p, index in @params:%>	
+				<%=p.name%><%=if index < @params.length-1 then "," %>
+			<%end%>				
+		)
+		<%end%>
+		<code><%= @label %></code>
+	</h2>
+	<div>
+		<p><span>Description:</span> <%- @desc %></p>
+		<% if @defaultValue :%>
+		<p><span> Default:</span> <code><%= @defaultValue %></code></p>
+		<% else if @params : %>
+			<% if @params.length > 0 :%>
+				<p><span> Parameters:</span></p>
+				<blockquote>
+						<%for p in @params:%>	
+							<p>@<%=p.name%> <code>{<%=p.type%>}</code> <%-p.desc%></p>
+						<%end%>				
+				</blockquote>
+			<% else :%>
+				<p><span> Parameters:</span> none</p>
+			<% end %>			
+		<%end%>
+
+<pre>
+<code class="lang-javascript"><% if typeof @script == 'string' :%> <%- @script %> <% else :%> <%for line in @script:%><%-line+'\n'%> <%end%> <% end %></code>
+</pre>
+
+		<% if @exec != false :%>
+		<div class="RIGHT">			
+			<% if @toggle :%>
+			<div class="ui inverted toggle checkbox example">
+					<input type="checkbox" <%=if @toggle.value == true then checked="checked"%> >
+					<label>Toggle</label>
+			</div>
+			<% end %>
+			
+			<% if @list :%>
+			 <div class="ui selection dropdown example" style="min-width:100px;">
+                <input type="hidden" name="transition">
+                <div class="default text"><%=@list.value%></div>
+                <i class="fa fa-caret-down"></i>
+                <div class="menu">
+				<%for item in @list.items:%>
+                  <div class="item"><%=item%></div>
+				<%end%>
+                </div>
+              </div>
+			<% end %>
+			<a class="button example" href="javascript:void(0);">
+				<span> Run </span>
+			</a>
+		</div>
+		<% end %>
+		
+	</div>
+	<br/>
+</div>

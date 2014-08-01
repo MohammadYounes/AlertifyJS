@@ -1,0 +1,65 @@
+---
+layout: 'default'
+hljs: 	'light'
+component:	'notifier'
+---
+<section class="blue">
+    <div class="content">
+      <div class="grid two">
+        <div class="column">
+          <h1> Notifier </h1>		
+					Unobtrusive notification messages can be used to give feedback to users.					
+        </div>
+        <div class="right column">
+					<div class="right log">
+            <div>AlertifyJS</div>
+            <div>Notification</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="dark">
+    <div class="content">
+      <!--Defult usage-->
+      <h1><i class="fa fa-book"></i> API Reference</h1>
+      <hr />
+
+				
+			<%for segment in @getDocData(@document.component):%>	
+			<%- @partial('segment',false, segment) %>
+			<%end%>
+			
+			<br/><br/>
+			
+      <div class="segment">
+        <div class="ui small info message">
+          <div class="content">
+            <p>
+              <i class="fa fa-info-circle"></i>
+							To distinguish between an auto-dismiss event or a click event, the callback is passed a boolean flag indicating if the message was clicked.
+            </p>
+          </div>
+        </div>
+      <div>
+<pre>
+<code class="lang-javascript">
+alertify.message('Click me to show an alert!', 5, function(isClicked){
+if(isClicked)
+	alertify.alert('The message was clicked!');
+});
+
+</code> 
+</pre>
+            <div class="RIGHT">
+              <a class="button example" href="javascript:void(0);">
+                <span> Run </span>
+              </a>
+            </div>
+          </div>
+        </div>
+			<br/>
+			<br/>
+    </div>
+  </section>

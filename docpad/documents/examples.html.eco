@@ -1,0 +1,228 @@
+---
+layout: 'default'
+hljs: 	'light'
+---
+<section class="blue">
+	<div class="content">
+		<div class="grid two">
+			<div class="column">
+				<h1> Examples</h1>
+				 Live examples of using AlertifyJS.
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="dark">
+	<div class="content">
+	
+	<!--Arabic dialogs-->
+	<div class="segment">
+		<h1 id="RTL"> <a href="#RTL"><i class="fa fa-code"></i> </a> RTL Layout - Arabic </h1>
+		<hr />		
+<pre>
+<code class="lang-html">
+<!-- set document direction -->
+<html dir="rtl" lang="ar"> ... </html>
+
+<!-- include the RTL css files-->
+<link rel="stylesheet" href="{PATH}/alertify.rtl.css">
+<link rel="stylesheet" href="{PATH}/themes/default.rtl.css">
+
+<!-- include alertify script -->
+<script src="{PATH}/alertify.js"></script>
+
+<!-- then override glossary values -->
+<script type="text/javascript">
+alertify.defaults.glossary.title = 'أليرتفاي جي اس';
+alertify.defaults.glossary.ok = 'موافق';
+alertify.defaults.glossary.cancel = 'إلغاء';
+</script>
+
+</code> 
+</pre>
+			<div class="RIGHT">		
+				<a class="button example" href="javascript:ViewArabic();">
+					<span> Run Example </span>
+				</a>
+			</div>
+  </div><!--//Arabic-->
+	
+	
+	
+	
+<!--Semantic dialogs-->
+	<div class="segment">
+		<h1 id="semantic"><a href="#semantic"><i class="fa fa-code"></i> </a> Themes -  Semantic UI </h1>
+		<hr />
+<pre>
+<code class="lang-html">
+<!-- include alertify.css -->
+<link rel="stylesheet" href="{PATH}/alertify.css">
+
+<!-- include semantic ui theme  -->
+<link rel="stylesheet" href="{PATH}/themes/semantic.css">
+
+<!-- include alertify script -->
+<script src="{PATH}/alertify.js"></script>
+
+</code> 
+</pre>
+			<div class="RIGHT">		
+				<a class="button example" href="javascript:ViewSemantic();">
+					<span> Run Example </span>
+				</a>
+			</div>
+  </div><!--//Semantic dialogs-->
+	
+	
+<!--Bootstrap dialogs-->
+	<div class="segment">
+		<h1 id="bootstrap"><a href="#bootstrap"><i class="fa fa-code"></i> </a> Themes -  Bootstrap </h1>
+		<hr />
+<pre>
+<code class="lang-html">
+<!-- include alertify.css -->
+<link rel="stylesheet" href="{PATH}/alertify.css">
+
+<!-- include boostrap theme  -->
+<link rel="stylesheet" href="{PATH}/themes/bootstrap.css">
+
+<!-- include alertify script -->
+<script src="{PATH}/alertify.js"></script>
+
+</code> 
+</pre>
+			<div class="RIGHT">		
+				<a class="button example" href="javascript:ViewBootstrap();">
+					<span> Run Example </span>
+				</a>
+			</div>
+  </div><!--//Bootstrap dialogs-->
+		
+
+
+<!--Multi dialogs-->
+	<div class="segment">
+		<h1 id="multi-dialog"><a href="#multi-dialog"><i class="fa fa-code"></i> </a> Multi Dialogs</h1>
+		<hr />
+<pre>
+<code class="lang-javascript">
+window.showAlert = function(){
+	alertify.alert('<a href="javascript:showConfirm();">Show Confirm</a>');
+}
+
+window.showConfirm = function(){
+	alertify.confirm('<a href="javascript:showAlert();">Show Alert</a>');
+}
+//works with modeless too
+alertify.alert().setting('modal', false);
+alertify.confirm().setting('modal', false);
+
+window.showAlert();
+
+</code> 
+</pre>
+			<div class="RIGHT">
+				<div class="ui inverted toggle checkbox example">
+					<input type="checkbox" >
+					<label>Toggle</label>
+				</div>
+			
+				<a class="button example" href="javascript:void(0);">
+					<span> Run </span>
+				</a>
+			</div>
+  </div><!--//Multi dialogs-->
+
+
+
+	<!--License Agreement-->
+		<div class="segment">
+			<h1 id="license"><a href="#license"><i class="fa fa-code"></i> </a> License Agreement</h1>
+			<hr />
+
+<div id="la" style="display:none">
+The MIT License (MIT)
+
+Copyright (c) 2014 Mohammad Younes
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</div>
+
+<pre>
+<code class="lang-html">
+<div id="la">
+
+The MIT License (MIT)
+
+Copyright (c) 2014 Mohammad Younes
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</div>
+</code> 
+</pre>
+
+<pre>
+<code class="lang-javascript">
+var pre = document.createElement('pre');
+//custom style.
+pre.style.maxHeight = "400px";
+pre.style.overflowWrap = "break-word";
+pre.appendChild(document.createTextNode($('#la').text()));
+//show as confirm
+alertify.confirm(pre, function(){
+		alertify.success('Accpted');
+	},function(){
+		alertify.error('Declined');
+	}).setting('labels',{'ok':'Accept', 'cancel': 'Decline'});
+
+</code> 
+</pre>
+			<div class="RIGHT">
+				<a class="button example" href="javascript:void(0);">
+					<span> Run </span>
+				</a>
+			</div>
+  </div><!--//License Agreement-->
+
+
+
+
+
+		<br/>
+		<br/>
+	</div>
+</section>

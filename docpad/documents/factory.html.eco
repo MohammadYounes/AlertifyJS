@@ -1,0 +1,239 @@
+---
+layout: 'default'
+hljs: 	'light'
+component:	'alert'
+---
+<section class="blue">
+    <div class="content">
+      <div class="grid two">
+        <div class="column">
+          <h1> Dialogs Factory</h1>
+          AlertifyJS not only provides a replacement for default browser dialogs, it makes it super easy to create your own!
+        </div>
+        <div class="right column">
+          <div class="dialog">
+            <div> Header </div>
+            <h1> Dialog </h1>
+						<div>Contents</div>						
+            <div><div class="left" style="margin:0 10px;">Auxiliary</div><div>Primary</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="dark">
+    <div class="content">
+      <!--Defult usage-->
+      <div class="segment">
+        <h1><i class="fa fa-flash"></i> Default usage</h1>
+        <hr />
+        <p>
+					To create a new dialog, you use the <code>alertify.dialog</code>  API. 
+					which takes a dialog name followed by a factory function. This factory function should return an object with the different options to create the dialog. 
+				</p>
+				
+				
+
+<pre>
+<code class="lang-javascript">
+/**
+ * Dialogs factory 
+ *
+ * @name      {string}   Dialog name.
+ * @Factory   {Function} Dialog factory function.
+ * @transient {Boolean}  Indicates whether to create a singleton or transient dialog.
+ * @base      {Object}   The name of an existing dialog to inherit from.
+ *
+ * alertify.dialog(name, Factory, transient, base)
+ *
+ */
+ 
+if(!alertify.myAlert){
+  //define a new dialog
+  alertify.dialog('myAlert',function factory(){
+    return{
+      main:function(message){
+        this.message = message;
+      },
+      setup:function(){
+          return { 
+            buttons:[{text: "cool!", key:27, autoClose: true}],
+            focus: { element:0 }
+          };
+      },
+      prepare:function(){
+        this.setContent(this.message);
+      }
+  }});
+}
+//launch it.
+alertify.myAlert("Browser dialogs made easy!");
+</code> 
+</pre>
+
+
+        <div class="RIGHT">
+          <a class="button example" href="javascript:void(0);">
+            <span> Run </span>
+          </a>
+        </div>
+      </div>
+			
+			<div class="segment">
+			<br/><br/>
+			
+			<p>
+					Passing true to the transient (none singleton) parameter tells AlertifyJS to create a new dialog instance each time the dialog is invoked via <code>alertify.{dialogName}</code>. The last parameter 'base' enables the creation of new dialogs based on existing ones. 
+			</p>
+			
+				
+		
+<pre>
+<code class="lang-javascript">
+// Extend existing 'alert' dialog
+if(!alertify.errorAlert){
+  //define a new errorAlert base on alert
+  alertify.dialog('errorAlert',function factory(){
+    return{
+			build:function(){
+				var errorHeader = '<span class="fa fa-times-circle fa-2x" '
+				+	'style="vertical-align:middle;color:#e10000;">'
+				+ '</span> Application Error';
+				this.setHeader(errorHeader);
+			}
+		};
+	},true,'alert');
+}
+//launch it.
+// since this was transient, we can launch another instance at the same time.
+alertify
+	.errorAlert("This is a none singleton modal error alert! <br/><br/><br/>" +
+		"To show another error alert: " + 
+	  "<a href='javascript:alertify.errorAlert(\"Another error\");'> Click here </a>");
+
+</code> 
+</pre>
+		  <div class="RIGHT">
+				<a class="button example" href="javascript:void(0);">
+					<span> Run </span>
+				</a>
+			</div>
+			</div>
+      <!--Factory-->
+			
+      <div class="segment">
+        <h1><i class="fa fa-wrench"></i> Factory Function </h1>
+        <hr />
+				<p>The factory function should return an object with the different options to tell <b>AlertifyJS</b> how the dialog should behave when created.</p>
+
+<pre>
+<code class="lang-javascript">
+function factory(){
+	return {
+		 // The dialog startup function
+		 // This will be called each time the dialog is invoked
+		 // For example: alertify.myDialog( data );
+		 main:function(params){
+		 		// manipulate parameters and set options
+		 		this.setting('myProp', data);
+		 },
+		 // The dialog setup function
+		 // This should return the different dialog setting object.
+		 // For example: alertify.alert('message');
+		 setup:function(){
+		 	return {
+					/* buttons collection */
+					buttons:[
+					
+						/*button defintion*/
+						{
+						 	/* button label */
+							text: 'OK',
+							
+							/*bind a keyboard key to the button */
+							key: 27, 
+							
+							/* indicate if closing the dialog should trigger this button action */
+							invokeOnClose: true, 
+							
+							/* custom button class name  */
+							className: alertify.defaults.theme.ok,
+							
+							/* custom button attributes  */
+							attrs:{attribute:'value'},
+							
+							/* Defines the button scope, either primary (primary) or auxiliary */
+							scope:'auxiliary',
+						}
+					],
+					
+					/* default focus */
+					focus:{
+					
+						/* the element to receive default focus, could be a DOMElement or a button index */
+						element: 0,
+						
+						/* indicates if the element should be selected on focus or not*/
+						select: false
+						
+					},
+					/* dialog options, these override the defaults */
+					options: {
+						title: ...,
+						modal: ...,
+						pinned: ...,
+						movable: ...,
+						resizable: ...,
+						closable: ...,
+						maximizable: ...,
+						pinnable: ...,
+						transition: ...,
+						onshow:...,
+						onclose:...
+					}
+				};
+		 },
+		 // This will be called once the dialog DOM has been created, just before its added to the document.
+		 // Its invoked only once.
+		 build:function(){
+		 	// Do custom DOM manipulation here.
+		 },
+		 // This will be called each time the dialog is shown
+		 prepare:function(){
+		 	// Do stuff that should be done every time the dialog is shown.
+		 },
+		 // This will be called each time an action button is clicked.
+		 callback:function(closeEvent){
+			//The closeEvent has the following properties
+			//
+			// index: The index of the button triggering the event.
+			// button: The button definition object.
+			// cancel: When set true, prevent the dialog from closing.
+		 }
+		 // To make use of AlertifyJS settings API, group your custom settings into a settings object.
+		 settings:{
+		 		myProp:'value'
+		 },
+		 // AlertifyJS will invoke this each time a settings value gets updated.
+		 settingUpdated:function(key, oldValue, newValue){
+		 		// Use this to respond to specific setting updates.
+		 		switch(key){
+					case 'myProp':
+						// Do something when 'myProp' changes
+						break;
+				}
+		 }
+	}
+}
+</code> 
+</pre>
+      <br /><br />
+
+        
+		</div><!--//Factory-->
+			
+			<br/>
+			<br/>
+    </div>
+  </section>

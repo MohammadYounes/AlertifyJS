@@ -1,3 +1,9 @@
+#docsite
+site
+#staging 
+staging
+
+
 # Logs
 logs
 *.log

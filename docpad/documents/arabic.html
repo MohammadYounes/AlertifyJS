@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+	<!-- Standard Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Site Properities -->
+	<title>ALERTIFY JS - Arabic</title>
+	<meta name="description" content="AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.">
+	<meta name="keywords" content="alert, notify, alertify, dialog, notification, js, javascript, growl, css">
+	
+	<link rel="stylesheet" href="/css/normalize.min.css">	
+	<link rel="stylesheet" href="/css/highlight.default.min.css"/>
+	<link rel="stylesheet" href="/build/css/alertify.rtl.css">
+	<link rel="stylesheet" href="/build/css/themes/default.rtl.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/droidarabickufi.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+	<link rel="stylesheet" href="/css/site.min.css">
+	<style type="text/css">
+		body{
+			background: #fff;
+			padding: 0;
+		}
+		pre {
+			direction: ltr;
+		}
+		@media screen and (max-width: 640px) {
+			.button{display: block;}
+		}
+	</style>
+	<head>
+	</head>
+	<body>
+			<div style="text-align:center;padding:24px 40px 0 40px;">
+				<a id="alert" class="inverted button" href="javascript:void(0);">تنبيه</a>
+				<a id="confirm" class="inverted button" href="javascript:void(0);">تأكيد</a>
+				<a id="prompt" class="inverted button" href="javascript:void(0);">نموذج سريع</a>
+			</div>
+		
+		
+<pre>
+<code class="lang-html">
+<!-- set document direction -->
+<html dir="rtl" lang="ar"> ... </html>
+
+<!-- include the RTL css files-->
+<link rel="stylesheet" href="{PATH}/alertify.rtl.css">
+<link rel="stylesheet" href="{PATH}/themes/default.rtl.css">
+
+<!-- include alertify script -->
+<script src="{PATH}/alertify.js"></script>
+
+<!-- then override glossary values -->
+<script type="text/javascript">
+alertify.defaults.glossary.title = 'أليرتفاي جي اس';
+alertify.defaults.glossary.ok = 'موافق';
+alertify.defaults.glossary.cancel = 'إلغاء';
+</script>
+
+</code> 
+</pre>
+		
+	<script src="/build/alertify.js"></script>
+	<script src="/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		
+		alertify.defaults.glossary.title = 'أليرتفاي جي اس';
+		alertify.defaults.glossary.ok = 'موافق';
+		alertify.defaults.glossary.cancel = 'إلغاء';
+		
+		$(function(){			
+			$('#alert').click(function(){
+				alertify.alert('باللغة العربية').setting('resizable', true);
+			});
+			
+			$('#confirm').click(function(){
+				alertify.confirm('باللغة العربية');
+					
+			});
+			
+			$('#prompt').click(function(){
+				alertify.prompt('باللغة العربية');
+			});
+		});
+	</script>	
+	</body>
+</html>

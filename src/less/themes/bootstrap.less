@@ -1,0 +1,44 @@
+.alertify{
+	.dimmer {
+		background-color: #000;
+		opacity: .5;
+	}
+	.dialog {
+		max-width: 600px;
+		min-height: 122px;
+		background-color: #fff;
+		border: 1px solid rgba(0,0,0,.2);
+		box-shadow:0 5px 15px rgba(0,0,0,.5);
+		border-radius: 6px;
+	}
+	
+	.header {
+		color: #333;
+		border-bottom: 1px solid #e5e5e5;
+		border-radius: 6px 6px 0 0;
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-size: 18px;
+	}
+    
+	.body {
+		font-family: 'Roboto', sans-serif;
+		color: black;	
+	}
+	
+	&.resizable, &.maximized:not(.resizable){
+		.content {
+			top: 58px;
+			bottom: 68px;
+		}
+	}
+	
+	.footer {
+		background-color: #fff;
+		padding: 15px;
+		border-top: 1px solid #e5e5e5;
+		border-radius: 0 0 6px 6px;
+	}
+}
+	
+	
+        

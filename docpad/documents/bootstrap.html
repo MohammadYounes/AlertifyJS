@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Standard Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Site Properities -->
+	<title>ALERTIFY JS - Bootstrap</title>
+	<meta name="description" content="AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.">
+	<meta name="keywords" content="alert, notify, alertify, dialog, notification, js, javascript, growl, css">
+	
+	<link rel="stylesheet" href="/build/css/alertify.css">
+	<link rel="stylesheet" href="/build/css/themes/bootstrap.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/droidarabickufi.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+	
+	<style type="text/css">
+	body { 
+		font-family:"Droid Sans","Droid Arabic Kufi","Helvetica Neue","Helvetica","Arial",sans-serif;
+		-webkit-overflow-scrolling: touch; 
+	
+	}
+	</style>
+	</head>
+	<body>
+		<div style="text-align:center;padding:40px;">
+			<a id="alert" class="btn btn-primary btn-lg">
+				Alert
+			</a>
+
+			<a id="confirm" class="btn btn-primary btn-lg">
+				Confirm
+			</a>
+
+			<a id="prompt" class="btn btn-primary btn-lg">
+				Prompt
+			</a>
+		</div>	
+<pre>
+<code class="lang-html">
+<!-- include alertify.css -->
+<link rel="stylesheet" href="{PATH}/alertify.css">
+
+<!-- include boostrap theme  -->
+<link rel="stylesheet" href="{PATH}/themes/bootstrap.css">
+
+<!-- include alertify script -->
+<script src="{PATH}/alertify.js"></script>
+
+</code> 
+</pre>
+		
+	<script src="/build/alertify.js"></script>
+	<script src="/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		
+		alertify.defaults.transition = "slide";
+		alertify.defaults.theme.ok = "btn btn-primary";
+		alertify.defaults.theme.cancel = "btn btn-danger";
+		alertify.defaults.theme.input = "form-control";
+		
+		$(function(){			
+			$('#alert').click(function(){
+				alertify.alert('Bootstrap');
+			});
+			
+			$('#confirm').click(function(){
+				alertify.confirm('Bootstrap');
+			});
+			
+			$('#prompt').click(function(){
+				alertify.prompt('Bootstrap');
+			});
+		});
+	</script>	
+	</body>
+</html>

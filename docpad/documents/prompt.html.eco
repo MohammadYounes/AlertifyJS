@@ -1,0 +1,139 @@
+---
+layout: 'default'
+hljs: 	'light'
+component:	'prompt'
+---
+<section class="blue">
+    <div class="content">
+      <div class="grid two">
+        <div class="column">
+          <h1> Prompt Dialog</h1>
+          A prompt dialog is often used if you want the user to input a value.
+					When a prompt dialog pops up, the user will have to click either "OK" or "Cancel" to proceed after entering an input value.
+        </div>
+        <div class="right column">
+          <div class="dialog">
+            <div>AlertifyJS</div>
+            <h1> Prompt </h1>
+            <div> Default value </div>
+            <div>
+              <div>OK</div> <div>Cancel</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="dark">
+    <div class="content">
+      <!--Defult usage-->
+      <div class="segment">
+        <h1><i class="fa fa-flash"></i> Default usage</h1>
+        <hr />
+        <p>You create a prompt dialog by invoking <code> alertify.prompt(...)</code></p>
+
+        <div class="ui small info message">
+          <div class="content">
+            <p>
+              <i class="fa fa-info-circle"></i>
+              Calling <code>alertify.prompt()</code> without passing any parameter will return the prompt dialog instance. You can use this syntax to modify dialog settings before showing it.
+              Also you can get the dialog instance (singletons only) by invoking <code>alertify.dialog('prompt');</code>
+            </p>
+          </div>
+        </div>
+
+<pre>
+<code class="lang-javascript">
+/*
+ * @title {String or DOMElement} The dialog title.
+ * @message {String or DOMElement} The dialog contents.
+ * @value {String} The default input value. 
+ * @onok {Function} Invoked when the user clicks OK button.
+ * @oncancel {Function} Invoked when the user clicks Cancel button or closes the dialog.
+ *
+ * alertify.prompt(title, message, value, onok, oncancel);
+ * 
+ * overloads:
+ *
+ * alertify.prompt(message);
+ * alertify.prompt(message, value);
+ * alertify.prompt(message, value, onok);
+ * alertify.prompt(message, value, onok, oncancel);
+ *
+ */  
+alertify.prompt('This is a prompt dialog!', 'some value', 
+	function(evt, value){ alertify.message('You entered: ' + value);}
+);
+</code> 
+</pre>
+        <div class="RIGHT">
+          <a class="button example" href="javascript:void(0);">
+            <span> Run </span>
+          </a>
+        </div>
+      </div>
+
+      <!--Settings-->
+      <div class="segment">
+
+        <h1><i class="fa fa-book"></i> API reference </h1>
+        <hr />
+				
+				<%for segment in @getDocData(@document.component):%>	
+				<%- @partial('segment',false, segment) %>
+				<%end%>
+
+        <br /><br />
+
+        <div class="segment">
+          <div class="ui small info message">
+            <div class="content">
+              <p>
+                <i class="fa fa-info-circle"></i>
+                You can use the <code>.setting()</code> method to set multiple values at once, and also works as a getter.
+              </p>
+            </div>
+          </div>
+          <div>
+<pre>
+<code class="lang-javascript">
+//get the closable setting value.
+var closable = alertify.dialog('prompt').setting('closable');
+//grab the dialog instance and set multiple settings at once.
+alertify.dialog('prompt')
+  .setting({
+    'labels':{ok:'Yup!', cancel:'Nop!'},
+    'message': 'This dialog is : ' + (closable ? ' ' : ' not ') + 'closable.' ,
+    'onok': function(){ alertify.success('Nice!');},
+    'oncancel': function(){ alertify.error('Still nice!');}
+  }).show();
+</code> 
+</pre>
+            <div class="RIGHT">
+              <a class="button example" href="javascript:void(0);">
+                <span> Run </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div><!--//Settings-->
+
+
+      <!--Common Settings-->
+      <div class="segment">
+
+        <h1><i class="fa fa-book"></i> API reference (Common)</h1>
+        <hr />
+        <p>This refers to settings/methods that are common to all dialogs.</p>
+				
+				<%for segment in @getDocData('dialog', @document.component):%>	
+				<%- @partial('segment', false, segment) %>
+				<%end%>
+
+      </div><!--//Common Settings-->
+			
+			<br/>
+			<br/>
+    </div>
+  </section>

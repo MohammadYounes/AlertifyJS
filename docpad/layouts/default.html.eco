@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<!-- Standard Meta -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Site Properities -->
+	<title><%= @getPreparedTitle() %></title>
+	<meta name="description" content="<%= @getPreparedDescription() %>" />
+	<meta name="keywords" content="<%= @getPreparedKeywords() %>" />
+
+	<!-- DocPad Meta -->
+	<%- @getBlock('meta').toHTML() %>
+
+	<!-- DocPad Styles + Our Own -->
+	<%- @getBlock('styles').add(@site.styles).toHTML() %>
+	
+	<%if @document.hljs == 'light':%>
+	<link rel="stylesheet" href="/css/highlight.default.min.css"/>
+	<%else:%>
+	<link rel="stylesheet" href="/css/highlight.min.css"/>
+	<%end%>
+	
+	<style type="text/css">
+	body{ -webkit-overflow-scrolling: touch; }
+	</style>
+</head>
+<body>
+<header>
+    <div class="content">
+      <a class="logo" data-text="alpha" href="http://www.alertifyjs.com"><img src="/css/logo.sm.png" /></a>
+      <a href="#" class="bars"><i class="fa fa-2x fa-bars"></i></a>
+      <div class="menu">
+        <a href="alert.html">Alert</a>
+        <a href="confirm.html">Confirm</a>
+        <a href="prompt.html">Prompt</a>
+        <a href="factory.html">Dialogs Factory</a>
+				<a href="notifier.html">Notifier</a>
+				<a href="examples.html">Examples</a>
+        <div class="secondary">
+          <iframe src="http://ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="20"></iframe>
+          <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=http://alertifyjs.com/&amp;via=alertifyjs" title="Twitter Tweet Button" style="width: 110px; height: 20px;"></iframe>
+        </div>
+      </div>
+    </div>
+  </header>
+
+ <%- @content %>
+
+<!--footer-->
+<section>
+<div class="content">
+	<div class="links">
+		<div class="ui horizontal center list">
+			<div class="item"></div>
+			<div class="item">
+				<iframe src="http://ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="http://ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=fork&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+
+			</div>
+			<div class="item">
+				<iframe src="http://platform.twitter.com/widgets/follow_button.1404859412.html#_=1406289087792&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=AlertifyJS&amp;show_count=true&amp;show_screen_name=true&amp;size=m"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="http://platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=http://alertifyjs.com/&amp;via=alertifyjs"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<section class="dark">
+    <div class="content">
+      <div class="links">
+        <a href="http://github.com/MohammadYounes/alertifyjs/issues">Report an issue</a> |
+        <a href="http://github.com/MohammadYounes/alertifyjs">View on GitHub</a> |
+        Follow Me on <a href="http://www.github.com/MohammadYounes"> <i class="fa fa-github"></i> GitHub</a> and
+        <a href="http://www.twitter.com/AlertifyJS"> <i class="fa fa-twitter"></i> Twitter</a>
+      </div>
+      <div class="links">
+        Created by <a href="http://www.github.com/MohammadYounes" style="color:orange">Mohammad Younes</a>.
+      </div>
+		<div class="links">
+			<script data-gittip-username="MohammadYounes" data-gittip-widget="button" src="//gttp.co/v1.js"></script>
+		</div>
+      
+      <div class="affiliates">
+        <a class="left" href="https://github.com/MohammadYounes/rtlcss">
+          <img width="40" src="https://avatars0.githubusercontent.com/u/7704547?s=140">
+          <div>RTL CSS</div>
+        </a>
+        <a class="right" href="https://semantic-ui.me">
+          <img width="40" src="https://avatars1.githubusercontent.com/u/5796209?s=140">
+          <div>سيمانتك يو آي</div>
+        </a>
+        <a href="http://www.isresponsive.com">
+          <img src="http://www.isresponsive.com/Images/logo2.png">
+          <div>www.isResponsive.com</div>
+        </a>
+      </div>
+    </div>
+ </section>	
+<!--//footer-->
+
+	<!-- DocPad Scripts + Our Own -->
+	<%- @getBlock('scripts').add(@site.scripts).toHTML() %>
+</body>
+</html>

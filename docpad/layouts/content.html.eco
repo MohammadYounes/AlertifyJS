@@ -1,0 +1,8 @@
+---
+layout: default
+---
+
+<h2><a href="<%= @document.url %>"><%- @document.title or @document.name %></a></h2>
+<div>
+	<%- @content %>
+</div>

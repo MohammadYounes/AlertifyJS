@@ -1,0 +1,365 @@
+---
+layout: 'default'
+---
+<!--intro-->  
+  <section class="intro dark">
+    <div class="content">
+      <div class="logo"></div>
+      <p> AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.</p>
+      <div class="buttons">
+        <a class="button" href="https://github.com/MohammadYounes/AlertifyJS">
+          <i class="fa fa-github fa-2x"></i>
+          <span>View on GitHub</span>
+        </a>
+        <a class="button" href="/build/alertifyjs.zip">
+          <i class="fa fa-download fa-2x"></i>
+          <span>Download</span>
+        </a>
+      </div>
+    </div>
+  </section>
+<!--//intro-->
+<!--features-->  
+<section>
+    <div class="content">
+      <div class="grid six">
+        <div class="column">
+          <h3><i class="fa fa-magic fa-lg"></i> Feature-rich</h3>
+          Packed with awesome features! Modal and Modelss view modes, Move, Resize and more!
+        </div>
+        <div class="column">
+          <h3> <i class="fa fa-cubes fa-lg"></i> Extensible</h3>
+          Extend existing dialogs, or create your own!  using AlertifyJS is very straightforward.
+        </div>
+        <div class="column">
+          <h3> <i class="fa fa-bell-o fa-lg"></i> Unobtrusive notifications</h3>
+          Unobtrusive notification messages can be used to give feedback to users.
+        </div>
+        <div class="column">
+          <h3> <i class="fa fa-css3 fa-lg"></i> Themeable </h3>
+          Three themes right out-of-the-box (AlertifyJS, Semantic and Bootstrap).
+					<a href="examples.html#semantic">view example<a/>
+        </div>
+        <div class="column">
+          <h3> <i class="fa fa-tablet fa-lg"></i> Responsive </h3>
+          Whether you use a desktop, laptop, tablet or mobile device. Have no worries!
+        </div>
+        <div class="column">
+          <h3> <i class="fa fa-language fa-lg"></i> i18n and RTL Support </h3>
+          Different language or a right-to-left layout! AlertifyJS got you covered.
+					<a href="examples.html#RTL">view example<a/>
+        </div>
+      </div>
+      <hr />
+      <div class="grid three">
+        <div class="column full">
+          <div class="segment">
+            <h2>
+              AlertifyJS not only provides a replacement for default browser dialogs, it makes it super easy to create your own!
+            </h2>
+<pre>
+<code class="lang-javascript">
+if(!alertify.myAlert){
+  //define a new dialog
+  alertify.dialog('myAlert',function(){
+    return{
+      main:function(message){
+        this.message = message;
+      },
+      setup:function(){
+          return { 
+            buttons:[{text: "cool!", key:27, autoClose: true}],
+            focus: { element:0 }
+          };
+      },
+      prepare:function(){
+        this.setContent(this.message);
+      }
+  }});
+}
+//launch it.
+alertify.myAlert("Browser dialogs made easy!");
+</code> 
+</pre>
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="Factory.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+        </div>
+      </div>
+				
+				<!--
+        <div class="column full">
+          <h2>
+            Getting started
+          </h2>
+          <hr />
+          <h3> <i class="fa fa-check"></i> Include JS </h3>
+<pre>
+<code class="lang-html">
+&lt;!-- include the script --&gt;
+&lt;script src="{PATH}/alertify.min.js"&gt;&lt;/script&gt;
+</code> 
+</pre>
+          <h3> <i class="fa fa-check"></i> Include CSS </h3>
+<pre>
+<code class="lang-html">
+&lt;!-- include the style --&gt;
+&lt;link rel="stylesheet" href="{PATH}/alertify.min.css" /&gt;
+&lt;!-- include a theme --&gt;
+&lt;link rel="stylesheet" href="{PATH}/themes/default.min.css" /&gt;
+</code> 
+</pre>
+
+        </div>
+				-->
+      </div>
+      <br />
+    </div>
+  </section>
+<!--//features-->  
+
+
+<section class="examples blue">
+
+    <div class="content">
+      <h1> Default Dialogs </h1>
+      <hr />
+
+      <div class="grid two">
+        <div class="column">
+          <div class="dialog">
+            <div>AlertifyJS</div>
+            <h1> Alert </h1>
+            <div><div>OK</div></div>
+          </div>
+        </div>
+        <div class="column segment">
+<pre>
+<code class="lang-javascript">
+alertify
+  .alert("This is an alert dialog.", function(){
+    alertify.message('OK');
+  });
+</code> 
+</pre>
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="alert.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="grid two">
+        <div class="column">
+          <div class="dialog">
+            <div>AlertifyJS</div>
+            <h1> Confirm </h1>
+            <div>
+              <div>OK</div> <div>Cancel</div>
+            </div>
+          </div>
+        </div>
+        <div class="column segment">
+<pre>
+<code class="lang-javascript">
+alertify.confirm("This is a confirm dialog.",
+  function(){
+    alertify.success('Ok');
+  },
+  function(){
+    alertify.error('Cancel');
+  });
+</code> 
+</pre>
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="confirm.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>        </div>
+      </div>
+
+
+      <hr />
+
+      <div class="grid two">
+        <div class="column">
+          <div class="dialog">
+            <div>AlertifyJS</div>
+            <h1> Prompt </h1>
+            <div> Default value </div>
+            <div>
+              <div>OK</div> <div>Cancel</div>
+            </div>
+          </div>
+        </div>
+        <div class="column segment">
+<pre>
+<code class="lang-javascript">
+alertify.prompt("This is a prompt dialog.", "Default value",
+  function(evt, value ){
+    alertify.success('Ok: ' + value);
+  },
+  function(){
+    alertify.error('Cancel');
+  })
+  ;
+</code> 
+</pre>
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="prompt.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+				</div>
+      </div>
+
+
+
+      <h1> Default Notifications </h1>
+      <hr />
+      <div class="grid two">
+        <div class="right column">
+          <div class="right log">
+            <div>AlertifyJS</div>
+            <div>Success</div>
+          </div>
+        </div>
+        <div class="column segment">
+<pre>
+<code class="lang-javascript">
+  // success notification
+  // Shorthand for:
+  // alertify.notify( message, 'success', [wait, callback]);
+  alertify.success('Success message');
+</code> 
+</pre>
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="notifier.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+				</div>
+      </div>
+
+      <hr />
+
+      <div class="grid two">
+        <div class="right column">
+          <div class="right log">
+            <div>AlertifyJS</div>
+            <div>Error</div>
+          </div>
+        </div>
+
+        <div class="column segment">
+<pre>
+<code class="lang-javascript">
+  // error notification
+  // Shorthand for:
+  // alertify.notify( message, 'error', [wait, callback]);
+  alertify.error('Error message');
+</code> 
+</pre>
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="notifier.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+			
+			
+			 <div class="grid two">
+        <div class="right column">
+          <div class="right log">
+            <div>AlertifyJS</div>
+            <div>Warning</div>
+          </div>
+        </div>
+        <div class="column segment">
+<pre>
+<code class="lang-javascript">
+  // warning notification
+  // Shorthand for:
+  // alertify.notify( message, 'warning', [wait, callback]);
+  alertify.warning('Warning message');
+</code> 
+</pre>
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="notifier.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+        </div>
+      </div>
+			
+			<hr/>
+
+      <div class="grid two">
+        <div class="right column">
+          <div class="right log">
+            <div>AlertifyJS</div>
+            <div>Message</div>
+          </div>
+        </div>
+        <div class="column segment">
+<pre>
+<code class="lang-javascript">
+  // default notification
+  // Shorthand for:
+  // alertify.notify( message, [type, wait, callback]);
+  alertify.message('Normal message');
+</code> 
+</pre>
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="notifier.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+		<br/>
+		<br/>
+  </section>

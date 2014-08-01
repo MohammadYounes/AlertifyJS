@@ -1,0 +1,102 @@
+[
+	{
+		"type": "p",
+		"name": "position",
+		"label": "{ String }",
+		"desc": "Sets or gets a  value indicating the position of the notifier instance.",
+		"defaultValue": "'bottom-right'",
+		"script": [
+			"alertify.setting('notifier','position', 'bottom-right');",
+			"alertify.success('Current position : ' + alertify.setting('notifier','position'));"
+		],
+		"list": {
+			"value": "bottom-right",
+			"items": [ "top-right", "top-left", "bottom-right", "bottom-left" ]
+		}
+	},
+	
+	{
+		"type": "p",
+		"name": "delay",
+		"label": "{ Number }",
+		"desc": "Gets or sets a value indicating the notifier default message delay (in seconds) before being auto-dismissed. 0 will means keep open till clicked.",
+		"defaultValue": "alertify.defaults.notifier.delay:5",
+		"script": [
+			"var delay = alertify.setting('notifier','delay');",
+			"alertify.setting('notifier','delay', 10);",
+			"alertify.success('Current delay : ' + alertify.setting('notifier','delay') + ' seconds');",
+			"alertify.setting('notifier','delay', delay);"
+		]
+	},
+
+	{
+		"type": "m",
+		"name": "message",
+		"label": "",
+		"desc": "Creates a new notification message.",
+		"params": [
+			{"name": "message", "type":"String or DOMElement", "desc":"Message content"},
+			{"name": "wait", "type":"Number", "desc":"Time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked."},
+			{"name": "callback", "type":"Function", "desc":"A callback function to be invoked when the message is dismissed."}
+		],
+		"script": [
+			"alertify.message('Standard notification message.');",
+			"// a delay value of 0 will keep this open",
+			"alertify.message('Will stay open till clicked.', 0);"
+			
+		]
+	},
+	
+	{
+		"type": "m",
+		"name": "success",
+		"label": "",
+		"desc": "Creates a new notification message of type 'success'",
+		"params": [
+			{"name": "message", "type":"String or DOMElement", "desc":"Message content"},
+			{"name": "wait", "type":"Number", "desc":"Time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked."},
+			{"name": "callback", "type":"Function", "desc":"A callback function to be invoked when the message is dismissed."}
+		],
+		"script": "alertify.success('Standard notification message.');"
+	},
+	
+	{
+		"type": "m",
+		"name": "error",
+		"label": "",
+		"desc": "Creates a new notification message of type 'error'",
+		"params": [
+			{"name": "message", "type":"String or DOMElement", "desc":"Message content"},
+			{"name": "wait", "type":"Number", "desc":"Time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked."},
+			{"name": "callback", "type":"Function", "desc":"A callback function to be invoked when the message is dismissed."}
+		],
+		"script": "alertify.error('Standard notification message.');"
+	},
+	
+	{
+		"type": "m",
+		"name": "warning",
+		"label": "",
+		"desc": "Creates a new notification message of type 'warning'",
+		"params": [
+			{"name": "message", "type":"String or DOMElement", "desc":"Message content"},
+			{"name": "wait", "type":"Number", "desc":"Time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked."},
+			{"name": "callback", "type":"Function", "desc":"A callback function to be invoked when the message is dismissed."}
+		],
+		"script": "alertify.warning('Warning notification message.');"
+	},
+	
+	{
+		"type": "m",
+		"name": "notify",
+		"label": "",
+		"desc": "Creates a new notification message.",
+		"params": [
+			{"name": "message", "type":"String or DOMElement", "desc":"Message content"},
+			{"name": "type", "type":"String", "desc":"Type of the notification message (CSS class name 'ajs-{type}' to be added)"},
+			{"name": "wait", "type":"Number", "desc":"Time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked."},
+			{"name": "callback", "type":"Function", "desc":"A callback function to be invoked when the message is dismissed."}
+		],
+		"script": "alertify.notify('default message.', 'custom', 2, function(){console.log('dismissed');});"
+	}
+]

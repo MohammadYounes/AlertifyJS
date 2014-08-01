@@ -1,0 +1,132 @@
+---
+layout: 'default'
+hljs: 	'light'
+component:	'alert'
+---
+<section class="blue">
+    <div class="content">
+      <div class="grid two">
+        <div class="column">
+          <h1> Alert Dialog</h1>
+          An alert dialog is often used if you want to make sure information comes through to the user.
+					When an alert dialog pops up, the user will have to click "OK" to proceed.
+        </div>
+        <div class="right column">
+          <div class="dialog">
+            <div>AlertifyJS</div>
+            <h1> Alert </h1>
+            <div><div>OK</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="dark">
+    <div class="content">
+      <!--Defult usage-->
+      <div class="segment">
+        <h1><i class="fa fa-flash"></i> Default usage</h1>
+        <hr />
+        <p>You create an alert dialog by invoking <code> alertify.alert(...)</code></p>
+
+        <div class="ui small info message">
+          <div class="content">
+            <p>
+              <i class="fa fa-info-circle"></i>
+              Calling <code>alertify.alert()</code> without passing any parameter will return the alert dialog instance. You can use this syntax to modify dialog settings before showing it.
+              Also you can get the dialog instance (singletons only) by invoking <code>alertify.dialog('alert');</code>
+            </p>
+          </div>
+        </div>
+
+<pre>
+<code class="lang-javascript">
+/*
+ * @title {String or DOMElement} The dialog title.
+ * @message {String or DOMElement} The dialog contents.
+ * @onok {Function} Invoked when the user clicks OK button or closes the dialog.
+ *
+ * alertify.alert(title, message, onok);
+ * 
+ * overloads:
+ *
+ * alertify.alert(message);
+ *
+ * alertify.alert(title, message);
+ *
+ * alertify.alert(message, onok);
+ *
+ */
+alertify.alert('This is an alert message!');
+</code> 
+</pre>
+        <div class="RIGHT">
+          <a class="button example" href="javascript:void(0);">
+            <span> Run </span>
+          </a>
+        </div>
+      </div>
+
+      <!--Settings-->
+      <div class="segment">
+
+        <h1><i class="fa fa-book"></i> API reference </h1>
+        <hr />
+				
+				<%for segment in @getDocData(@document.component):%>	
+				<%- @partial('segment',false, segment) %>
+				<%end%>
+
+        <br /><br />
+
+        <div class="segment">
+          <div class="ui small info message">
+            <div class="content">
+              <p>
+                <i class="fa fa-info-circle"></i>
+                You can use the <code>.setting()</code> method to set multiple values at once, Also works as a getter.
+              </p>
+            </div>
+          </div>
+          <div>
+<pre>
+<code class="lang-javascript">
+//get the closable setting value.
+var closable = alertify.alert().setting('closable');
+//grab the dialog instance and set multiple settings at once.
+alertify.alert()
+  .setting({
+    'labels':{ok:'Yup', cancel:'Nop'},
+    'message': 'This dialog is : ' + (closable ? ' ' : ' not ') + 'closable.' ,
+    'onok': function(){ alertify.success('Great');}
+  }).show();
+</code> 
+</pre>
+            <div class="RIGHT">
+              <a class="button example" href="javascript:void(0);">
+                <span> Run </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div><!--//Settings-->
+
+
+      <!--Common Settings-->
+      <div class="segment">
+
+        <h1><i class="fa fa-book"></i> API reference (Common)</h1>
+        <hr />
+        <p>This refers to settings/methods that are common to all dialogs.</p>
+				
+				<%for segment in @getDocData('dialog', @document.component):%>	
+				<%- @partial('segment', false, segment) %>
+				<%end%>
+
+      </div><!--//Common Settings-->
+			
+			<br/>
+			<br/>
+    </div>
+  </section>
