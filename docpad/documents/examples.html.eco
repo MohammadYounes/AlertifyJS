@@ -46,6 +46,7 @@ alertify.defaults.glossary.cancel = 'إلغاء';
 					<span> Run Example </span>
 				</a>
 			</div>
+	<br/>
   </div><!--//Arabic-->
 	
 	
@@ -73,6 +74,7 @@ alertify.defaults.glossary.cancel = 'إلغاء';
 					<span> Run Example </span>
 				</a>
 			</div>
+	<br/>			
   </div><!--//Semantic dialogs-->
 	
 	
@@ -98,6 +100,7 @@ alertify.defaults.glossary.cancel = 'إلغاء';
 					<span> Run Example </span>
 				</a>
 			</div>
+	<br/>		
   </div><!--//Bootstrap dialogs-->
 		
 
@@ -133,6 +136,7 @@ window.showAlert();
 					<span> Run </span>
 				</a>
 			</div>
+	<br/>
   </div><!--//Multi dialogs-->
 
 
