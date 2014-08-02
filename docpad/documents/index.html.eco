@@ -85,7 +85,7 @@ alertify.myAlert("Browser dialogs made easy!");
             <a class="right inverted button example" href="javascript:void(0);">
               <span> Run Example </span>
             </a>
-						<a class="right inverted button" href="Factory.html">
+						<a class="right inverted button" href="factory.html">
               <span class="fa fa-book"></span> Documentation
 							
             </a>
