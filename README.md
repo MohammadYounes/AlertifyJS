@@ -40,12 +40,15 @@ docpad run
 * Open your browser to http://localhost:9778/
 
 
+
+Bugs & Questions
+==========
+Please review the guidelines for [contributing](https://github.com/MohammadYounes/AlertifyJS/blob/master/CONTRIBUTING.md).
+
+
+
+
 Release history
 ==========
 * **v0.0.0** [1 Aug. 2014]
   * Initial commit.
-
-
-
-------
-Have a suggestion or a bug ? please [open a new issue.](https://github.com/MohammadYounes/AlertifyJS/issues?state=open)
