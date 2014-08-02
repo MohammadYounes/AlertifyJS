@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html xmlns:og="http://ogp.me/ns# class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns:og="http://ogp.me/ns# class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns:og="http://ogp.me/ns# class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns:og="http://ogp.me/ns# class="no-js"> <!--<![endif]-->
 <head>
 	<!-- Standard Meta -->
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<link rel="shortcut icon" href="http://alertifyjs.com/favicon.ico">
+	<link rel="apple-touch-icon image_src" href="http://alertifyjs.com/apple-touch-icon-precomposed.png">
+	
+	<!-- Open graph -->
+	<meta property="og:title" content="AlertifyJS" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://www.alertifyjs.com/" />
+	<meta property="og:image" content="http://alertifyjs.com/og.png" />
+	<meta name="og:description" content="JavaScript framework for developing pretty browser dialogs and notifications.">
+	
 	<!-- Site Properities -->
 	<title><%= @getPreparedTitle() %></title>
 	<meta name="description" content="<%= @getPreparedDescription() %>" />
