@@ -165,6 +165,9 @@ function factory(){
 							
 							/* Defines the button scope, either primary (primary) or auxiliary */
 							scope:'auxiliary',
+							
+							/* The will conatin the button DOMElement once buttons are created */
+							element:undefined
 						}
 					],
 					
@@ -197,7 +200,38 @@ function factory(){
 		 // This will be called once the dialog DOM has been created, just before its added to the document.
 		 // Its invoked only once.
 		 build:function(){
-		 	// Do custom DOM manipulation here.
+
+			// Do custom DOM manipulation here, accessible via this.elements
+			
+			// this.elements.root           ==> Root div 
+			// this.elements.dimmer         ==> Modal dimmer div
+			// this.elements.modal          ==> Modal div (dialog wrapper)
+			// this.elements.dialog         ==> Dialog div
+			// this.elements.reset          ==> Array containing the tab reset anchor links
+			// this.elements.reset[0]       ==> First reset link.
+			// this.elements.reset[1]       ==> Second reset link.
+			// this.elements.header         ==> Dialog header div
+			// this.elements.body           ==> Dialog body div
+			// this.elements.content        ==> Dialog body content div
+			// this.elements.footer         ==> Dialog footer div
+			// this.elements.resizeHandle   ==> Dialog rezie handle div			
+			
+			// Dialog commands (Pin/Maximize/Close)
+			// this.elements.commands           ==> Object conatining dialog command buttons references
+			// this.elements.commands.container ==> Root commands div
+			// this.elements.commands.pin       ==> Pin command button
+			// this.elements.commands.maximize  ==> Maximize command button
+			// this.elements.commands.close     ==> Close command button
+			
+			// Dialog action buttons (Ok, cancel ... etc)
+			// this.elements.buttons                ==>  Object conatining dialog action buttons references
+			// this.elements.buttons.primary        ==>  Primary buttons div
+			// this.elements.buttons.auxiliary      ==>  Auxiliary buttons div
+			// this.elements.buttons.buttonTemplate ==>  All created buttons will be cloned from this.
+			
+			// Each created button will be saved with the button definition inside buttons collection
+			// this.__internal.buttons[x].element
+			
 		 },
 		 // This will be called each time the dialog is shown
 		 prepare:function(){
