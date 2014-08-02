@@ -20,7 +20,7 @@ Running documentation locally
 ==========
 * Clone the repo
 ```
-git clone git@github.com:Semantic-Org/Semantic-UI.git
+git clone git@github.com:MohammadYounes/AlertifyJS.git
 ```
 
 * Install dev dependencies
