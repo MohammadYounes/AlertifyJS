@@ -127,7 +127,7 @@ module.exports = function (grunt) {
 				expand:true,
 				cwd:'build',
 				src:['**'],
-				dest:'site/build'
+				dest:'docpad/files/build'
 			}
 		},
 		

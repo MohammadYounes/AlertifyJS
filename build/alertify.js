@@ -1158,6 +1158,8 @@
 			
 			// unbind the event
             off( instance.elements.dialog, transition.type, instance.__internal.transitionInHandler);
+			
+			removeClass(instance.elements.root, classes.animationIn);
         }
         
         /**

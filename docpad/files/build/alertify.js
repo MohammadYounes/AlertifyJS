@@ -1,12 +1,12 @@
 /**
- * alertifyJS
- * Pretty browser dialogs and notification system
+ * AlertifyJS
+ * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  *
- * @author Mohammad Younes <myounes@gmail.com>
- * @copyright Mohammad Younes 2014
+ * @author Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
+ * @copyright 2014
  * @license MIT <http://opensource.org/licenses/mit-license.php>
- * @link http://MohammadYounes.github.com/alertifyJS/
- * @module alertifyJS
+ * @link http://alertifyjs.com
+ * @module AlertifyJS
  * @version 0.0.0
  */
 ( function ( window ) {
@@ -1158,6 +1158,8 @@
 			
 			// unbind the event
             off( instance.elements.dialog, transition.type, instance.__internal.transitionInHandler);
+			
+			removeClass(instance.elements.root, classes.animationIn);
         }
         
         /**
