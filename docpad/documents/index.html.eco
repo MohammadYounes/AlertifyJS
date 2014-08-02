@@ -38,7 +38,7 @@ layout: 'default'
         <div class="column">
           <h3> <i class="fa fa-css3 fa-lg"></i> Themeable </h3>
           Three themes right out-of-the-box (AlertifyJS, Semantic and Bootstrap).
-					<a href="examples.html#semantic">view example<a/>
+		  <a href="examples.html#semantic">view example</a>
         </div>
         <div class="column">
           <h3> <i class="fa fa-tablet fa-lg"></i> Responsive </h3>
@@ -47,7 +47,7 @@ layout: 'default'
         <div class="column">
           <h3> <i class="fa fa-language fa-lg"></i> i18n and RTL Support </h3>
           Different language or a right-to-left layout! AlertifyJS got you covered.
-					<a href="examples.html#RTL">view example<a/>
+		  <a href="examples.html#RTL">view example</a>
         </div>
       </div>
       <hr />
