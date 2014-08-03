@@ -57,7 +57,7 @@
 			{"name": "wait", "type":"Number", "desc":"Time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked."},
 			{"name": "callback", "type":"Function", "desc":"A callback function to be invoked when the message is dismissed."}
 		],
-		"script": "alertify.success('Standard notification message.');"
+		"script": "alertify.success('Success notification message.');"
 	},
 	
 	{
@@ -70,7 +70,7 @@
 			{"name": "wait", "type":"Number", "desc":"Time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked."},
 			{"name": "callback", "type":"Function", "desc":"A callback function to be invoked when the message is dismissed."}
 		],
-		"script": "alertify.error('Standard notification message.');"
+		"script": "alertify.error('Error notification message.');"
 	},
 	
 	{
