@@ -3,7 +3,7 @@
 		"type": "p",
 		"name": "modal",
 		"label": "{Boolean}",
-		"desc": "Sets the dialog disaply mode",
+		"desc": "Sets the dialog display mode",
 		"defaultValue": "true",
 		"script": "alertify.{component}('Modal: false').setting('modal', false);",
 		"toggle": { "value": false }
