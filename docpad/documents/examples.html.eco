@@ -208,7 +208,7 @@ pre.style.overflowWrap = "break-word";
 pre.appendChild(document.createTextNode($('#la').text()));
 //show as confirm
 alertify.confirm(pre, function(){
-		alertify.success('Accpted');
+		alertify.success('Accepted');
 	},function(){
 		alertify.error('Declined');
 	}).setting('labels',{'ok':'Accept', 'cancel': 'Decline'});
