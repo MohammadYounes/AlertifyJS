@@ -109,10 +109,16 @@
           <img width="40" src="https://avatars0.githubusercontent.com/u/7704547?s=140">
           <div>RTL CSS</div>
         </a>
-        <a class="right" href="https://semantic-ui.me">
+		
+		<div class="right">
           <img width="40" src="https://avatars1.githubusercontent.com/u/5796209?s=140">
-          <div>سيمانتك يو آي</div>
-        </a>
+          <div>
+		  	<a href="https://semantic-ui.com">Semantic</a> 
+		  	| 
+		  	<a href="https://semantic-ui.me" style="margin-left: 0;">سيمانتك</a>
+		  </div>
+		 </div>
+		
         <a href="http://www.isresponsive.com">
           <img src="http://www.isresponsive.com/Images/logo2.png">
           <div>www.isResponsive.com</div>
