@@ -38,36 +38,15 @@ module.exports = function (grunt) {
         rtlcss: {
             prefixRules: {
                 options: {
-                    //extra rules
                     rules: [
                         {
                             'name': 'prefix',
                             'expr': /.*/img,
                             'important': true,
                             'action': function (rule) {
+								//prefix rules with ajs- and ignore further processing
                                 rule.selector = rule.selector.replace(/\.(?!alertify)/g, '.ajs-');
                                 return true;
-                            }
-                        }
-                    ],
-                    declarations: [
-                        {
-                            'name': 'do nothing',
-                            'expr': /.*/img,
-                            'important': true,
-                            'action': function (/*decl*/) {
-                                return true;
-                            }
-                        }
-                    ],
-                    //extra properties
-                    properties: [
-                        {
-                            'name': 'direction',
-                            'expr': /direction/im,
-                            'important': true,
-                            'action': function (prop, value) {
-                                return { 'prop': prop, 'value': value };
                             }
                         }
                     ]
