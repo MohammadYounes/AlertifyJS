@@ -44,7 +44,7 @@ module.exports = function (grunt) {
                             'expr': /.*/img,
                             'important': true,
                             'action': function (rule) {
-				//prefix rules with ajs- and ignore further processing
+								//prefix rules with ajs- and ignore further processing
                                 rule.selector = rule.selector.replace(/\.(?!alertify)/g, '.ajs-');
                                 return true;
                             }
