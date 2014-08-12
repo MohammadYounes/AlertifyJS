@@ -117,7 +117,8 @@
 						padding:undefined,
                         overflow:undefined,
 						onshow:undefined,
-						onclose:undefined
+						onclose:undefined,
+						onfocus:undefined,
 					},
 					resetHandler:undefined,
 					beginMoveHandler:undefined,

@@ -19,8 +19,8 @@
             cancelKeyup = false;
 
             // allow custom `onfocus` method
-            if ( typeof instance.onfocus === 'function' ) {
-                instance.onfocus();
+            if ( typeof instance.setting('onfocus') === 'function' ) {
+                instance.setting('onfocus')();
             }
 			
 			// unbind the event

@@ -1,3 +1,5 @@
+[![GitHub version](https://badge.fury.io/gh/MohammadYounes%2FAlertifyJS.svg)](http://badge.fury.io/gh/MohammadYounes%2FAlertifyJS)
+
 AlertifyJS
 ==========
 
@@ -30,7 +32,7 @@ npm update; npm install;
 
 * Build the project
 ```
-grunt build
+grunt
 ```
 
 * Start documnetation server
@@ -46,9 +48,5 @@ Bugs & Questions
 Please review the guidelines for [contributing](https://github.com/MohammadYounes/AlertifyJS/blob/master/CONTRIBUTING.md).
 
 
-
-
-Release history
-==========
-* **v0.0.0** [1 Aug. 2014]
-  * Initial commit.
+------
+Contact: [mohammad@alertifyjs.com](mailto:mohammad@alertifyjs.com)

@@ -43,7 +43,7 @@
 <body>
 <header>
     <div class="content">
-      <a class="logo" data-text="alpha" href="http://www.alertifyjs.com"><img src="/css/logo.sm.png" /></a>
+      <a class="logo" data-text="<%=@getPackage().version%>" href="http://www.alertifyjs.com"><img src="/css/logo.sm.png" /></a>
       <a href="#" class="bars"><i class="fa fa-2x fa-bars"></i></a>
       <div class="menu">
         <a href="alert.html">Alert</a>

@@ -93,6 +93,16 @@
 		"script":"alertify.{component}('Demo').setting({onshow:null, onclose:function(){ alertify.message('{component} was closed.')}});"
 
 	},
+	
+	{
+		"type": "p",
+		"name": "onfocus",
+		"label": "{Function}",
+		"desc": "Gets or sets a function to invoke when the dialog is focused for the first time.",
+		"defaultValue": "undefined",
+		"script":"alertify.{component}('Demo').setting({onfocus:function(){ alertify.message('{component} onfocus callback.')},onshow:null, onclose:null});"
+
+	},
 
 	{
 		"type": "p",

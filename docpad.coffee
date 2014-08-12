@@ -34,7 +34,7 @@ docpadConfig = {
 
 			# The website keywords (for SEO) separated by commas
 			keywords: """
-				alert, notify, alertify, dialog, notification, js, javascript, growl, css
+				alert, notify, alertify, pretty, browser, dialog, notification, js, javascript, growl, css
 				"""
 
 			# The website's styles
@@ -57,6 +57,9 @@ docpadConfig = {
 				'/js/site.min.js'	
 			]
 		
+		# Get the documentation data
+		getPackage: (name,module, sort) ->
+			pkg = JSON.parse(fs.readFileSync('./package.json'))
 		
 		# Get the documentation data
 		getDocData: (name,module, sort) ->

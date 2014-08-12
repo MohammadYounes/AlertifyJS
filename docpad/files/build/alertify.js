@@ -7,7 +7,7 @@
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module AlertifyJS
- * @version 0.0.0
+ * @version 0.1.0
  */
 ( function ( window ) {
     'use strict';
@@ -349,7 +349,8 @@
 						padding:undefined,
                         overflow:undefined,
 						onshow:undefined,
-						onclose:undefined
+						onclose:undefined,
+						onfocus:undefined,
 					},
 					resetHandler:undefined,
 					beginMoveHandler:undefined,
@@ -1152,8 +1153,8 @@
             cancelKeyup = false;
 
             // allow custom `onfocus` method
-            if ( typeof instance.onfocus === 'function' ) {
-                instance.onfocus();
+            if ( typeof instance.setting('onfocus') === 'function' ) {
+                instance.setting('onfocus')();
             }
 			
 			// unbind the event

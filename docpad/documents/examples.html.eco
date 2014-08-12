@@ -205,6 +205,8 @@ var pre = document.createElement('pre');
 //custom style.
 pre.style.maxHeight = "400px";
 pre.style.overflowWrap = "break-word";
+pre.style.margin = "-16px -16px -16px 0";
+pre.style.paddingBottom = "24px";
 pre.appendChild(document.createTextNode($('#la').text()));
 //show as confirm
 alertify.confirm(pre, function(){

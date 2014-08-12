@@ -68,7 +68,7 @@
   min-height: 56px;
 }
 .alertify .ajs-body .ajs-content {
-  padding: 16px;
+  padding: 16px 16px 16px 24px;
 }
 .alertify .ajs-footer {
   padding: 4px;
@@ -91,7 +91,7 @@
 }
 .alertify .ajs-footer .ajs-buttons .ajs-button {
   min-width: 88px;
-  min-height: 36px;
+  min-height: 35px;
 }
 .alertify .ajs-footer .ajs-handle {
   position: absolute;
@@ -175,10 +175,9 @@
   position: absolute;
   top: 50px;
   left: 24px;
-  bottom: 48px;
+  bottom: 50px;
   right: 24px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: auto;
 }
 .alertify.ajs-resizable .ajs-footer,
 .alertify.ajs-maximized .ajs-footer {
