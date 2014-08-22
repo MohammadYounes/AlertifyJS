@@ -58,7 +58,7 @@ if(!alertify.myAlert){
       },
       setup:function(){
           return { 
-            buttons:[{text: "cool!", key:27, autoClose: true}],
+            buttons:[{text: "cool!", key:27/*Esc*/}],
             focus: { element:0 }
           };
       },

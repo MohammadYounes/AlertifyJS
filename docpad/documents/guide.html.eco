@@ -1,0 +1,142 @@
+---
+layout: 'default'
+hljs: 	'light'
+---
+<section class="blue">
+	<div class="content">
+		<div class="grid two">
+			<div class="column">
+				<h1> Getting Started </h1>
+				 A quick guide of how to download and use AlertifyJS.
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="dark">
+  <div class="content">
+	  <h1>
+		<i class="fa fa-cloud-download fa-lg"></i> Download (v<%=@getPackage().version%>)
+	  </h1>
+	  <hr />
+	  <div class="grid two">
+		<div class="column">
+		  <h2> AlertifyJS</h2>
+		  <div>Compiled and minified CSS, JavaScript. No docs or original source files are included.</div>
+		  
+		  <div style="margin:35px 0;">
+		   <a class="button" href="/build/alertifyjs.zip">
+			<span>Download Library</span>
+		   </a>
+		  </div>
+  	
+		  <div>
+		  	<h4>Contents</h4>			
+<pre>
+<code class="lang-bash">alertifyjs/
+├── css/
+│   ├── alertify.css
+│   ├── alertify.min.css
+│   ├── alertify.rtl.css
+│   ├── alertify.rtl.min.css
+│   └── themes/
+│   	├── bootstrap.css
+│   	├── bootstrap.min.css
+│   	├── bootstrap.rtl.css
+│   	├── bootstrap.rtl.min.css
+│   	├── default.css
+│   	├── default.min.css
+│   	├── default.rtl.css
+│   	├── default.rtl.min.css
+│   	├── semantic.css
+│   	├── semantic.min.css
+│   	├── semantic.rtl.css
+│   	└── semantic.min.rtl.css
+├── alertify.js
+└── alertify.min.js
+</code>
+</pre>
+			
+			
+		  </div>
+		</div>
+		
+		<div class="column">
+		  <h2>Source Code</h2>
+		  Source Javascript, Less and AlertifyJS docs (see steps for running docs locally).
+		  <div style="margin:35px 0;">
+		    <a class="button" href="https://github.com/MohammadYounes/AlertifyJS/archive/master.zip">
+			  <span>Download Source</span>
+		    </a>
+		  </div>
+		  
+		  
+		  <div>
+		  	<h4>Contents</h4>			
+<pre>
+<code class="lang-bash">alertifyjs/
+│
+├── build/ # <= build output
+│   └── css/
+│   	└── themes/
+│
+│
+├── docpad/ # <= documentation server
+│   ├── data/
+│   ├── documents/
+│   ├── files/
+│   ├── layouts/
+│   └── partials/
+│
+│
+│
+└── src # <= AlertifyJS source files
+   ├── js/
+   │  └── dialog/
+   └── less/
+      └── themes/
+</code>
+</pre>
+			
+			
+		  </div>
+		</div>
+	 </div>
+	
+	
+	 <h1>
+		<i class="fa fa-flash fa-lg"></i> Usage
+	 </h1>
+	 <hr />
+	
+		  <h3> <i class="fa fa-check"></i> Include JS </h3>
+<pre>
+<code class="lang-html">&lt;!-- include the script --&gt;
+&lt;script src="{PATH}/alertify.min.js"&gt;&lt;/script&gt;
+</code> 
+</pre>
+          <h3> <i class="fa fa-check"></i> Include CSS </h3>
+<pre>
+<code class="lang-html">&lt;!-- include the style --&gt;
+&lt;link rel="stylesheet" href="{PATH}/alertify.min.css" /&gt;
+&lt;!-- include a theme --&gt;
+&lt;link rel="stylesheet" href="{PATH}/themes/default.min.css" /&gt;
+</code> 
+</pre>
+
+
+
+ <div class="segment">
+            <h3> <i class="fa fa-check"></i> Start coding!</h3>
+<pre>
+<code class="lang-javascript">alertify.alert('Ready!');
+</code> 
+</pre>
+          <div class="RIGHT">
+            <a class="button example" href="javascript:void(0);">
+              <span> Run </span>
+            </a>
+		  <div>
+</div>
+  </div>
+</section>

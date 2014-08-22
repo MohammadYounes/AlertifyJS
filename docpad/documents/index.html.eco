@@ -68,7 +68,7 @@ if(!alertify.myAlert){
       },
       setup:function(){
           return { 
-            buttons:[{text: "cool!", key:27, autoClose: true}],
+            buttons:[{text: "cool!", key:27/*Esc*/}],
             focus: { element:0 }
           };
       },
@@ -93,31 +93,7 @@ alertify.myAlert("Browser dialogs made easy!");
         </div>
       </div>
 				
-				<!--
-        <div class="column full">
-          <h2>
-            Getting started
-          </h2>
-          <hr />
-          <h3> <i class="fa fa-check"></i> Include JS </h3>
-<pre>
-<code class="lang-html">
-&lt;!-- include the script --&gt;
-&lt;script src="{PATH}/alertify.min.js"&gt;&lt;/script&gt;
-</code> 
-</pre>
-          <h3> <i class="fa fa-check"></i> Include CSS </h3>
-<pre>
-<code class="lang-html">
-&lt;!-- include the style --&gt;
-&lt;link rel="stylesheet" href="{PATH}/alertify.min.css" /&gt;
-&lt;!-- include a theme --&gt;
-&lt;link rel="stylesheet" href="{PATH}/themes/default.min.css" /&gt;
-</code> 
-</pre>
-
-        </div>
-				-->
+			
       </div>
       <br />
     </div>
