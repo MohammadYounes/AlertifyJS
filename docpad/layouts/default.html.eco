@@ -35,10 +35,6 @@
 	<%else:%>
 	<link rel="stylesheet" href="/css/highlight.min.css"/>
 	<%end%>
-	
-	<style type="text/css">
-	body{ -webkit-overflow-scrolling: touch; }
-	</style>
 </head>
 <body>
 <header>

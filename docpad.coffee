@@ -53,6 +53,7 @@ docpadConfig = {
 			scripts: [
 				'/build/alertify.js'
 				'/js/jquery-1.11.1.min.js'
+				'/js/jquery.mobile.custom.min.js'
 				'/js/semantic.min.js'
 				'/js/site.min.js'	
 			]
