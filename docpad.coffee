@@ -54,6 +54,7 @@ docpadConfig = {
 				'/build/alertify.js'
 				'/js/jquery-1.11.1.min.js'
 				'/js/jquery.mobile.custom.min.js'
+				'/js/scrollLock.min.js'
 				'/js/semantic.min.js'
 				'/js/site.min.js'	
 			]
