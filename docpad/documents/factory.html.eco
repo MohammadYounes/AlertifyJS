@@ -14,7 +14,7 @@ component:	'alert'
           <div class="dialog">
             <div> Header </div>
             <h1> Dialog </h1>
-						<div>Contents</div>						
+			<div>Contents</div>						
             <div><div class="left" style="margin:0 10px;">Auxiliary</div><div>Primary</div></div>
           </div>
         </div>
