@@ -7,7 +7,7 @@
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module AlertifyJS
- * @version 0.1.0
+ * @version 0.2.0
  */
 ( function ( window ) {
     'use strict';
@@ -1222,7 +1222,7 @@
          * @return {Boolean} false
          */
         function beginMove(event, instance){
-            if(event.button === 0 && !instance.isMaximized() && instance.setting('movable')){
+            if(resizable === null && event.button === 0 && !instance.isMaximized() && instance.setting('movable')){
                 movable = instance;
                 offsetX = event.pageX;
                 offsetY = event.pageY;
@@ -1276,7 +1276,8 @@
          * @return {undefined}
          */
         function resetMove(instance){
-            var element = instance.elements.dialog;
+            movable = null;
+			var element = instance.elements.dialog;
             element.style.left = element.style.top = '';
         }
 		
@@ -1448,6 +1449,7 @@
          * @return {undefined}
          */
         function resetResize(instance){
+			resizable = null;
             var element = instance.elements.dialog;
             if(element.style.maxWidth === 'none'){
 				//clear inline styles.

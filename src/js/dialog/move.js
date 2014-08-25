@@ -30,7 +30,7 @@
          * @return {Boolean} false
          */
         function beginMove(event, instance){
-            if(event.button === 0 && !instance.isMaximized() && instance.setting('movable')){
+            if(resizable === null && event.button === 0 && !instance.isMaximized() && instance.setting('movable')){
                 movable = instance;
                 offsetX = event.pageX;
                 offsetY = event.pageY;
@@ -84,7 +84,8 @@
          * @return {undefined}
          */
         function resetMove(instance){
-            var element = instance.elements.dialog;
+            movable = null;
+			var element = instance.elements.dialog;
             element.style.left = element.style.top = '';
         }
 		

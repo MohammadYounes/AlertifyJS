@@ -139,6 +139,7 @@
          * @return {undefined}
          */
         function resetResize(instance){
+			resizable = null;
             var element = instance.elements.dialog;
             if(element.style.maxWidth === 'none'){
 				//clear inline styles.
