@@ -7,6 +7,15 @@ AlertifyJS is a javascript framework for developing pretty browser dialogs and n
 
 > AlertifyJS is an extreme makeover of <a href="http://www.github.com/fabien-d/alertify.js">alertify.js</a> by <a href="http://www.github.com/fabien-d">@fabien-d</a>
 
+
+
+####Install with [Nuget](https://www.nuget.org/packages/AlertifyJS/)
+
+```
+Install-Package AlertifyJS
+```
+
+
 Documentation
 ==========
 Check out the interactive documentaion at http://alertifyjs.com
