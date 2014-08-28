@@ -9,7 +9,7 @@ AlertifyJS is a javascript framework for developing pretty browser dialogs and n
 
 
 
-####Install with [Nuget](https://www.nuget.org/packages/AlertifyJS/)
+####Install with [NuGet](https://www.nuget.org/packages/AlertifyJS/)
 
 ```
 Install-Package AlertifyJS
