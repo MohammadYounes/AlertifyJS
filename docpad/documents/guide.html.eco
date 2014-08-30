@@ -110,6 +110,20 @@ hljs: 	'light'
 		  </div>
 		</div>
 	 </div>
+	 
+	 <div class="grid two">
+	 	<div class="column double">
+		  <h2>Install with NuGet</h2>
+		  To install AlertifyJS, run the following command in the Package Manager Console
+<pre>
+<code class="lang-bash">
+PM> Install-Package AlertifyJS
+
+</code>
+</pre>	 
+		  
+		</div>
+	 </div>
 	
 	
 	 <h1>
