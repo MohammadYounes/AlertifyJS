@@ -163,7 +163,7 @@ function factory(){
 							/* custom button attributes  */
 							attrs:{attribute:'value'},
 							
-							/* Defines the button scope, either primary (primary) or auxiliary */
+							/* Defines the button scope, either primary (default) or auxiliary */
 							scope:'auxiliary',
 							
 							/* The will conatin the button DOMElement once buttons are created */
@@ -227,7 +227,6 @@ function factory(){
 			// this.elements.buttons                ==>  Object conatining dialog action buttons references
 			// this.elements.buttons.primary        ==>  Primary buttons div
 			// this.elements.buttons.auxiliary      ==>  Auxiliary buttons div
-			// this.elements.buttons.buttonTemplate ==>  All created buttons will be cloned from this.
 			
 			// Each created button will be saved with the button definition inside buttons collection
 			// this.__internal.buttons[x].element

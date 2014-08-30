@@ -25,7 +25,7 @@
 		"label": "{Boolean}",
 		"desc": "Gets or sets a value indicating whether the dialog is resizable.",
 		"defaultValue": "false",
-		"script": "alertify.{component}('Resizable: false').setting('resizable', true);",
+		"script": "alertify.{component}('Resizable: true').setting('resizable', true);",
 		"toggle": { "value": true }
 	},
 	
