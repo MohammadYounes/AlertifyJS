@@ -7,7 +7,9 @@
      */
     var keys = {
         ENTER: 13,
-        ESC: 27
+        ESC: 27,
+        F1: 112,
+        F12: 123
     };
     /**
      * Default options 
@@ -17,17 +19,17 @@
         modal:true,
         movable:true,
         resizable:true,
-		closable:true,
-		maximizable:true,
-		pinnable:true,
-		pinned:true,
-		transition:'pulse',
-		padding: true,
+        closable:true,
+        maximizable:true,
+        pinnable:true,
+        pinned:true,
+        transition:'pulse',
+        padding: true,
         overflow:true,
-		notifier:{
-			delay:5,
-			position:'bottom-right'
-		},
+        notifier:{
+            delay:5,
+            position:'bottom-right'
+        },
         glossary:{
             title:'AlertifyJS',
             ok: 'OK',
@@ -40,11 +42,11 @@
             maximize: 'Maximize',
             restore: 'Restore',
         },
-		theme:{
-			input:'ajs-input',
-			ok:'ajs-ok',
-			cancel:'ajs-cancel',
-		}
+        theme:{
+            input:'ajs-input',
+            ok:'ajs-ok',
+            cancel:'ajs-cancel',
+        }
     };
     
     /**

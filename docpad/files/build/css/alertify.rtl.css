@@ -106,7 +106,7 @@
   cursor: sw-resize;
 }
 .alertify.ajs-no-overflow .ajs-body .ajs-content {
-  overflow: hidden!important;
+  overflow: hidden !important;
 }
 .alertify.ajs-no-padding.ajs-maximized .ajs-body .ajs-content {
   right: 0;
@@ -240,6 +240,9 @@
   .alertify:not(.ajs-maximized).ajs-resizable .ajs-dialog {
     min-width: initial;
   }
+}
+.alertify {
+  display: none;
 }
 .alertify .ajs-dimmer,
 .alertify .ajs-modal {

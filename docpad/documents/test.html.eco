@@ -1,0 +1,66 @@
+---
+layout: 'default'
+hljs: 	'light'
+component:	'alert'
+---
+<section class="blue">
+    <div class="content">
+      <div class="grid two">
+        <div class="column">
+          <h1> Test Page</h1>
+		  Page used for testing 
+        </div>
+        <div class="right column">
+          <div class="dialog">
+            <div> Header </div>
+            <h1> Dialog </h1>
+			<div>Contents</div>						
+            <div><div class="left" style="margin:0 10px;">Auxiliary</div><div>Primary</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="dark">
+    <div class="content">
+      <div class="segment">
+        <h1><i class="fa fa-code"></i> Demo</h1>
+        <hr />
+        
+<pre>
+<code class="lang-javascript">
+if(!alertify.myAlert){
+  //define a new dialog
+  alertify.dialog('myAlert',function factory(){
+    return{
+      main:function(message){
+        this.message = message;
+      },
+      setup:function(){
+          return { 
+            buttons:[{text: "cool!", key:112/*F1*/}],
+            focus: { element:0 }
+          };
+      },
+      prepare:function(){
+        this.setContent(this.message);
+      }
+  }});
+}
+//launch it.
+alertify.myAlert("Browser dialogs made easy!");
+</code> 
+</pre>
+
+
+        <div class="RIGHT">
+          <a class="button example" href="javascript:void(0);">
+            <span> Run </span>
+          </a>
+        </div>
+      </div>
+			<br/>
+			<br/>
+    </div>
+  </section>

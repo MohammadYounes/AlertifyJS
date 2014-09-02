@@ -4,14 +4,16 @@
      * @return {Object}		base dialog prototype
      */
     var dialog = (function () {
-			//holds open dialogs instances
+        //holds open dialogs instances
         var openInstances = [],
-			//dummy variable, used to trigger dom reflow.
-			reflow = null,
-			//dialog building blocks
+            //holds the list of used keys.
+            usedKeys = [],
+            //dummy variable, used to trigger dom reflow.
+            reflow = null,
+            //dialog building blocks
             templates = {
                 dimmer:'<div class="ajs-dimmer"></div>',
-				/*tab index required to fire click event before body focus*/
+                /*tab index required to fire click event before body focus*/
                 modal: '<div class="ajs-modal" tabindex="0"></div>',
                 dialog: '<div class="ajs-dialog" tabindex="0"></div>',
                 reset: '<a class="ajs-reset" href="#"></a>',
@@ -24,7 +26,7 @@
                 button: '<button class="ajs-button"></button>',
                 resizeHandle: '<div class="ajs-handle"></div>',
             },
-			//common class names
+            //common class names
             classes = {
                 base: 'alertify',
                 prefix: 'ajs-',
@@ -36,98 +38,98 @@
                 movable: 'ajs-movable',
                 resizable: 'ajs-resizable',
                 fixed: 'ajs-fixed',
-				closable:'ajs-closable',
-				maximizable:'ajs-maximizable',
-				maximize: 'ajs-maximize',
-				restore: 'ajs-restore',
-				pinnable:'ajs-pinnable',
-				unpinned:'ajs-unpinned',
-				pin:'ajs-pin',
+                closable:'ajs-closable',
+                maximizable:'ajs-maximizable',
+                maximize: 'ajs-maximize',
+                restore: 'ajs-restore',
+                pinnable:'ajs-pinnable',
+                unpinned:'ajs-unpinned',
+                pin:'ajs-pin',
                 maximized: 'ajs-maximized',
                 animationIn: 'ajs-in',
                 animationOut: 'ajs-out',
                 shake:'ajs-shake'
             };
 			
-		/**
-		 * Helper: initializes the dialog instance
-		 * 
-		 * @return	{Number}	The total count of currently open modals.
-		 */
+        /**
+         * Helper: initializes the dialog instance
+         * 
+         * @return	{Number}	The total count of currently open modals.
+         */
         function initialize(instance){
             
             if(!instance.__internal){
 				
-				//no need to expose init after this.
+                //no need to expose init after this.
                 delete instance.__init;
 				
-				//in case the script was included before body.
-				//after first dialog gets initialized, it won't be null anymore!				
-				if(null === reflow){
-					// set tabindex attribute on body element this allows script to give it
-					// focus after the dialog is closed
-					document.body.setAttribute( 'tabindex', '0' );
-				}
+                //in case the script was included before body.
+                //after first dialog gets initialized, it won't be null anymore!				
+                if(null === reflow){
+                    // set tabindex attribute on body element this allows script to give it
+                    // focus after the dialog is closed
+                    document.body.setAttribute( 'tabindex', '0' );
+                }
 				
-				//get dialog buttons/focus setup
-				var setup;
+                //get dialog buttons/focus setup
+                var setup;
                 if(typeof instance.setup === 'function'){
                     setup = instance.setup();
-					setup.options = setup.options  || {};
-					setup.focus = setup.focus  || {};
+                    setup.options = setup.options  || {};
+                    setup.focus = setup.focus  || {};
                 }else{
-					setup = {
-						buttons:[],
-						focus:{
-							element:null,
-							select:false
-						},
-						options:{
-						}
-					};
-				}
+                    setup = {
+                        buttons:[],
+                        focus:{
+                            element:null,
+                            select:false
+                        },
+                        options:{
+                        }
+                    };
+                }
 
                 var internal = instance.__internal = {
-					/**
-					 * Flag holding the open state of the dialog
-					 * 
-					 * @type {Boolean}
-					 */
+                    /**
+                     * Flag holding the open state of the dialog
+                     * 
+                     * @type {Boolean}
+                     */
                     isOpen:false,
-					/**
-					 * Active element is the element that will receive focus after
-					 * closing the dialog. It defaults as the body tag, but gets updated
-					 * to the last focused element before the dialog was opened.
-					 *
-					 * @type {Node}
-					 */
-					activeElement:document.body,
-					buttons: setup.buttons,
-					focus: setup.focus,
-					options: {
-						title: undefined,
-						modal: undefined,
-						pinned: undefined,
-						movable: undefined,
-						resizable: undefined,
-						closable: undefined,
-						maximizable: undefined,
-						pinnable: undefined,
-						transition: undefined,
-						padding:undefined,
+                    /**
+                     * Active element is the element that will receive focus after
+                     * closing the dialog. It defaults as the body tag, but gets updated
+                     * to the last focused element before the dialog was opened.
+                     *
+                     * @type {Node}
+                     */
+                    activeElement:document.body,
+                    buttons: setup.buttons,
+                    focus: setup.focus,
+                    options: {
+                        title: undefined,
+                        modal: undefined,
+                        pinned: undefined,
+                        movable: undefined,
+                        resizable: undefined,
+                        closable: undefined,
+                        maximizable: undefined,
+                        pinnable: undefined,
+                        transition: undefined,
+                        padding:undefined,
                         overflow:undefined,
-						onshow:undefined,
-						onclose:undefined,
-						onfocus:undefined,
-					},
-					resetHandler:undefined,
-					beginMoveHandler:undefined,
-					beginResizeHandler:undefined,
-					bringToFrontHandler:undefined,
-					modalClickHandler:undefined,
-					buttonsClickHandler:undefined,
-					commandsClickHandler:undefined,
-					transitionInHandler:undefined,
+                        onshow:undefined,
+                        onclose:undefined,
+                        onfocus:undefined,
+                    },
+                    resetHandler:undefined,
+                    beginMoveHandler:undefined,
+                    beginResizeHandler:undefined,
+                    bringToFrontHandler:undefined,
+                    modalClickHandler:undefined,
+                    buttonsClickHandler:undefined,
+                    commandsClickHandler:undefined,
+                    transitionInHandler:undefined,
                     transitionOutHandler:undefined
                 };
 				
@@ -136,7 +138,7 @@
                 //root node
                 elements.root = document.createElement('div');
                 
-				elements.root.className = classes.base + ' ' + classes.hidden + ' ';
+                elements.root.className = classes.base + ' ' + classes.hidden + ' ';
 				
                 elements.root.innerHTML = templates.dimmer + templates.modal;
                 
@@ -146,7 +148,7 @@
                 //dialog
                 elements.modal = elements.root.lastChild;
                 elements.modal.innerHTML = templates.dialog;
-				elements.dialog = elements.modal.firstChild;
+                elements.dialog = elements.modal.firstChild;
                 elements.dialog.innerHTML = templates.reset + templates.commands + templates.header + templates.body + templates.footer + templates.reset;
 
                 //reset links
@@ -157,7 +159,7 @@
                 //commands
                 elements.commands = {};
                 elements.commands.container = elements.reset[0].nextSibling;
-				elements.commands.pin = elements.commands.container.firstChild;
+                elements.commands.pin = elements.commands.container.firstChild;
                 elements.commands.maximize = elements.commands.pin.nextSibling;
                 elements.commands.close = elements.commands.maximize.nextSibling;
                 
@@ -185,16 +187,22 @@
                                
                 for(var x=0; x < instance.__internal.buttons.length; x+=1) {
                     var button = instance.__internal.buttons[x];
+                    
+                    // add to the list of used keys.
+                    if(usedKeys.indexOf(button.key) < 0){
+                        usedKeys.push(button.key);
+                    }
+
                     button.element = elements.buttonTemplate.cloneNode();
                     button.element.innerHTML = button.text;
                     if(typeof button.className === 'string' &&  button.className !== ''){
                         addClass(button.element, button.className);
                     }
-					for(var key in button.attrs){
-						if(key !== 'className' && button.attrs.hasOwnProperty(key)){
-							button.element.setAttribute(key, button.attrs[key]);
-						}
-					}
+                    for(var key in button.attrs){
+                        if(key !== 'className' && button.attrs.hasOwnProperty(key)){
+                            button.element.setAttribute(key, button.attrs[key]);
+                        }
+                    }
                     if(button.scope === 'auxiliary'){
                         elements.buttons.auxiliary.appendChild(button.element);
                     }else{
@@ -209,31 +217,31 @@
                 internal.beginMoveHandler = delegate(instance, beginMove);
                 internal.beginResizeHandler = delegate(instance, beginResize);
                 internal.bringToFrontHandler = delegate(instance, bringToFront);
-				internal.modalClickHandler = delegate(instance, modalClickHandler);
-				internal.buttonsClickHandler = delegate(instance, buttonsClickHandler);
-				internal.commandsClickHandler = delegate(instance, commandsClickHandler);
-				internal.transitionInHandler = delegate(instance, handleTransitionInEvent);
-				internal.transitionOutHandler = delegate(instance, handleTransitionOutEvent);
+                internal.modalClickHandler = delegate(instance, modalClickHandler);
+                internal.buttonsClickHandler = delegate(instance, buttonsClickHandler);
+                internal.commandsClickHandler = delegate(instance, commandsClickHandler);
+                internal.transitionInHandler = delegate(instance, handleTransitionInEvent);
+                internal.transitionOutHandler = delegate(instance, handleTransitionOutEvent);
 
                 
-				//settings
-				instance.setting('title', setup.options.title === undefined ? alertify.defaults.glossary.title : setup.options.title);
+                //settings
+                instance.setting('title', setup.options.title === undefined ? alertify.defaults.glossary.title : setup.options.title);
 				
-				instance.setting('modal', setup.options.modal === undefined ? alertify.defaults.modal : setup.options.modal);
+                instance.setting('modal', setup.options.modal === undefined ? alertify.defaults.modal : setup.options.modal);
 							
-				instance.setting('movable', setup.options.movable === undefined ? alertify.defaults.movable : setup.options.movable);
-				instance.setting('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
+                instance.setting('movable', setup.options.movable === undefined ? alertify.defaults.movable : setup.options.movable);
+                instance.setting('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
 				
-				instance.setting('closable', setup.options.closable === undefined ? alertify.defaults.closable : setup.options.closable);
-				instance.setting('maximizable', setup.options.maximizable === undefined ? alertify.defaults.maximizable : setup.options.maximizable);
+                instance.setting('closable', setup.options.closable === undefined ? alertify.defaults.closable : setup.options.closable);
+                instance.setting('maximizable', setup.options.maximizable === undefined ? alertify.defaults.maximizable : setup.options.maximizable);
 				
-				instance.setting('pinnable', setup.options.pinnable === undefined ? alertify.defaults.pinnable : setup.options.pinnable);
-				instance.setting('pinned', setup.options.pinned === undefined ? alertify.defaults.pinned : setup.options.pinned);
+                instance.setting('pinnable', setup.options.pinnable === undefined ? alertify.defaults.pinnable : setup.options.pinnable);
+                instance.setting('pinned', setup.options.pinned === undefined ? alertify.defaults.pinned : setup.options.pinned);
 				
-				instance.setting('transition', setup.options.transition === undefined ? alertify.defaults.transition : setup.options.transition);
+                instance.setting('transition', setup.options.transition === undefined ? alertify.defaults.transition : setup.options.transition);
 
-				instance.setting('padding', setup.options.padding === undefined ? alertify.defaults.padding : setup.options.padding);
-				instance.setting('overflow', setup.options.overflow === undefined ? alertify.defaults.overflow : setup.options.overflow);
+                instance.setting('padding', setup.options.padding === undefined ? alertify.defaults.padding : setup.options.padding);
+                instance.setting('overflow', setup.options.overflow === undefined ? alertify.defaults.overflow : setup.options.overflow);
 				
 
                 // allow dom customization
@@ -245,88 +253,88 @@
             
             //add to DOM tree.
             document.body.appendChild(instance.elements.root);
-		}
+        }
 
-		/**
-		 * Helper: adds/removes no-overflow class from body
-		 *
-		 */
-		function ensureNoOverflow(){
-			var requiresNoOverflow = 0;
+        /**
+         * Helper: adds/removes no-overflow class from body
+         *
+         */
+        function ensureNoOverflow(){
+            var requiresNoOverflow = 0;
             for(var x=0;x<openInstances.length;x+=1){
-				var instance = openInstances[x];
+                var instance = openInstances[x];
                 if(instance.isModal() || instance.isMaximized()){
                     requiresNoOverflow+=1;
                 }
             }
-			if(requiresNoOverflow === 0){
-				//last open modal or last maximized one
-				removeClass(document.body, classes.noOverflow);
-			}else if(requiresNoOverflow > 0 && document.body.className.indexOf(classes.noOverflow) < 0){
-				//first open modal or first maximized one
-				addClass(document.body, classes.noOverflow);
-			}
-		}
+            if(requiresNoOverflow === 0){
+                //last open modal or last maximized one
+                removeClass(document.body, classes.noOverflow);
+            }else if(requiresNoOverflow > 0 && document.body.className.indexOf(classes.noOverflow) < 0){
+                //first open modal or first maximized one
+                addClass(document.body, classes.noOverflow);
+            }
+        }
 		
-		/**
-		 * Sets the name of the transition used to show/hide the dialog
-		 * 
-		 * @param {Object} instance The dilog instance.
-		 *
-		 */
-		function updateTransition(instance, value, oldValue){
-			if(typeof oldValue === 'string'){
-				removeClass(instance.elements.root,classes.prefix +  oldValue);
-			}
-			addClass(instance.elements.root, classes.prefix + value);
-			reflow = instance.elements.root.offsetWidth;
-		}
+        /**
+         * Sets the name of the transition used to show/hide the dialog
+         * 
+         * @param {Object} instance The dilog instance.
+         *
+         */
+        function updateTransition(instance, value, oldValue){
+            if(typeof oldValue === 'string'){
+                removeClass(instance.elements.root,classes.prefix +  oldValue);
+            }
+            addClass(instance.elements.root, classes.prefix + value);
+            reflow = instance.elements.root.offsetWidth;
+        }
 		
-		/**
+        /**
          * Toggles the dialog display mode
-		 *
-		 * @param {Object} instance The dilog instance.
-		 * @param {Boolean} on True to make it modal, false otherwise.
-		 *
+         *
+         * @param {Object} instance The dilog instance.
+         * @param {Boolean} on True to make it modal, false otherwise.
+         *
          * @return {undefined}
          */
         function updateDisplayMode(instance){
-			if(instance.setting('modal')){
+            if(instance.setting('modal')){
 
-				//make modal
-				removeClass(instance.elements.root, classes.modeless);
+                //make modal
+                removeClass(instance.elements.root, classes.modeless);
 				
-				//only if open
-				if(instance.isOpen()){
-					unbindModelessEvents(instance);
+                //only if open
+                if(instance.isOpen()){
+                    unbindModelessEvents(instance);
 					
-					//in case a pinned modless dialog was made modal while open.
-					updateAbsPositionFix(instance);
+                    //in case a pinned modless dialog was made modal while open.
+                    updateAbsPositionFix(instance);
 					
-					ensureNoOverflow();
-				}
-			}else{
-				//make modelss
-				addClass(instance.elements.root, classes.modeless);
+                    ensureNoOverflow();
+                }
+            }else{
+                //make modelss
+                addClass(instance.elements.root, classes.modeless);
 								
-				//only if open
-				if(instance.isOpen()){
-					bindModelessEvents(instance);
+                //only if open
+                if(instance.isOpen()){
+                    bindModelessEvents(instance);
 					
-					//in case pin/unpin was called while a modal is open
-					updateAbsPositionFix(instance);
+                    //in case pin/unpin was called while a modal is open
+                    updateAbsPositionFix(instance);
 										
-					ensureNoOverflow();
-				}
-			}
+                    ensureNoOverflow();
+                }
+            }
         }
 		
-		/**
+        /**
          * Helper: Brings the modeless dialog to front, attached to modeless dialogs.
          *
          * @param {Event} event Focus event
-		 * @param {Object} instance The dilog instance.
-		 *
+         * @param {Object} instance The dilog instance.
+         *
          * @return {undefined}
          */
         function bringToFront(event, instance){
@@ -345,46 +353,46 @@
                 setFocus(instance);
             }
 			
-			return false;
+            return false;
         }
 		
-		/**
-		 * Helper: reflects dialogs options updates
-		 *
-		 * @param {Object} instance The dilog instance.
-		 * @param {String} option The updated option name.
-		 *
-		 * @return	{undefined}	
-		 */
+        /**
+         * Helper: reflects dialogs options updates
+         *
+         * @param {Object} instance The dilog instance.
+         * @param {String} option The updated option name.
+         *
+         * @return	{undefined}	
+         */
         function optionUpdated(instance, option, oldValue, newValue){
             switch(option){
-			case 'title':
-				instance.setHeader(newValue);
-				break;
-			case 'modal':
-				updateDisplayMode(instance);
-				break;
-			case 'pinned':
-				updatePinned(instance);
-				break;
-			case 'closable':
-				updateClosable(instance);
-				break;
-			case 'maximizable':
-				updateMaximizable(instance);
-				break;
-			case 'pinnable':
-				updatePinnable(instance);
-				break;
-			case 'movable':
-				updateMovable(instance);
-				break;
-			case 'resizable':
-				updateResizable(instance);
-				break;
-			case 'transition':
-				updateTransition(instance,newValue, oldValue);
-				break;
+            case 'title':
+                instance.setHeader(newValue);
+                break;
+            case 'modal':
+                updateDisplayMode(instance);
+                break;
+            case 'pinned':
+                updatePinned(instance);
+                break;
+            case 'closable':
+                updateClosable(instance);
+                break;
+            case 'maximizable':
+                updateMaximizable(instance);
+                break;
+            case 'pinnable':
+                updatePinnable(instance);
+                break;
+            case 'movable':
+                updateMovable(instance);
+                break;
+            case 'resizable':
+                updateResizable(instance);
+                break;
+            case 'transition':
+                updateTransition(instance,newValue, oldValue);
+                break;
             case 'padding':
                 if(newValue){
                     removeClass(instance.elements.root, classes.noPadding);
@@ -402,82 +410,82 @@
             case 'transition':
                 updateTransition(instance,newValue, oldValue);
                 break;
-			}
+            }
         }
 		
-		/**
-		 * Helper: reflects dialogs options updates
-		 *
-		 * @param {Object} instance The dilog instance.
-		 * @param {Object} obj The object to set/get a value on/from.
-		 * @param {Function} callback The callback function to call if the key was found.
-		 * @param {String|Object} key A string specifying a propery name or a collection of key value pairs.
-		 * @param {Object} value Optional, the value associated with the key (in case it was a string).
-		 * @param {String} option The updated option name.
-		 *
-		 * @return	{Object} result object 
-		 *	The result objects has an 'op' property, indicating of this is a SET or GET operation.
-		 *		GET: 
-		 *		- found: a flag indicating if the key was found or not.
-		 *		- value: the property value.
-		 *		SET:
-		 *		- items: a list of key value pairs of the properties being set.
-		 *				each contains:
-		 *					- found: a flag indicating if the key was found or not.
-		 *					- key: the property key.
-		 *					- value: the property value.
-		 */
+        /**
+         * Helper: reflects dialogs options updates
+         *
+         * @param {Object} instance The dilog instance.
+         * @param {Object} obj The object to set/get a value on/from.
+         * @param {Function} callback The callback function to call if the key was found.
+         * @param {String|Object} key A string specifying a propery name or a collection of key value pairs.
+         * @param {Object} value Optional, the value associated with the key (in case it was a string).
+         * @param {String} option The updated option name.
+         *
+         * @return	{Object} result object 
+         *	The result objects has an 'op' property, indicating of this is a SET or GET operation.
+         *		GET: 
+         *		- found: a flag indicating if the key was found or not.
+         *		- value: the property value.
+         *		SET:
+         *		- items: a list of key value pairs of the properties being set.
+         *				each contains:
+         *					- found: a flag indicating if the key was found or not.
+         *					- key: the property key.
+         *					- value: the property value.
+         */
         function update(instance, obj, callback, key, value){
-			var result = {op:undefined, items: [] };
-			if(typeof value === 'undefined' && typeof key === 'string') {
-				//get
-				result.op = 'get';
-				if(obj.hasOwnProperty(key)){
-					result.found = true;
-					result.value = obj[key];
-				}else{
-					result.found = false;
-					result.value = undefined;
-				}
-			}
-			else
-			{
-				var old;
-				//set
-				result.op = 'set';
-				if(typeof key === 'object'){
-					//set multiple
-					var args = key;
-					for (var prop in args) {
-						if (obj.hasOwnProperty(prop)) {
-							if(obj[prop] !== args[prop]){
-								old = obj[prop];
-								obj[prop] = args[prop];
-								callback.call(instance,prop, old, args[prop]);
-							}
-							result.items.push({ 'key': prop, 'value': args[prop], 'found':true});
-						}else{
-							result.items.push({ 'key': prop, 'value': args[prop], 'found':false});
-						}
-					}
-				} else if (typeof key === 'string'){
-					//set single
-					if (obj.hasOwnProperty(key)) {
-						if(obj[key] !== value){
-							old  = obj[key];
-							obj[key] = value;
-							callback.call(instance,key, old, value);
-						}
-						result.items.push({'key': key, 'value': value , 'found':true});
+            var result = {op:undefined, items: [] };
+            if(typeof value === 'undefined' && typeof key === 'string') {
+                //get
+                result.op = 'get';
+                if(obj.hasOwnProperty(key)){
+                    result.found = true;
+                    result.value = obj[key];
+                }else{
+                    result.found = false;
+                    result.value = undefined;
+                }
+            }
+            else
+            {
+                var old;
+                //set
+                result.op = 'set';
+                if(typeof key === 'object'){
+                    //set multiple
+                    var args = key;
+                    for (var prop in args) {
+                        if (obj.hasOwnProperty(prop)) {
+                            if(obj[prop] !== args[prop]){
+                                old = obj[prop];
+                                obj[prop] = args[prop];
+                                callback.call(instance,prop, old, args[prop]);
+                            }
+                            result.items.push({ 'key': prop, 'value': args[prop], 'found':true});
+                        }else{
+                            result.items.push({ 'key': prop, 'value': args[prop], 'found':false});
+                        }
+                    }
+                } else if (typeof key === 'string'){
+                    //set single
+                    if (obj.hasOwnProperty(key)) {
+                        if(obj[key] !== value){
+                            old  = obj[key];
+                            obj[key] = value;
+                            callback.call(instance,key, old, value);
+                        }
+                        result.items.push({'key': key, 'value': value , 'found':true});
 						
-					}else{
-						result.items.push({'key': key, 'value': value , 'found':false});
-					}
-				} else {
-					//invalid params
-					throw new Error('args must be a string or object');
-				}
-			}
-			return result;
-		}
+                    }else{
+                        result.items.push({'key': key, 'value': value , 'found':false});
+                    }
+                } else {
+                    //invalid params
+                    throw new Error('args must be a string or object');
+                }
+            }
+            return result;
+        }
 		

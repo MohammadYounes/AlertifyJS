@@ -1,71 +1,71 @@
-.alertify{
-	.dimmer {
-		background-color: rgba(0,0,0,.85);
-		opacity: 1;
-	}
-	.dialog {
-		max-width: 50%;
-		min-height: 137px;
-		background-color: #F4F4F4;
-		border: 1px solid #DDD;
-		box-shadow:none;
-		border-radius: 5px;
-	}
-	
-	.header {
-		padding:1.5rem 2rem;
-		border-bottom: none;
-		border-radius: 5px 5px 0 0;
-		color: #555;
-		background-color: #fff;
-		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-		font-size: 1.6em;
-		font-weight: 700;		
-	}
-    
-	.body {
-		font-family: 'Roboto', sans-serif;
-		color: #555;
-		
-		.content{
-			.input{
-				width: 100%;
-				margin: 0;
-				padding: .65em 1em;
-				font-size: 1em;
-				background-color: #FFF;
-				border: 1px solid rgba(0,0,0,.15);
-				outline: 0;
-				color: rgba(0,0,0,.7);
-				border-radius: .3125em;
-				transition: background-color .3s ease-out,box-shadow .2s ease,border-color .2s ease;
-				box-sizing: border-box;
-				
-				&:active{
-					border-color: rgba(0, 0, 0, 0.3);
-  					background-color: #FAFAFA;
-				}
-				&:focus{
-					border-color: rgba(0, 0, 0, 0.2);
-  					color: rgba(0, 0, 0, 0.85);
-				}
-			}			
-		}
-	}
-	&.resizable, &.maximized:not(.resizable){
-		.content {
-			top: 64px;
-			bottom: 74px;
-		}
-	}
-	
-	.footer {
-		background-color: #fff;
-		padding: 1rem 2rem;
-		border-top: none;
-		border-radius: 0 0 5px 5px;
-	}
+.alertify {
+    .dimmer {
+        background-color: rgba(0,0,0,.85);
+        opacity: 1;
+    }
+
+    .dialog {
+        max-width: 50%;
+        min-height: 137px;
+        background-color: #F4F4F4;
+        border: 1px solid #DDD;
+        box-shadow: none;
+        border-radius: 5px;
+    }
+
+    .header {
+        padding: 1.5rem 2rem;
+        border-bottom: none;
+        border-radius: 5px 5px 0 0;
+        color: #555;
+        background-color: #fff;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 1.6em;
+        font-weight: 700;
+    }
+
+    .body {
+        font-family: 'Roboto', sans-serif;
+        color: #555;
+
+        .content {
+            .input {
+                width: 100%;
+                margin: 0;
+                padding: .65em 1em;
+                font-size: 1em;
+                background-color: #FFF;
+                border: 1px solid rgba(0,0,0,.15);
+                outline: 0;
+                color: rgba(0,0,0,.7);
+                border-radius: .3125em;
+                transition: background-color .3s ease-out,box-shadow .2s ease,border-color .2s ease;
+                box-sizing: border-box;
+
+                &:active {
+                    border-color: rgba(0, 0, 0, 0.3);
+                    background-color: #FAFAFA;
+                }
+
+                &:focus {
+                    border-color: rgba(0, 0, 0, 0.2);
+                    color: rgba(0, 0, 0, 0.85);
+                }
+            }
+        }
+    }
+
+    &.resizable, &.maximized:not(.resizable) {
+        .content {
+            top: 64px;
+            bottom: 74px;
+        }
+    }
+
+    .footer {
+        background-color: #fff;
+        padding: 1rem 2rem;
+        border-top: none;
+        border-radius: 0 0 5px 5px;
+    }
 }
-	
-	
-        

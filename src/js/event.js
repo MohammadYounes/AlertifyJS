@@ -9,17 +9,17 @@
      * @param    {Function} fn    Callback of event
      * @return   {Function}
      */
-    var on = ( function () {
-        if ( document.addEventListener ) {
-            return function ( el, event, fn, useCapture ) {
-                el.addEventListener( event, fn, useCapture === true );
+    var on = (function () {
+        if (document.addEventListener) {
+            return function (el, event, fn, useCapture) {
+                el.addEventListener(event, fn, useCapture === true);
             };
-        } else if ( document.attachEvent ) {
-            return function ( el, event, fn ) {
-                el.attachEvent( 'on' + event, fn );
+        } else if (document.attachEvent) {
+            return function (el, event, fn) {
+                el.attachEvent('on' + event, fn);
             };
         }
-    } () );
+    }());
 
     /**
      * Use a closure to return proper event listener method. Try to use
@@ -32,24 +32,24 @@
      * @param    {Function} fn    Callback of event
      * @return   {Function}
      */
-    var off = ( function () {
-        if ( document.removeEventListener ) {
-            return function ( el, event, fn, useCapture ) {
-                el.removeEventListener( event, fn, useCapture === true );
+    var off = (function () {
+        if (document.removeEventListener) {
+            return function (el, event, fn, useCapture) {
+                el.removeEventListener(event, fn, useCapture === true);
             };
-        } else if ( document.detachEvent ) {
-            return function ( el, event, fn ) {
-                el.detachEvent( 'on' + event, fn );
+        } else if (document.detachEvent) {
+            return function (el, event, fn) {
+                el.detachEvent('on' + event, fn);
             };
         }
-    } () );
+    }());
 
     /**
      * Prevent default event from firing
      *
      * @param  {Event} event Event object
      * @return {undefined}
-    
+
     function prevent ( event ) {
         if ( event ) {
             if ( event.preventDefault ) {
@@ -60,10 +60,10 @@
         }
     }
     */
-    var transition = ( function () {
+    var transition = (function () {
         var t, type;
         var supported = false;
-        var el = document.createElement( 'fakeelement' );
+        var el = document.createElement('fakeelement');
         var transitions = {
             'WebkitTransition': 'webkitTransitionEnd',
             'MozTransition': 'transitionend',
@@ -71,9 +71,9 @@
             'transition': 'transitionend'
         };
 
-        for ( t in transitions ) {
-            if ( el.style[ t ] !== undefined ) {
-                type = transitions[ t ];
+        for (t in transitions) {
+            if (el.style[t] !== undefined) {
+                type = transitions[t];
                 supported = true;
                 break;
             }
@@ -83,24 +83,24 @@
             type: type,
             supported: supported
         };
-    } () );
+    }());
 
     /**
     * Creates event handler delegate that sends the instance as last argument.
     * 
     * @return {Function}    a function wrapper which sends the instance as last argument.
     */
-    function delegate(context,method){
-        return function(){
-            if ( arguments.length > 0 ) {
+    function delegate(context, method) {
+        return function () {
+            if (arguments.length > 0) {
                 var args = [];
-                for(var x=0; x<arguments.length;x+=1){
+                for (var x = 0; x < arguments.length; x += 1) {
                     args.push(arguments[x]);
                 }
                 args.push(context);
                 return method.apply(context, args);
             }
-            return method.apply(context, [null,context]);
+            return method.apply(context, [null, context]);
         };
     }
     /**
@@ -108,11 +108,11 @@
     * 
     * @return {object}
     */
-    function createCloseEvent(index, button){
+    function createCloseEvent(index, button) {
         return {
             index: index,
             button: button,
             cancel: false
         };
     }
-        
+

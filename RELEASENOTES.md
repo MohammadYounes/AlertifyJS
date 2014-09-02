@@ -1,5 +1,9 @@
 # Release Notes
 
+* **v0.3.0** [03 Sep. 2014]
+  * Fix dialog is invisible in Desktop Safari.
+  * Enable binding to Function Keys.
+
 * **v0.2.0** [25 Aug. 2014]
   * disable move when there is an active resize (possible when mouse up is triggered outside browser window).
   * clear movable/resizable on close.

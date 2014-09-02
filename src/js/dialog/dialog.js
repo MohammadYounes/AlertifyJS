@@ -1,4 +1,4 @@
-		// dialog API
+        // dialog API
         return {
             __init:initialize,
             /**
@@ -12,68 +12,68 @@
             isModal: function (){
                 return this.elements.root.className.indexOf(classes.modeless) < 0;
             },
-			isMaximized:function(){
-				return this.elements.root.className.indexOf(classes.maximized) > -1;
-			},
-			isPinned:function(){
-				return this.elements.root.className.indexOf(classes.unpinned) < 0;
-			},
-			maximize:function(){
-				if(!this.isMaximized()){
-					maximize(this);
-				}
-				return this;
-			},
-			restore:function(){
-				if(this.isMaximized()){
-					restore(this);
-				}
-				return this;
-			},
-			pin:function(){
-				if(!this.isPinned()){
-					pin(this);
-				}
-				return this;
-			},
-			unpin:function(){
-				if(this.isPinned()){
-					unpin(this);
-				}
-				return this;
-			},
-			/**
-			 * Gets or Sets dialog settings/options 
-			 *
-			 * @param {String|Object} key A string specifying a propery name or a collection of key/value pairs.
-			 * @param {Object} value Optional, the value associated with the key (in case it was a string).
-			 *
-			 * @return {undefined}
-			 */
-			setting : function (key, value) {
-				var self = this;
-				var result = update(this, this.__internal.options, function(k,o,n){ optionUpdated(self,k,o,n); }, key, value);
-				if(result.op === 'get'){
-					if(result.found){
-						return result.value;
-					}else if(typeof this.settings !== 'undefined'){
-						return update(this, this.settings, this.settingUpdated || function(){}, key, value).value;
-					}else{
-						return undefined;
-					}
-				}else if(result.op === 'set'){
-					if(result.items.length > 0){
-						var callback = this.settingUpdated || function(){};
-						for(var x=0;x<result.items.length;x+=1){
-							var item = result.items[x];
-							if(!item.found && typeof this.settings !== 'undefined'){
-								update(this, this.settings, callback, item.key, item.value);
-							}
-						}
-					}
-					return this;
-				}
-			},
+            isMaximized:function(){
+                return this.elements.root.className.indexOf(classes.maximized) > -1;
+            },
+            isPinned:function(){
+                return this.elements.root.className.indexOf(classes.unpinned) < 0;
+            },
+            maximize:function(){
+                if(!this.isMaximized()){
+                    maximize(this);
+                }
+                return this;
+            },
+            restore:function(){
+                if(this.isMaximized()){
+                    restore(this);
+                }
+                return this;
+            },
+            pin:function(){
+                if(!this.isPinned()){
+                    pin(this);
+                }
+                return this;
+            },
+            unpin:function(){
+                if(this.isPinned()){
+                    unpin(this);
+                }
+                return this;
+            },
+            /**
+             * Gets or Sets dialog settings/options 
+             *
+             * @param {String|Object} key A string specifying a propery name or a collection of key/value pairs.
+             * @param {Object} value Optional, the value associated with the key (in case it was a string).
+             *
+             * @return {undefined}
+             */
+            setting : function (key, value) {
+                var self = this;
+                var result = update(this, this.__internal.options, function(k,o,n){ optionUpdated(self,k,o,n); }, key, value);
+                if(result.op === 'get'){
+                    if(result.found){
+                        return result.value;
+                    }else if(typeof this.settings !== 'undefined'){
+                        return update(this, this.settings, this.settingUpdated || function(){}, key, value).value;
+                    }else{
+                        return undefined;
+                    }
+                }else if(result.op === 'set'){
+                    if(result.items.length > 0){
+                        var callback = this.settingUpdated || function(){};
+                        for(var x=0;x<result.items.length;x+=1){
+                            var item = result.items[x];
+                            if(!item.found && typeof this.settings !== 'undefined'){
+                                update(this, this.settings, callback, item.key, item.value);
+                            }
+                        }
+                    }
+                    return this;
+                }
+            },
             /**
             * Sets dialog header
             * @content {string or element}
@@ -104,123 +104,127 @@
                 }
                 return this;
             },
-			/**
+            /**
              * Show the dialog as modal
              *
              * @return {Object} the dialog instance.
              */
-			showModal: function(className){
-				return this.show(true, className);
-			},
+            showModal: function(className){
+                return this.show(true, className);
+            },
             /**
              * Show the dialog
              *
              * @return {Object} the dialog instance.
              */
-			show: function (modal, className) {
+            show: function (modal, className) {
                 
-				// ensure initialization
-				initialize(this);
+                // ensure initialization
+                initialize(this);
 								
-				if ( !this.__internal.isOpen ) {
+                if ( !this.__internal.isOpen ) {
 					
-					// add to open dialogs
-					this.__internal.isOpen = true;
-					openInstances.push(this);
+                    // add to open dialogs
+                    this.__internal.isOpen = true;
+                    openInstances.push(this);
 
-					// save last focused element
-					this.__internal.activeElement = document.activeElement;
+                    // save last focused element
+                    this.__internal.activeElement = document.activeElement;
 
-					//allow custom dom manipulation updates before showing the dialog.
-					if(typeof this.prepare === 'function'){
-						this.prepare();
-					}
+                    //allow custom dom manipulation updates before showing the dialog.
+                    if(typeof this.prepare === 'function'){
+                        this.prepare();
+                    }
 
-					bindEvents(this);
+                    bindEvents(this);
 
-					if(modal !== undefined){
-						this.setting('modal', modal);
-					}
+                    if(modal !== undefined){
+                        this.setting('modal', modal);
+                    }
 					
-					ensureNoOverflow();
+                    ensureNoOverflow();
 					
-					// allow custom dialog class on show
-					if(typeof className === 'string' && className !== ''){
-						this.__internal.className = className;
-						addClass(this.elements.root, className);
-					}
+                    // allow custom dialog class on show
+                    if(typeof className === 'string' && className !== ''){
+                        this.__internal.className = className;
+                        addClass(this.elements.root, className);
+                    }
 					
-					updateAbsPositionFix(this);
+                    updateAbsPositionFix(this);
 
-					removeClass(this.elements.root, classes.animationOut);
-					addClass(this.elements.root, classes.animationIn);
+                    removeClass(this.elements.root, classes.animationOut);
+                    addClass(this.elements.root, classes.animationIn);
 
-					// set 1s fallback in case transition event doesn't fire
-					clearTimeout( transitionInTimeout );
-					transitionInTimeout = setTimeout( this.__internal.transitionInHandler, transition.supported ? 1000 : 100 );
+                    // set 1s fallback in case transition event doesn't fire
+                    clearTimeout( transitionInTimeout );
+                    transitionInTimeout = setTimeout( this.__internal.transitionInHandler, transition.supported ? 1000 : 100 );
 
-					//reflow 
-					reflow = this.elements.modal.offsetWidth;
-					// show dialog
-					removeClass(this.elements.root, classes.hidden);
+                    //reflow all browsers except desktop safari
+                    reflow = this.elements.modal.offsetWidth;
 
-					// allow custom `onshow` method
-					if ( typeof this.setting('onshow') === 'function' ) {
-						this.setting('onshow')();
-					}
-				}else{
-					// reset move updates
-					resetMove(this);
-					// reset resize updates
-					resetResize(this);
-					// shake the dialog to indicate its already open
-					addClass(this.elements.dialog, classes.shake);
-					var self = this;
-					setTimeout(function(){
-						removeClass(self.elements.dialog, classes.shake);
-					},200);
-				}
-				return this;
-			},
+                    // force desktop safari reflow
+                    this.elements.root.style.display = 'block';
+
+                    // show dialog
+                    removeClass(this.elements.root, classes.hidden);
+
+                    // allow custom `onshow` method
+                    if ( typeof this.setting('onshow') === 'function' ) {
+                        this.setting('onshow')();
+                    }
+                }else{
+                    // reset move updates
+                    resetMove(this);
+                    // reset resize updates
+                    resetResize(this);
+                    // shake the dialog to indicate its already open
+                    addClass(this.elements.dialog, classes.shake);
+                    var self = this;
+                    setTimeout(function(){
+                        removeClass(self.elements.dialog, classes.shake);
+                    },200);
+                }
+                return this;
+            },
             /**
              * Close the dialog
              *
              * @return {undefined}
              */
-			close: function () {
-				if (this.__internal.isOpen ) {
+            close: function () {
+                if (this.__internal.isOpen ) {
 					
-					unbindEvents(this);
+                    unbindEvents(this);
 					
-					removeClass(this.elements.root, classes.animationIn);
-					addClass(this.elements.root, classes.animationOut);
+                    removeClass(this.elements.root, classes.animationIn);
+                    addClass(this.elements.root, classes.animationOut);
 
-					// set 1s fallback in case transition event doesn't fire
-					clearTimeout( transitionOutTimeout );
-					transitionOutTimeout = setTimeout( this.__internal.transitionOutHandler, transition.supported ? 1000 : 100 );
+                    // set 1s fallback in case transition event doesn't fire
+                    clearTimeout( transitionOutTimeout );
+                    transitionOutTimeout = setTimeout( this.__internal.transitionOutHandler, transition.supported ? 1000 : 100 );
 
-					// hide dialog
-					addClass(this.elements.root, classes.hidden);
+                    // hide dialog
+                    addClass(this.elements.root, classes.hidden);
                     //reflow
-					reflow = this.elements.modal.offsetWidth;
+                    reflow = this.elements.modal.offsetWidth;
 
-					// remove custom dialog class on hide
-					if (typeof this.__internal.className !== 'undefined' && this.__internal.className !== '') {
-						removeClass(this.elements.root, this.__internal.className);
-					}
+                    // remove custom dialog class on hide
+                    if (typeof this.__internal.className !== 'undefined' && this.__internal.className !== '') {
+                        removeClass(this.elements.root, this.__internal.className);
+                    }
 
-					// allow custom `onclose` method
-					if ( typeof this.setting('onclose') === 'function' ) {
-						this.setting('onclose')();
-					}
+                    // allow custom `onclose` method
+                    if ( typeof this.setting('onclose') === 'function' ) {
+                        this.setting('onclose')();
+                    }
 					
-					//remove from open dialogs               
-					openInstances.splice(openInstances.indexOf(this),1);
-					this.__internal.isOpen = false;
+                    //remove from open dialogs               
+                    openInstances.splice(openInstances.indexOf(this),1);
+                    this.__internal.isOpen = false;
 					
-					ensureNoOverflow();
+                    ensureNoOverflow();
 					
-				}
-				return this;
-			},
+                }
+                return this;
+            },
         };

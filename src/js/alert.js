@@ -1,90 +1,90 @@
     /**
-     * Alert dialog definition
-	 *
-	 * invoked by:
-	 *	alertify.alert(message);
-	 *	alertify.alert(title, message);
-	 *	alertify.alert(message, onok);
-	 *	alertify.alert(title, message, onok);
+    * Alert dialog definition
+    *
+    * invoked by:
+    *	alertify.alert(message);
+    *	alertify.alert(title, message);
+    *	alertify.alert(message, onok);
+    *	alertify.alert(title, message, onok);
      */
-    alertify.dialog('alert',function(){
-        return{
-            main : function(_title, _message, _onok){
+    alertify.dialog('alert', function () {
+        return {
+            main: function (_title, _message, _onok) {
                 var title, message, onok;
-                switch(arguments.length){
+                switch (arguments.length) {
                 case 1:
-                    message	= _title;
+                    message = _title;
                     break;
                 case 2:
-					if(typeof _message === 'function'){
-						message	= _title;
-						onok	= _message;
-					}else{
-						title	= _title;
-						message	= _message;
-					}
+                    if (typeof _message === 'function') {
+                        message = _title;
+                        onok = _message;
+                    } else {
+                        title = _title;
+                        message = _message;
+                    }
                     break;
                 case 3:
-                    title	= _title;
-                    message	= _message;
-                    onok	= _onok;
+                    title = _title;
+                    message = _message;
+                    onok = _onok;
                     break;
                 }
-				this.setting('title', title);
-				this.setting('message', message);
-				this.setting('onok', onok);
+                this.setting('title', title);
+                this.setting('message', message);
+                this.setting('onok', onok);
                 return this;
             },
-			setup:function(){
-				return {
-					buttons:[
-						{
-							text: alertify.defaults.glossary.ok,
-							key: keys.ESC,
-							invokeOnClose: true,
-							className: alertify.defaults.theme.ok,
-						}
-					],
-					focus:{
-						element: 0,
-						select: false
-					},
-					options:{
-						maximizable:false,
-						resizable:false
-					}
-				};
-			},
-            build:function(){
+            setup: function () {
+                return {
+                    buttons: [
+                        {
+                            text: alertify.defaults.glossary.ok,
+                            key: keys.ESC,
+                            invokeOnClose: true,
+                            className: alertify.defaults.theme.ok,
+                        }
+                    ],
+                    focus: {
+                        element: 0,
+                        select: false
+                    },
+                    options: {
+                        maximizable: false,
+                        resizable: false
+                    }
+                };
+            },
+            build: function () {
                 // nothing
             },
-            prepare:function(){
-				//nothing
+            prepare: function () {
+                //nothing
             },
-			setMessage:function(message){
-				this.setContent(message);
-			},
-			settings:{
-				message:undefined,
-				onok:undefined,
-				label:undefined,
-			},
-            settingUpdated:function(key, oldValue, newValue){
-                switch(key){
+            setMessage: function (message) {
+                this.setContent(message);
+            },
+            settings: {
+                message: undefined,
+                onok: undefined,
+                label: undefined,
+            },
+            settingUpdated: function (key, oldValue, newValue) {
+                switch (key) {
                 case 'message':
                     this.setMessage(newValue);
                     break;
                 case 'label':
-                    if(this.__internal.buttons[0].element){
+                    if (this.__internal.buttons[0].element) {
                         this.__internal.buttons[0].element.innerHTML = newValue;
                     }
                     break;
                 }
             },
-            callback:function(closeEvent){
-                if(typeof this.settings.onok === 'function'){
+            callback: function (closeEvent) {
+                if (typeof this.settings.onok === 'function') {
                     var returnValue = this.settings.onok.call(undefined, closeEvent);
-                    if(typeof returnValue !== 'undefined'){
+                    if (typeof returnValue !== 'undefined') {
                         closeEvent.cancel = !returnValue;
                     }
                 }
