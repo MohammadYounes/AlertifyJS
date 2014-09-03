@@ -241,9 +241,6 @@
     min-width: initial;
   }
 }
-.alertify {
-  display: none;
-}
 .alertify .ajs-dimmer,
 .alertify .ajs-modal {
   -webkit-transform: translate3d(0, 0, 0);

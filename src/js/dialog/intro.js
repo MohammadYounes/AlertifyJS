@@ -10,6 +10,8 @@
             usedKeys = [],
             //dummy variable, used to trigger dom reflow.
             reflow = null,
+            //condition for detecting safari
+            isSafari = window.navigator.userAgent.indexOf('Safari') > -1 && window.navigator.userAgent.indexOf('Chrome') < 0,
             //dialog building blocks
             templates = {
                 dimmer:'<div class="ajs-dimmer"></div>',

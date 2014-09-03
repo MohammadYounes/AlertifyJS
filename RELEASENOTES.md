@@ -1,4 +1,6 @@
 # Release Notes
+* **v0.3.1** [03 Sep. 2014]
+  * Fixes bug where transition could accidentally hide the dialog on show.
 
 * **v0.3.0** [03 Sep. 2014]
   * Fix dialog is invisible in Desktop Safari.

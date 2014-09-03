@@ -53,9 +53,6 @@
                 restore(instance);
             }
 
-            // only to force desktop safari reflow
-            instance.elements.root.style.display = 'none';
-
             // return focus to the last active element
             instance.__internal.activeElement.focus();
         }

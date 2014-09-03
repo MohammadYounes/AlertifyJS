@@ -7,7 +7,7 @@
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module AlertifyJS
- * @version 0.3.0
+ * @version 0.3.1
  */
 ( function ( window ) {
     'use strict';
@@ -244,6 +244,8 @@
             usedKeys = [],
             //dummy variable, used to trigger dom reflow.
             reflow = null,
+            //condition for detecting safari
+            isSafari = window.navigator.userAgent.indexOf('Safari') > -1 && window.navigator.userAgent.indexOf('Chrome') < 0,
             //dialog building blocks
             templates = {
                 dimmer:'<div class="ajs-dimmer"></div>',
@@ -1218,9 +1220,6 @@
                 restore(instance);
             }
 
-            // only to force desktop safari reflow
-            instance.elements.root.style.display = 'none';
-
             // return focus to the last active element
             instance.__internal.activeElement.focus();
         }
@@ -1886,12 +1885,16 @@
                     clearTimeout( transitionInTimeout );
                     transitionInTimeout = setTimeout( this.__internal.transitionInHandler, transition.supported ? 1000 : 100 );
 
+                    if(isSafari){
+                        // only to force desktop safari reflow
+                        var root = this.elements.root;
+                        root.style.display  = 'none';
+                        setTimeout(function(){root.style.display  = 'block';}, 0);
+                    }
+
                     //reflow all browsers except desktop safari
-                    reflow = this.elements.modal.offsetWidth;
-
-                    // force desktop safari reflow
-                    this.elements.root.style.display = 'block';
-
+                    reflow = this.elements.root.offsetWidth;
+                  
                     // show dialog
                     removeClass(this.elements.root, classes.hidden);
 

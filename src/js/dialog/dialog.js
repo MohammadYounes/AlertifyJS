@@ -159,12 +159,16 @@
                     clearTimeout( transitionInTimeout );
                     transitionInTimeout = setTimeout( this.__internal.transitionInHandler, transition.supported ? 1000 : 100 );
 
-                    //reflow all browsers except desktop safari
-                    reflow = this.elements.modal.offsetWidth;
+                    if(isSafari){
+                        // force desktop safari reflow
+                        var root = this.elements.root;
+                        root.style.display  = 'none';
+                        setTimeout(function(){root.style.display  = 'block';}, 0);
+                    }
 
-                    // force desktop safari reflow
-                    this.elements.root.style.display = 'block';
-
+                    //reflow
+                    reflow = this.elements.root.offsetWidth;
+                  
                     // show dialog
                     removeClass(this.elements.root, classes.hidden);
 
