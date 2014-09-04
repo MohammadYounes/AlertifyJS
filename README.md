@@ -1,4 +1,5 @@
 [![GitHub version](https://badge.fury.io/gh/MohammadYounes%2FAlertifyJS.svg)](http://badge.fury.io/gh/MohammadYounes%2FAlertifyJS)
+[![NuGet version](https://badge.fury.io/nu/AlertifyJS.svg)](http://badge.fury.io/nu/AlertifyJS)
 
 AlertifyJS
 ==========
