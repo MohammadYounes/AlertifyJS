@@ -21,6 +21,8 @@ Documentation
 ==========
 Check out the interactive documentaion at http://alertifyjs.com
 
+[![alertifyjs-dialog](https://cloud.githubusercontent.com/assets/4712046/4170670/0d50b04c-3535-11e4-87a7-1ce62dd0d77e.png)](http://alertifyjs.com)
+
 
 Browser support
 ==========
