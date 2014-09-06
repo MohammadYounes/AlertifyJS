@@ -7,7 +7,7 @@
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module AlertifyJS
- * @version 0.3.1
+ * @version 0.4.0
  */
 ( function ( window ) {
     'use strict';
@@ -1229,7 +1229,9 @@
             //holds the current X offset when move starts
             offsetX = 0,
             //holds the current Y offset when move starts
-            offsetY = 0
+            offsetY = 0,
+            xProp = 'pageX',
+            yProp = 'pageY'
         ;
 
         /**
@@ -1241,8 +1243,8 @@
          * @return {undefined}
          */
         function moveElement(event, element) {
-            element.style.left = (event.pageX - offsetX) + 'px';
-            element.style.top = (event.pageY - offsetY) + 'px';
+            element.style.left = (event[xProp] - offsetX) + 'px';
+            element.style.top = (event[yProp] - offsetY) + 'px';
         }
 
         /**
@@ -1255,23 +1257,37 @@
          * @return {Boolean} false
          */
         function beginMove(event, instance) {
-            if (resizable === null && event.button === 0 && !instance.isMaximized() && instance.setting('movable')) {
-                movable = instance;
-                offsetX = event.pageX;
-                offsetY = event.pageY;
-                var element = instance.elements.dialog;
-
-                if (element.style.left) {
-                    offsetX -= parseInt(element.style.left, 10);
+            if (resizable === null && !instance.isMaximized() && instance.setting('movable')) {
+                var eventSrc;
+                if (event.type === 'touchstart') {
+                    event.preventDefault();
+                    eventSrc = event.targetTouches[0];
+                    xProp = 'clientX';
+                    yProp = 'clientY';
+                } else if (event.button === 0) {
+                    eventSrc = event;
                 }
 
-                if (element.style.top) {
-                    offsetY -= parseInt(element.style.top, 10);
-                }
-                moveElement(event, element);
+                if (eventSrc) {
 
-                addClass(document.body, classes.noSelection);
-                return false;
+                    movable = instance;
+                    offsetX = eventSrc[xProp];
+                    offsetY = eventSrc[yProp];
+
+                    var element = instance.elements.dialog;
+
+                    if (element.style.left) {
+                        offsetX -= parseInt(element.style.left, 10);
+                    }
+
+                    if (element.style.top) {
+                        offsetY -= parseInt(element.style.top, 10);
+                    }
+                    moveElement(eventSrc, element);
+
+                    addClass(document.body, classes.noSelection);
+                    return false;
+                }
             }
         }
 
@@ -1284,7 +1300,16 @@
          */
         function move(event) {
             if (movable) {
-                moveElement(event, movable.elements.dialog);
+                var eventSrc;
+                if (event.type === 'touchmove') {
+                    event.preventDefault();
+                    eventSrc = event.targetTouches[0];
+                } else if (event.button === 0) {
+                    eventSrc = event;
+                }
+                if (eventSrc) {
+                    moveElement(eventSrc, movable.elements.dialog);
+                }
             }
         }
 
@@ -1428,21 +1453,30 @@
          * @return {Boolean} false
          */
         function beginResize(event, instance) {
-            if (event.button === 0 && !instance.isMaximized()) {
-                resizable = instance;
-                handleOffset = instance.elements.resizeHandle.offsetHeight / 2;
-                var element = instance.elements.dialog;
-                startingLeft = parseInt(element.style.left, 10);
-                element.style.height = element.offsetHeight + 'px';
-                element.style.minHeight = instance.elements.header.offsetHeight + instance.elements.footer.offsetHeight + 'px';
-                element.style.width = (startingWidth = element.offsetWidth) + 'px';
-
-                if (element.style.maxWidth !== 'none') {
-                    element.style.minWidth = (minWidth = element.offsetWidth) + 'px';
+            if (!instance.isMaximized()) {
+                var eventSrc;
+                if (event.type === 'touchstart') {
+                    event.preventDefault();
+                    eventSrc = event.targetTouches[0];
+                } else if (event.button === 0) {
+                    eventSrc = event;
                 }
-                element.style.maxWidth = 'none';
-                addClass(document.body, classes.noSelection);
-                return false;
+                if (eventSrc) {
+                    resizable = instance;
+                    handleOffset = instance.elements.resizeHandle.offsetHeight / 2;
+                    var element = instance.elements.dialog;
+                    startingLeft = parseInt(element.style.left, 10);
+                    element.style.height = element.offsetHeight + 'px';
+                    element.style.minHeight = instance.elements.header.offsetHeight + instance.elements.footer.offsetHeight + 'px';
+                    element.style.width = (startingWidth = element.offsetWidth) + 'px';
+
+                    if (element.style.maxWidth !== 'none') {
+                        element.style.minWidth = (minWidth = element.offsetWidth) + 'px';
+                    }
+                    element.style.maxWidth = 'none';
+                    addClass(document.body, classes.noSelection);
+                    return false;
+                }
             }
         }
 
@@ -1455,7 +1489,16 @@
          */
         function resize(event) {
             if (resizable) {
-                resizeElement(event, resizable.elements.dialog, !resizable.setting('modal') && !resizable.setting('pinned'));
+                var eventSrc;
+                if (event.type === 'touchmove') {
+                    event.preventDefault();
+                    eventSrc = event.targetTouches[0];
+                } else if (event.button === 0) {
+                    eventSrc = event;
+                }
+                if (eventSrc) {
+                    resizeElement(eventSrc, resizable.elements.dialog, !resizable.setting('modal') && !resizable.setting('pinned'));
+                }
             }
         }
 
@@ -1551,10 +1594,14 @@
 
                 //move
                 on(document.body, 'mousemove', move);
+                on(document.body, 'touchmove', move);
                 on(document.body, 'mouseup', endMove);
+                on(document.body, 'touchend', endMove);
                 //resize
                 on(document.body, 'mousemove', resize);
+                on(document.body, 'touchmove', resize);
                 on(document.body, 'mouseup', endResize);
+                on(document.body, 'touchend', endResize);
             }
 
             // common events
@@ -1666,6 +1713,7 @@
          */
         function bindMovableEvents(instance) {
             on(instance.elements.header, 'mousedown', instance.__internal.beginMoveHandler);
+            on(instance.elements.header, 'touchstart', instance.__internal.beginMoveHandler);
         }
 
         /**
@@ -1677,6 +1725,7 @@
          */
         function unbindMovableEvents(instance) {
             off(instance.elements.header, 'mousedown', instance.__internal.beginMoveHandler);
+            off(instance.elements.header, 'touchstart', instance.__internal.beginMoveHandler);
         }
 
 
@@ -1690,6 +1739,7 @@
          */
         function bindResizableEvents(instance) {
             on(instance.elements.resizeHandle, 'mousedown', instance.__internal.beginResizeHandler);
+            on(instance.elements.resizeHandle, 'touchstart', instance.__internal.beginResizeHandler);
         }
 
         /**
@@ -1701,6 +1751,7 @@
          */
         function unbindResizableEvents(instance) {
             off(instance.elements.resizeHandle, 'mousedown', instance.__internal.beginResizeHandler);
+            off(instance.elements.resizeHandle, 'touchstart', instance.__internal.beginResizeHandler);
         }
 
         /**
@@ -1886,13 +1937,13 @@
                     transitionInTimeout = setTimeout( this.__internal.transitionInHandler, transition.supported ? 1000 : 100 );
 
                     if(isSafari){
-                        // only to force desktop safari reflow
+                        // force desktop safari reflow
                         var root = this.elements.root;
                         root.style.display  = 'none';
                         setTimeout(function(){root.style.display  = 'block';}, 0);
                     }
 
-                    //reflow all browsers except desktop safari
+                    //reflow
                     reflow = this.elements.root.offsetWidth;
                   
                     // show dialog

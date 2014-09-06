@@ -1,4 +1,7 @@
 # Release Notes
+* **v0.4.0** [07 Sep. 2014]
+  * Add touch devices support.
+
 * **v0.3.1** [03 Sep. 2014]
   * Fixes bug where transition could accidentally hide the dialog on show.
 
