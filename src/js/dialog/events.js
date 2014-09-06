@@ -16,10 +16,14 @@
 
                 //move
                 on(document.body, 'mousemove', move);
+                on(document.body, 'touchmove', move);
                 on(document.body, 'mouseup', endMove);
+                on(document.body, 'touchend', endMove);
                 //resize
                 on(document.body, 'mousemove', resize);
+                on(document.body, 'touchmove', resize);
                 on(document.body, 'mouseup', endResize);
+                on(document.body, 'touchend', endResize);
             }
 
             // common events
@@ -131,6 +135,7 @@
          */
         function bindMovableEvents(instance) {
             on(instance.elements.header, 'mousedown', instance.__internal.beginMoveHandler);
+            on(instance.elements.header, 'touchstart', instance.__internal.beginMoveHandler);
         }
 
         /**
@@ -142,6 +147,7 @@
          */
         function unbindMovableEvents(instance) {
             off(instance.elements.header, 'mousedown', instance.__internal.beginMoveHandler);
+            off(instance.elements.header, 'touchstart', instance.__internal.beginMoveHandler);
         }
 
 
@@ -155,6 +161,7 @@
          */
         function bindResizableEvents(instance) {
             on(instance.elements.resizeHandle, 'mousedown', instance.__internal.beginResizeHandler);
+            on(instance.elements.resizeHandle, 'touchstart', instance.__internal.beginResizeHandler);
         }
 
         /**
@@ -166,6 +173,7 @@
          */
         function unbindResizableEvents(instance) {
             off(instance.elements.resizeHandle, 'mousedown', instance.__internal.beginResizeHandler);
+            off(instance.elements.resizeHandle, 'touchstart', instance.__internal.beginResizeHandler);
         }
 
         /**

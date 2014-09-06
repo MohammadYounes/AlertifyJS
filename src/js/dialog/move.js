@@ -4,7 +4,9 @@
             //holds the current X offset when move starts
             offsetX = 0,
             //holds the current Y offset when move starts
-            offsetY = 0
+            offsetY = 0,
+            xProp = 'pageX',
+            yProp = 'pageY'
         ;
 
         /**
@@ -16,8 +18,8 @@
          * @return {undefined}
          */
         function moveElement(event, element) {
-            element.style.left = (event.pageX - offsetX) + 'px';
-            element.style.top = (event.pageY - offsetY) + 'px';
+            element.style.left = (event[xProp] - offsetX) + 'px';
+            element.style.top = (event[yProp] - offsetY) + 'px';
         }
 
         /**
@@ -30,23 +32,37 @@
          * @return {Boolean} false
          */
         function beginMove(event, instance) {
-            if (resizable === null && event.button === 0 && !instance.isMaximized() && instance.setting('movable')) {
-                movable = instance;
-                offsetX = event.pageX;
-                offsetY = event.pageY;
-                var element = instance.elements.dialog;
-
-                if (element.style.left) {
-                    offsetX -= parseInt(element.style.left, 10);
+            if (resizable === null && !instance.isMaximized() && instance.setting('movable')) {
+                var eventSrc;
+                if (event.type === 'touchstart') {
+                    event.preventDefault();
+                    eventSrc = event.targetTouches[0];
+                    xProp = 'clientX';
+                    yProp = 'clientY';
+                } else if (event.button === 0) {
+                    eventSrc = event;
                 }
 
-                if (element.style.top) {
-                    offsetY -= parseInt(element.style.top, 10);
-                }
-                moveElement(event, element);
+                if (eventSrc) {
 
-                addClass(document.body, classes.noSelection);
-                return false;
+                    movable = instance;
+                    offsetX = eventSrc[xProp];
+                    offsetY = eventSrc[yProp];
+
+                    var element = instance.elements.dialog;
+
+                    if (element.style.left) {
+                        offsetX -= parseInt(element.style.left, 10);
+                    }
+
+                    if (element.style.top) {
+                        offsetY -= parseInt(element.style.top, 10);
+                    }
+                    moveElement(eventSrc, element);
+
+                    addClass(document.body, classes.noSelection);
+                    return false;
+                }
             }
         }
 
@@ -59,7 +75,16 @@
          */
         function move(event) {
             if (movable) {
-                moveElement(event, movable.elements.dialog);
+                var eventSrc;
+                if (event.type === 'touchmove') {
+                    event.preventDefault();
+                    eventSrc = event.targetTouches[0];
+                } else if (event.button === 0) {
+                    eventSrc = event;
+                }
+                if (eventSrc) {
+                    moveElement(eventSrc, movable.elements.dialog);
+                }
             }
         }
 

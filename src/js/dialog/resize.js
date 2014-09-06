@@ -85,21 +85,30 @@
          * @return {Boolean} false
          */
         function beginResize(event, instance) {
-            if (event.button === 0 && !instance.isMaximized()) {
-                resizable = instance;
-                handleOffset = instance.elements.resizeHandle.offsetHeight / 2;
-                var element = instance.elements.dialog;
-                startingLeft = parseInt(element.style.left, 10);
-                element.style.height = element.offsetHeight + 'px';
-                element.style.minHeight = instance.elements.header.offsetHeight + instance.elements.footer.offsetHeight + 'px';
-                element.style.width = (startingWidth = element.offsetWidth) + 'px';
-
-                if (element.style.maxWidth !== 'none') {
-                    element.style.minWidth = (minWidth = element.offsetWidth) + 'px';
+            if (!instance.isMaximized()) {
+                var eventSrc;
+                if (event.type === 'touchstart') {
+                    event.preventDefault();
+                    eventSrc = event.targetTouches[0];
+                } else if (event.button === 0) {
+                    eventSrc = event;
                 }
-                element.style.maxWidth = 'none';
-                addClass(document.body, classes.noSelection);
-                return false;
+                if (eventSrc) {
+                    resizable = instance;
+                    handleOffset = instance.elements.resizeHandle.offsetHeight / 2;
+                    var element = instance.elements.dialog;
+                    startingLeft = parseInt(element.style.left, 10);
+                    element.style.height = element.offsetHeight + 'px';
+                    element.style.minHeight = instance.elements.header.offsetHeight + instance.elements.footer.offsetHeight + 'px';
+                    element.style.width = (startingWidth = element.offsetWidth) + 'px';
+
+                    if (element.style.maxWidth !== 'none') {
+                        element.style.minWidth = (minWidth = element.offsetWidth) + 'px';
+                    }
+                    element.style.maxWidth = 'none';
+                    addClass(document.body, classes.noSelection);
+                    return false;
+                }
             }
         }
 
@@ -112,7 +121,16 @@
          */
         function resize(event) {
             if (resizable) {
-                resizeElement(event, resizable.elements.dialog, !resizable.setting('modal') && !resizable.setting('pinned'));
+                var eventSrc;
+                if (event.type === 'touchmove') {
+                    event.preventDefault();
+                    eventSrc = event.targetTouches[0];
+                } else if (event.button === 0) {
+                    eventSrc = event;
+                }
+                if (eventSrc) {
+                    resizeElement(eventSrc, resizable.elements.dialog, !resizable.setting('modal') && !resizable.setting('pinned'));
+                }
             }
         }
 
