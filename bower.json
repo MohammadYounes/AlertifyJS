@@ -1,0 +1,25 @@
+{
+  "name": "AlertifyJS",
+  "version": "0.4.0",
+  "homepage": "https://github.com/MohammadYounes/AlertifyJS",
+  "description": "AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.",
+  "main": [
+  	"./build/css/alertify.css",
+  	"./build/css/themes/default.css",
+  	"./build/alertify.js"
+  ],
+  "keywords": [
+    "jquery",
+    "alert",
+    "dialog",
+    "notification"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
