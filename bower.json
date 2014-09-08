@@ -9,7 +9,6 @@
   	"./build/alertify.js"
   ],
   "keywords": [
-    "jquery",
     "alert",
     "dialog",
     "notification"
