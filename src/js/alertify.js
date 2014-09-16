@@ -173,7 +173,7 @@
              * @return {undefined}
              */
             notify: function (message, type, wait, callback) {
-                notifier.notify(message, type, wait, callback);
+                return notifier.create(type, callback).push(message, wait);
             },
             /**
              * Creates a new notification message.
@@ -186,7 +186,7 @@
              * @return {undefined}
              */
             message: function (message, wait, callback) {
-                notifier.notify(message, null, wait, callback);
+                return notifier.create(null, callback).push(message, wait);
             },
             /**
              * Creates a new notification message of type 'success'.
@@ -199,7 +199,7 @@
              * @return {undefined}
              */
             success: function (message, wait, callback) {
-                notifier.notify(message, 'success', wait, callback);
+                return notifier.create('success', callback).push(message, wait);
             },
             /**
              * Creates a new notification message of type 'error'.
@@ -212,7 +212,7 @@
              * @return {undefined}
              */
             error: function (message, wait, callback) {
-                notifier.notify(message, 'error', wait, callback);
+                return notifier.create('error', callback).push(message, wait);
             },
             /**
              * Creates a new notification message of type 'warning'.
@@ -225,7 +225,7 @@
              * @return {undefined}
              */
             warning: function (message, wait, callback) {
-                notifier.notify(message, 'warning', wait, callback);
+                return notifier.create('warning', callback).push(message, wait);
             }
 
         };

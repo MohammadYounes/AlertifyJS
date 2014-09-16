@@ -2077,49 +2077,153 @@
         *
         * @return {undefined}
         */
-        function create(message, wait, callback) {
-            var clickDelegate, hideElement, transitionDone;
+        function create(div, callback) {
 
-            clickDelegate = function () {
-                off(message, 'click', clickDelegate);
-                hideElement(message, true);
-            };
-
-            transitionDone = function () {
-                // unbind event
-                off(message, transition.type, transitionDone);
-                // remove the message
-                element.removeChild(message);
-            };
-
-            // set click event on messages
-            on(message, 'click', clickDelegate);
-
-            // this sets the hide class to transition out
-            // or removes the child if css transitions aren't supported
-            hideElement = function (message, clicked) {
-                // ensure element exists
-                if (typeof message !== 'undefined' && message.parentNode === element) {
-                    // whether CSS transition exists
-                    if (transition.supported) {
-                        on(message, transition.type, transitionDone);
-                        removeClass(message, classes.visible);
-                    } else {
-                        element.removeChild(message);
-                    }
-                    // custom callback on hide
-                    if (typeof callback === 'function') {
-                        callback.call(undefined, clicked);
-                    }
-                }
-            };
-
-            // never close (until click) if wait is set to 0
-            if (wait === 0) {
-                return;
+            function clickDelegate(event, instance) {
+                instance.dismiss(true);
             }
-            // set timeout to auto close the notifier message
-            setTimeout(function () { hideElement(message); }, wait);
+
+            function transitionDone(event, instance) {
+                // unbind event
+                off(instance.__internal.element, transition.type, transitionDone);
+                // remove the message
+                element.removeChild(instance.__internal.element);
+            }
+
+            function initialize(instance) {
+                if (!instance.__internal) {
+                    instance.__internal = {
+                        pushed: false,
+                        delay : undefined,
+                        timer: undefined,
+                        element: div,
+                        clickHandler: undefined,
+                        transitionEndHandler: undefined,
+                        transitionTimeout: undefined
+                    };
+                    instance.__internal.clickHandler = delegate(instance, clickDelegate);
+                    instance.__internal.transitionEndHandler = delegate(instance, transitionDone);
+                }
+                return instance;
+            }
+            function clearTimers(instance) {
+                clearTimeout(instance.__internal.timer);
+                clearTimeout(instance.__internal.transitionTimeout);
+            }
+            return initialize({
+                /*
+                 * Pushes a notification message 
+                 * @param {string or DOMElement} content The notification message content
+                 * @param {Number} wait The time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked.
+                 * 
+                 */
+                push: function (_content, _wait) {
+                    if (!this.__internal.pushed) {
+
+                        this.__internal.pushed = true;
+                        clearTimers(this);
+
+                        var content, wait;
+                        switch (arguments.length) {
+                        case 0:
+                            wait = this.__internal.delay;
+                            break;
+                        case 1:
+                            if (typeof (_content) === 'number') {
+                                wait = _content;
+                            } else {
+                                content = _content;
+                            }
+                            break;
+                        case 2:
+                            content = _content;
+                            wait = _wait;
+                            break;
+                        }
+                        // set contents
+                        if (typeof content !== 'undefined') {
+                            this.setContent(content);
+                        }
+                        // append or insert
+                        if (notifier.__internal.position.indexOf('top') < 0) {
+                            element.appendChild(this.__internal.element);
+                        } else {
+                            element.insertBefore(this.__internal.element, element.firstChild);
+                        }
+                        reflow = this.__internal.element.offsetWidth;
+                        addClass(this.__internal.element, classes.visible);
+                        // attach click event
+                        on(this.__internal.element, 'click', this.__internal.clickHandler);
+                        return this.delay(wait);
+                    }
+                    return this;
+                },
+                /*
+                 * {Function} callback function to be invoked before dismissing the notification message.
+                 * Remarks: A return value === 'false' will cancel the dismissal
+                 * 
+                 */
+                ondismiss: function () { },
+                /*
+                 * {Function} callback function to be invoked when the message is dismissed.
+                 * 
+                 */
+                callback: callback,
+                /*
+                 * Dismisses the notification message 
+                 * @param {Boolean} clicked A flag indicating if the dismissal was caused by a click.
+                 * 
+                 */
+                dismiss: function (clicked) {
+                    if (this.__internal.pushed) {
+                        clearTimers(this);
+                        if (!(typeof this.ondismiss === 'function' && this.ondismiss.call(this) === false)) {
+                            //detach click event
+                            off(this.__internal.element, 'click', this.__internal.clickHandler);
+                            // ensure element exists
+                            if (typeof this.__internal.element !== 'undefined' && this.__internal.element.parentNode === element) {
+                                //transition end or fallback
+                                this.__internal.transitionTimeout = setTimeout(this.__internal.transitionEndHandler, transition.supported ? 1000 : 100);
+                                removeClass(this.__internal.element, classes.visible);
+
+                                // custom callback on dismiss
+                                if (typeof this.callback === 'function') {
+                                    this.callback.call(this, clicked);
+                                }
+                            }
+                            this.__internal.pushed = false;
+                        }
+                    }
+                    return this;
+                },
+                /*
+                 * Delays the notification message dismissal
+                 * @param {Number} wait The time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked.
+                 * 
+                 */
+                delay: function (wait) {
+                    clearTimers(this);
+                    this.__internal.delay = typeof wait !== 'undefined' && !isNaN(+wait) ? +wait : notifier.__internal.delay;
+                    if (this.__internal.delay > 0) {
+                        var  self = this;
+                        this.__internal.timer = setTimeout(function () { self.dismiss(); }, this.__internal.delay * 1000);
+                    }
+                    return this;
+                },
+                /*
+                 * Sets the notification message contents
+                 * @param {string or DOMElement} content The notification message content
+                 * 
+                 */
+                setContent: function (content) {
+                    if (typeof content === 'string') {
+                        this.__internal.element.innerHTML = content;
+                    } else {
+                        this.__internal.element.appendChild(content);
+                    }
+                    return this;
+                }
+            });
         }
 
         //notifier api
@@ -2156,39 +2260,18 @@
             /**
              * Creates a new notification message
              *
-             * @param {string or DOMElement} content The message content
              * @param {string} type The type of notification message (simply a CSS class name 'ajs-{type}' to be added).
-             * @param {Number} wait The time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked.
              * @param {Function} callback  A callback function to be invoked when the message is dismissed.
              *
              * @return {undefined}
              */
-            notify: function (content, type, wait, callback) {
-
-                //ensure init
+            create: function (type, callback) {
+                //ensure notifier init
                 initialize(this);
-
-                var message = document.createElement('div');
-                message.className = classes.message + ((typeof type === 'string' && type !== '') ? ' ajs-' + type : '');
-
-                //html or dom
-                if (typeof content === 'string') {
-                    message.innerHTML = content;
-                } else {
-                    message.appendChild(content);
-                }
-
-                // append or insert
-                if (this.__internal.position.indexOf('top') < 0) {
-                    element.appendChild(message);
-                } else {
-                    element.insertBefore(message, element.firstChild);
-                }
-
-                reflow = message.offsetWidth;
-                addClass(message, classes.visible);
-                var delay = typeof wait !== 'undefined' && !isNaN(+wait) ? +wait : this.__internal.delay;
-                create(message, delay * 1000, callback);
+                //create new notification message
+                var div = document.createElement('div');
+                div.className = classes.message + ((typeof type === 'string' && type !== '') ? ' ajs-' + type : '');
+                return create(div, callback);
             }
         };
     })();
@@ -2367,7 +2450,7 @@
              * @return {undefined}
              */
             notify: function (message, type, wait, callback) {
-                notifier.notify(message, type, wait, callback);
+                return notifier.create(type, callback).push(message, wait);
             },
             /**
              * Creates a new notification message.
@@ -2380,7 +2463,7 @@
              * @return {undefined}
              */
             message: function (message, wait, callback) {
-                notifier.notify(message, null, wait, callback);
+                return notifier.create(null, callback).push(message, wait);
             },
             /**
              * Creates a new notification message of type 'success'.
@@ -2393,7 +2476,7 @@
              * @return {undefined}
              */
             success: function (message, wait, callback) {
-                notifier.notify(message, 'success', wait, callback);
+                return notifier.create('success', callback).push(message, wait);
             },
             /**
              * Creates a new notification message of type 'error'.
@@ -2406,7 +2489,7 @@
              * @return {undefined}
              */
             error: function (message, wait, callback) {
-                notifier.notify(message, 'error', wait, callback);
+                return notifier.create('error', callback).push(message, wait);
             },
             /**
              * Creates a new notification message of type 'warning'.
@@ -2419,7 +2502,7 @@
              * @return {undefined}
              */
             warning: function (message, wait, callback) {
-                notifier.notify(message, 'warning', wait, callback);
+                return notifier.create('warning', callback).push(message, wait);
             }
 
         };

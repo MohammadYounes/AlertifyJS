@@ -27,29 +27,29 @@ component:	'alert'
       <div class="segment">
         <h1><i class="fa fa-code"></i> Demo</h1>
         <hr />
-        
 <pre>
 <code class="lang-javascript">
-if(!alertify.myAlert){
-  //define a new dialog
-  alertify.dialog('myAlert',function factory(){
-    return{
-      main:function(message){
-        this.message = message;
-      },
-      setup:function(){
-          return { 
-            buttons:[{text: "cool!", key:112/*F1*/}],
-            focus: { element:0 }
-          };
-      },
-      prepare:function(){
-        this.setContent(this.message);
-      }
-  }});
-}
-//launch it.
-alertify.myAlert("Browser dialogs made easy!");
+//nagging message
+var x = 3;
+var msg = alertify.message("Nag!",0, function(){
+	setTimeout(function(){msg.push("I'm back", 5);}, 1000);
+	if(x-- == 0){
+		msg.callback = null;
+		setTimeout(function(){msg.dismiss();}, 1000);
+	}
+});
+/*var candismiss = false;
+msg.ondismiss = function(){ return candismiss;}
+$(msg.__internal.element).on('mouseout', function(){candismiss = true;});
+msg.delay(0);
+
+var i = 0;
+setInterval(function(){
+	msg.setContent("Timer: " +(++i));
+	if(i<11)
+		msg.delay();
+},1000);
+*/
 </code> 
 </pre>
 
