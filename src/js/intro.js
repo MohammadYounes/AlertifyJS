@@ -23,9 +23,10 @@
         maximizable:true,
         pinnable:true,
         pinned:true,
-        transition:'pulse',
         padding: true,
         overflow:true,
+        maintainFocus:true,
+        transition:'pulse',        
         notifier:{
             delay:5,
             position:'bottom-right'

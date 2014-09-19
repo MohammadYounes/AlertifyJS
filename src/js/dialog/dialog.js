@@ -129,7 +129,9 @@
                     openInstances.push(this);
 
                     // save last focused element
-                    this.__internal.activeElement = document.activeElement;
+                    if(alertify.defaults.maintainFocus){
+                        this.__internal.activeElement = document.activeElement;
+                    }
 
                     //allow custom dom manipulation updates before showing the dialog.
                     if(typeof this.prepare === 'function'){

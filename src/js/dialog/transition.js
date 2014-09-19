@@ -54,5 +54,8 @@
             }
 
             // return focus to the last active element
-            instance.__internal.activeElement.focus();
+            if (alertify.defaults.maintainFocus && instance.__internal.activeElement) {
+                instance.__internal.activeElement.focus();
+                instance.__internal.activeElement = null;
+            }
         }
