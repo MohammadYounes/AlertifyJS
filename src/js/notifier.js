@@ -73,9 +73,9 @@
 
             function transitionDone(event, instance) {
                 // unbind event
-                off(instance.__internal.element, transition.type, transitionDone);
+                off(instance.element, transition.type, transitionDone);
                 // remove the message
-                element.removeChild(instance.__internal.element);
+                element.removeChild(instance.element);
             }
 
             function initialize(instance) {
@@ -84,7 +84,6 @@
                         pushed: false,
                         delay : undefined,
                         timer: undefined,
-                        element: div,
                         clickHandler: undefined,
                         transitionEndHandler: undefined,
                         transitionTimeout: undefined
@@ -99,6 +98,8 @@
                 clearTimeout(instance.__internal.transitionTimeout);
             }
             return initialize({
+                /* notification DOM element*/
+                element: div,
                 /*
                  * Pushes a notification message 
                  * @param {string or DOMElement} content The notification message content
@@ -121,6 +122,7 @@
                                 wait = _content;
                             } else {
                                 content = _content;
+                                wait = this.__internal.delay;
                             }
                             break;
                         case 2:
@@ -134,14 +136,14 @@
                         }
                         // append or insert
                         if (notifier.__internal.position.indexOf('top') < 0) {
-                            element.appendChild(this.__internal.element);
+                            element.appendChild(this.element);
                         } else {
-                            element.insertBefore(this.__internal.element, element.firstChild);
+                            element.insertBefore(this.element, element.firstChild);
                         }
-                        reflow = this.__internal.element.offsetWidth;
-                        addClass(this.__internal.element, classes.visible);
+                        reflow = this.element.offsetWidth;
+                        addClass(this.element, classes.visible);
                         // attach click event
-                        on(this.__internal.element, 'click', this.__internal.clickHandler);
+                        on(this.element, 'click', this.__internal.clickHandler);
                         return this.delay(wait);
                     }
                     return this;
@@ -167,12 +169,12 @@
                         clearTimers(this);
                         if (!(typeof this.ondismiss === 'function' && this.ondismiss.call(this) === false)) {
                             //detach click event
-                            off(this.__internal.element, 'click', this.__internal.clickHandler);
+                            off(this.element, 'click', this.__internal.clickHandler);
                             // ensure element exists
-                            if (typeof this.__internal.element !== 'undefined' && this.__internal.element.parentNode === element) {
+                            if (typeof this.element !== 'undefined' && this.element.parentNode === element) {
                                 //transition end or fallback
                                 this.__internal.transitionTimeout = setTimeout(this.__internal.transitionEndHandler, transition.supported ? 1000 : 100);
-                                removeClass(this.__internal.element, classes.visible);
+                                removeClass(this.element, classes.visible);
 
                                 // custom callback on dismiss
                                 if (typeof this.callback === 'function') {
@@ -205,9 +207,9 @@
                  */
                 setContent: function (content) {
                     if (typeof content === 'string') {
-                        this.__internal.element.innerHTML = content;
+                        this.element.innerHTML = content;
                     } else {
-                        this.__internal.element.appendChild(content);
+                        this.element.appendChild(content);
                     }
                     return this;
                 }
