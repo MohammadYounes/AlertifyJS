@@ -88,8 +88,8 @@
              *
              * @param {string}      Dialog name.
              * @param {Function}    A Dialog factory function.
-             * @param {Boolean}     indicates whether to create a singleton or transient dialog.
-             * @type {Object}
+             * @param {Boolean}     Indicates whether to create a singleton or transient dialog.
+             * @param {String}      The name of the base type to inherit from.
              */
             dialog: function (name, Factory, transient, base) {
 
@@ -165,12 +165,12 @@
              * If a type is passed, a class name "ajs-{type}" will be added.
              * This allows for custom look and feel for various types of notifications.
              *
-             * @param  {String}		[message=undefined]		Message text
-             * @param  {String}		[type='']				Type of log message
-             * @param  {String}		[value='']				Time (in ms) to wait before auto-close
-             * @param  {Function}	[callback=undefined]	A callback function to be invoked when the log is closed.
+             * @param  {String | DOMElement}    [message=undefined]		Message text
+             * @param  {String}                 [type='']				Type of log message
+             * @param  {String}                 [wait='']				Time (in seconds) to wait before auto-close
+             * @param  {Function}               [callback=undefined]	A callback function to be invoked when the log is closed.
              *
-             * @return {undefined}
+             * @return {Object} Notification object.
              */
             notify: function (message, type, wait, callback) {
                 return notifier.create(type, callback).push(message, wait);
@@ -179,11 +179,10 @@
              * Creates a new notification message.
              *
              * @param  {String}		[message=undefined]		Message text
-             * @param  {String}		[type='']				Type of log message
-             * @param  {String}		[value='']				Time (in ms) to wait before auto-close
+             * @param  {String}     [wait='']				Time (in seconds) to wait before auto-close
              * @param  {Function}	[callback=undefined]	A callback function to be invoked when the log is closed.
              *
-             * @return {undefined}
+             * @return {Object} Notification object.
              */
             message: function (message, wait, callback) {
                 return notifier.create(null, callback).push(message, wait);
@@ -192,11 +191,10 @@
              * Creates a new notification message of type 'success'.
              *
              * @param  {String}		[message=undefined]		Message text
-             * @param  {String}		[type='']				Type of log message
-             * @param  {String}		[value='']				Time (in ms) to wait before auto-close
+             * @param  {String}     [wait='']				Time (in seconds) to wait before auto-close
              * @param  {Function}	[callback=undefined]	A callback function to be invoked when the log is closed.
              *
-             * @return {undefined}
+             * @return {Object} Notification object.
              */
             success: function (message, wait, callback) {
                 return notifier.create('success', callback).push(message, wait);
@@ -205,11 +203,10 @@
              * Creates a new notification message of type 'error'.
              *
              * @param  {String}		[message=undefined]		Message text
-             * @param  {String}		[type='']				Type of log message
-             * @param  {String}		[value='']				Time (in ms) to wait before auto-close
+             * @param  {String}     [wait='']				Time (in seconds) to wait before auto-close
              * @param  {Function}	[callback=undefined]	A callback function to be invoked when the log is closed.
              *
-             * @return {undefined}
+             * @return {Object} Notification object.
              */
             error: function (message, wait, callback) {
                 return notifier.create('error', callback).push(message, wait);
@@ -218,11 +215,10 @@
              * Creates a new notification message of type 'warning'.
              *
              * @param  {String}		[message=undefined]		Message text
-             * @param  {String}		[type='']				Type of log message
-             * @param  {String}		[value='']				Time (in ms) to wait before auto-close
+             * @param  {String}     [wait='']				Time (in seconds) to wait before auto-close
              * @param  {Function}	[callback=undefined]	A callback function to be invoked when the log is closed.
              *
-             * @return {undefined}
+             * @return {Object} Notification object.
              */
             warning: function (message, wait, callback) {
                 return notifier.create('warning', callback).push(message, wait);
