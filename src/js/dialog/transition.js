@@ -1,5 +1,3 @@
-        //animation timers
-        var transitionInTimeout, transitionOutTimeout;
         /**
          * Transition in transitionend event handler. 
          *
@@ -10,7 +8,7 @@
          */
         function handleTransitionInEvent(event, instance) {
             // clear the timer
-            clearTimeout(transitionInTimeout);
+            clearTimeout(instance.__internal.timerIn);
 
             // once transition is complete, set focus
             setFocus(instance);
@@ -39,7 +37,7 @@
          */
         function handleTransitionOutEvent(event, instance) {
             // clear the timer
-            clearTimeout(transitionOutTimeout);
+            clearTimeout(instance.__internal.timerOut);
             // unbind the event
             off(instance.elements.dialog, transition.type, instance.__internal.transitionOutHandler);
 

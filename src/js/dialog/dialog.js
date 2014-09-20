@@ -171,8 +171,8 @@
                     addClass(this.elements.root, classes.animationIn);
 
                     // set 1s fallback in case transition event doesn't fire
-                    clearTimeout( transitionInTimeout );
-                    transitionInTimeout = setTimeout( this.__internal.transitionInHandler, transition.supported ? 1000 : 100 );
+                    clearTimeout( this.__internal.timerIn);
+                    this.__internal.timerIn = setTimeout( this.__internal.transitionInHandler, transition.supported ? 1000 : 100 );
 
                     if(isSafari){
                         // force desktop safari reflow
@@ -219,9 +219,8 @@
                     addClass(this.elements.root, classes.animationOut);
 
                     // set 1s fallback in case transition event doesn't fire
-                    clearTimeout( transitionOutTimeout );
-                    transitionOutTimeout = setTimeout( this.__internal.transitionOutHandler, transition.supported ? 1000 : 100 );
-
+                    clearTimeout( this.__internal.timerOut );
+                    this.__internal.timerOut = setTimeout( this.__internal.transitionOutHandler, transition.supported ? 1000 : 100 );
                     // hide dialog
                     addClass(this.elements.root, classes.hidden);
                     //reflow

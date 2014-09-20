@@ -106,6 +106,8 @@
                      * @type {Node}
                      */
                     activeElement:document.body,
+                    timerIn:undefined,
+                    timerOut:undefined,
                     buttons: setup.buttons,
                     focus: setup.focus,
                     options: {
