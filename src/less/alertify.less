@@ -358,12 +358,12 @@
         transform: translate3d(0, 0, 0);
         transition-property: opacity, visibility;
         transition-timing-function: linear;
-        transition-duration: 250ms;        
+        transition-duration: 250ms;
     }
 
     &.hidden {
         .dimmer, .modal {            
-            visibility: hidden;            
+            visibility: hidden;
             opacity: 0;
         }
     }
@@ -381,12 +381,12 @@
     }
     //helper animation
     .dialog.shake {
-        animation-name: shake;
+        animation-name: ajs-shake;
         animation-duration: .1s;
         animation-fill-mode: both;
     }
 
-    @keyframes shake {
+    @keyframes ajs-shake {
         0%, 100% {
             transform: translate3d(0, 0, 0);
         }
@@ -401,27 +401,18 @@
     }
     // slide
     &.slide {
-        &.hidden {
-            .dialog {
-                margin: -100% auto !important;
-            }
-        }
-
-        .dialog {
-            transition-property: margin, visibility;
-        }
         //in
         &.in:not(.hidden) {
             .dialog {
-                transition-duration: 500ms;
-                transition-timing-function: cubic-bezier( 0.175, 0.885, 0.320, 1.275 );
+                animation-name: ajs-slideIn;
+                animation-timing-function: cubic-bezier( 0.175, 0.885, 0.320, 1.275 );
             }
         }
         //out
         &.out.hidden {
             .dialog {
-                transition-duration: 250ms;
-                transition-timing-function: cubic-bezier( 0.600, -0.280, 0.735, 0.045 );
+                animation-name: ajs-slideOut;
+                animation-timing-function: cubic-bezier( 0.600, -0.280, 0.735, 0.045 );                
             }
         }
     }
@@ -430,13 +421,13 @@
         //in
         &.in:not(.hidden) {
             .dialog {
-                animation-name: zoomIn;
+                animation-name: ajs-zoomIn;
             }
         }
         //out
         &.out.hidden {
             .dialog {
-                animation-name: zoomOut;
+                animation-name: ajs-zoomOut;
             }
         }
     }
@@ -445,13 +436,13 @@
         //in
         &.in:not(.hidden) {
             .dialog {
-                animation-name: fadeIn;
+                animation-name: ajs-fadeIn;
             }
         }
         //out
         &.out.hidden {
             .dialog {
-                animation-name: fadeOut;
+                animation-name: ajs-fadeOut;
             }
         }
     }
@@ -460,13 +451,13 @@
         //in
         &.in:not(.hidden) {
             .dialog {
-                animation-name: pulseIn;
+                animation-name: ajs-pulseIn;
             }
         }
         //out
         &.out.hidden {
             .dialog {
-                animation-name: pulseOut;
+                animation-name: ajs-pulseOut;
             }
         }
     }
@@ -475,13 +466,13 @@
         //in
         &.in:not(.hidden) {
             .dialog {
-                animation-name: flipInX;
+                animation-name: ajs-flipInX;
             }
         }
         //out
         &.out.hidden {
             .dialog {
-                animation-name: flipOutX;
+                animation-name: ajs-flipOutX;
             }
         }
     }
@@ -490,13 +481,13 @@
         //in
         &.in:not(.hidden) {
             .dialog {
-                animation-name: flipInY;
+                animation-name: ajs-flipInY;
             }
         }
         //out
         &.out.hidden {
             .dialog {
-                animation-name: flipOutY;
+                animation-name: ajs-flipOutY;
             }
         }
     }
@@ -505,7 +496,7 @@
 
 /////////
 //pulse//
-@keyframes pulseIn {
+@keyframes ajs-pulseIn {
     0%, 20%, 40%, 60%, 80%, 100% {
         transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
     }
@@ -538,7 +529,7 @@
     }
 }
 
-@keyframes pulseOut {
+@keyframes ajs-pulseOut {
     20% {
         transform: scale3d(.9, .9, .9);
     }
@@ -558,7 +549,7 @@
 
 ////////
 //zoom//
-@keyframes zoomIn {
+@keyframes ajs-zoomIn {
     0% {
         opacity: 0;
         transform: scale3d(.25, .25, .25);
@@ -570,7 +561,7 @@
     }
 }
 
-@keyframes zoomOut {
+@keyframes ajs-zoomOut {
     0% {
         opacity: 1;
         transform: scale3d(1, 1, 1);
@@ -587,7 +578,7 @@
 
 ////////
 //fade//
-@keyframes fadeIn {
+@keyframes ajs-fadeIn {
     0% {
         opacity: 0;
     }
@@ -597,7 +588,7 @@
     }
 }
 
-@keyframes fadeOut {
+@keyframes ajs-fadeOut {
     0% {
         opacity: 1;
     }
@@ -611,7 +602,7 @@
 
 /////////
 //flipx//
-@keyframes flipInX {
+@keyframes ajs-flipInX {
     0% {
         transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
         transition-timing-function: ease-in;
@@ -638,7 +629,7 @@
 }
 
 
-@keyframes flipOutX {
+@keyframes ajs-flipOutX {
     0% {
         transform: perspective(400px);
     }
@@ -660,7 +651,7 @@
 
 /////////
 //flipy//
-@keyframes flipInY {
+@keyframes ajs-flipInY {
     0% {
         transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
         transition-timing-function: ease-in;
@@ -686,7 +677,7 @@
     }
 }
 
-@keyframes flipOutY {
+@keyframes ajs-flipOutY {
     0% {
         transform: perspective(400px);
     }
@@ -704,7 +695,29 @@
 //flipy//
 /////////
 
+////////
+//slide//
+@keyframes ajs-slideIn {
+    0% {
+        margin-top: -100%;
+    }
 
+    100% {
+        margin-top: 5%;
+    }
+}
+
+@keyframes ajs-slideOut {
+    0% {
+        margin-top: 5%;
+    }
+
+    100% {
+        margin-top: -100%;
+    }
+}
+//slide//
+////////
 
 /***************
  Notifier
