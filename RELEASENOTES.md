@@ -1,4 +1,8 @@
 # Release Notes
+* **v0.6.0** [21 Sep. 2014]
+  * Prefix the names of all animations with `ajs-` (Prevents collision with other frameworks)
+  * Listen to `animationend` event instead of `transitionend`.
+  * Isolate transition fallback timers (per instance).
 
 * **v0.5.0** [20 Sep. 2014]
   * Notifier API now returns notification object.

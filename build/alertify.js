@@ -7,7 +7,7 @@
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module AlertifyJS
- * @version 0.5.0
+ * @version 0.6.0
  */
 ( function ( window ) {
     'use strict';
@@ -179,16 +179,16 @@
     var transition = (function () {
         var t, type;
         var supported = false;
-        var el = document.createElement('fakeelement');
         var transitions = {
-            'WebkitTransition': 'webkitTransitionEnd',
-            'MozTransition': 'transitionend',
-            'OTransition': 'oTransitionEnd otransitionend',
-            'transition': 'transitionend'
+            'animation'        : 'animationend',
+            'OAnimation'       : 'oAnimationEnd oanimationend',
+            'msAnimation'      : 'MSAnimationEnd',
+            'MozAnimation'     : 'animationend',
+            'WebkitAnimation'  : 'webkitAnimationEnd'
         };
 
         for (t in transitions) {
-            if (el.style[t] !== undefined) {
+            if (document.body.style[t] !== undefined) {
                 type = transitions[t];
                 supported = true;
                 break;
@@ -341,6 +341,8 @@
                      * @type {Node}
                      */
                     activeElement:document.body,
+                    timerIn:undefined,
+                    timerOut:undefined,
                     buttons: setup.buttons,
                     focus: setup.focus,
                     options: {
@@ -1166,8 +1168,6 @@
                 setFocus(instance, resetTarget);
             }
         }
-        //animation timers
-        var transitionInTimeout, transitionOutTimeout;
         /**
          * Transition in transitionend event handler. 
          *
@@ -1178,7 +1178,7 @@
          */
         function handleTransitionInEvent(event, instance) {
             // clear the timer
-            clearTimeout(transitionInTimeout);
+            clearTimeout(instance.__internal.timerIn);
 
             // once transition is complete, set focus
             setFocus(instance);
@@ -1207,7 +1207,7 @@
          */
         function handleTransitionOutEvent(event, instance) {
             // clear the timer
-            clearTimeout(transitionOutTimeout);
+            clearTimeout(instance.__internal.timerOut);
             // unbind the event
             off(instance.elements.dialog, transition.type, instance.__internal.transitionOutHandler);
 
@@ -1952,8 +1952,8 @@
                     addClass(this.elements.root, classes.animationIn);
 
                     // set 1s fallback in case transition event doesn't fire
-                    clearTimeout( transitionInTimeout );
-                    transitionInTimeout = setTimeout( this.__internal.transitionInHandler, transition.supported ? 1000 : 100 );
+                    clearTimeout( this.__internal.timerIn);
+                    this.__internal.timerIn = setTimeout( this.__internal.transitionInHandler, transition.supported ? 1000 : 100 );
 
                     if(isSafari){
                         // force desktop safari reflow
@@ -2000,9 +2000,8 @@
                     addClass(this.elements.root, classes.animationOut);
 
                     // set 1s fallback in case transition event doesn't fire
-                    clearTimeout( transitionOutTimeout );
-                    transitionOutTimeout = setTimeout( this.__internal.transitionOutHandler, transition.supported ? 1000 : 100 );
-
+                    clearTimeout( this.__internal.timerOut );
+                    this.__internal.timerOut = setTimeout( this.__internal.transitionOutHandler, transition.supported ? 1000 : 100 );
                     // hide dialog
                     addClass(this.elements.root, classes.hidden);
                     //reflow

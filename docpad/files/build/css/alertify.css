@@ -266,14 +266,14 @@
           animation-duration: 250ms;
 }
 .alertify .ajs-dialog.ajs-shake {
-  -webkit-animation-name: shake;
-          animation-name: shake;
+  -webkit-animation-name: ajs-shake;
+          animation-name: ajs-shake;
   -webkit-animation-duration: .1s;
           animation-duration: .1s;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
 }
-@-webkit-keyframes shake {
+@-webkit-keyframes ajs-shake {
   0%,
   100% {
     -webkit-transform: translate3d(0, 0, 0);
@@ -295,7 +295,7 @@
             transform: translate3d(10px, 0, 0);
   }
 }
-@keyframes shake {
+@keyframes ajs-shake {
   0%,
   100% {
     -webkit-transform: translate3d(0, 0, 0);
@@ -316,67 +316,60 @@
     -webkit-transform: translate3d(10px, 0, 0);
             transform: translate3d(10px, 0, 0);
   }
-}
-.alertify.ajs-slide.ajs-hidden .ajs-dialog {
-  margin: -100% auto !important;
-}
-.alertify.ajs-slide .ajs-dialog {
-  -webkit-transition-property: margin, visibility;
-          transition-property: margin, visibility;
 }
 .alertify.ajs-slide.ajs-in:not(.ajs-hidden) .ajs-dialog {
-  -webkit-transition-duration: 500ms;
-          transition-duration: 500ms;
-  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-animation-name: ajs-slideIn;
+          animation-name: ajs-slideIn;
+  -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .alertify.ajs-slide.ajs-out.ajs-hidden .ajs-dialog {
-  -webkit-transition-duration: 250ms;
-          transition-duration: 250ms;
-  -webkit-transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
-          transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  -webkit-animation-name: ajs-slideOut;
+          animation-name: ajs-slideOut;
+  -webkit-animation-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+          animation-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 .alertify.ajs-zoom.ajs-in:not(.ajs-hidden) .ajs-dialog {
-  -webkit-animation-name: zoomIn;
-          animation-name: zoomIn;
+  -webkit-animation-name: ajs-zoomIn;
+          animation-name: ajs-zoomIn;
 }
 .alertify.ajs-zoom.ajs-out.ajs-hidden .ajs-dialog {
-  -webkit-animation-name: zoomOut;
-          animation-name: zoomOut;
+  -webkit-animation-name: ajs-zoomOut;
+          animation-name: ajs-zoomOut;
 }
 .alertify.ajs-fade.ajs-in:not(.ajs-hidden) .ajs-dialog {
-  -webkit-animation-name: fadeIn;
-          animation-name: fadeIn;
+  -webkit-animation-name: ajs-fadeIn;
+          animation-name: ajs-fadeIn;
 }
 .alertify.ajs-fade.ajs-out.ajs-hidden .ajs-dialog {
-  -webkit-animation-name: fadeOut;
-          animation-name: fadeOut;
+  -webkit-animation-name: ajs-fadeOut;
+          animation-name: ajs-fadeOut;
 }
 .alertify.ajs-pulse.ajs-in:not(.ajs-hidden) .ajs-dialog {
-  -webkit-animation-name: pulseIn;
-          animation-name: pulseIn;
+  -webkit-animation-name: ajs-pulseIn;
+          animation-name: ajs-pulseIn;
 }
 .alertify.ajs-pulse.ajs-out.ajs-hidden .ajs-dialog {
-  -webkit-animation-name: pulseOut;
-          animation-name: pulseOut;
+  -webkit-animation-name: ajs-pulseOut;
+          animation-name: ajs-pulseOut;
 }
 .alertify.ajs-flipx.ajs-in:not(.ajs-hidden) .ajs-dialog {
-  -webkit-animation-name: flipInX;
-          animation-name: flipInX;
+  -webkit-animation-name: ajs-flipInX;
+          animation-name: ajs-flipInX;
 }
 .alertify.ajs-flipx.ajs-out.ajs-hidden .ajs-dialog {
-  -webkit-animation-name: flipOutX;
-          animation-name: flipOutX;
+  -webkit-animation-name: ajs-flipOutX;
+          animation-name: ajs-flipOutX;
 }
 .alertify.ajs-flipy.ajs-in:not(.ajs-hidden) .ajs-dialog {
-  -webkit-animation-name: flipInY;
-          animation-name: flipInY;
+  -webkit-animation-name: ajs-flipInY;
+          animation-name: ajs-flipInY;
 }
 .alertify.ajs-flipy.ajs-out.ajs-hidden .ajs-dialog {
-  -webkit-animation-name: flipOutY;
-          animation-name: flipOutY;
+  -webkit-animation-name: ajs-flipOutY;
+          animation-name: ajs-flipOutY;
 }
-@-webkit-keyframes pulseIn {
+@-webkit-keyframes ajs-pulseIn {
   0%,
   20%,
   40%,
@@ -414,7 +407,7 @@
             transform: scale3d(1, 1, 1);
   }
 }
-@keyframes pulseIn {
+@keyframes ajs-pulseIn {
   0%,
   20%,
   40%,
@@ -452,7 +445,7 @@
             transform: scale3d(1, 1, 1);
   }
 }
-@-webkit-keyframes pulseOut {
+@-webkit-keyframes ajs-pulseOut {
   20% {
     -webkit-transform: scale3d(0.9, 0.9, 0.9);
             transform: scale3d(0.9, 0.9, 0.9);
@@ -469,7 +462,7 @@
             transform: scale3d(0.3, 0.3, 0.3);
   }
 }
-@keyframes pulseOut {
+@keyframes ajs-pulseOut {
   20% {
     -webkit-transform: scale3d(0.9, 0.9, 0.9);
             transform: scale3d(0.9, 0.9, 0.9);
@@ -486,7 +479,7 @@
             transform: scale3d(0.3, 0.3, 0.3);
   }
 }
-@-webkit-keyframes zoomIn {
+@-webkit-keyframes ajs-zoomIn {
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.25, 0.25, 0.25);
@@ -498,7 +491,7 @@
             transform: scale3d(1, 1, 1);
   }
 }
-@keyframes zoomIn {
+@keyframes ajs-zoomIn {
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.25, 0.25, 0.25);
@@ -510,7 +503,7 @@
             transform: scale3d(1, 1, 1);
   }
 }
-@-webkit-keyframes zoomOut {
+@-webkit-keyframes ajs-zoomOut {
   0% {
     opacity: 1;
     -webkit-transform: scale3d(1, 1, 1);
@@ -522,7 +515,7 @@
             transform: scale3d(0.25, 0.25, 0.25);
   }
 }
-@keyframes zoomOut {
+@keyframes ajs-zoomOut {
   0% {
     opacity: 1;
     -webkit-transform: scale3d(1, 1, 1);
@@ -534,7 +527,7 @@
             transform: scale3d(0.25, 0.25, 0.25);
   }
 }
-@-webkit-keyframes fadeIn {
+@-webkit-keyframes ajs-fadeIn {
   0% {
     opacity: 0;
   }
@@ -542,7 +535,7 @@
     opacity: 1;
   }
 }
-@keyframes fadeIn {
+@keyframes ajs-fadeIn {
   0% {
     opacity: 0;
   }
@@ -550,7 +543,7 @@
     opacity: 1;
   }
 }
-@-webkit-keyframes fadeOut {
+@-webkit-keyframes ajs-fadeOut {
   0% {
     opacity: 1;
   }
@@ -558,7 +551,7 @@
     opacity: 0;
   }
 }
-@keyframes fadeOut {
+@keyframes ajs-fadeOut {
   0% {
     opacity: 1;
   }
@@ -566,7 +559,7 @@
     opacity: 0;
   }
 }
-@-webkit-keyframes flipInX {
+@-webkit-keyframes ajs-flipInX {
   0% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
             transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
@@ -594,7 +587,7 @@
             transform: perspective(400px);
   }
 }
-@keyframes flipInX {
+@keyframes ajs-flipInX {
   0% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
             transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
@@ -622,7 +615,7 @@
             transform: perspective(400px);
   }
 }
-@-webkit-keyframes flipOutX {
+@-webkit-keyframes ajs-flipOutX {
   0% {
     -webkit-transform: perspective(400px);
             transform: perspective(400px);
@@ -638,7 +631,7 @@
     opacity: 0;
   }
 }
-@keyframes flipOutX {
+@keyframes ajs-flipOutX {
   0% {
     -webkit-transform: perspective(400px);
             transform: perspective(400px);
@@ -654,7 +647,7 @@
     opacity: 0;
   }
 }
-@-webkit-keyframes flipInY {
+@-webkit-keyframes ajs-flipInY {
   0% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
             transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
@@ -682,7 +675,7 @@
             transform: perspective(400px);
   }
 }
-@keyframes flipInY {
+@keyframes ajs-flipInY {
   0% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
             transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
@@ -710,7 +703,7 @@
             transform: perspective(400px);
   }
 }
-@-webkit-keyframes flipOutY {
+@-webkit-keyframes ajs-flipOutY {
   0% {
     -webkit-transform: perspective(400px);
             transform: perspective(400px);
@@ -726,7 +719,7 @@
     opacity: 0;
   }
 }
-@keyframes flipOutY {
+@keyframes ajs-flipOutY {
   0% {
     -webkit-transform: perspective(400px);
             transform: perspective(400px);
@@ -740,6 +733,38 @@
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
             transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
     opacity: 0;
+  }
+}
+@-webkit-keyframes ajs-slideIn {
+  0% {
+    margin-top: -100%;
+  }
+  100% {
+    margin-top: 5%;
+  }
+}
+@keyframes ajs-slideIn {
+  0% {
+    margin-top: -100%;
+  }
+  100% {
+    margin-top: 5%;
+  }
+}
+@-webkit-keyframes ajs-slideOut {
+  0% {
+    margin-top: 5%;
+  }
+  100% {
+    margin-top: -100%;
+  }
+}
+@keyframes ajs-slideOut {
+  0% {
+    margin-top: 5%;
+  }
+  100% {
+    margin-top: -100%;
   }
 }
 .alertify-notifier {
