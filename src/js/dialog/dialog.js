@@ -75,6 +75,19 @@
                 }
             },
             /**
+             * [Alias] Sets dialog settings/options 
+             */
+            set:function(key, value){
+                this.setting(key,value);
+                return this;
+            },
+            /**
+             * [Alias] Gets dialog settings/options 
+             */
+            get:function(key){
+                return this.setting(key);
+            },
+            /**
             * Sets dialog header
             * @content {string or element}
             *

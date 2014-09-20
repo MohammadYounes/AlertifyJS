@@ -161,6 +161,18 @@
                 }
             },
             /**
+             * [Alias] Sets dialog settings/options 
+             */
+            set: function(name,key,value){
+                return this.setting(name, key,value);
+            },
+            /**
+             * [Alias] Gets dialog settings/options 
+             */
+            get: function(name, key){
+                return this.setting(name, key);
+            },
+            /**
              * Creates a new notification message.
              * If a type is passed, a class name "ajs-{type}" will be added.
              * This allows for custom look and feel for various types of notifications.

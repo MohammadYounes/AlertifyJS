@@ -248,6 +248,19 @@
                 return this;
             },
             /**
+             * [Alias] Sets dialog settings/options 
+             */
+            set:function(key,value){
+                this.setting(key,value);
+                return this;
+            },
+            /**
+             * [Alias] Gets dialog settings/options 
+             */
+            get:function(key){
+                return this.setting(key);
+            },
+            /**
              * Creates a new notification message
              *
              * @param {string} type The type of notification message (simply a CSS class name 'ajs-{type}' to be added).
