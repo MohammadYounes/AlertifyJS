@@ -63,16 +63,16 @@
     var transition = (function () {
         var t, type;
         var supported = false;
-        var el = document.createElement('fakeelement');
         var transitions = {
-            'WebkitTransition': 'webkitTransitionEnd',
-            'MozTransition': 'transitionend',
-            'OTransition': 'oTransitionEnd otransitionend',
-            'transition': 'transitionend'
+            'animation'        : 'animationend',
+            'OAnimation'       : 'oAnimationEnd oanimationend',
+            'msAnimation'      : 'MSAnimationEnd',
+            'MozAnimation'     : 'animationend',
+            'WebkitAnimation'  : 'webkitAnimationEnd'
         };
 
         for (t in transitions) {
-            if (el.style[t] !== undefined) {
+            if (document.body.style[t] !== undefined) {
                 type = transitions[t];
                 supported = true;
                 break;
