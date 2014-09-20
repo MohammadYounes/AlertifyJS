@@ -2,7 +2,7 @@
 
 * **v0.5.0** [20 Sep. 2014]
   * Notifier API now returns notification object.
-  * `Get`/`Set` Aliases for `.setting` API.
+  * Add `get`/`set` aliases for `.setting` API.
   * New global option (`alertify.defaults.maintainFocus`:`true`), controls whether to maintain active element focus or not.
 
 * **v0.4.0** [07 Sep. 2014]
