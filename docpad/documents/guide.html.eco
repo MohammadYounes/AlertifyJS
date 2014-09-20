@@ -22,7 +22,9 @@ hljs: 	'light'
 </section>
 
 <section class="dark">
-  <div class="content">
+<div class="content">
+
+	  <!-- Download -->  
 	  <h1>
 		<i class="fa fa-cloud-download fa-lg"></i> Download (v<%=@getPackage().version%>)
 	  </h1>
@@ -38,7 +40,6 @@ hljs: 	'light'
 		   </a>
 		  </div>
   	
-		  <div>
 		  	<h4>Contents</h4>			
 <pre>
 <code class="lang-bash">alertifyjs/
@@ -64,11 +65,7 @@ hljs: 	'light'
 └── alertify.min.js
 </code>
 </pre>
-			
-			
-		  </div>
-		</div>
-		
+		</div>		
 		<div class="column">
 		  <h2>Source Code</h2>
 		  Source Javascript, Less and AlertifyJS docs (see steps for running docs locally).
@@ -77,10 +74,7 @@ hljs: 	'light'
 			  <span>Download Source</span>
 		    </a>
 		  </div>
-		  
-		  
-		  <div>
-		  	<h4>Contents</h4>			
+		  <h4>Contents</h4>			
 <pre>
 <code class="lang-bash">alertifyjs/
 │
@@ -104,10 +98,7 @@ hljs: 	'light'
    └── less/
       └── themes/
 </code>
-</pre>
-			
-			
-		  </div>
+</pre>	
 		</div>
 	 </div>
 	 
@@ -120,12 +111,13 @@ hljs: 	'light'
 PM> Install-Package AlertifyJS
 
 </code>
-</pre>	 
-		  
+</pre>		  
 		</div>
-	 </div>
-	
-	
+	</div>
+	<!-- //Download -->
+
+
+	<!-- Usage -->
 	 <h1>
 		<i class="fa fa-flash fa-lg"></i> Usage
 	 </h1>
@@ -148,7 +140,7 @@ PM> Install-Package AlertifyJS
 
 
 
- <div class="segment">
+	<div class="segment">
             <h3> <i class="fa fa-check"></i> Start coding!</h3>
 <pre>
 <code class="lang-javascript">alertify.alert('Ready!');
@@ -158,7 +150,66 @@ PM> Install-Package AlertifyJS
             <a class="button example" href="javascript:void(0);">
               <span> Run </span>
             </a>
-		  <div>
+		  </div>
+	</div>
+  
+  <!-- //Usage -->
+  <!-- Defaults -->
+  <div class="segment">
+  <h1>
+  <i class="fa fa-book fa-lg"></i> Defaults</h1>
+  <hr />
+  <p> The following are the global defaults used by AlertifyJS, override with your own prior to components initialization.</p>
+
+  <pre>
+<code class="lang-javascript">
+alertify.defaults = {
+		// dialogs defaults
+        modal:true,
+        movable:true,
+        resizable:true,
+        closable:true,
+        maximizable:true,
+        pinnable:true,
+        pinned:true,
+        padding: true,
+        overflow:true,
+        maintainFocus:true,
+		transition:'pulse',
+
+		// notifier defaults
+        notifier:{
+			// auto-dismiss wait time (in seconds)  
+            delay:5,
+			// default position
+            position:'bottom-right'
+        },
+
+		// language resources 
+        glossary:{
+			// dialogs default title
+            title:'AlertifyJS',
+			// ok button text
+            ok: 'OK',
+			// cancel button text
+            cancel: 'Cancel'			
+        },
+
+		// theme settings
+        theme:{
+			// class name attached to prompt dialog input textbox.
+            input:'ajs-input',
+			// class name attached to ok button
+            ok:'ajs-ok',
+			// class name attached to cancel button 
+            cancel:'ajs-cancel'
+        }
+    };
+
+</code> 
+</pre>
+	</div>
+	<!-- //Defaults -->
+
 </div>
-  </div>
 </section>

@@ -67,7 +67,7 @@
         var transitions = {
             'WebkitTransition': 'webkitTransitionEnd',
             'MozTransition': 'transitionend',
-            'OTransition': 'otransitionend',
+            'OTransition': 'oTransitionEnd otransitionend',
             'transition': 'transitionend'
         };
 

@@ -26,7 +26,7 @@
         padding: true,
         overflow:true,
         maintainFocus:true,
-        transition:'pulse',        
+        transition:'pulse',
         notifier:{
             delay:5,
             position:'bottom-right'

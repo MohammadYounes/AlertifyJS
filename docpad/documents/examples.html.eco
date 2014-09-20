@@ -50,7 +50,7 @@ alertify.defaults.glossary.cancel = 'إلغاء';
 </code> 
 </pre>
 			<div class="RIGHT">		
-				<a class="button example" href="javascript:ViewArabic();">
+				<a class="button" href="javascript:ViewArabic();">
 					<span> Run Example </span>
 				</a>
 			</div>
@@ -75,10 +75,17 @@ alertify.defaults.glossary.cancel = 'إلغاء';
 <!-- include alertify script -->
 <script src="{PATH}/alertify.js"></script>
 
+<script type="text/javascript">		
+//override defaults
+alertify.defaults.transition = "zoom";
+alertify.defaults.theme.ok = "ui positive button";
+alertify.defaults.theme.cancel = "ui black button";
+</script>		
+
 </code> 
 </pre>
 			<div class="RIGHT">		
-				<a class="button example" href="javascript:ViewSemantic();">
+				<a class="button" href="javascript:ViewSemantic();">
 					<span> Run Example </span>
 				</a>
 			</div>
@@ -101,10 +108,18 @@ alertify.defaults.glossary.cancel = 'إلغاء';
 <!-- include alertify script -->
 <script src="{PATH}/alertify.js"></script>
 
+<script type="text/javascript">
+//override defaults
+alertify.defaults.transition = "slide";
+alertify.defaults.theme.ok = "btn btn-primary";
+alertify.defaults.theme.cancel = "btn btn-danger";
+alertify.defaults.theme.input = "form-control";
+</script>
+
 </code> 
 </pre>
 			<div class="RIGHT">		
-				<a class="button example" href="javascript:ViewBootstrap();">
+				<a class="button" href="javascript:ViewBootstrap();">
 					<span> Run Example </span>
 				</a>
 			</div>

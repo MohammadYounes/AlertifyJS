@@ -1,0 +1,102 @@
+[
+    {
+        "type": "p",
+        "name": "ondismiss",
+        "label": "{ Function }",
+        "desc": "Sets or gets the callback function to be invoked before dismissing the notification [<b> if the invocation result === false , notification dismissal will be canceled </b>].",
+        "defaultValue": "undefined",
+        "script": [
+            "var canDismiss = false;",
+            "var notification = alertify.success('You can dismiss this after 5 seconds!');",
+            "notification.ondismiss = function(){ return canDismiss; };",
+            "setTimeout(function(){ canDismiss = true;}, 5000);"
+        ]
+    },
+
+    {
+        "type": "p",
+        "name": "callback",
+        "label": "{ Function }",
+        "desc": "Gets or sets the callback function to be invoked when the notification is dismissed.",
+        "defaultValue": "undefined",
+        "script": [
+            "var msg = alertify.message('Open up your web console', 10);",
+            "msg.callback = function (isClicked) {",
+            "        if(isClicked)",
+            "            console.log('notification dismissed by user');",
+            "        else",
+            "            console.log('notification auto-dismissed');",
+            "};"
+        ]
+    },
+
+
+    {
+        "type": "m",
+        "name": "push",
+        "label": "chainable",
+        "desc": "Shows the notification message",
+        "params": [
+            { "name": "content", "type": "String or DOMElement", "desc": "(Optional) The notification message content" },
+            { "name": "wait", "type": "Number", "desc": "The time (in seconds) to wait before the notification is auto-dismissed. 0 will keep it open till clicked." }
+        ],
+        "script": [
+            "var nagCount = 2;",
+            "var msg = alertify.message('Nagging message!',0, function(){",
+            "               if(--nagCount > 0){",
+            "                  setTimeout(function(){msg.push(\"I'm back :P \");}, 500);",
+            "               }else{",
+            "                  setTimeout(function(){msg.push(\"Ok! last time :)\");}, 500);",
+            "                  msg.callback = null;",
+            "               }",
+            "          });"
+        ]
+    },
+
+    {
+        "type": "m",
+        "name": "dismiss",
+        "label": "chainable",
+        "desc": "Dismisses the notification message",
+        "params": [
+        ],
+        "script": [
+            "var msg = alertify.message('Click anywhere to dismiss me!', 0);",
+            "$('body').one('click', function(){",
+            "   msg.dismiss();",
+            "});"
+        ]
+    },
+
+    {
+        "type": "m",
+        "name": "setContent",
+        "label": "chainable",
+        "desc": "Sets the notification message contents",
+        "params": [
+            { "name": "content", "type": "String or DOMElement", "desc": "The notification message content" }
+        ],
+        "script": [
+            "var duration = 10;",
+            "var msg = alertify.message('Auto-dismiss in '+ duration +' seconds.', 10, function(){ clearInterval(interval);});",
+            "var interval = setInterval(function(){",
+            "   msg.setContent('Auto-dismiss in '+(--duration)+' seconds.');",
+            "},1000);"
+        ]
+    },
+
+    {
+        "type": "m",
+        "name": "delay",
+        "label": "chainable",
+        "desc": "Sets the notification message delay",
+        "params": [
+            { "name": "wait ", "type": "Number", "desc": "The time (in seconds) to wait before the notification is auto-dismissed. 0 will keep it open till clicked." }
+        ],
+        "script": [
+            "var msg = alertify.message('Default message');",
+            "msg.delay(3).setContent('Wait time updated to 3 Seconds');"
+        ]
+    }
+	
+]
