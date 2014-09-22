@@ -7,7 +7,7 @@
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module AlertifyJS
- * @version 0.6.0
+ * @version 0.6.1
  */
 ( function ( window ) {
     'use strict';
@@ -188,7 +188,7 @@
         };
 
         for (t in transitions) {
-            if (document.body.style[t] !== undefined) {
+            if (document.documentElement.style[t] !== undefined) {
                 type = transitions[t];
                 supported = true;
                 break;

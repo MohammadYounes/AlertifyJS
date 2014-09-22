@@ -1,4 +1,7 @@
 # Release Notes
+* **v0.6.1** [22 Sep. 2014]
+  * Fixes Null reference error when including alertify script before body element. 
+
 * **v0.6.0** [21 Sep. 2014]
   * Prefix the names of all animations with `ajs-` (Prevents collision with other frameworks)
   * Listen to `animationend` event instead of `transitionend`.
