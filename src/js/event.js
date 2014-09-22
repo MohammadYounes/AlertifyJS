@@ -72,7 +72,7 @@
         };
 
         for (t in transitions) {
-            if (document.body.style[t] !== undefined) {
+            if (document.documentElement.style[t] !== undefined) {
                 type = transitions[t];
                 supported = true;
                 break;
