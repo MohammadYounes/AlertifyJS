@@ -61,4 +61,4 @@ Please review the guidelines for [contributing](https://github.com/MohammadYoune
 
 
 ------
-Contact: [mohammad@alertifyjs.com](mailto:mohammad@alertifyjs.com)
+Contact: [Mohammad@alertifyjs.com](mailto:Mohammad@alertifyjs.com)
