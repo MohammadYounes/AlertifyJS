@@ -59,6 +59,10 @@ Bugs & Questions
 ==========
 Please review the guidelines for [contributing](https://github.com/MohammadYounes/AlertifyJS/blob/master/CONTRIBUTING.md).
 
+Community Contribution
+==========
+
+* [alertifyjs-rails](https://github.com/mkhairi/alertifyjs-rails) by **[@mkhairi](https://github.com/mkhairi)**
 
 ------
 Contact: [Mohammad@alertifyjs.com](mailto:Mohammad@alertifyjs.com)
