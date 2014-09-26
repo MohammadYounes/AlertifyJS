@@ -234,8 +234,15 @@
              */
             warning: function (message, wait, callback) {
                 return notifier.create('warning', callback).push(message, wait);
+            },
+            /**
+             * Dismisses all open notifications
+             *
+             * @return {undefined}
+             */
+            dismissAll: function () {
+                notifier.dismissAll();
             }
-
         };
     }
     var alertify = new Alertify();

@@ -1,6 +1,7 @@
     var notifier = (function () {
         var reflow,
             element,
+            openInstances = [],
             classes = {
                 base: 'alertify-notifier',
                 message: 'ajs-message',
@@ -31,7 +32,15 @@
                 document.body.appendChild(element);
             }
         }
-
+        
+        function pushInstance(instance) {
+            instance.__internal.pushed = true;
+            openInstances.push(instance);
+        }
+        function popInstance(instance) {
+            openInstances.splice(openInstances.indexOf(instance), 1);
+            instance.__internal.pushed = false;
+        }
         /**
          * Helper: update the notifier instance position
          * 
@@ -109,7 +118,7 @@
                 push: function (_content, _wait) {
                     if (!this.__internal.pushed) {
 
-                        this.__internal.pushed = true;
+                        pushInstance(this);
                         clearTimers(this);
 
                         var content, wait;
@@ -181,7 +190,7 @@
                                     this.callback.call(this, clicked);
                                 }
                             }
-                            this.__internal.pushed = false;
+                            popInstance(this);
                         }
                     }
                     return this;
@@ -212,6 +221,13 @@
                         this.element.appendChild(content);
                     }
                     return this;
+                },
+                /*
+                 * Dismisses all open notifications except this.
+                 * 
+                 */
+                dismissOthers: function () {
+                    notifier.dismissAll(this);
                 }
             });
         }
@@ -275,6 +291,21 @@
                 var div = document.createElement('div');
                 div.className = classes.message + ((typeof type === 'string' && type !== '') ? ' ajs-' + type : '');
                 return create(div, callback);
+            },
+            /**
+             * Dismisses all open notifications.
+             *
+             * @param {Object} excpet [optional] The notification object to exclude from dismissal.
+             *
+             */
+            dismissAll: function (except) {
+                var clone = openInstances.slice(0);
+                for (var x = 0; x < clone.length; x += 1) {
+                    var  instance = clone[x];
+                    if (except === undefined || except !== instance) {
+                        instance.dismiss();
+                    }
+                }
             }
         };
     })();
