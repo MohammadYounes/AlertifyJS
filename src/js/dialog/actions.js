@@ -56,7 +56,7 @@
                 cancelKeyup = false;
                 return;
             }
-            var instance = openInstances[openInstances.length - 1];
+            var instance = openDialogs[openDialogs.length - 1];
             var keyCode = event.keyCode;
             if (usedKeys.indexOf(keyCode) > -1) {
                 triggerCallback(instance, function (button) {
@@ -74,7 +74,7 @@
         * @return {undefined}
         */
         function keydownHandler(event) {
-            var instance = openInstances[openInstances.length - 1];
+            var instance = openDialogs[openDialogs.length - 1];
             var keyCode = event.keyCode;
             if (keyCode < keys.F12 + 1 && keyCode > keys.F1 - 1 && usedKeys.indexOf(keyCode) > -1) {
                 event.preventDefault();

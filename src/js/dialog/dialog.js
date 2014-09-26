@@ -139,7 +139,7 @@
 					
                     // add to open dialogs
                     this.__internal.isOpen = true;
-                    openInstances.push(this);
+                    openDialogs.push(this);
 
                     // save last focused element
                     if(alertify.defaults.maintainFocus){
@@ -237,7 +237,7 @@
                     }
 					
                     //remove from open dialogs               
-                    openInstances.splice(openInstances.indexOf(this),1);
+                    openDialogs.splice(openDialogs.indexOf(this),1);
                     this.__internal.isOpen = false;
 					
                     ensureNoOverflow();
@@ -245,4 +245,13 @@
                 }
                 return this;
             },
+            /**
+             * Close all open dialogs except this.
+             *
+             * @return {undefined}
+             */
+            closeOthers:function(){
+                alertify.closeAll(this);
+                return this;
+            }
         };

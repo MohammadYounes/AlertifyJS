@@ -7,7 +7,7 @@
          */
         function bindEvents(instance) {
             // if first dialog, hook body handlers
-            if (openInstances.length === 1) {
+            if (openDialogs.length === 1) {
                 //global
                 on(window, 'resize', windowResize);
                 on(document.body, 'keyup', keyupHandler);
@@ -62,7 +62,7 @@
          */
         function unbindEvents(instance) {
             // if last dialog, remove body handlers
-            if (openInstances.length === 1) {
+            if (openDialogs.length === 1) {
                 //global
                 off(window, 'resize', windowResize);
                 off(document.body, 'keyup', keyupHandler);

@@ -141,6 +141,22 @@
                 }
             },
             /**
+             * Close all open dialogs.
+             *
+             * @param {Object} excpet [optional] The dialog object to exclude from closing.
+             *
+             * @return {undefined}
+             */
+            closeAll: function (except) {
+                var clone = openDialogs.slice(0);
+                for (var x = 0; x < clone.length; x += 1) {
+                    var instance = clone[x];
+                    if (except === undefined || except !== instance) {
+                        instance.close();
+                    }
+                }
+            },
+            /**
              * Gets or Sets dialog settings/options. if the dialog is transient, this call does nothing.
              *
              * @param {string} name The dialog name.

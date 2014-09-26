@@ -50,6 +50,9 @@
         }
     };
     
+    //holds open dialogs instances
+    var openDialogs = [];
+
     /**
      * [Helper]  Adds the specified class(es) to the element.
      *

@@ -43,9 +43,9 @@
 
             // should work on last modal if triggered from document.body 
             if (!instance) {
-                for (var x = openInstances.length - 1; x > -1; x -= 1) {
-                    if (openInstances[x].isModal()) {
-                        instance = openInstances[x];
+                for (var x = openDialogs.length - 1; x > -1; x -= 1) {
+                    if (openDialogs[x].isModal()) {
+                        instance = openDialogs[x];
                         break;
                     }
                 }

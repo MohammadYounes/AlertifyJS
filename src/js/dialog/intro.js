@@ -4,9 +4,7 @@
      * @return {Object}		base dialog prototype
      */
     var dialog = (function () {
-        //holds open dialogs instances
-        var openInstances = [],
-            //holds the list of used keys.
+        var //holds the list of used keys.
             usedKeys = [],
             //dummy variable, used to trigger dom reflow.
             reflow = null,
@@ -252,10 +250,9 @@
                 if(typeof instance.build === 'function'){
                     instance.build();
                 }
-				
             }
             
-            //add to DOM tree.
+            //add to the end of the DOM tree.
             document.body.appendChild(instance.elements.root);
         }
 
@@ -265,8 +262,8 @@
          */
         function ensureNoOverflow(){
             var requiresNoOverflow = 0;
-            for(var x=0;x<openInstances.length;x+=1){
-                var instance = openInstances[x];
+            for(var x=0;x<openDialogs.length;x+=1){
+                var instance = openDialogs[x];
                 if(instance.isModal() || instance.isMaximized()){
                     requiresNoOverflow+=1;
                 }
@@ -344,9 +341,9 @@
         function bringToFront(event, instance){
             
             // Do not bring to front if preceeded by an open modal
-            var index = openInstances.indexOf(instance);
-            for(var x=index+1;x<openInstances.length;x+=1){
-                if(openInstances[x].isModal()){
+            var index = openDialogs.indexOf(instance);
+            for(var x=index+1;x<openDialogs.length;x+=1){
+                if(openDialogs[x].isModal()){
                     return;
                 }
             }
@@ -354,6 +351,9 @@
             // Bring to front by making it the last child.
             if(document.body.lastChild !== instance.elements.root){
                 document.body.appendChild(instance.elements.root);
+                //also make sure its at the end of the list
+                openDialogs.splice(openDialogs.indexOf(instance),1);
+                openDialogs.push(instance);
                 setFocus(instance);
             }
 			
