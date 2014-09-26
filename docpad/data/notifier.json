@@ -98,5 +98,14 @@
 			{"name": "callback", "type":"Function", "desc":"A callback function to be invoked when the message is dismissed."}
 		],
 		"script": "alertify.notify('default message.', 'custom', 2, function(){console.log('dismissed');});"
+	},
+    
+    {
+		"type": "m",
+		"name": "dismissAll",
+		"label": "",
+		"desc": "Dismisses all open notifications.",
+		"params": [],
+		"script": ["alertify.dismissAll();"]
 	}
 ]

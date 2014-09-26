@@ -215,7 +215,17 @@
 		"params": [],
 		"script": "var isModal = alertify.{component}().isPinned();",
 		"exec": false
-	}
-	
+	},
+
+	{
+		"type": "m",
+		"name": "closeOthers",
+		"label": "chainable",
+		"desc": "Closes all open dialogs except this one.",
+		"params": [],
+		"script": "alertify.{component}().closeOthers();",
+        "exec": false,
+        "remark":  "Use <code>alertify.closeAll()</code> to close all open dialogs."
+	}	
 ]
 

@@ -97,6 +97,14 @@
             "var msg = alertify.message('Default message');",
             "msg.delay(3).setContent('Wait time updated to 3 Seconds');"
         ]
-    }
-	
+    },
+
+	{
+		"type": "m",
+		"name": "dismissOthers",
+		"label": "chainable",
+		"desc": "Dismisses all open notifications except this one.",
+		"params": [],
+		"script": "alertify.message('Sample').dismissOthers();"
+	}	
 ]
