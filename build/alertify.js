@@ -7,7 +7,7 @@
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module AlertifyJS
- * @version 0.6.1
+ * @version 0.7.0
  */
 ( function ( window ) {
     'use strict';
@@ -61,6 +61,9 @@
         }
     };
     
+    //holds open dialogs instances
+    var openDialogs = [];
+
     /**
      * [Helper]  Adds the specified class(es) to the element.
      *
@@ -239,9 +242,7 @@
      * @return {Object}		base dialog prototype
      */
     var dialog = (function () {
-        //holds open dialogs instances
-        var openInstances = [],
-            //holds the list of used keys.
+        var //holds the list of used keys.
             usedKeys = [],
             //dummy variable, used to trigger dom reflow.
             reflow = null,
@@ -487,10 +488,9 @@
                 if(typeof instance.build === 'function'){
                     instance.build();
                 }
-				
             }
             
-            //add to DOM tree.
+            //add to the end of the DOM tree.
             document.body.appendChild(instance.elements.root);
         }
 
@@ -500,8 +500,8 @@
          */
         function ensureNoOverflow(){
             var requiresNoOverflow = 0;
-            for(var x=0;x<openInstances.length;x+=1){
-                var instance = openInstances[x];
+            for(var x=0;x<openDialogs.length;x+=1){
+                var instance = openDialogs[x];
                 if(instance.isModal() || instance.isMaximized()){
                     requiresNoOverflow+=1;
                 }
@@ -579,9 +579,9 @@
         function bringToFront(event, instance){
             
             // Do not bring to front if preceeded by an open modal
-            var index = openInstances.indexOf(instance);
-            for(var x=index+1;x<openInstances.length;x+=1){
-                if(openInstances[x].isModal()){
+            var index = openDialogs.indexOf(instance);
+            for(var x=index+1;x<openDialogs.length;x+=1){
+                if(openDialogs[x].isModal()){
                     return;
                 }
             }
@@ -589,6 +589,9 @@
             // Bring to front by making it the last child.
             if(document.body.lastChild !== instance.elements.root){
                 document.body.appendChild(instance.elements.root);
+                //also make sure its at the end of the list
+                openDialogs.splice(openDialogs.indexOf(instance),1);
+                openDialogs.push(instance);
                 setFocus(instance);
             }
 			
@@ -1049,7 +1052,7 @@
                 cancelKeyup = false;
                 return;
             }
-            var instance = openInstances[openInstances.length - 1];
+            var instance = openDialogs[openDialogs.length - 1];
             var keyCode = event.keyCode;
             if (usedKeys.indexOf(keyCode) > -1) {
                 triggerCallback(instance, function (button) {
@@ -1067,7 +1070,7 @@
         * @return {undefined}
         */
         function keydownHandler(event) {
-            var instance = openInstances[openInstances.length - 1];
+            var instance = openDialogs[openDialogs.length - 1];
             var keyCode = event.keyCode;
             if (keyCode < keys.F12 + 1 && keyCode > keys.F1 - 1 && usedKeys.indexOf(keyCode) > -1) {
                 event.preventDefault();
@@ -1125,9 +1128,9 @@
 
             // should work on last modal if triggered from document.body 
             if (!instance) {
-                for (var x = openInstances.length - 1; x > -1; x -= 1) {
-                    if (openInstances[x].isModal()) {
-                        instance = openInstances[x];
+                for (var x = openDialogs.length - 1; x > -1; x -= 1) {
+                    if (openDialogs[x].isModal()) {
+                        instance = openDialogs[x];
                         break;
                     }
                 }
@@ -1574,8 +1577,8 @@
          * @return {undefined}
          */
         function windowResize(/*event*/) {
-            for (var x = 0; x < openInstances.length; x += 1) {
-                var instance = openInstances[x];
+            for (var x = 0; x < openDialogs.length; x += 1) {
+                var instance = openDialogs[x];
                 resetMove(instance);
                 resetResize(instance);
             }
@@ -1589,7 +1592,7 @@
          */
         function bindEvents(instance) {
             // if first dialog, hook body handlers
-            if (openInstances.length === 1) {
+            if (openDialogs.length === 1) {
                 //global
                 on(window, 'resize', windowResize);
                 on(document.body, 'keyup', keyupHandler);
@@ -1644,7 +1647,7 @@
          */
         function unbindEvents(instance) {
             // if last dialog, remove body handlers
-            if (openInstances.length === 1) {
+            if (openDialogs.length === 1) {
                 //global
                 off(window, 'resize', windowResize);
                 off(document.body, 'keyup', keyupHandler);
@@ -1920,7 +1923,7 @@
 					
                     // add to open dialogs
                     this.__internal.isOpen = true;
-                    openInstances.push(this);
+                    openDialogs.push(this);
 
                     // save last focused element
                     if(alertify.defaults.maintainFocus){
@@ -2018,7 +2021,7 @@
                     }
 					
                     //remove from open dialogs               
-                    openInstances.splice(openInstances.indexOf(this),1);
+                    openDialogs.splice(openDialogs.indexOf(this),1);
                     this.__internal.isOpen = false;
 					
                     ensureNoOverflow();
@@ -2026,11 +2029,21 @@
                 }
                 return this;
             },
+            /**
+             * Close all open dialogs except this.
+             *
+             * @return {undefined}
+             */
+            closeOthers:function(){
+                alertify.closeAll(this);
+                return this;
+            }
         };
 	} () );
     var notifier = (function () {
         var reflow,
             element,
+            openInstances = [],
             classes = {
                 base: 'alertify-notifier',
                 message: 'ajs-message',
@@ -2061,7 +2074,15 @@
                 document.body.appendChild(element);
             }
         }
-
+        
+        function pushInstance(instance) {
+            instance.__internal.pushed = true;
+            openInstances.push(instance);
+        }
+        function popInstance(instance) {
+            openInstances.splice(openInstances.indexOf(instance), 1);
+            instance.__internal.pushed = false;
+        }
         /**
          * Helper: update the notifier instance position
          * 
@@ -2139,7 +2160,7 @@
                 push: function (_content, _wait) {
                     if (!this.__internal.pushed) {
 
-                        this.__internal.pushed = true;
+                        pushInstance(this);
                         clearTimers(this);
 
                         var content, wait;
@@ -2211,7 +2232,7 @@
                                     this.callback.call(this, clicked);
                                 }
                             }
-                            this.__internal.pushed = false;
+                            popInstance(this);
                         }
                     }
                     return this;
@@ -2241,6 +2262,14 @@
                     } else {
                         this.element.appendChild(content);
                     }
+                    return this;
+                },
+                /*
+                 * Dismisses all open notifications except this.
+                 * 
+                 */
+                dismissOthers: function () {
+                    notifier.dismissAll(this);
                     return this;
                 }
             });
@@ -2305,6 +2334,21 @@
                 var div = document.createElement('div');
                 div.className = classes.message + ((typeof type === 'string' && type !== '') ? ' ajs-' + type : '');
                 return create(div, callback);
+            },
+            /**
+             * Dismisses all open notifications.
+             *
+             * @param {Object} excpet [optional] The notification object to exclude from dismissal.
+             *
+             */
+            dismissAll: function (except) {
+                var clone = openInstances.slice(0);
+                for (var x = 0; x < clone.length; x += 1) {
+                    var  instance = clone[x];
+                    if (except === undefined || except !== instance) {
+                        instance.dismiss();
+                    }
+                }
             }
         };
     })();
@@ -2451,6 +2495,22 @@
                 }
             },
             /**
+             * Close all open dialogs.
+             *
+             * @param {Object} excpet [optional] The dialog object to exclude from closing.
+             *
+             * @return {undefined}
+             */
+            closeAll: function (except) {
+                var clone = openDialogs.slice(0);
+                for (var x = 0; x < clone.length; x += 1) {
+                    var instance = clone[x];
+                    if (except === undefined || except !== instance) {
+                        instance.close();
+                    }
+                }
+            },
+            /**
              * Gets or Sets dialog settings/options. if the dialog is transient, this call does nothing.
              *
              * @param {string} name The dialog name.
@@ -2544,8 +2604,15 @@
              */
             warning: function (message, wait, callback) {
                 return notifier.create('warning', callback).push(message, wait);
+            },
+            /**
+             * Dismisses all open notifications
+             *
+             * @return {undefined}
+             */
+            dismissAll: function () {
+                notifier.dismissAll();
             }
-
         };
     }
     var alertify = new Alertify();

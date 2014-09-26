@@ -99,20 +99,20 @@
 <section class="dark">
     <div class="content">
       <div class="links">
-        <a href="http://github.com/MohammadYounes/alertifyjs/issues">Report an issue</a> |
-        <a href="http://github.com/MohammadYounes/alertifyjs">View on GitHub</a> |
-        Follow Me on <a href="http://www.github.com/MohammadYounes"> <i class="fa fa-github"></i> GitHub</a> and
-        <a href="http://www.twitter.com/AlertifyJS"> <i class="fa fa-twitter"></i> Twitter</a>
+        <a href="http://github.com/MohammadYounes/alertifyjs/issues" target="_blank">Report an issue</a> |
+        <a href="http://github.com/MohammadYounes/alertifyjs" target="_blank">View on GitHub</a> |
+        Follow Me on <a href="http://www.github.com/MohammadYounes" target="_blank"> <i class="fa fa-github"></i> GitHub</a> and
+        <a href="http://www.twitter.com/AlertifyJS" target="_blank"> <i class="fa fa-twitter"></i> Twitter</a>
       </div>
       <div class="links">
-        Created by <a href="http://www.github.com/MohammadYounes" style="color:orange">Mohammad Younes</a>
+        Created by <a href="http://www.github.com/MohammadYounes" style="color:orange" target="_blank">Mohammad Younes</a>
       </div>
 		<div class="links">
 			<script data-gittip-username="MohammadYounes" data-gittip-widget="button" src="//gttp.co/v1.js"></script>
 		</div>
       
       <div class="affiliates">
-        <a class="left" href="https://github.com/MohammadYounes/rtlcss">
+        <a class="left" href="https://github.com/MohammadYounes/rtlcss" target="_blank">
           <img width="40" src="https://avatars0.githubusercontent.com/u/7704547?s=140">
           <div>RTL CSS</div>
         </a>
@@ -120,13 +120,13 @@
 		<div class="right">
           <img width="40" src="https://avatars1.githubusercontent.com/u/5796209?s=140">
           <div>
-		  	<a href="http://semantic-ui.com">Semantic</a> 
+		  	<a href="http://semantic-ui.com" target="_blank">Semantic</a> 
 		  	| 
-		  	<a href="http://semantic-ui.me" style="margin-left: 0;">سيمانتك</a>
+		  	<a href="http://semantic-ui.me" target="_blank" style="margin-left: 0;">سيمانتك</a>
 		  </div>
 		 </div>
 		
-        <a href="http://www.isresponsive.com">
+        <a href="http://www.isresponsive.com" target="_blank">
           <img src="http://www.isresponsive.com/Images/logo2.png">
           <div>www.isResponsive.com</div>
         </a>

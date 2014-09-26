@@ -31,6 +31,8 @@
 			<% end %>			
 		<%end%>
 
+
+            
 <pre>
 <code class="lang-javascript"><% if typeof @script == 'string' :%> <%- @script %> <% else :%> <%for line in @script:%><%-line+'\n'%> <%end%> <% end %></code>
 </pre>
@@ -60,7 +62,17 @@
 				<span> Run </span>
 			</a>
 		</div>
-		<% end %>
+		<% end %>           
+        <% if @remark :%>
+            <div class="ui small info message">
+            <div class="content">
+                <p>
+                <i class="fa fa-info-circle"></i>
+                <%-@remark%> 
+                </p>
+            </div>
+            </div>
+        <% end %>       
 		
 	</div>
 	<br/>

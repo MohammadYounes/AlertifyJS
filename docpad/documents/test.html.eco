@@ -27,29 +27,26 @@ component:	'alert'
       <div class="segment">
         <h1><i class="fa fa-code"></i> Demo</h1>
         <hr />
+
+
+				<button>Dismiss All</button>
 <pre>
 <code class="lang-javascript">
-//nagging message
-var x = 3;
-var msg = alertify.message("Nag!",0, function(){
-	setTimeout(function(){msg.push("I'm back", 5);}, 1000);
-	if(x-- == 0){
-		msg.callback = null;
-		setTimeout(function(){msg.dismiss();}, 1000);
-	}
+$(function(){   
+		var msg;
+    var interval = setInterval(function(){
+        msg = alertify.message('test',0);
+				msg.ondismiss = function(){ return new Date().getMilliseconds()%2 == 0;}
+				},100);
+    setTimeout(function(){
+        clearInterval(interval);},1000);
+    
+    $('button').click(function(){
+        msg.dismissOthers();
+    });
 });
-/*var candismiss = false;
-msg.ondismiss = function(){ return candismiss;}
-$(msg.__internal.element).on('mouseout', function(){candismiss = true;});
-msg.delay(0);
 
-var i = 0;
-setInterval(function(){
-	msg.setContent("Timer: " +(++i));
-	if(i<11)
-		msg.delay();
-},1000);
-*/
+
 </code> 
 </pre>
 
