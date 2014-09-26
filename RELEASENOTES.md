@@ -1,5 +1,5 @@
 # Release Notes
-* **v0.6.1** [27 Sep. 2014]
+* **v0.7.0** [27 Sep. 2014]
   * New API features :
 	* Close all open dialogs
 	* Close all open dialogs except current.
