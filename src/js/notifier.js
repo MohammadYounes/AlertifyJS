@@ -228,6 +228,7 @@
                  */
                 dismissOthers: function () {
                     notifier.dismissAll(this);
+                    return this;
                 }
             });
         }
