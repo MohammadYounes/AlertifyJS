@@ -33,7 +33,7 @@
                     onok = _value;
                     oncancel = _onok;
                     break;
-                case 4:
+                case 5:
                     title = _title;
                     message = _message;
                     value = _value;
