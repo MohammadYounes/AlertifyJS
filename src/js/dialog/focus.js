@@ -24,6 +24,10 @@
                         element = instance.__internal.buttons[focus.element].element;
                     }
                 }
+                // for button-less dialogs, default to first reset element.
+                if ((typeof element === 'undefined' || element === null) && instance.__internal.buttons.length === 0) {
+                    element = instance.elements.reset[0];
+                }
                 // focus
                 if (element && element.focus) {
                     element.focus();
@@ -59,10 +63,10 @@
             if (instance && instance.isModal()) {
                 // determine reset target to enable forward/backward tab cycle.
                 var resetTarget, target = event.srcElement || event.target;
-                var lastResetLink = target === instance.elements.reset[1];
+                var lastResetElement = target === instance.elements.reset[1] || (instance.__internal.buttons.length === 0 && target === document.body);
 
                 // if last reset link, then go to maximize or close
-                if (lastResetLink) {
+                if (lastResetElement) {
                     if (instance.setting('maximizable')) {
                         resetTarget = instance.elements.commands.maximize;
                     } else if (instance.setting('closable')) {
@@ -75,7 +79,7 @@
                         // button focus element, go to first available button
                         if (target === instance.elements.reset[0]) {
                             resetTarget = instance.elements.buttons.auxiliary.firstChild || instance.elements.buttons.primary.firstChild;
-                        } else if (lastResetLink) {
+                        } else if (lastResetElement) {
                             //restart the cycle by going to first reset link
                             resetTarget = instance.elements.reset[0];
                         }
