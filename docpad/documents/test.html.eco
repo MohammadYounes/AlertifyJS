@@ -27,26 +27,16 @@ component:	'alert'
       <div class="segment">
         <h1><i class="fa fa-code"></i> Demo</h1>
         <hr />
-
-
-				<button>Dismiss All</button>
 <pre>
 <code class="lang-javascript">
-$(function(){   
-		var msg;
-    var interval = setInterval(function(){
-        msg = alertify.message('test',0);
-				msg.ondismiss = function(){ return new Date().getMilliseconds()%2 == 0;}
-				},100);
-    setTimeout(function(){
-        clearInterval(interval);},1000);
-    
-    $('button').click(function(){
-        msg.dismissOthers();
-    });
+alertify.minimalDialog || alertify.dialog('minimalDialog',function(){
+    return {
+        main:function(content){
+            this.setContent(content); 
+        }
+    };
 });
-
-
+alertify.minimalDialog("Browser dialogs made easy!").set('basic',true);
 </code> 
 </pre>
 

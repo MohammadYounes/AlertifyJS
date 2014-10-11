@@ -1,4 +1,12 @@
 # Release Notes
+
+* **v0.8.0** [11 Oct. 2014]
+  * New dialog option: Basic view mode.
+  * Support creating button-less dialogs.
+  * Fixes tab cycle for Opera.
+  * Fixes missing focus outline for FireFox.
+  * Fixes prompt dialog 5-paramters constructor. **Thanks @TomTasche**
+
 * **v0.7.0** [27 Sep. 2014]
   * New API features :
 	* Close all open dialogs

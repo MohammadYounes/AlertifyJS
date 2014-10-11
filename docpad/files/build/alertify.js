@@ -7,7 +7,7 @@
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module AlertifyJS
- * @version 0.7.0
+ * @version 0.8.0
  */
 ( function ( window ) {
     'use strict';
@@ -28,6 +28,7 @@
      */
     var defaults = {
         modal:true,
+        basic:false,
         movable:true,
         resizable:true,
         closable:true,
@@ -254,7 +255,7 @@
                 /*tab index required to fire click event before body focus*/
                 modal: '<div class="ajs-modal" tabindex="0"></div>',
                 dialog: '<div class="ajs-dialog" tabindex="0"></div>',
-                reset: '<a class="ajs-reset" href="#"></a>',
+                reset: '<button class="ajs-reset"></button>',
                 commands: '<div class="ajs-commands"><button class="ajs-pin"></button><button class="ajs-maximize"></button><button class="ajs-close"></button></div>',
                 header: '<div class="ajs-header"></div>',
                 body: '<div class="ajs-body"></div>',
@@ -286,7 +287,8 @@
                 maximized: 'ajs-maximized',
                 animationIn: 'ajs-in',
                 animationOut: 'ajs-out',
-                shake:'ajs-shake'
+                shake:'ajs-shake',
+                basic:'ajs-basic'
             };
 			
         /**
@@ -344,11 +346,12 @@
                     activeElement:document.body,
                     timerIn:undefined,
                     timerOut:undefined,
-                    buttons: setup.buttons,
+                    buttons: setup.buttons || [],
                     focus: setup.focus,
                     options: {
                         title: undefined,
                         modal: undefined,
+                        basic:undefined,
                         pinned: undefined,
                         movable: undefined,
                         resizable: undefined,
@@ -389,7 +392,7 @@
                 elements.modal = elements.root.lastChild;
                 elements.modal.innerHTML = templates.dialog;
                 elements.dialog = elements.modal.firstChild;
-                elements.dialog.innerHTML = templates.reset + templates.commands + templates.header + templates.body + templates.footer + templates.reset;
+                elements.dialog.innerHTML = templates.reset + templates.commands + templates.header + templates.body + templates.footer + templates.resizeHandle + templates.reset;
 
                 //reset links
                 elements.reset = [];
@@ -413,8 +416,10 @@
 
                 //footer
                 elements.footer = elements.body.nextSibling;
-                elements.footer.innerHTML = templates.buttons.auxiliary + templates.buttons.primary + templates.resizeHandle;
-                elements.resizeHandle = elements.footer.lastChild;
+                elements.footer.innerHTML = templates.buttons.auxiliary + templates.buttons.primary;
+                
+                //resize handle
+                elements.resizeHandle = elements.footer.nextSibling;
 
                 //buttons
                 elements.buttons = {};
@@ -468,6 +473,7 @@
                 instance.setting('title', setup.options.title === undefined ? alertify.defaults.glossary.title : setup.options.title);
 				
                 instance.setting('modal', setup.options.modal === undefined ? alertify.defaults.modal : setup.options.modal);
+                instance.setting('basic', setup.options.basic === undefined ? alertify.defaults.basic : setup.options.basic);
 							
                 instance.setting('movable', setup.options.movable === undefined ? alertify.defaults.movable : setup.options.movable);
                 instance.setting('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
@@ -533,7 +539,6 @@
          * Toggles the dialog display mode
          *
          * @param {Object} instance The dilog instance.
-         * @param {Boolean} on True to make it modal, false otherwise.
          *
          * @return {undefined}
          */
@@ -565,6 +570,23 @@
 										
                     ensureNoOverflow();
                 }
+            }
+        }
+
+        /**
+         * Toggles the dialog basic view mode 
+         *
+         * @param {Object} instance The dilog instance.
+         *
+         * @return {undefined}
+         */
+        function updateBasicMode(instance){
+            if (instance.setting('basic')) {
+                // add class
+                addClass(instance.elements.root, classes.basic);
+            } else {
+                // remove class
+                removeClass(instance.elements.root, classes.basic);
             }
         }
 		
@@ -613,6 +635,9 @@
                 break;
             case 'modal':
                 updateDisplayMode(instance);
+                break;
+            case 'basic':
+                updateBasicMode(instance);
                 break;
             case 'pinned':
                 updatePinned(instance);
@@ -1059,6 +1084,9 @@
                     return button.key === keyCode;
                 });
                 return false;
+            } else if (instance.__internal.buttons.length === 0 && keyCode === keys.ESC && instance.get('closable') === true) {
+                triggerClose(instance);
+                return false;
             }
         }
         /**
@@ -1101,8 +1129,17 @@
                 // the focus element.
                 var element = focus.element;
                 // a number means a button index
-                if (typeof focus.element === 'number') {
-                    element = instance.__internal.buttons[focus.element].element;
+                if (typeof focus.element === 'number' && instance.__internal.buttons.length > focus.element) {
+                    //in basic view, skip focusing the buttons.
+                    if (instance.get('basic') === true) {
+                        element = instance.elements.reset[0];
+                    } else {
+                        element = instance.__internal.buttons[focus.element].element;
+                    }
+                }
+                // for button-less dialogs, default to first reset element.
+                if ((typeof element === 'undefined' || element === null) && instance.__internal.buttons.length === 0) {
+                    element = instance.elements.reset[0];
                 }
                 // focus
                 if (element && element.focus) {
@@ -1139,10 +1176,10 @@
             if (instance && instance.isModal()) {
                 // determine reset target to enable forward/backward tab cycle.
                 var resetTarget, target = event.srcElement || event.target;
-                var lastResetLink = target === instance.elements.reset[1];
+                var lastResetElement = target === instance.elements.reset[1] || (instance.__internal.buttons.length === 0 && target === document.body);
 
                 // if last reset link, then go to maximize or close
-                if (lastResetLink) {
+                if (lastResetElement) {
                     if (instance.setting('maximizable')) {
                         resetTarget = instance.elements.commands.maximize;
                     } else if (instance.setting('closable')) {
@@ -1155,7 +1192,7 @@
                         // button focus element, go to first available button
                         if (target === instance.elements.reset[0]) {
                             resetTarget = instance.elements.buttons.auxiliary.firstChild || instance.elements.buttons.primary.firstChild;
-                        } else if (lastResetLink) {
+                        } else if (lastResetElement) {
                             //restart the cycle by going to first reset link
                             resetTarget = instance.elements.reset[0];
                         }
@@ -2931,7 +2968,7 @@
                     onok = _value;
                     oncancel = _onok;
                     break;
-                case 4:
+                case 5:
                     title = _title;
                     message = _message;
                     value = _value;
@@ -3046,6 +3083,7 @@
             }
         };
     });
+
     // AMD and window support
     if ( typeof define === 'function' ) {
         define( [], function () {

@@ -74,6 +74,7 @@
   padding: 4px;
   margin-right: -24px;
   margin-left: -24px;
+  min-height: 43px;
 }
 .alertify .ajs-footer .ajs-buttons.ajs-primary {
   text-align: left;
@@ -93,7 +94,7 @@
   min-width: 88px;
   min-height: 35px;
 }
-.alertify .ajs-footer .ajs-handle {
+.alertify .ajs-handle {
   position: absolute;
   display: none;
   width: 10px;
@@ -219,6 +220,14 @@
   max-height: 500px;
   overflow: auto;
 }
+.alertify.ajs-basic .ajs-header,
+.alertify.ajs-basic .ajs-footer {
+  opacity: 0;
+}
+.alertify.ajs-basic .ajs-header button,
+.alertify.ajs-basic .ajs-footer button {
+  display: none;
+}
 .ajs-no-overflow {
   overflow: hidden !important;
   outline: none;
@@ -239,6 +248,11 @@
   }
   .alertify:not(.ajs-maximized).ajs-resizable .ajs-dialog {
     min-width: initial;
+  }
+}
+@-moz-document url-prefix() {
+  .alertify button:focus {
+    outline: 1px dotted #3593D2;
   }
 }
 .alertify .ajs-dimmer,
