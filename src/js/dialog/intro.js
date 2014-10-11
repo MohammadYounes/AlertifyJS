@@ -106,7 +106,7 @@
                     activeElement:document.body,
                     timerIn:undefined,
                     timerOut:undefined,
-                    buttons: setup.buttons,
+                    buttons: setup.buttons || [],
                     focus: setup.focus,
                     options: {
                         title: undefined,

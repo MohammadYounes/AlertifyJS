@@ -63,6 +63,9 @@
                     return button.key === keyCode;
                 });
                 return false;
+            } else if (instance.__internal.buttons.length === 0 && keyCode === keys.ESC && instance.get('closable') === true) {
+                triggerClose(instance);
+                return false;
             }
         }
         /**
