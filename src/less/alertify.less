@@ -361,6 +361,15 @@
     }
 }
 
+//fix FF missing outline
+@-moz-document url-prefix() { 
+  .alertify {
+     button:focus{
+     outline: 1px dotted #3593D2;
+     }
+  }
+}
+
 // transition
 .alertify {
     // setup
