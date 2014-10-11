@@ -249,6 +249,32 @@ alertify.confirm(pre, function(){
 
 
 
+  <!--Minimal dialog-->
+	<div class="segment">
+		<h1 id="minimal"><a href="#minimal"><i class="fa fa-code"></i> </a> Minimal Button-Less Dialog </h1>
+		<hr />
+<pre>
+<code class="lang-javascript">
+alertify.minimalDialog || alertify.dialog('minimalDialog',function(){
+    return {
+        main:function(content){
+            this.setContent(content); 
+        }
+    };
+});
+alertify.minimalDialog("Minimal button-less dialog.");
+</code> 
+</pre>
+			<div class="RIGHT">		
+				<a class="button example" href="javascript:void(0);">
+					<span> Run </span>
+				</a>
+			</div>
+	<br/>		
+  </div><!--//Minimal dialog-->
+		
+
+
 
 
 		<br/>
