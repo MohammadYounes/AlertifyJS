@@ -1,12 +1,22 @@
 [
-	{
+    {
+        "type": "p",
+        "name": "modal",
+        "label": "{Boolean}",
+        "desc": "Sets the dialog display mode",
+        "defaultValue": "true",
+        "script": "alertify.{component}('Modal: false').setting('modal', false);",
+        "toggle": { "value": false }
+    },
+
+    {
 		"type": "p",
-		"name": "modal",
+		"name": "basic",
 		"label": "{Boolean}",
-		"desc": "Sets the dialog display mode",
-		"defaultValue": "true",
-		"script": "alertify.{component}('Modal: false').setting('modal', false);",
-		"toggle": { "value": false }
+		"desc": "Sets the dialog basic view mode, which hides both header/footer reserving their space as not to affect other options such as resize, move, maximize...etc.",
+		"defaultValue": "false",
+		"script": "alertify.{component}('Basic: true').setting('basic', true);",
+		"toggle": { "value": true}
 	},
 	
 	{
