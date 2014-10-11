@@ -16,7 +16,7 @@
                 /*tab index required to fire click event before body focus*/
                 modal: '<div class="ajs-modal" tabindex="0"></div>',
                 dialog: '<div class="ajs-dialog" tabindex="0"></div>',
-                reset: '<a class="ajs-reset" href="#"></a>',
+                reset: '<button class="ajs-reset"></button>',
                 commands: '<div class="ajs-commands"><button class="ajs-pin"></button><button class="ajs-maximize"></button><button class="ajs-close"></button></div>',
                 header: '<div class="ajs-header"></div>',
                 body: '<div class="ajs-body"></div>',
