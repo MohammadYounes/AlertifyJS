@@ -17,6 +17,7 @@
      */
     var defaults = {
         modal:true,
+        basic:false,
         movable:true,
         resizable:true,
         closable:true,

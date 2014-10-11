@@ -113,20 +113,20 @@
                 min-height: 35px;
             }
         }
-        //buttons
-        .handle {
-            position: absolute;
-            display: none;
-            width: 10px;
-            height: 10px;
-            right: 0;
-            bottom: 0;
-            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNy8xMS8xNEDQYmMAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAAQ0lEQVQYlaXNMQoAIAxD0dT7H657l0KX3iJuUlBUNOsPPCGJm7VDp6ryeMxMuDsAQH7owW3pyn3RS26iKxERMLN3ugOaAkaL3sWVigAAAABJRU5ErkJggg==);
-            transform: scaleX(1) /*rtl:scaleX(-1)*/;
-            cursor: se-resize;
-        }
     }
-    //footer
+
+    .handle {
+        position: absolute;
+        display: none;
+        width: 10px;
+        height: 10px;
+        right: 0;
+        bottom: 0;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNy8xMS8xNEDQYmMAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAAQ0lEQVQYlaXNMQoAIAxD0dT7H657l0KX3iJuUlBUNOsPPCGJm7VDp6ryeMxMuDsAQH7owW3pyn3RS26iKxERMLN3ugOaAkaL3sWVigAAAABJRU5ErkJggg==);
+        transform: scaleX(1) /*rtl:scaleX(-1)*/;
+        cursor: se-resize;
+    }
+
     // pass overflow control to the content
     &.no-overflow {
         .body {
@@ -318,6 +318,16 @@
             }
         }
     }
+    //basic
+    &.basic {
+        .header, .footer {
+            opacity: 0;
+
+            button {
+                display: none;
+            }
+        }
+    }
 }
 
 //helpers
@@ -333,7 +343,6 @@
 
 @media screen and (max-width: 568px) {
     .alertify {
-
         .dialog {
             min-width: 150px;
         }
@@ -363,7 +372,7 @@
     }
 
     &.hidden {
-        .dimmer, .modal {            
+        .dimmer, .modal {
             visibility: hidden;
             opacity: 0;
         }
@@ -413,7 +422,7 @@
         &.out.hidden {
             .dialog {
                 animation-name: ajs-slideOut;
-                animation-timing-function: cubic-bezier( 0.600, -0.280, 0.735, 0.045 );                
+                animation-timing-function: cubic-bezier( 0.600, -0.280, 0.735, 0.045 );
             }
         }
     }

@@ -48,7 +48,8 @@
                 maximized: 'ajs-maximized',
                 animationIn: 'ajs-in',
                 animationOut: 'ajs-out',
-                shake:'ajs-shake'
+                shake:'ajs-shake',
+                basic:'ajs-basic'
             };
 			
         /**
@@ -111,6 +112,7 @@
                     options: {
                         title: undefined,
                         modal: undefined,
+                        basic:undefined,
                         pinned: undefined,
                         movable: undefined,
                         resizable: undefined,
@@ -151,7 +153,7 @@
                 elements.modal = elements.root.lastChild;
                 elements.modal.innerHTML = templates.dialog;
                 elements.dialog = elements.modal.firstChild;
-                elements.dialog.innerHTML = templates.reset + templates.commands + templates.header + templates.body + templates.footer + templates.reset;
+                elements.dialog.innerHTML = templates.reset + templates.commands + templates.header + templates.body + templates.footer + templates.resizeHandle + templates.reset;
 
                 //reset links
                 elements.reset = [];
@@ -175,8 +177,10 @@
 
                 //footer
                 elements.footer = elements.body.nextSibling;
-                elements.footer.innerHTML = templates.buttons.auxiliary + templates.buttons.primary + templates.resizeHandle;
-                elements.resizeHandle = elements.footer.lastChild;
+                elements.footer.innerHTML = templates.buttons.auxiliary + templates.buttons.primary;
+                
+                //resize handle
+                elements.resizeHandle = elements.footer.nextSibling;
 
                 //buttons
                 elements.buttons = {};
@@ -230,6 +234,7 @@
                 instance.setting('title', setup.options.title === undefined ? alertify.defaults.glossary.title : setup.options.title);
 				
                 instance.setting('modal', setup.options.modal === undefined ? alertify.defaults.modal : setup.options.modal);
+                instance.setting('basic', setup.options.basic === undefined ? alertify.defaults.basic : setup.options.basic);
 							
                 instance.setting('movable', setup.options.movable === undefined ? alertify.defaults.movable : setup.options.movable);
                 instance.setting('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
@@ -295,7 +300,6 @@
          * Toggles the dialog display mode
          *
          * @param {Object} instance The dilog instance.
-         * @param {Boolean} on True to make it modal, false otherwise.
          *
          * @return {undefined}
          */
@@ -327,6 +331,23 @@
 										
                     ensureNoOverflow();
                 }
+            }
+        }
+
+        /**
+         * Toggles the dialog basic view mode 
+         *
+         * @param {Object} instance The dilog instance.
+         *
+         * @return {undefined}
+         */
+        function updateBasicMode(instance){
+            if (instance.setting('basic')) {
+                // add class
+                addClass(instance.elements.root, classes.basic);
+            } else {
+                // remove class
+                removeClass(instance.elements.root, classes.basic);
             }
         }
 		
@@ -375,6 +396,9 @@
                 break;
             case 'modal':
                 updateDisplayMode(instance);
+                break;
+            case 'basic':
+                updateBasicMode(instance);
                 break;
             case 'pinned':
                 updatePinned(instance);

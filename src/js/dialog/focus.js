@@ -17,7 +17,12 @@
                 var element = focus.element;
                 // a number means a button index
                 if (typeof focus.element === 'number' && instance.__internal.buttons.length > focus.element) {
-                    element = instance.__internal.buttons[focus.element].element;
+                    //in basic view, skip focusing the buttons.
+                    if (instance.get('basic') === true) {
+                        element = instance.elements.reset[0];
+                    } else {
+                        element = instance.__internal.buttons[focus.element].element;
+                    }
                 }
                 // focus
                 if (element && element.focus) {
