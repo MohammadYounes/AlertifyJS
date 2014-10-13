@@ -15,16 +15,30 @@
                 var focus = instance.__internal.focus;
                 // the focus element.
                 var element = focus.element;
+
+                switch (typeof focus.element) {
                 // a number means a button index
-                if (typeof focus.element === 'number' && instance.__internal.buttons.length > focus.element) {
-                    //in basic view, skip focusing the buttons.
-                    if (instance.get('basic') === true) {
-                        element = instance.elements.reset[0];
-                    } else {
-                        element = instance.__internal.buttons[focus.element].element;
+                case 'number':
+                    if (instance.__internal.buttons.length > focus.element) {
+                        //in basic view, skip focusing the buttons.
+                        if (instance.get('basic') === true) {
+                            element = instance.elements.reset[0];
+                        } else {
+                            element = instance.__internal.buttons[focus.element].element;
+                        }
                     }
+                    break;
+                // a string means querySelector to select from dialog body contents.
+                case 'string':
+                    element = instance.elements.body.querySelector(focus.element);
+                    break;
+                // a function should return the focus element.
+                case 'function':
+                    element = focus.element.call(instance);
+                    break;
                 }
-                // for button-less dialogs, default to first reset element.
+                
+                // if no focus element, default to first reset element.
                 if ((typeof element === 'undefined' || element === null) && instance.__internal.buttons.length === 0) {
                     element = instance.elements.reset[0];
                 }

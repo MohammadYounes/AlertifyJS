@@ -172,9 +172,14 @@ function factory(){
 					],
 					
 					/* default focus */
-					focus:{
-					
-						/* the element to receive default focus, could be a DOMElement or a button index */
+					focus:{					
+						/* the element to receive default focus, has differnt meaning based on value type:
+                            number:     action button index.
+                            string:     querySelector to select from dialog body contents.
+                            function:   when invoked, should return the focus element.
+                            DOMElement: the focus element.
+                            object:     an object that implements .focus() and .select() functions. 
+                        */
 						element: 0,
 						
 						/* indicates if the element should be selected on focus or not*/
@@ -184,16 +189,20 @@ function factory(){
 					/* dialog options, these override the defaults */
 					options: {
 						title: ...,
-						modal: ...,
-						pinned: ...,
-						movable: ...,
-						resizable: ...,
-						closable: ...,
-						maximizable: ...,
-						pinnable: ...,
-						transition: ...,
-						onshow:...,
-						onclose:...
+                        modal: ...,
+                        basic:...,
+                        pinned: ...,
+                        movable: ...,
+                        resizable: ...,
+                        closable: ...,
+                        maximizable: ...,
+                        pinnable: ...,
+                        transition: ...,
+                        padding:...,
+                        overflow:...,
+                        onshow:...,
+                        onclose:...,
+                        onfocus:...,
 					}
 				};
 		 },
