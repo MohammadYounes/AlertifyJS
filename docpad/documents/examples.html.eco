@@ -251,7 +251,7 @@ alertify.confirm(pre, function(){
 
   <!--Minimal dialog-->
 	<div class="segment">
-		<h1 id="minimal"><a href="#minimal"><i class="fa fa-code"></i> </a> Minimal Button-Less Dialog </h1>
+		<h1 id="minimal"><a href="#minimal"><i class="fa fa-code"></i> </a> Minimal Dialog </h1>
 		<hr />
 <pre>
 <code class="lang-javascript">
@@ -272,6 +272,87 @@ alertify.minimalDialog("Minimal button-less dialog.");
 			</div>
 	<br/>		
   </div><!--//Minimal dialog-->
+
+
+
+  <!--Generic dialog-->
+	<div class="segment">
+		<h1 id="generic"><a href="#generic"><i class="fa fa-code"></i> </a> Button-Less Generic Dialog </h1>
+		<hr />
+<div style="display:none">
+<script type="text/javascript">
+function login(btn){
+    var $btn = $(btn);
+   $btn.text('Authenticating ...').attr('disabled',true).siblings('fieldset').attr('disabled',true);
+   alertify.genericDialog().set('closable',false);
+   setTimeout(function(){
+        alertify.genericDialog().close().set('closable',true);
+        alertify.success('Authenticated');
+        setTimeout(function(){
+            $btn.siblings('fieldset').attr('disabled',false).end().attr('disabled',false).text('Login');
+        },100);
+   },3000);
+    
+}
+</script>
+<div id="loginForm">
+    <div style="padding:8px;text-align:center;">
+        <fieldset style="border:none;margin:0;padding:0;">
+            <div>
+                <label> Username </label><br/>
+                <input type='text' value="Mohammad" style="width:80%;padding: 8px;margin: 4px;"/> 
+            </div>
+
+            <div>
+                <label> Password </label><br/>
+                <input type='password' value="password" style="width:80%;padding: 8px;margin: 4px;"/> 
+            </div>   
+        </fieldset>
+        <br/>
+        <button onclick="login(this);" style="width:80%;padding: 8px;margin: 8px 4px 0;"> Login </button>        
+    </div>
+</div>
+
+</div>
+<pre>
+<code class="lang-javascript">
+alertify.genericDialog || alertify.dialog('genericDialog',function(){
+    return {
+        main:function(content){
+            this.setContent(content);
+        },
+        setup:function(){
+            return {
+                focus:{
+                    element:function(){
+                        return this.elements.body.querySelector(this.get('selector'));
+                    },
+                    select:true
+                },
+                options:{
+                    basic:true,
+                    maximizable:false,
+                    resizable:false,
+                    padding:false
+                }
+            };
+        },
+        settings:{
+            selector:undefined
+        }
+    };
+});
+//force focusing password box
+alertify.genericDialog ($('#loginForm')[0]).set('selector', 'input[type="password"]');
+</code> 
+</pre>
+			<div class="RIGHT">		
+				<a class="button example" href="javascript:void(0);">
+					<span> Run </span>
+				</a>
+			</div>
+	<br/>		
+  </div><!--//Generic dialog-->
 		
 
 
