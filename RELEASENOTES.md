@@ -1,4 +1,6 @@
 # Release Notes
+* **v0.9.0** [14 Oct. 2014]
+  * New API feature: new options to determine focus element.        
 
 * **v0.8.0** [11 Oct. 2014]
   * New dialog option: Basic view mode.

@@ -220,13 +220,11 @@
   max-height: 500px;
   overflow: auto;
 }
-.alertify.ajs-basic .ajs-header,
-.alertify.ajs-basic .ajs-footer {
+.alertify.ajs-basic .ajs-header {
   opacity: 0;
 }
-.alertify.ajs-basic .ajs-header button,
-.alertify.ajs-basic .ajs-footer button {
-  display: none;
+.alertify.ajs-basic .ajs-footer {
+  visibility: hidden;
 }
 .ajs-no-overflow {
   overflow: hidden !important;

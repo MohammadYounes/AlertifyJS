@@ -21,7 +21,18 @@ component:	'alert'
       </div>
     </div>
   </section>
-  
+  <div style="display:none">
+    <div id="c">
+    This my custom content
+        <select> 
+            <option> First </option>
+            <option> Second </option>
+        </select>
+
+        <textarea> Demo </textarea>
+
+    </div>
+  </div>
   <section class="dark">
     <div class="content">
       <div class="segment">
@@ -33,10 +44,22 @@ alertify.minimalDialog || alertify.dialog('minimalDialog',function(){
     return {
         main:function(content){
             this.setContent(content); 
+        },
+        setup:function(){
+            var self = this;
+            return{
+                focus:{element:self.focusSelector,select:true}
+            }
+        },
+        focusSelector:function(){
+            return this.elements.body.querySelector(this.get('selector'));
+        },
+        settings:{
+            selector:undefined
         }
     };
 });
-alertify.minimalDialog("Browser dialogs made easy!").set('basic',true);
+alertify.minimalDialog($('#c')[0]).set('selector', 'textarea');
 </code> 
 </pre>
 
