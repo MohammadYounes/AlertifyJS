@@ -46,7 +46,8 @@ docpadConfig = {
 				'/css/semantic.min.css'
 				'http://fonts.googleapis.com/earlyaccess/droidarabickufi.css'
 				'http://fonts.googleapis.com/css?family=Droid+Sans:400,700'
-				'/css/site.min.css'
+				'/css/site.min.css',
+                'styles/style.css'
 			]
 
 			# The website's scripts
@@ -56,7 +57,8 @@ docpadConfig = {
 				'/js/jquery.mobile.custom.min.js'
 				'/js/scrollLock.min.js'
 				'/js/semantic.min.js'
-				'/js/site.min.js'	
+				'/js/site.min.js',
+                '/scripts/script.js'	
 			]
 		
 		# Get the documentation data
