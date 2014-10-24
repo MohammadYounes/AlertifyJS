@@ -9,7 +9,9 @@
         ENTER: 13,
         ESC: 27,
         F1: 112,
-        F12: 123
+        F12: 123,
+        LEFT: 37,
+        RIGHT: 39
     };
     /**
      * Default options 

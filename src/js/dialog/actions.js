@@ -79,7 +79,21 @@
         function keydownHandler(event) {
             var instance = openDialogs[openDialogs.length - 1];
             var keyCode = event.keyCode;
-            if (keyCode < keys.F12 + 1 && keyCode > keys.F1 - 1 && usedKeys.indexOf(keyCode) > -1) {
+            if (keyCode === keys.LEFT || keyCode === keys.RIGHT) {
+                var buttons = instance.__internal.buttons;
+                for (var x = 0; x < buttons.length; x += 1) {
+                    if (document.activeElement === buttons[x].element) {
+                        switch (keyCode) {
+                        case keys.LEFT:
+                            buttons[(x || buttons.length) - 1].element.focus();
+                            return;
+                        case keys.RIGHT:
+                            buttons[(x + 1) % buttons.length].element.focus();
+                            return;
+                        }
+                    }
+                }
+            }else if (keyCode < keys.F12 + 1 && keyCode > keys.F1 - 1 && usedKeys.indexOf(keyCode) > -1) {
                 event.preventDefault();
                 event.stopPropagation();
                 triggerCallback(instance, function (button) {
