@@ -20,6 +20,7 @@
     var defaults = {
         modal:true,
         basic:false,
+        frameless:false,
         movable:true,
         resizable:true,
         closable:true,

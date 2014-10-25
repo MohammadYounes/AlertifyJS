@@ -49,7 +49,8 @@
                 animationIn: 'ajs-in',
                 animationOut: 'ajs-out',
                 shake:'ajs-shake',
-                basic:'ajs-basic'
+                basic:'ajs-basic',
+                frameless:'ajs-frameless'
             };
 			
         /**
@@ -113,6 +114,7 @@
                         title: undefined,
                         modal: undefined,
                         basic:undefined,
+                        frameless:undefined,
                         pinned: undefined,
                         movable: undefined,
                         resizable: undefined,
@@ -235,6 +237,7 @@
 				
                 instance.setting('modal', setup.options.modal === undefined ? alertify.defaults.modal : setup.options.modal);
                 instance.setting('basic', setup.options.basic === undefined ? alertify.defaults.basic : setup.options.basic);
+                instance.setting('frameless', setup.options.frameless === undefined ? alertify.defaults.frameless : setup.options.frameless);
 							
                 instance.setting('movable', setup.options.movable === undefined ? alertify.defaults.movable : setup.options.movable);
                 instance.setting('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
@@ -350,6 +353,23 @@
                 removeClass(instance.elements.root, classes.basic);
             }
         }
+
+        /**
+         * Toggles the dialog frameless view mode 
+         *
+         * @param {Object} instance The dilog instance.
+         *
+         * @return {undefined}
+         */
+        function updateFramelessMode(instance){
+            if (instance.setting('frameless')) {
+                // add class
+                addClass(instance.elements.root, classes.frameless);
+            } else {
+                // remove class
+                removeClass(instance.elements.root, classes.frameless);
+            }
+        }
 		
         /**
          * Helper: Brings the modeless dialog to front, attached to modeless dialogs.
@@ -399,6 +419,9 @@
                 break;
             case 'basic':
                 updateBasicMode(instance);
+                break;
+            case 'frameless':
+                updateFramelessMode(instance);
                 break;
             case 'pinned':
                 updatePinned(instance);
