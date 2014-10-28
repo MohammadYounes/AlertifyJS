@@ -42,6 +42,40 @@
                 }
                 return this;
             },
+            moveTo:function(x,y){
+                if(!isNaN(x) && !isNaN(y)){
+                    var element = this.elements.dialog,
+                        current = element,
+                        offsetLeft = 0,
+                        offsetTop = 0;
+                    
+                    //subtract existing left,top
+                    if (element.style.left) {
+                        offsetLeft -= parseInt(element.style.left, 10);
+                    }
+                    if (element.style.top) {
+                        offsetTop -= parseInt(element.style.top, 10);
+                    }
+                    //calc offset
+                    do {
+                        offsetLeft += current.offsetLeft;
+                        offsetTop += current.offsetTop;
+                    } while (current = current.offsetParent);
+
+                    //calc left, top
+                    var left = (x - offsetLeft);
+                    var top  = (y - offsetTop);
+
+                    //// rtl handling
+                    if (isRightToLeft()) {
+                        left *= -1;
+                    }
+
+                    element.style.left = left + 'px';
+                    element.style.top = top + 'px';
+                }
+                return this;
+            },
             /**
              * Gets or Sets dialog settings/options 
              *
