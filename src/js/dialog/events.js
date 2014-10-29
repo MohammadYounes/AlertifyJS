@@ -6,7 +6,7 @@
          * @return {undefined}
          */
         function bindEvents(instance) {
-            // if first dialog, hook body handlers
+            // if first dialog, hook global handlers
             if (openDialogs.length === 1) {
                 //global
                 on(window, 'resize', windowResize);
@@ -15,15 +15,15 @@
                 on(document.body, 'focus', onReset);
 
                 //move
-                on(document.body, 'mousemove', move);
-                on(document.body, 'touchmove', move);
-                on(document.body, 'mouseup', endMove);
-                on(document.body, 'touchend', endMove);
+                on(document.documentElement, 'mousemove', move);
+                on(document.documentElement, 'touchmove', move);
+                on(document.documentElement, 'mouseup', endMove);
+                on(document.documentElement, 'touchend', endMove);
                 //resize
-                on(document.body, 'mousemove', resize);
-                on(document.body, 'touchmove', resize);
-                on(document.body, 'mouseup', endResize);
-                on(document.body, 'touchend', endResize);
+                on(document.documentElement, 'mousemove', resize);
+                on(document.documentElement, 'touchmove', resize);
+                on(document.documentElement, 'mouseup', endResize);
+                on(document.documentElement, 'touchend', endResize);
             }
 
             // common events
@@ -61,7 +61,7 @@
          * @return {undefined}
          */
         function unbindEvents(instance) {
-            // if last dialog, remove body handlers
+            // if last dialog, remove global handlers
             if (openDialogs.length === 1) {
                 //global
                 off(window, 'resize', windowResize);
@@ -69,11 +69,11 @@
                 off(document.body, 'keydown', keydownHandler);
                 off(document.body, 'focus', onReset);
                 //move
-                off(document.body, 'mousemove', move);
-                off(document.body, 'mouseup', endMove);
+                off(document.documentElement, 'mousemove', move);
+                off(document.documentElement, 'mouseup', endMove);
                 //resize
-                off(document.body, 'mousemove', resize);
-                off(document.body, 'mouseup', endResize);
+                off(document.documentElement, 'mousemove', resize);
+                off(document.documentElement, 'mouseup', endResize);
             }
 
             // common events
