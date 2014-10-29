@@ -30,9 +30,9 @@
                     onok = _onok;
                     break;
                 }
-                this.setting('title', title);
-                this.setting('message', message);
-                this.setting('onok', onok);
+                this.set('title', title);
+                this.set('message', message);
+                this.set('onok', onok);
                 return this;
             },
             setup: function () {
@@ -82,8 +82,8 @@
                 }
             },
             callback: function (closeEvent) {
-                if (typeof this.settings.onok === 'function') {
-                    var returnValue = this.settings.onok.call(undefined, closeEvent);
+                if (typeof this.get('onok') === 'function') {
+                    var returnValue = this.get('onok').call(undefined, closeEvent);
                     if (typeof returnValue !== 'undefined') {
                         closeEvent.cancel = !returnValue;
                     }

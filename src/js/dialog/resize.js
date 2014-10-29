@@ -129,7 +129,7 @@
                     eventSrc = event;
                 }
                 if (eventSrc) {
-                    resizeElement(eventSrc, resizable.elements.dialog, !resizable.setting('modal') && !resizable.setting('pinned'));
+                    resizeElement(eventSrc, resizable.elements.dialog, !resizable.get('modal') && !resizable.get('pinned'));
                 }
             }
         }
@@ -177,7 +177,7 @@
          * @return {undefined}
          */
         function updateResizable(instance) {
-            if (instance.setting('resizable')) {
+            if (instance.get('resizable')) {
                 // add class
                 addClass(instance.elements.root, classes.resizable);
                 if (instance.isOpen()) {

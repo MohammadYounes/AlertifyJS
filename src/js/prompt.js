@@ -41,11 +41,11 @@
                     oncancel = _oncancel;
                     break;
                 }
-                this.setting('title', title);
-                this.setting('message', message);
-                this.setting('value', value);
-                this.setting('onok', onok);
-                this.setting('oncancel', oncancel);
+                this.set('title', title);
+                this.set('message', message);
+                this.set('value', value);
+                this.set('onok', onok);
+                this.set('oncancel', oncancel);
                 return this;
             },
             setup: function () {
@@ -76,7 +76,7 @@
             build: function () {
                 input.className = alertify.defaults.theme.input;
                 input.setAttribute('type', 'text');
-                input.value = this.settings.value;
+                input.value = this.get('value');
                 this.elements.content.appendChild(p);
                 this.elements.content.appendChild(input);
             },
@@ -129,16 +129,16 @@
                 switch (closeEvent.index) {
                 case 0:
                     this.value = input.value;
-                    if (typeof this.settings.onok === 'function') {
-                        returnValue = this.settings.onok.call(undefined, closeEvent, this.value);
+                    if (typeof this.get('onok') === 'function') {
+                        returnValue = this.get('onok').call(undefined, closeEvent, this.value);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }
                     }
                     break;
                 case 1:
-                    if (typeof this.settings.oncancel === 'function') {
-                        returnValue = this.settings.oncancel.call(undefined, closeEvent);
+                    if (typeof this.get('oncancel') === 'function') {
+                        returnValue = this.get('oncancel').call(undefined, closeEvent);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }

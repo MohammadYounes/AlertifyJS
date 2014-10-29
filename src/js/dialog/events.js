@@ -38,17 +38,17 @@
             on(instance.elements.dialog, transition.type, instance.__internal.transitionInHandler);
 
             // modelss only events
-            if (!instance.setting('modal')) {
+            if (!instance.get('modal')) {
                 bindModelessEvents(instance);
             }
 
             // resizable
-            if (instance.setting('resizable')) {
+            if (instance.get('resizable')) {
                 bindResizableEvents(instance);
             }
 
             // movable
-            if (instance.setting('movable')) {
+            if (instance.get('movable')) {
                 bindMovableEvents(instance);
             }
         }
@@ -86,17 +86,17 @@
             on(instance.elements.dialog, transition.type, instance.__internal.transitionOutHandler);
 
             // modelss only events
-            if (!instance.setting('modal')) {
+            if (!instance.get('modal')) {
                 unbindModelessEvents(instance);
             }
 
             // movable
-            if (instance.setting('movable')) {
+            if (instance.get('movable')) {
                 unbindMovableEvents(instance);
             }
 
             // resizable
-            if (instance.setting('resizable')) {
+            if (instance.get('resizable')) {
                 unbindResizableEvents(instance);
             }
 

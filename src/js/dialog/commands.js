@@ -59,7 +59,7 @@
          */
         function pin(instance) {
             //pin the dialog
-            instance.setting('pinned', true);
+            instance.set('pinned', true);
         }
 
         /**
@@ -71,7 +71,7 @@
          */
         function unpin(instance) {
             //unpin the dialog 
-            instance.setting('pinned', false);
+            instance.set('pinned', false);
         }
 
 
@@ -114,7 +114,7 @@
          * @return {undefined}
          */
         function updatePinnable(instance) {
-            if (instance.setting('pinnable')) {
+            if (instance.get('pinnable')) {
                 // add class
                 addClass(instance.elements.root, classes.pinnable);
             } else {
@@ -175,7 +175,7 @@
          */
         function updateAbsPositionFix(instance) {
             // if modeless and unpinned add fix
-            if (!instance.setting('modal') && !instance.setting('pinned')) {
+            if (!instance.get('modal') && !instance.get('pinned')) {
                 addAbsPositionFix(instance);
             } else {
                 removeAbsPositionFix(instance);
@@ -190,7 +190,7 @@
          * @return {undefined}
          */
         function updatePinned(instance) {
-            if (instance.setting('pinned')) {
+            if (instance.get('pinned')) {
                 removeClass(instance.elements.root, classes.unpinned);
                 if (instance.isOpen()) {
                     removeAbsPositionFix(instance);
@@ -212,7 +212,7 @@
          * @return {undefined}
          */
         function updateMaximizable(instance) {
-            if (instance.setting('maximizable')) {
+            if (instance.get('maximizable')) {
                 // add class
                 addClass(instance.elements.root, classes.maximizable);
             } else {
@@ -230,7 +230,7 @@
          * @return {undefined}
          */
         function updateClosable(instance) {
-            if (instance.setting('closable')) {
+            if (instance.get('closable')) {
                 // add class
                 addClass(instance.elements.root, classes.closable);
                 bindClosableEvents(instance);

@@ -81,9 +81,9 @@
 
                 // if last reset link, then go to maximize or close
                 if (lastResetElement) {
-                    if (instance.setting('maximizable')) {
+                    if (instance.get('maximizable')) {
                         resetTarget = instance.elements.commands.maximize;
-                    } else if (instance.setting('closable')) {
+                    } else if (instance.get('closable')) {
                         resetTarget = instance.elements.commands.close;
                     }
                 }

@@ -234,26 +234,26 @@
 
                 
                 //settings
-                instance.setting('title', setup.options.title === undefined ? alertify.defaults.glossary.title : setup.options.title);
+                instance.set('title', setup.options.title === undefined ? alertify.defaults.glossary.title : setup.options.title);
 				
-                instance.setting('modal', setup.options.modal === undefined ? alertify.defaults.modal : setup.options.modal);
-                instance.setting('basic', setup.options.basic === undefined ? alertify.defaults.basic : setup.options.basic);
-                instance.setting('frameless', setup.options.frameless === undefined ? alertify.defaults.frameless : setup.options.frameless);
+                instance.set('modal', setup.options.modal === undefined ? alertify.defaults.modal : setup.options.modal);
+                instance.set('basic', setup.options.basic === undefined ? alertify.defaults.basic : setup.options.basic);
+                instance.set('frameless', setup.options.frameless === undefined ? alertify.defaults.frameless : setup.options.frameless);
 							
-                instance.setting('movable', setup.options.movable === undefined ? alertify.defaults.movable : setup.options.movable);
-                instance.setting('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
+                instance.set('movable', setup.options.movable === undefined ? alertify.defaults.movable : setup.options.movable);
+                instance.set('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
 				
-                instance.setting('closable', setup.options.closable === undefined ? alertify.defaults.closable : setup.options.closable);
-                instance.setting('maximizable', setup.options.maximizable === undefined ? alertify.defaults.maximizable : setup.options.maximizable);
-                instance.setting('startMaximized', setup.options.startMaximized === undefined ? alertify.defaults.startMaximized : setup.options.startMaximized);
+                instance.set('closable', setup.options.closable === undefined ? alertify.defaults.closable : setup.options.closable);
+                instance.set('maximizable', setup.options.maximizable === undefined ? alertify.defaults.maximizable : setup.options.maximizable);
+                instance.set('startMaximized', setup.options.startMaximized === undefined ? alertify.defaults.startMaximized : setup.options.startMaximized);
 				
-                instance.setting('pinnable', setup.options.pinnable === undefined ? alertify.defaults.pinnable : setup.options.pinnable);
-                instance.setting('pinned', setup.options.pinned === undefined ? alertify.defaults.pinned : setup.options.pinned);
+                instance.set('pinnable', setup.options.pinnable === undefined ? alertify.defaults.pinnable : setup.options.pinnable);
+                instance.set('pinned', setup.options.pinned === undefined ? alertify.defaults.pinned : setup.options.pinned);
 				
-                instance.setting('transition', setup.options.transition === undefined ? alertify.defaults.transition : setup.options.transition);
+                instance.set('transition', setup.options.transition === undefined ? alertify.defaults.transition : setup.options.transition);
 
-                instance.setting('padding', setup.options.padding === undefined ? alertify.defaults.padding : setup.options.padding);
-                instance.setting('overflow', setup.options.overflow === undefined ? alertify.defaults.overflow : setup.options.overflow);
+                instance.set('padding', setup.options.padding === undefined ? alertify.defaults.padding : setup.options.padding);
+                instance.set('overflow', setup.options.overflow === undefined ? alertify.defaults.overflow : setup.options.overflow);
 				
 
                 // allow dom customization
@@ -309,7 +309,7 @@
          * @return {undefined}
          */
         function updateDisplayMode(instance){
-            if(instance.setting('modal')){
+            if(instance.get('modal')){
 
                 //make modal
                 removeClass(instance.elements.root, classes.modeless);
@@ -347,7 +347,7 @@
          * @return {undefined}
          */
         function updateBasicMode(instance){
-            if (instance.setting('basic')) {
+            if (instance.get('basic')) {
                 // add class
                 addClass(instance.elements.root, classes.basic);
             } else {
@@ -364,7 +364,7 @@
          * @return {undefined}
          */
         function updateFramelessMode(instance){
-            if (instance.setting('frameless')) {
+            if (instance.get('frameless')) {
                 // add class
                 addClass(instance.elements.root, classes.frameless);
             } else {

@@ -221,7 +221,7 @@
                     bindEvents(this);
 
                     if(modal !== undefined){
-                        this.setting('modal', modal);
+                        this.set('modal', modal);
                     }
 					
                     ensureNoOverflow();
@@ -262,8 +262,8 @@
                     removeClass(this.elements.root, classes.hidden);
 
                     // allow custom `onshow` method
-                    if ( typeof this.setting('onshow') === 'function' ) {
-                        this.setting('onshow')();
+                    if ( typeof this.get('onshow') === 'function' ) {
+                        this.get('onshow')();
                     }
 
                 }else{
@@ -307,8 +307,8 @@
                     }
 
                     // allow custom `onclose` method
-                    if ( typeof this.setting('onclose') === 'function' ) {
-                        this.setting('onclose')();
+                    if ( typeof this.get('onclose') === 'function' ) {
+                        this.get('onclose')();
                     }
 					
                     //remove from open dialogs               

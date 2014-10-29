@@ -77,10 +77,10 @@
                     oncancel = _oncancel;
                     break;
                 }
-                this.setting('title', title);
-                this.setting('message', message);
-                this.setting('onok', onok);
-                this.setting('oncancel', oncancel);
+                this.set('title', title);
+                this.set('message', message);
+                this.set('onok', onok);
+                this.set('oncancel', oncancel);
                 return this;
             },
             setup: function () {
@@ -157,16 +157,16 @@
                 var returnValue;
                 switch (closeEvent.index) {
                 case 0:
-                    if (typeof this.settings.onok === 'function') {
-                        returnValue = this.settings.onok.call(undefined, closeEvent);
+                    if (typeof this.get('onok') === 'function') {
+                        returnValue = this.get('onok').call(undefined, closeEvent);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }
                     }
                     break;
                 case 1:
-                    if (typeof this.settings.oncancel === 'function') {
-                        returnValue = this.settings.oncancel.call(undefined, closeEvent);
+                    if (typeof this.get('oncancel') === 'function') {
+                        returnValue = this.get('oncancel').call(undefined, closeEvent);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }

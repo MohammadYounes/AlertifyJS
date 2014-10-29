@@ -32,7 +32,7 @@
          * @return {Boolean} false
          */
         function beginMove(event, instance) {
-            if (resizable === null && !instance.isMaximized() && instance.setting('movable')) {
+            if (resizable === null && !instance.isMaximized() && instance.get('movable')) {
                 var eventSrc;
                 if (event.type === 'touchstart') {
                     event.preventDefault();
@@ -123,7 +123,7 @@
          * @return {undefined}
          */
         function updateMovable(instance) {
-            if (instance.setting('movable')) {
+            if (instance.get('movable')) {
                 // add class
                 addClass(instance.elements.root, classes.movable);
                 if (instance.isOpen()) {
