@@ -57,6 +57,7 @@ Community Contribution
 ==========
 
 * [alertifyjs-rails](https://github.com/mkhairi/alertifyjs-rails) by **[@mkhairi](https://github.com/mkhairi)**
+* [meteor-alertifyjs](https://github.com/ovcharik/meteor-alertifyjs/) by **[@ovcharik](https://github.com/ovcharik)**
 
 Bugs & Questions
 ==========
