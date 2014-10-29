@@ -22,7 +22,8 @@ component:	'alert'
     </div>
   </section>
   <div style="display:none">
-    <div id="c">
+<iframe id="c" width="100%" height="100%" marginheight="0" marginwidth="0" frameborder="0" src="test.html"></iframe>
+    <div id="c2" style="background:red;height:100%;">
     This my custom content
         <select> 
             <option> First </option>
@@ -41,15 +42,41 @@ component:	'alert'
 <pre>
 <code class="lang-javascript">
 alertify.minimalDialog || alertify.dialog('minimalDialog',function(){
+    var iframe;
     return {
         main:function(content){
-            this.setContent(content); 
+            //this.setContent(content); 
         },
         setup:function(){
             var self = this;
             return{
-                focus:{element:self.focusSelector,select:true}
+                focus:{element:self.focusSelector,select:true},
+                options:{
+                    frameless:true,
+                    padding:false,
+                    overflow:false,
+                    resizable:false,
+                    movable:true,
+                    modal:false
+                }
             }
+        },
+        build:function(){
+          if (!iframe) {
+            iframe = document.createElement("iframe");
+            iframe.width = iframe.height = "100%";
+            iframe.marginHeight = iframe.marginWidth = 0;
+            iframe.frameBorder = "no";            
+            this.elements.content.appendChild(iframe);
+            $(iframe).css({top:0,bottom:0}).scrollLock();
+            this.elements.body.style.minHeight="500px";
+          }
+        },
+        prepare:function(){
+            iframe.src = "arabic.html";
+            setTimeout(function(){                
+                //iframe.contentWindow.document.body.onmousewheel = function(event){  console.log('test', event.srcElement.tagName); event.stopPropagation();};
+            }, 2000);
         },
         focusSelector:function(){
             return this.elements.body.querySelector(this.get('selector'));
@@ -59,7 +86,7 @@ alertify.minimalDialog || alertify.dialog('minimalDialog',function(){
         }
     };
 });
-alertify.minimalDialog($('#c')[0]).set('selector', 'textarea');
+alertify.minimalDialog("nothing").moveTo(0,0);
 </code> 
 </pre>
 

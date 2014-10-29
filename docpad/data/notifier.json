@@ -6,8 +6,8 @@
 		"desc": "Sets or gets a  value indicating the position of the notifier instance.",
 		"defaultValue": "'bottom-right'",
 		"script": [
-			"alertify.setting('notifier','position', 'bottom-right');",
-			"alertify.success('Current position : ' + alertify.setting('notifier','position'));"
+			"alertify.set('notifier','position', 'bottom-right');",
+			"alertify.success('Current position : ' + alertify.get('notifier','position'));"
 		],
 		"list": {
 			"value": "bottom-right",
@@ -22,10 +22,10 @@
 		"desc": "Gets or sets a value indicating the notifier default message delay (in seconds) before being auto-dismissed. 0 will means keep open till clicked.",
 		"defaultValue": "alertify.defaults.notifier.delay:5",
 		"script": [
-			"var delay = alertify.setting('notifier','delay');",
-			"alertify.setting('notifier','delay', 10);",
-			"alertify.success('Current delay : ' + alertify.setting('notifier','delay') + ' seconds');",
-			"alertify.setting('notifier','delay', delay);"
+			"var delay = alertify.get('notifier','delay');",
+			"alertify.set('notifier','delay', 10);",
+			"alertify.success('Current delay : ' + alertify.get('notifier','delay') + ' seconds');",
+			"alertify.set('notifier','delay', delay);"
 		]
 	},
 

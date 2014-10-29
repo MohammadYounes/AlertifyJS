@@ -5,7 +5,7 @@
 		"label": "{ String or DOMElement }",
 		"desc": "Sets the dialog contents",
 		"defaultValue": "undefined",
-		"script": "alertify.alert().setting('message', 'This is a new message!').show();"
+		"script": "alertify.alert().set('message', 'This is a new message!').show();"
 	},
 	
 	{
@@ -14,7 +14,7 @@
 		"label": "{ String }",
 		"desc": "Sets the OK button label",
 		"defaultValue": "alertify.defaults.glossary.ok",
-		"script": "alertify.alert('label changed!').setting('label', 'Alright!');"
+		"script": "alertify.alert('label changed!').set('label', 'Alright!');"
 	},
 	
 	{
@@ -23,7 +23,7 @@
 		"label": "{ Function }",
 		"desc": "Gets or sets a callback function to be invoked when the user clicks 'Ok' button or closes the dialog.",
 		"defaultValue": "undefined",
-		"script": "alertify.alert('a callback will be invoked on ok.').setting('onok', function(){ alertify.success('Ok');} );"
+		"script": "alertify.alert('a callback will be invoked on ok.').set('onok', function(){ alertify.success('Ok');} );"
 	}
 	
 ]

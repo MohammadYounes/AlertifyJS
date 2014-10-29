@@ -5,7 +5,7 @@
 		"label": "{ String or DOMElement }",
 		"desc": "Sets the dialog contents",
 		"defaultValue": "undefined",
-		"script": "alertify.prompt().setting('message', 'This is a new message!').show();"
+		"script": "alertify.prompt().set('message', 'This is a new message!').show();"
 	},
 	
 	{
@@ -14,7 +14,7 @@
 		"label": "{ Object }",
 		"desc": "Sets the OK/Cancel button's labels",
 		"defaultValue": "{ok: alertify.defaults.glossary.ok, cancel: alertify.defaults.glossary.cancel}",
-		"script": "alertify.prompt('labels changed!').setting('labels', {ok:'Alright!', cancel:'Naa!'});"
+		"script": "alertify.prompt('labels changed!').set('labels', {ok:'Alright!', cancel:'Naa!'});"
 	},
 	
 	{
@@ -23,7 +23,7 @@
 		"label": "{ Boolean }",
 		"desc": "Gets or sets a value indicating whether to reverse the dialog buttons order.",
 		"defaultValue": "false",
-		"script": "alertify.prompt('Buttons are reversed').setting('reverseButtons', true);",
+		"script": "alertify.prompt('Buttons are reversed').set('reverseButtons', true);",
 		"toggle": { "value": true }
 		
 	},	
@@ -34,7 +34,7 @@
 		"label": "{ Function }",
 		"desc": "Gets or sets a callback function to be invoked when the user clicks 'Ok' button.",
 		"defaultValue": "undefined",
-		"script": "alertify.prompt('a callback will be invoked on ok.').setting('onok', function(){ alertify.success('Ok');} );"
+		"script": "alertify.prompt('a callback will be invoked on ok.').set('onok', function(){ alertify.success('Ok');} );"
 	},	
 	
 	{
@@ -43,6 +43,6 @@
 		"label": "{ Function }",
 		"desc": "Gets or sets a callback function to be invoked when the user clicks 'Cancel' button or closes the dialog.",
 		"defaultValue": "undefined",
-		"script": "alertify.prompt('a callback will be invoked on cancel.').setting('oncancel', function(){ alertify.error('Cancel');} );"
+		"script": "alertify.prompt('a callback will be invoked on cancel.').set('oncancel', function(){ alertify.error('Cancel');} );"
 	}	
 ]

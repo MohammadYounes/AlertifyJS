@@ -15,6 +15,16 @@
 		<code><%= @label %></code>
 	</h2>
 	<div>
+        <% if @remark :%>
+        <div class="ui small info message">
+            <div class="content">
+                <p>
+                    <i class="fa fa-info-circle"></i>
+                    <%-@remark%> 
+                </p>
+            </div>
+        </div>
+        <% end %>
 		<p><span>Description:</span> <%- @desc %></p>
 		<% if @defaultValue :%>
 		<p><span> Default:</span> <code><%= @defaultValue %></code></p>
@@ -63,16 +73,7 @@
 			</a>
 		</div>
 		<% end %>           
-        <% if @remark :%>
-            <div class="ui small info message">
-            <div class="content">
-                <p>
-                <i class="fa fa-info-circle"></i>
-                <%-@remark%> 
-                </p>
-            </div>
-            </div>
-        <% end %>       
+       
 		
 	</div>
 	<br/>

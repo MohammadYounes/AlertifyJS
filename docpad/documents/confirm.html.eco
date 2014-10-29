@@ -86,7 +86,7 @@ alertify.confirm('This is a confirm message!');
             <div class="content">
               <p>
                 <i class="fa fa-info-circle"></i>
-                You can use the <code>.setting()</code> method to set multiple values at once, and also works as a getter.
+                You can use the <code>.setting()</code> method to set multiple values at once, Also works as a getter. Or use <code>.get()</code> and <code>.set()</code> aliases.
               </p>
             </div>
           </div>
