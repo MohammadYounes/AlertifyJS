@@ -42,6 +42,14 @@
                 }
                 return this;
             },
+            /**
+             * Move the dialog to a specific x/y coordinates
+             *
+             * @param {Number} x    The new dialog x coordinate in pixels.
+             * @param {Number} y    The new dialog y coordinate in pixels.
+             *
+             * @return {Object} The dialog instance.
+             */
             moveTo:function(x,y){
                 if(!isNaN(x) && !isNaN(y)){
                     var element = this.elements.dialog,
@@ -73,6 +81,31 @@
 
                     element.style.left = left + 'px';
                     element.style.top = top + 'px';
+                }
+                return this;
+            },
+            /**
+             * Resize the dialog to a specific width/height (the dialog must be 'resizable').
+             * The dialog can be resized to:
+             *  A minimum width equal to the initial display width
+             *  A minimum height equal to the sum of header/footer heights.
+             *
+             *
+             * @param {Number} width    The new dialog width in pixels.
+             * @param {Number} height   The new dialog height in pixels.
+             *
+             * @return {Object} The dialog instance.
+             */
+            resizeTo:function(width,height){
+                if(!isNaN(width) && !isNaN(height) && this.get('resizable') === true){
+                    var element = this.elements.dialog;
+                    if (element.style.maxWidth !== 'none') {
+                        element.style.minWidth = (minWidth = element.offsetWidth) + 'px';
+                    }
+                    element.style.maxWidth = 'none';
+                    element.style.minHeight = this.elements.header.offsetHeight + this.elements.footer.offsetHeight + 'px';
+                    element.style.width = width + 'px';
+                    element.style.height = height + 'px';
                 }
                 return this;
             },
