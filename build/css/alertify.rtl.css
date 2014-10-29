@@ -226,6 +226,23 @@
 .alertify.ajs-basic .ajs-footer {
   visibility: hidden;
 }
+.alertify.ajs-frameless .ajs-header,
+.alertify.ajs-frameless .ajs-footer {
+  display: none;
+}
+.alertify.ajs-frameless .ajs-body .ajs-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.alertify.ajs-frameless:not(.ajs-resizable) .ajs-dialog {
+  padding-top: 0;
+}
+.alertify.ajs-frameless:not(.ajs-resizable) .ajs-dialog .ajs-commands {
+  margin-top: 0;
+}
 .ajs-no-overflow {
   overflow: hidden !important;
   outline: none;
@@ -246,6 +263,7 @@
   }
   .alertify:not(.ajs-maximized).ajs-resizable .ajs-dialog {
     min-width: initial;
+    min-width: auto /*IE fallback*/;
   }
 }
 @-moz-document url-prefix() {

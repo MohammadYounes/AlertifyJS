@@ -1,4 +1,14 @@
 # Release Notes
+* **v0.10.0** [30 Oct. 2014]
+  * New API features:
+    * Frameless dialog view mode.
+    * Start maximized option.
+    * Move the dialog to a specific X,Y coordinates: `moveTo`.
+    * Resize the dialog to a specific Width,Height : `resizeTo`.
+  * Fixes:
+    * Fix initial resizable width for IE.
+    * Fix resize bug when body contents height is smaller than window size.
+
 * **v0.9.0** [14 Oct. 2014]
   * New API feature: new options to determine focus element.        
 
