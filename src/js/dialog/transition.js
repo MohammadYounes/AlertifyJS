@@ -47,7 +47,7 @@
             resetResize(instance);
 
             // restore if maximized
-            if (instance.isMaximized()) {
+            if (instance.isMaximized() && !instance.get('startMaximized')) {
                 restore(instance);
             }
 

@@ -25,6 +25,7 @@
         resizable:true,
         closable:true,
         maximizable:true,
+        startMaximized:false,
         pinnable:true,
         pinned:true,
         padding: true,

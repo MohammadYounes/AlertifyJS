@@ -120,6 +120,7 @@
                         resizable: undefined,
                         closable: undefined,
                         maximizable: undefined,
+                        startMaximized: undefined,
                         pinnable: undefined,
                         transition: undefined,
                         padding:undefined,
@@ -244,6 +245,7 @@
 				
                 instance.setting('closable', setup.options.closable === undefined ? alertify.defaults.closable : setup.options.closable);
                 instance.setting('maximizable', setup.options.maximizable === undefined ? alertify.defaults.maximizable : setup.options.maximizable);
+                instance.setting('startMaximized', setup.options.startMaximized === undefined ? alertify.defaults.startMaximized : setup.options.startMaximized);
 				
                 instance.setting('pinnable', setup.options.pinnable === undefined ? alertify.defaults.pinnable : setup.options.pinnable);
                 instance.setting('pinned', setup.options.pinned === undefined ? alertify.defaults.pinned : setup.options.pinned);

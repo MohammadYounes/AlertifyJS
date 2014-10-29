@@ -231,6 +231,13 @@
                         this.__internal.className = className;
                         addClass(this.elements.root, className);
                     }
+
+                    // maximize if start maximized
+                    if ( this.get('startMaximized')) {
+                        this.maximize();
+                    }else if(this.isMaximized()){
+                        restore(this);
+                    }
 					
                     updateAbsPositionFix(this);
 
@@ -258,6 +265,7 @@
                     if ( typeof this.setting('onshow') === 'function' ) {
                         this.setting('onshow')();
                     }
+
                 }else{
                     // reset move updates
                     resetMove(this);
@@ -275,7 +283,7 @@
             /**
              * Close the dialog
              *
-             * @return {undefined}
+             * @return {Object} The dialog instance
              */
             close: function () {
                 if (this.__internal.isOpen ) {
