@@ -3,6 +3,7 @@
   * Fix ESC key handling for button-less dialogs.
 
 * **v0.10.0** [30 Oct. 2014]
+  * Ability to use arrow keys to switch between dialog buttons.
   * New API features:
     * Frameless dialog view mode.
     * Start maximized option.
