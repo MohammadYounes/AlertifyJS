@@ -1,4 +1,7 @@
 # Release Notes
+* **v0.10.2** [31 Oct. 2014]
+  * Add missing notifier styles to Semantic/Bootstrap themes.
+
 * **v0.10.1** [30 Oct. 2014]
   * Fix ESC key handling for button-less dialogs.
 
