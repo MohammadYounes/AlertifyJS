@@ -1,6 +1,6 @@
 Bugs
 ====
-If you are reporting a bug you must create a test-case. You can fork this [codepen](http://codepen.io/anon/pen/cCHFe) or this [jsfiddle](http://jsfiddle.net/jua4L/) to get started.
+If you are reporting a bug you must create a test-case. You can fork this [codepen](http://codepen.io/anon/pen/raohK) or this [jsfiddle](http://jsfiddle.net/g2o52zq7/) to get started.
 
 Also include re-produce steps and environement specs, such as OS and Browser (**We support last 2 versions only**).
 
