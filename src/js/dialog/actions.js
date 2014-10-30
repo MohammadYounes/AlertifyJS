@@ -58,13 +58,13 @@
             }
             var instance = openDialogs[openDialogs.length - 1];
             var keyCode = event.keyCode;
-            if (usedKeys.indexOf(keyCode) > -1) {
+            if (instance.__internal.buttons.length === 0 && keyCode === keys.ESC && instance.get('closable') === true) {
+                triggerClose(instance);
+                return false;
+            }else if (usedKeys.indexOf(keyCode) > -1) {
                 triggerCallback(instance, function (button) {
                     return button.key === keyCode;
                 });
-                return false;
-            } else if (instance.__internal.buttons.length === 0 && keyCode === keys.ESC && instance.get('closable') === true) {
-                triggerClose(instance);
                 return false;
             }
         }
