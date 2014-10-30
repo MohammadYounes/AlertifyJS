@@ -1,4 +1,7 @@
 # Release Notes
+* **v0.10.1** [30 Oct. 2014]
+  * Fix ESC key handling for button-less dialogs.
+
 * **v0.10.0** [30 Oct. 2014]
   * New API features:
     * Frameless dialog view mode.
