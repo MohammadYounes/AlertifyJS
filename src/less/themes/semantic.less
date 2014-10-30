@@ -69,3 +69,34 @@
         border-radius: 0 0 5px 5px;
     }
 }
+
+/***************
+ notifier
+***************/
+
+.alertify-notifier {
+    .message {
+        background: rgba( 255, 255, 255, .95);
+        color: #000;
+        text-align: center;
+        border: solid 1px #ddd;
+        border-radius: 2px;
+
+        &.success {
+            color: #fff;
+            background: rgba(91, 189, 114,.95);
+            text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        &.error {
+            color: #fff;
+            background: rgba(217, 92, 92,.95);
+            text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        &.warning {
+            background: rgba(252, 248, 215, 0.95);
+            border-color: #999;
+        }
+    }
+}
