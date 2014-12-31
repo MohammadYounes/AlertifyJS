@@ -1,0 +1,19 @@
+{
+  "name": "alertify-js",
+  "homepage": "https://github.com/MohammadYounes/AlertifyJS",
+  "version": "0.10.2",
+  "_release": "0.10.2",
+  "main": [
+    "build/alertify.js",
+    "build/css/alertify.css",
+    "build/css/themes/default.css"
+  ],
+  "_resolution": {
+    "type": "version",
+    "tag": "0.10.2",
+    "commit": "575ffb4947e1fba4e86e7c43f30dd696da01c064"
+  },
+  "_source": "git://github.com/MohammadYounes/AlertifyJS.git",
+  "_target": "*",
+  "_originalSource": "alertify-js"
+}
