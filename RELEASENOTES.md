@@ -1,4 +1,7 @@
 # Release Notes
+* **v1.0.0** [10 Jan. 2015]
+  * First official release.
+
 * **v0.10.2** [31 Oct. 2014]
   * Add missing notifier styles to Semantic/Bootstrap themes.
 

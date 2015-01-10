@@ -62,7 +62,7 @@ Community Contribution
 Bugs & Questions
 ==========
 Please review the guidelines for [contributing](https://github.com/MohammadYounes/AlertifyJS/blob/master/CONTRIBUTING.md).
-
+>You can fork this [codepen](http://codepen.io/anon/pen/raohK) or this [jsfiddle](http://jsfiddle.net/g2o52zq7/) to get started.
 
 
 ------

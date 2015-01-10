@@ -3,11 +3,11 @@
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  *
  * @author Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
- * @copyright 2014
+ * @copyright 2015
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module AlertifyJS
- * @version 0.10.2
+ * @version 1.0.0
  */
 ( function ( window ) {
     'use strict';
@@ -2238,8 +2238,10 @@
                 element = document.createElement('DIV');
 
                 updatePosition(instance);
+            }
 
-                //add to DOM tree.
+            //add to DOM tree.
+            if (!element.parentNode) {
                 document.body.appendChild(element);
             }
         }
