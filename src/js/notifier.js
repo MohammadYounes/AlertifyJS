@@ -27,8 +27,10 @@
                 element = document.createElement('DIV');
 
                 updatePosition(instance);
+            }
 
-                //add to DOM tree.
+            //add to DOM tree.
+            if (!element.parentNode) {
                 document.body.appendChild(element);
             }
         }
