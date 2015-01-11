@@ -1,4 +1,7 @@
 # Release Notes
+* **v1.0.1** [11 Jan. 2015]
+  * Re-append notifier div when body content is replaced. Fixes #17
+
 * **v1.0.0** [10 Jan. 2015]
   * First official release.
 

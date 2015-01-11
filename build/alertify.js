@@ -7,7 +7,7 @@
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module AlertifyJS
- * @version 1.0.0
+ * @version 1.0.1
  */
 ( function ( window ) {
     'use strict';
@@ -2241,7 +2241,7 @@
             }
 
             //add to DOM tree.
-            if (!element.parentNode) {
+            if (element.parentNode != document.body) {
                 document.body.appendChild(element);
             }
         }
