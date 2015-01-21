@@ -55,6 +55,7 @@
           </li>
 		  <li><a href="factory.html">Dialogs Factory</a></li>
           <li><a href="examples.html">Examples</a></li>
+          <li><a href="tutorials.html">Tutorials</a></li>
           <li class="aux">
             <div>
               <iframe src="http://ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="25"></iframe>
