@@ -43,7 +43,7 @@ component:	'alert'
  * @name      {string}   Dialog name.
  * @Factory   {Function} Dialog factory function.
  * @transient {Boolean}  Indicates whether to create a singleton or transient dialog.
- * @base      {Object}   The name of an existing dialog to inherit from.
+ * @base      {String}   The name of an existing dialog to inherit from.
  *
  * alertify.dialog(name, Factory, transient, base)
  *
