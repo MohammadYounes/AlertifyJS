@@ -30,7 +30,7 @@
             }
 
             //add to DOM tree.
-            if (element.parentNode != document.body) {
+            if (element.parentNode !== document.body) {
                 document.body.appendChild(element);
             }
         }
