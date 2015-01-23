@@ -261,6 +261,11 @@
                     // show dialog
                     removeClass(this.elements.root, classes.hidden);
 
+                    // internal on show event
+                    if(typeof this.hooks.onshow === 'function'){
+                        this.hooks.onshow.call(this);
+                    }
+
                     // allow custom `onshow` method
                     if ( typeof this.get('onshow') === 'function' ) {
                         this.get('onshow')();
@@ -304,6 +309,11 @@
                     // remove custom dialog class on hide
                     if (typeof this.__internal.className !== 'undefined' && this.__internal.className !== '') {
                         removeClass(this.elements.root, this.__internal.className);
+                    }
+
+                    // internal on close event
+                    if(typeof this.hooks.onclose === 'function'){
+                        this.hooks.onclose.call(this);
                     }
 
                     // allow custom `onclose` method

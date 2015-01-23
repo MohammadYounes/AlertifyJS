@@ -28,6 +28,16 @@
   padding: 24px 24px 0 24px;
   outline: 0;
 }
+.alertify .ajs-dialog.ajs-capture:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  z-index: 1;
+}
 .alertify .ajs-reset {
   position: absolute !important;
   display: inline !important;
@@ -39,7 +49,7 @@
   position: absolute;
   right: 4px;
   margin: -14px 24px 0 0;
-  z-index: 1;
+  z-index: 2;
 }
 .alertify .ajs-commands button {
   display: none;
@@ -101,6 +111,7 @@
   height: 10px;
   right: 0;
   bottom: 0;
+  z-index: 1;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNy8xMS8xNEDQYmMAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAAQ0lEQVQYlaXNMQoAIAxD0dT7H657l0KX3iJuUlBUNOsPPCGJm7VDp6ryeMxMuDsAQH7owW3pyn3RS26iKxERMLN3ugOaAkaL3sWVigAAAABJRU5ErkJggg==);
   -webkit-transform: scaleX(1) /*rtl:scaleX(-1)*/;
           transform: scaleX(1) /*rtl:scaleX(-1)*/;
@@ -226,7 +237,17 @@
 .alertify.ajs-basic .ajs-footer {
   visibility: hidden;
 }
-.alertify.ajs-frameless .ajs-header,
+.alertify.ajs-frameless .ajs-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 60px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  z-index: 1;
+}
 .alertify.ajs-frameless .ajs-footer {
   display: none;
 }

@@ -139,8 +139,7 @@ function factory(){
 		 		this.setting('myProp', data);
 		 },
 		 // The dialog setup function
-		 // This should return the different dialog setting object.
-		 // For example: alertify.alert('message');
+		 // This should return the dialog setup object ( buttons, focus and options overrides ).
 		 setup:function(){
 		 	return {
 					/* buttons collection */
@@ -265,7 +264,20 @@ function factory(){
 						// Do something when 'myProp' changes
 						break;
 				}
-		 }
+		 },
+         // listen to internal dialog events.
+         hooks:{
+            // triggered when the dialog is shown, this is seperate from user defined onshow
+            onshow: function(){
+            },
+            // triggered when the dialog is closed, this is seperate from user defined onclose
+            onclose: function(){
+            },
+            // triggered when a dialog option gets updated.
+            // IMPORTANT: This will not be triggered for dialog custom settings updates ( use settingUpdated instead).
+            onupdate: function(){
+            }
+         }
 	}
 }
 </code> 

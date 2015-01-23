@@ -23,7 +23,7 @@
         "type": "p",
         "name": "frameless",
         "label": "{Boolean}",
-        "desc": "Sets the dialog frameless view mode, which hides both header/footer without reserving their space, the content author must be aware that dialog commands might overlap with contents.",
+        "desc": "Sets the dialog frameless view mode, which hides both header/footer. But footer space is not reserved, the content author must be aware that dialog header/commands might overlap with contents.",
         "defaultValue": "false",
         "script": "alertify.{component}('Frameless: true').set('frameless', true);",
         "toggle": { "value": true }

@@ -43,6 +43,12 @@
       <a href="#" class="bars"><i class="fa fa-2x fa-bars"></i></a>
       <div class="menu">
         <ul>
+          <li class="aux">
+            <div>
+              <iframe src="http://ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="25"></iframe>
+              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=http://alertifyjs.com/&amp;via=alertifyjs" title="Twitter Tweet Button" width="110" height="25"></iframe>
+            </div>
+          </li>
           <li><a href="guide.html">Getting Started</a></li>
           <li class="sub">
             <a href="javascript:void(0);">Components</a>
@@ -56,12 +62,7 @@
 		  <li><a href="factory.html">Dialogs Factory</a></li>
           <li><a href="examples.html">Examples</a></li>
           <li><a href="tutorials.html">Tutorials</a></li>
-          <li class="aux">
-            <div>
-              <iframe src="http://ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="25"></iframe>
-              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=http://alertifyjs.com/&amp;via=alertifyjs" title="Twitter Tweet Button" width="110" height="25"></iframe>
-            </div>
-          </li>
+       
         </ul>
       </div><!--//menu-->
 	  

@@ -36,7 +36,7 @@ component:	'confirm'
           <div class="content">
             <p>
               <i class="fa fa-info-circle"></i>
-              Calling <code>alertify.confirm()</code> without passing any parameter will return the confirm dialog instance. You can use this syntax to modify dialog settings before showing it.
+              Calling <code>alertify.confirm()</code> the dialog parameter-less constructor will return the confirm dialog instance. You can use this syntax to modify dialog settings before showing it.
               Also you can get the dialog instance (singletons only) by invoking <code>alertify.dialog('confirm');</code>
             </p>
           </div>
@@ -97,7 +97,7 @@ alertify.confirm('This is a confirm message!');
 var closable = alertify.dialog('confirm').setting('closable');
 //grab the dialog instance and set multiple settings at once.
 alertify.dialog('confirm')
-  .setting({
+  .set({
     'labels':{ok:'Yup!', cancel:'Nop!'},
     'message': 'This dialog is : ' + (closable ? ' ' : ' not ') + 'closable.' ,
     'onok': function(){ alertify.success('Nice!');},

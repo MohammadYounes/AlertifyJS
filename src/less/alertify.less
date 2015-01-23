@@ -30,6 +30,17 @@
         max-width: 500px;
         padding: 24px 24px 0 24px;
         outline: 0;
+
+        &.capture:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: block;
+            z-index: 1;
+        }
     }
 
     .reset {
@@ -44,7 +55,7 @@
         position: absolute;
         right: 4px;
         margin: -14px 24px 0 0;
-        z-index: 1;
+        z-index: 2;
 
         button {
             display: none;
@@ -122,6 +133,7 @@
         height: 10px;
         right: 0;
         bottom: 0;
+        z-index: 1;
         background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNy8xMS8xNEDQYmMAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAAQ0lEQVQYlaXNMQoAIAxD0dT7H657l0KX3iJuUlBUNOsPPCGJm7VDp6ryeMxMuDsAQH7owW3pyn3RS26iKxERMLN3ugOaAkaL3sWVigAAAABJRU5ErkJggg==);
         transform: scaleX(1) /*rtl:scaleX(-1)*/;
         cursor: se-resize;
@@ -328,8 +340,19 @@
         }
     }
     //frameless
-    &.frameless{
-        .header,.footer{
+    &.frameless {
+        .header{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            min-height:60px;
+            margin: 0;
+            padding:0;
+            opacity:0;
+            z-index: 1;
+        }
+        .footer{
             display:none;
         }
         .body {

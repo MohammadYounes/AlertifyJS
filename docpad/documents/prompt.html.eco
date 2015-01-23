@@ -37,7 +37,7 @@ component:	'prompt'
           <div class="content">
             <p>
               <i class="fa fa-info-circle"></i>
-              Calling <code>alertify.prompt()</code> without passing any parameter will return the prompt dialog instance. You can use this syntax to modify dialog settings before showing it.
+              Calling <code>alertify.prompt()</code> the dialog parameter-less constructor will return the prompt dialog instance. You can use this syntax to modify dialog settings before showing it.
               Also you can get the dialog instance (singletons only) by invoking <code>alertify.dialog('prompt');</code>
             </p>
           </div>
@@ -102,7 +102,7 @@ alertify.prompt('This is a prompt dialog!', 'some value',
 var closable = alertify.dialog('prompt').setting('closable');
 //grab the dialog instance and set multiple settings at once.
 alertify.dialog('prompt')
-  .setting({
+  .set({
     'labels':{ok:'Yup!', cancel:'Nop!'},
     'message': 'This dialog is : ' + (closable ? ' ' : ' not ') + 'closable.' ,
     'onok': function(){ alertify.success('Nice!');},

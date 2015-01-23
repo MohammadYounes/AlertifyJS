@@ -50,6 +50,7 @@
                     offsetY = eventSrc[yProp];
 
                     var element = instance.elements.dialog;
+                    addClass(element, classes.capture);
 
                     if (element.style.left) {
                         offsetX -= parseInt(element.style.left, 10);
@@ -96,8 +97,10 @@
          */
         function endMove() {
             if (movable) {
+                var element = movable.elements.dialog;
                 movable = null;
                 removeClass(document.body, classes.noSelection);
+                removeClass(element, classes.capture);
             }
         }
 

@@ -37,6 +37,7 @@
                 modeless: 'ajs-modeless',
                 movable: 'ajs-movable',
                 resizable: 'ajs-resizable',
+                capture: 'ajs-capture',
                 fixed: 'ajs-fixed',
                 closable:'ajs-closable',
                 maximizable:'ajs-maximizable',
@@ -89,6 +90,11 @@
                         options:{
                         }
                     };
+                }
+                
+                //initialize hooks object.
+                if(typeof instance.hooks !== 'object'){
+                    instance.hooks = {};
                 }
 
                 var internal = instance.__internal = {
@@ -463,6 +469,11 @@
             case 'transition':
                 updateTransition(instance,newValue, oldValue);
                 break;
+            }
+
+            // internal on option updated event
+            if(typeof instance.hooks.onupdate === 'function'){
+                instance.hooks.onupdate.call(instance, option, oldValue, newValue);
             }
         }
 		

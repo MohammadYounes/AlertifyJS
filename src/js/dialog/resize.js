@@ -97,6 +97,7 @@
                     resizable = instance;
                     handleOffset = instance.elements.resizeHandle.offsetHeight / 2;
                     var element = instance.elements.dialog;
+                    addClass(element, classes.capture);
                     startingLeft = parseInt(element.style.left, 10);
                     element.style.height = element.offsetHeight + 'px';
                     element.style.minHeight = instance.elements.header.offsetHeight + instance.elements.footer.offsetHeight + 'px';
@@ -142,8 +143,10 @@
          */
         function endResize() {
             if (resizable) {
+                var element = resizable.elements.dialog;
                 resizable = null;
                 removeClass(document.body, classes.noSelection);
+                removeClass(element, classes.capture);
                 cancelClick = true;
             }
         }
