@@ -166,10 +166,13 @@ PM> Install-Package AlertifyJS
 alertify.defaults = {
 		// dialogs defaults
         modal:true,
+        basic:false,
+        frameless:false,
         movable:true,
         resizable:true,
         closable:true,
         maximizable:true,
+        startMaximized:false,
         pinnable:true,
         pinned:true,
         padding: true,

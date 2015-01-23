@@ -190,11 +190,13 @@ function factory(){
 						title: ...,
                         modal: ...,
                         basic:...,
+                        frameless:...,
                         pinned: ...,
                         movable: ...,
                         resizable: ...,
                         closable: ...,
                         maximizable: ...,
+                        startMaximized: ...,
                         pinnable: ...,
                         transition: ...,
                         padding:...,
@@ -216,8 +218,8 @@ function factory(){
 			// this.elements.modal          ==> Modal div (dialog wrapper)
 			// this.elements.dialog         ==> Dialog div
 			// this.elements.reset          ==> Array containing the tab reset anchor links
-			// this.elements.reset[0]       ==> First reset link.
-			// this.elements.reset[1]       ==> Second reset link.
+			// this.elements.reset[0]       ==> First reset element (button).
+			// this.elements.reset[1]       ==> Second reset element (button).
 			// this.elements.header         ==> Dialog header div
 			// this.elements.body           ==> Dialog body div
 			// this.elements.content        ==> Dialog body content div

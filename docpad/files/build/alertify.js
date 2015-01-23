@@ -7,7 +7,7 @@
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module AlertifyJS
- * @version 1.0.1
+ * @version 1.1.0
  */
 ( function ( window ) {
     'use strict';

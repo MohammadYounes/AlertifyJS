@@ -1,4 +1,9 @@
 # Release Notes
+* **v1.1.0** [24 Jan. 2015]
+  * New API event hooks for dialog developers (onshow, onclose, onupdate)
+  * Support move for frameless dialogs.
+  * Fix Move/Resize mouse events capture when dialog contains an iframe.
+
 * **v1.0.1** [11 Jan. 2015]
   * Re-append notifier div when body content is replaced. Fixes #17
 
