@@ -7,7 +7,7 @@
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module AlertifyJS
- * @version 1.1.0
+ * @version 1.2.0
  */
 ( function ( window ) {
     'use strict';
@@ -35,6 +35,7 @@
         movable:true,
         resizable:true,
         closable:true,
+        closableByDimmer:true,
         maximizable:true,
         startMaximized:false,
         pinnable:true,
@@ -368,6 +369,7 @@
                         movable: undefined,
                         resizable: undefined,
                         closable: undefined,
+                        closableByDimmer: undefined,
                         maximizable: undefined,
                         startMaximized: undefined,
                         pinnable: undefined,
@@ -493,6 +495,7 @@
                 instance.set('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
 				
                 instance.set('closable', setup.options.closable === undefined ? alertify.defaults.closable : setup.options.closable);
+                instance.set('closableByDimmer', setup.options.closableByDimmer === undefined ? alertify.defaults.closableByDimmer : setup.options.closableByDimmer);
                 instance.set('maximizable', setup.options.maximizable === undefined ? alertify.defaults.maximizable : setup.options.maximizable);
                 instance.set('startMaximized', setup.options.startMaximized === undefined ? alertify.defaults.startMaximized : setup.options.startMaximized);
 				
@@ -1052,7 +1055,7 @@
          */
         function modalClickHandler(event, instance) {
             var target = event.srcElement || event.target;
-            if (!cancelClick && target === instance.elements.modal) {
+            if (!cancelClick && target === instance.elements.modal && instance.get('closableByDimmer') === true) {
                 triggerClose(instance);
             }
             cancelClick = false;
@@ -3245,13 +3248,17 @@
         };
     });
 
-    // AMD and window support
-    if ( typeof define === 'function' ) {
+    // CommonJS
+    if ( typeof module === 'object' && typeof module.exports === 'object' ) {
+        module.exports = alertify;
+    // AMD
+    } else if ( typeof define === 'function' ) {
         define( [], function () {
             return alertify;
         } );
+    // window
     } else if ( !window.alertify ) {
         window.alertify = alertify;
     }
 
-} ( this ) );
+} ( typeof window !== 'undefined' ? window : this ) );

@@ -1,7 +1,9 @@
 # Release Notes
-* **v1.1.1** [17 Feb. 2015]
-  * Support installation via `npm install alertifyjs --save`.
-  * Support use of `require('alertifyjs')` in loaders such as Browserify.
+* **v1.2.0** [17 Feb. 2015]
+  * New API feature: closableByDimmer option.
+  * Published to [NPM](https://www.npmjs.com/package/alertifyjs) **Thanks @dantman**
+    * Support installation via `npm install alertifyjs --save`.
+    * Support use of `require('alertifyjs')` in loaders such as Browserify.
 
 * **v1.1.0** [24 Jan. 2015]
   * New API event hooks for dialog developers (onshow, onclose, onupdate)
@@ -32,7 +34,7 @@
     * Fix resize bug when body contents height is smaller than window size.
 
 * **v0.9.0** [14 Oct. 2014]
-  * New API feature: new options to determine focus element.        
+  * New API feature: new options to determine focus element.
 
 * **v0.8.0** [11 Oct. 2014]
   * New dialog option: Basic view mode.
@@ -49,7 +51,7 @@
 	* Dismiss all open notifications except current.
 
 * **v0.6.1** [22 Sep. 2014]
-  * Fixes Null reference error when including alertify script before body element. 
+  * Fixes Null reference error when including alertify script before body element.
 
 * **v0.6.0** [21 Sep. 2014]
   * Prefix the names of all animations with `ajs-` (Prevents collision with other frameworks)
@@ -75,10 +77,10 @@
   * disable move when there is an active resize (possible when mouse up is triggered outside browser window).
   * clear movable/resizable on close.
   * docs enhancements.
-  
+
 * **v0.1.0** [12 Aug. 2014]
   * Add custom `onfocus` callback.
   * Fix content padding.  
-  
+
 * **v0.0.0** [1 Aug. 2014]
   * Initial commit.
