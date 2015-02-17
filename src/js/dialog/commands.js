@@ -254,7 +254,7 @@
          */
         function modalClickHandler(event, instance) {
             var target = event.srcElement || event.target;
-            if (!cancelClick && target === instance.elements.modal) {
+            if (!cancelClick && target === instance.elements.modal && instance.get('closableByDimmer') === true) {
                 triggerClose(instance);
             }
             cancelClick = false;

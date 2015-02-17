@@ -53,9 +53,19 @@
         "type": "p",
         "name": "closable",
         "label": "{Boolean}",
-        "desc": "Gets or sets a value indicating whether the <b>Close</b> button is displayed in the header of the dialog. (clicking the dimmer will also trigger a close command)",
+        "desc": "Gets or sets a value indicating whether the <b>Close</b> button is displayed in the header of the dialog. In modal dialogs, clicking the dimmer will also trigger a close command unless <code>closableByDimmer</code> was set to <code>false</code>.",
         "defaultValue": "true",
         "script": "alertify.{component}('Closable: false').set('closable', false);",
+        "toggle": { "value": false }
+    },
+
+    {
+        "type": "p",
+        "name": "closableByDimmer",
+        "label": "{Boolean}",
+        "desc": "Gets or sets a value indicating whether clicking the dimmer of a <B>Closable Modal</b> dialog should trigger a close command or not.",
+        "defaultValue": "true",
+        "script": "alertify.{component}('closableByDimmer: false').set({'closableByDimmer': false});",
         "toggle": { "value": false }
     },
 

@@ -125,6 +125,7 @@
                         movable: undefined,
                         resizable: undefined,
                         closable: undefined,
+                        closableByDimmer: undefined,
                         maximizable: undefined,
                         startMaximized: undefined,
                         pinnable: undefined,
@@ -250,6 +251,7 @@
                 instance.set('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
 				
                 instance.set('closable', setup.options.closable === undefined ? alertify.defaults.closable : setup.options.closable);
+                instance.set('closableByDimmer', setup.options.closableByDimmer === undefined ? alertify.defaults.closableByDimmer : setup.options.closableByDimmer);
                 instance.set('maximizable', setup.options.maximizable === undefined ? alertify.defaults.maximizable : setup.options.maximizable);
                 instance.set('startMaximized', setup.options.startMaximized === undefined ? alertify.defaults.startMaximized : setup.options.startMaximized);
 				

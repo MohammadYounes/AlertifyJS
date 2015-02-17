@@ -24,6 +24,7 @@
         movable:true,
         resizable:true,
         closable:true,
+        closableByDimmer:true,
         maximizable:true,
         startMaximized:false,
         pinnable:true,
