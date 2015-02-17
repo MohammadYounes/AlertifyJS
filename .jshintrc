@@ -23,6 +23,7 @@
     "unused": true,
 
     "globals": {
+        "window": true,
         "document": true,
         "alertify": true,
         "define": true,
