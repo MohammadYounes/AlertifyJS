@@ -7,7 +7,7 @@
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module AlertifyJS
- * @version 1.1.0
+ * @version 1.1.1
  */
 ( function ( window ) {
     'use strict';
@@ -3245,13 +3245,17 @@
         };
     });
 
-    // AMD and window support
-    if ( typeof define === 'function' ) {
+    // CommonJS
+    if ( typeof module === 'object' && typeof module.exports === 'object' ) {
+        module.exports = alertify;
+    // AMD
+    } else if ( typeof define === 'function' ) {
         define( [], function () {
             return alertify;
         } );
+    // window
     } else if ( !window.alertify ) {
         window.alertify = alertify;
     }
 
-} ( this ) );
+} ( typeof window !== "undefined" ? window : this ) );
