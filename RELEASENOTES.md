@@ -1,4 +1,8 @@
 # Release Notes
+* **v1.1.1** [17 Feb. 2015]
+  * Support installation via `npm install alertifyjs --save`.
+  * Support use of `require('alertifyjs')` in loaders such as Browserify.
+
 * **v1.1.0** [24 Jan. 2015]
   * New API event hooks for dialog developers (onshow, onclose, onupdate)
   * Support move for frameless dialogs.
