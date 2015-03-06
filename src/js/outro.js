@@ -2,7 +2,7 @@
     if ( typeof module === 'object' && typeof module.exports === 'object' ) {
         module.exports = alertify;
     // AMD
-    } else if ( typeof define === 'function' ) {
+    } else if ( typeof define === 'function' && define.amd) {
         define( [], function () {
             return alertify;
         } );
