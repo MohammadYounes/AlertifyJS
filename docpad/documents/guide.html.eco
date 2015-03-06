@@ -10,12 +10,7 @@ hljs: 	'light'
 				 A quick guide of how to download and use AlertifyJS.
 			</div>		
 			<div class="right column">
-			  <div class="dialog">
-				<div> Header </div>
-				<h1> Dialog </h1>
-				<div>Contents</div>						
-				<div><div class="left" style="margin:0 10px;">Auxiliary</div><div>Primary</div></div>
-			  </div>
+			  <%- @partial('ad') %>
 			</div>
 		</div>
 	</div>
@@ -105,7 +100,6 @@ hljs: 	'light'
 	 <div class="grid two">
 	 	<div class="column double">
 		  <h2>Install with NuGet</h2>
-		  To install AlertifyJS, run the following command in the Package Manager Console
 <pre>
 <code class="lang-bash">
 PM> Install-Package AlertifyJS
@@ -114,6 +108,19 @@ PM> Install-Package AlertifyJS
 </pre>		  
 		</div>
 	</div>
+<div class="grid two">
+<div class="column double">
+		  <h2>Install with NPM</h2>
+<pre>
+<code class="lang-bash">
+npm install alertifyjs --save
+
+</code>
+</pre>		  
+		</div>
+</div>
+
+
 	<!-- //Download -->
 
 

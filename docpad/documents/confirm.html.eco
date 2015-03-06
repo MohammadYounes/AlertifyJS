@@ -12,13 +12,7 @@ component:	'confirm'
           When a confirm dialog pops up, the user will have to click either "OK" or "Cancel" to proceed.
         </div>
         <div class="right column">
-          <div class="dialog">
-            <div>AlertifyJS</div>
-            <h1> Confirm </h1>
-            <div>
-              <div>OK</div> <div>Cancel</div>
-            </div>
-          </div>
+          <%- @partial('ad') %>
         </div>
       </div>
     </div>

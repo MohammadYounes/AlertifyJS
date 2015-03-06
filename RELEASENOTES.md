@@ -1,4 +1,8 @@
 # Release Notes
+* **v1.2.1** [06 Mar. 2015]
+  * Add default colors to core CSS, to make it easier to start a theme based on it.
+  * Fixes a problem with using AlertifyJS in Ember-CLI. #27
+
 * **v1.2.0** [17 Feb. 2015]
   * New API feature: closableByDimmer option.
   * Published to [NPM](https://www.npmjs.com/package/alertifyjs) **Thanks @dantman**

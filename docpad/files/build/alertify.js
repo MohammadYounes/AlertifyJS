@@ -1,13 +1,13 @@
 /**
- * AlertifyJS
+ * alertifyjs
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  *
  * @author Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * @copyright 2015
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
- * @module AlertifyJS
- * @version 1.2.0
+ * @module alertifyjs
+ * @version 1.2.1
  */
 ( function ( window ) {
     'use strict';
@@ -3252,7 +3252,7 @@
     if ( typeof module === 'object' && typeof module.exports === 'object' ) {
         module.exports = alertify;
     // AMD
-    } else if ( typeof define === 'function' ) {
+    } else if ( typeof define === 'function' && define.amd) {
         define( [], function () {
             return alertify;
         } );

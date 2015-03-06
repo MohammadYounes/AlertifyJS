@@ -11,10 +11,7 @@ component:	'notifier'
                 Unobtrusive notification messages can be used to give feedback to users.
             </div>
             <div class="right column">
-                <div class="right log">
-                    <div>AlertifyJS</div>
-                    <div>Notification</div>
-                </div>
+                <%- @partial('ad') %>
             </div>
         </div>
     </div>

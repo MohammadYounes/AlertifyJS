@@ -34,7 +34,8 @@
 		"label": "{ Function }",
 		"desc": "Gets or sets a callback function to be invoked when the user clicks 'Ok' button.",
 		"defaultValue": "undefined",
-		"script": "alertify.prompt('a callback will be invoked on ok.').set('onok', function(){ alertify.success('Ok');} );"
+        "script": "alertify.prompt('a callback will be invoked on ok.').set('onok', function(closeEvent){ alertify.success('Ok');} );",
+        "remark": "To prevent the dialog from closing, either set <code>closeEvent.cancel = true</code> or make your callback return <code>false</code> ."
 	},	
 	
 	{
@@ -43,6 +44,7 @@
 		"label": "{ Function }",
 		"desc": "Gets or sets a callback function to be invoked when the user clicks 'Cancel' button or closes the dialog.",
 		"defaultValue": "undefined",
-		"script": "alertify.prompt('a callback will be invoked on cancel.').set('oncancel', function(){ alertify.error('Cancel');} );"
+        "script": "alertify.prompt('a callback will be invoked on cancel.').set('oncancel', function(){ alertify.error('Cancel');} );",
+        "remark": "To prevent the dialog from closing, either set <code>closeEvent.cancel = true</code> or make your callback return <code>false</code> ."
 	}	
 ]

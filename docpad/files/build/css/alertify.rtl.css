@@ -27,6 +27,7 @@
   max-width: 500px;
   padding: 24px 24px 0 24px;
   outline: 0;
+  background-color: #fff;
 }
 .alertify .ajs-dialog.ajs-capture:before {
   content: '';
@@ -73,6 +74,7 @@
   margin: -24px;
   margin-bottom: 0;
   padding: 16px 24px;
+  background-color: #fff;
 }
 .alertify .ajs-body {
   min-height: 56px;
@@ -85,6 +87,7 @@
   margin-right: -24px;
   margin-left: -24px;
   min-height: 43px;
+  background-color: #fff;
 }
 .alertify .ajs-footer .ajs-buttons.ajs-primary {
   text-align: left;
@@ -847,6 +850,15 @@
   max-height: 100%;
   padding: 15px;
   margin-top: 10px;
+}
+.alertify-notifier .ajs-message.ajs-success {
+  background: rgba(91, 189, 114, 0.95);
+}
+.alertify-notifier .ajs-message.ajs-error {
+  background: rgba(217, 92, 92, 0.95);
+}
+.alertify-notifier .ajs-message.ajs-warning {
+  background: rgba(252, 248, 215, 0.95);
 }
 .alertify-notifier.ajs-top {
   top: 10px;

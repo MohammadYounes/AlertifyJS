@@ -12,14 +12,7 @@ component:	'prompt'
 					When a prompt dialog pops up, the user will have to click either "OK" or "Cancel" to proceed after entering an input value.
         </div>
         <div class="right column">
-          <div class="dialog">
-            <div>AlertifyJS</div>
-            <h1> Prompt </h1>
-            <div> Default value </div>
-            <div>
-              <div>OK</div> <div>Cancel</div>
-            </div>
-          </div>
+          <%- @partial('ad') %>
         </div>
       </div>
     </div>

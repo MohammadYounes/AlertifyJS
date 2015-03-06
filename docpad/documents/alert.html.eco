@@ -12,11 +12,7 @@ component:	'alert'
 					When an alert dialog pops up, the user will have to click "OK" to proceed.
         </div>
         <div class="right column">
-          <div class="dialog">
-            <div>AlertifyJS</div>
-            <h1> Alert </h1>
-            <div><div>OK</div></div>
-          </div>
+          <%- @partial('ad') %>            
         </div>
       </div>
     </div>

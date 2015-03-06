@@ -10,12 +10,7 @@ hljs: 	'light'
 				 Learn How to Use and Get The Most out of AlertifyJS.
 			</div>
 			<div class="right column">
-			  <div class="dialog">
-				<div> Header </div>
-				<h1> Dialog </h1>
-				<div>Contents</div>						
-				<div><div class="left" style="margin:0 10px;">Auxiliary</div><div>Primary</div></div>
-			  </div>
+			  <%- @partial('ad') %>
 			</div>
 		</div>
 	</div>
