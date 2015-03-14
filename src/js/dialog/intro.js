@@ -97,6 +97,21 @@
                     instance.hooks = {};
                 }
 
+                //copy buttons defintion
+                var buttonsDefinition = [];
+                if(Array.isArray(setup.buttons)){
+                    for(var b=0;b<setup.buttons.length;b+=1){
+                        var ref  = setup.buttons[b],
+                            copy = {};
+                        for (var i in ref) {
+                            if (ref.hasOwnProperty(i)) {
+                                copy[i] = ref[i];
+                            }
+                        }
+                        buttonsDefinition.push(copy);
+                    }
+                }
+
                 var internal = instance.__internal = {
                     /**
                      * Flag holding the open state of the dialog
@@ -114,7 +129,7 @@
                     activeElement:document.body,
                     timerIn:undefined,
                     timerOut:undefined,
-                    buttons: setup.buttons || [],
+                    buttons: buttonsDefinition,
                     focus: setup.focus,
                     options: {
                         title: undefined,

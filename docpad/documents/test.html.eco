@@ -36,52 +36,38 @@ component:	'alert'
         <hr />
 <pre>
 <code class="lang-javascript">
-alertify.minimalDialog || alertify.dialog('minimalDialog',function(){
-    var iframe;
-    return {
-        main:function(content){
-            //this.setContent(content); 
-        },
-        setup:function(){
-            var self = this;
-            return{
-                focus:{element:self.focusSelector,select:true},
-                options:{
-                    frameless:true,
-                    padding:false,
-                    overflow:false,
-                    resizable:false,
-                    movable:true,
-                    modal:false
+var onok = function (msg) {
+    alertify.notify(msg);
+    return false;
+};
+var showCustomAlert = function (message, buttons) {
+    if (!alertify.custom) {
+        alertify.dialog('custom', function factory() {
+            return {
+                setup: function () {
+                    return {
+                        buttons: buttons,
+                        options: options
+                    };
                 }
-            }
-        },
-        build:function(){
-          if (!iframe) {
-            iframe = document.createElement("iframe");
-            iframe.width = iframe.height = "100%";
-            iframe.marginHeight = iframe.marginWidth = 0;
-            iframe.frameBorder = "no";            
-            this.elements.content.appendChild(iframe);
-            $(iframe).css({top:0,bottom:0}).scrollLock();
-            this.elements.body.style.minHeight="500px";
-          }
-        },
-        prepare:function(){
-            iframe.src = "arabic.html";
-            setTimeout(function(){                
-                //iframe.contentWindow.document.body.onmousewheel = function(event){  console.log('test', event.srcElement.tagName); event.stopPropagation();};
-            }, 2000);
-        },
-        focusSelector:function(){
-            return this.elements.body.querySelector(this.get('selector'));
-        },
-        settings:{
-            selector:undefined
-        }
-    };
-});
-alertify.minimalDialog("nothing").moveTo(0,0);
+            };
+        }, true, 'alert');
+    }
+    return alertify.custom('title', message, function () {
+        return onok(message);
+    });
+};
+
+var buttons = [{text:'Okay'}],
+    options =  {
+                    modal: false,
+                    pinnable: false,
+                    resizeable: true,
+                    maximizable: false
+                };
+
+showCustomAlert('message 1', buttons, options).set('modal', true);
+showCustomAlert('message 2', buttons,options);
 </code> 
 </pre>
 
