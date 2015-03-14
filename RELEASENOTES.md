@@ -1,5 +1,5 @@
 # Release Notes
-* **v1.3.0** [13 Mar. 2015]
+* **v1.3.0** [14 Mar. 2015]
   * New API feature: autoReset option to control whether to reset dialog size/position on window resize or not.
   * Always use a copy of buttons definition. Fixes #32
 
