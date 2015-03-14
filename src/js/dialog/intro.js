@@ -124,6 +124,7 @@
                         pinned: undefined,
                         movable: undefined,
                         resizable: undefined,
+                        autoReset: undefined,
                         closable: undefined,
                         closableByDimmer: undefined,
                         maximizable: undefined,
@@ -249,6 +250,7 @@
 							
                 instance.set('movable', setup.options.movable === undefined ? alertify.defaults.movable : setup.options.movable);
                 instance.set('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
+                instance.set('autoReset', setup.options.autoReset === undefined ? alertify.defaults.autoReset : setup.options.autoReset);
 				
                 instance.set('closable', setup.options.closable === undefined ? alertify.defaults.closable : setup.options.closable);
                 instance.set('closableByDimmer', setup.options.closableByDimmer === undefined ? alertify.defaults.closableByDimmer : setup.options.closableByDimmer);

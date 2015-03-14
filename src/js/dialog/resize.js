@@ -207,7 +207,9 @@
         function windowResize(/*event*/) {
             for (var x = 0; x < openDialogs.length; x += 1) {
                 var instance = openDialogs[x];
-                resetMove(instance);
-                resetResize(instance);
+                if (instance.get('autoReset')) {
+                    resetMove(instance);
+                    resetResize(instance);
+                }
             }
         }

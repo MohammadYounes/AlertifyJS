@@ -33,6 +33,7 @@
         overflow:true,
         maintainFocus:true,
         transition:'pulse',
+        autoReset:true,
         notifier:{
             delay:5,
             position:'bottom-right'
