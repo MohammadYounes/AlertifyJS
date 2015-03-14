@@ -187,6 +187,7 @@ alertify.defaults = {
         overflow:true,
         maintainFocus:true,
 		transition:'pulse',
+        autoReset:true,
 
 		// notifier defaults
         notifier:{
