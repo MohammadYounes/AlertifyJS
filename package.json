@@ -1,6 +1,6 @@
 {
   "name": "alertifyjs",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.",
   "homepage": "http://alertifyjs.com",
   "keywords": [

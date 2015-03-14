@@ -7,7 +7,7 @@
  * @license MIT <http://opensource.org/licenses/mit-license.php>
  * @link http://alertifyjs.com
  * @module alertifyjs
- * @version 1.2.1
+ * @version 1.3.0
  */
 ( function ( window ) {
     'use strict';
@@ -44,6 +44,7 @@
         overflow:true,
         maintainFocus:true,
         transition:'pulse',
+        autoReset:true,
         notifier:{
             delay:5,
             position:'bottom-right'
@@ -341,6 +342,21 @@
                     instance.hooks = {};
                 }
 
+                //copy buttons defintion
+                var buttonsDefinition = [];
+                if(Array.isArray(setup.buttons)){
+                    for(var b=0;b<setup.buttons.length;b+=1){
+                        var ref  = setup.buttons[b],
+                            copy = {};
+                        for (var i in ref) {
+                            if (ref.hasOwnProperty(i)) {
+                                copy[i] = ref[i];
+                            }
+                        }
+                        buttonsDefinition.push(copy);
+                    }
+                }
+
                 var internal = instance.__internal = {
                     /**
                      * Flag holding the open state of the dialog
@@ -358,7 +374,7 @@
                     activeElement:document.body,
                     timerIn:undefined,
                     timerOut:undefined,
-                    buttons: setup.buttons || [],
+                    buttons: buttonsDefinition,
                     focus: setup.focus,
                     options: {
                         title: undefined,
@@ -368,6 +384,7 @@
                         pinned: undefined,
                         movable: undefined,
                         resizable: undefined,
+                        autoReset: undefined,
                         closable: undefined,
                         closableByDimmer: undefined,
                         maximizable: undefined,
@@ -493,6 +510,7 @@
 							
                 instance.set('movable', setup.options.movable === undefined ? alertify.defaults.movable : setup.options.movable);
                 instance.set('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
+                instance.set('autoReset', setup.options.autoReset === undefined ? alertify.defaults.autoReset : setup.options.autoReset);
 				
                 instance.set('closable', setup.options.closable === undefined ? alertify.defaults.closable : setup.options.closable);
                 instance.set('closableByDimmer', setup.options.closableByDimmer === undefined ? alertify.defaults.closableByDimmer : setup.options.closableByDimmer);
@@ -1693,8 +1711,10 @@
         function windowResize(/*event*/) {
             for (var x = 0; x < openDialogs.length; x += 1) {
                 var instance = openDialogs[x];
-                resetMove(instance);
-                resetResize(instance);
+                if (instance.get('autoReset')) {
+                    resetMove(instance);
+                    resetResize(instance);
+                }
             }
         }
         /**

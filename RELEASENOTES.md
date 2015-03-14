@@ -1,4 +1,8 @@
 # Release Notes
+* **v1.3.0** [13 Mar. 2015]
+  * New API feature: autoReset option to control whether to reset dialog size/position on window resize or not.
+  * Always use a copy of buttons definition. Fixes #32
+
 * **v1.2.1** [06 Mar. 2015]
   * Add default colors to core CSS, to make it easier to start a theme based on it.
   * Fixes a problem with using AlertifyJS in Ember-CLI. #27

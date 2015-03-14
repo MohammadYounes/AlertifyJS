@@ -165,6 +165,15 @@
         "exec": false
     },
 
+    {
+        "type": "p",
+        "name": "autoReset",
+        "label": "{Boolean}",
+        "desc": "Gets or sets a value indicating whether the dialog should reset size/position on window resize.",
+        "defaultValue": "true",
+        "script": "alertify.{component}('autoReset: false').set('autoReset', false);",
+        "toggle": { "value": false }
+    },
 
     {
         "type": "m",
