@@ -36,7 +36,8 @@
         autoReset:true,
         notifier:{
             delay:5,
-            position:'bottom-right'
+            position:'bottom-right',
+            messageClasses: ''
         },
         glossary:{
             title:'AlertifyJS',
