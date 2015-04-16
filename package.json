@@ -38,7 +38,7 @@
     "grunt-contrib-connect": "~0.5.0",
     "grunt-contrib-compress": "x.x.x",
     "docpad": "~6.69.0",
-    "docpad-plugin-eco": "~2.0.3",
+    "docpad-plugin-eco": "~2.1.0",
     "docpad-plugin-marked": "~2.2.1",
     "docpad-plugin-partials": "~2.9.1",
     "docpad-plugin-highlightjs": "~2.2.2",
