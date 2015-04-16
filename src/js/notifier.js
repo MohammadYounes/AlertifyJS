@@ -22,7 +22,10 @@
                 instance.__internal = {
                     position: alertify.defaults.notifier.position,
                     delay: alertify.defaults.notifier.delay,
+                    messageClasses: alertify.defaults.notifier.messageClasses
                 };
+
+                classes.message = classes.message + ' ' + instance.__internal.messageClasses;
 
                 element = document.createElement('DIV');
 
