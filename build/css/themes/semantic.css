@@ -34,8 +34,7 @@
   outline: 0;
   color: rgba(0, 0, 0, 0.7);
   border-radius: .3125em;
-  -webkit-transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
-          transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
   box-sizing: border-box;
 }
 .alertify .ajs-body .ajs-content .ajs-input:active {
