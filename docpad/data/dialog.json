@@ -296,12 +296,12 @@
         "label": "chainable",
         "desc": "Resize the dialog to a specific width/height (the dialog must be 'resizable').",
         "params": [
-            { "name": "width", "type": "Number", "desc": "The new dialog width in pixels." },
-            { "name": "height", "type": "Number", "desc": "The new dialog height in pixels." }
+            { "name": "width", "type": "Number or String", "desc": "The new dialog width in pixels or precent (#.#%)." },
+            { "name": "height", "type": "Number or String", "desc": "The new dialog height in pixels or precent (#.#%)." }
         ],
-        "script": "alertify.{component}('Resized to 600,450').set('resizable',true).resizeTo(600,450);",
+        "script": "alertify.{component}('Resized to 100%,250px').set('resizable',true).resizeTo('100%',250);",
         "exec": true,
-        "remark": "The dialog must be <b>resizable</b> and it can be resized to a <b>minimum width</b> equal to the initial display width and a <b>minimum height</b> equal to the sum of header and footer heights."
+        "remark": "The dialog must be <b>resizable</b> and it can be resized to a <b>minimum width</b> equal to the initial display width and a <b>minimum height</b> equal to the sum of header and footer heights. <br/> You can also pass a percent of the document <code>clientWidth</code>/<code>clientHeight</code>."
     }
 ]
 

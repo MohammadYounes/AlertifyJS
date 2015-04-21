@@ -91,21 +91,35 @@
              *  A minimum height equal to the sum of header/footer heights.
              *
              *
-             * @param {Number} width    The new dialog width in pixels.
-             * @param {Number} height   The new dialog height in pixels.
+             * @param {Number or String} width    The new dialog width in pixels or in percent.
+             * @param {Number or String} height   The new dialog height in pixels or in percent.
              *
              * @return {Object} The dialog instance.
              */
             resizeTo:function(width,height){
-                if(!isNaN(width) && !isNaN(height) && this.get('resizable') === true){
+                var w = parseFloat(width),
+                    h = parseFloat(height),
+                    regex = /(\d*\.\d+|\d+)%/
+                ;
+
+                if(!isNaN(w) && !isNaN(h) && this.get('resizable') === true){
+
+                    if(('' + width).match(regex)){
+                        w = w / 100 * document.documentElement.clientWidth ;
+                    }
+
+                    if(('' + height).match(regex)){
+                        h = h / 100 * document.documentElement.clientHeight;
+                    }
+
                     var element = this.elements.dialog;
                     if (element.style.maxWidth !== 'none') {
                         element.style.minWidth = (minWidth = element.offsetWidth) + 'px';
                     }
                     element.style.maxWidth = 'none';
                     element.style.minHeight = this.elements.header.offsetHeight + this.elements.footer.offsetHeight + 'px';
-                    element.style.width = width + 'px';
-                    element.style.height = height + 'px';
+                    element.style.width = w + 'px';
+                    element.style.height = h + 'px';
                 }
                 return this;
             },
