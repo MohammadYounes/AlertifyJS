@@ -292,6 +292,19 @@
         }
 
         /**
+         * Helper: maintains scroll position
+         *
+         */
+        var scrollX, scrollY;
+        function saveScrollPosition(){
+            scrollX = window.scrollX;
+            scrollY = window.scrollY;
+        }
+        function restoreScrollPosition(){
+            window.scrollTo(scrollX, scrollY);
+        }
+
+        /**
          * Helper: adds/removes no-overflow class from body
          *
          */

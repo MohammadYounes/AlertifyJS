@@ -13,6 +13,9 @@
             // once transition is complete, set focus
             setFocus(instance);
 
+            //restore scroll to prevent document jump
+            restoreScrollPosition();
+
             // allow handling key up after transition ended.
             cancelKeyup = false;
 

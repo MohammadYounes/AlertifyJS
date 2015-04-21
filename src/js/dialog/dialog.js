@@ -238,6 +238,9 @@
                         this.set('modal', modal);
                     }
 					
+                    //save scroll to prevent document jump
+                    saveScrollPosition();
+
                     ensureNoOverflow();
 					
                     // allow custom dialog class on show
