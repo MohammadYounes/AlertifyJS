@@ -153,7 +153,7 @@
                 case 0:
                     this.value = input.value;
                     if (typeof this.get('onok') === 'function') {
-                        returnValue = this.get('onok').call(undefined, closeEvent, this.value);
+                        returnValue = this.get('onok').call(this, closeEvent, this.value);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }
@@ -161,7 +161,7 @@
                     break;
                 case 1:
                     if (typeof this.get('oncancel') === 'function') {
-                        returnValue = this.get('oncancel').call(undefined, closeEvent);
+                        returnValue = this.get('oncancel').call(this, closeEvent);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }

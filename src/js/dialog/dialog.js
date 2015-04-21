@@ -287,7 +287,7 @@
 
                     // allow custom `onshow` method
                     if ( typeof this.get('onshow') === 'function' ) {
-                        this.get('onshow')();
+                        this.get('onshow').call(this);
                     }
 
                 }else{
@@ -337,7 +337,7 @@
 
                     // allow custom `onclose` method
                     if ( typeof this.get('onclose') === 'function' ) {
-                        this.get('onclose')();
+                        this.get('onclose').call(this);
                     }
 					
                     //remove from open dialogs               

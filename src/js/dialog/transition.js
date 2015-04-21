@@ -21,7 +21,7 @@
 
             // allow custom `onfocus` method
             if (typeof instance.get('onfocus') === 'function') {
-                instance.get('onfocus')();
+                instance.get('onfocus').call(instance);
             }
 
             // unbind the event

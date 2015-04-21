@@ -83,7 +83,7 @@
             },
             callback: function (closeEvent) {
                 if (typeof this.get('onok') === 'function') {
-                    var returnValue = this.get('onok').call(undefined, closeEvent);
+                    var returnValue = this.get('onok').call(this, closeEvent);
                     if (typeof returnValue !== 'undefined') {
                         closeEvent.cancel = !returnValue;
                     }
