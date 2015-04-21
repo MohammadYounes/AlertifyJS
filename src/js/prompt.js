@@ -97,6 +97,7 @@
                 onok: undefined,
                 oncancel: undefined,
                 value: '',
+                type:'text',
                 reverseButtons: undefined,
             },
             settingUpdated: function (key, oldValue, newValue) {
@@ -106,6 +107,27 @@
                     break;
                 case 'value':
                     input.value = newValue;
+                    break;
+                case 'type':
+                    switch (newValue) {
+                    case 'text':
+                    case 'color':
+                    case 'date':
+                    case 'datetime-local':
+                    case 'email':
+                    case 'month':
+                    case 'number':
+                    case 'password':
+                    case 'search':
+                    case 'tel':
+                    case 'time':
+                    case 'week':
+                        input.type = newValue;
+                        break;
+                    default:
+                        input.type = 'text';
+                        break;
+                    }
                     break;
                 case 'labels':
                     if (newValue.ok && this.__internal.buttons[0].element) {

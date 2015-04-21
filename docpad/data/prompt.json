@@ -46,5 +46,18 @@
 		"defaultValue": "undefined",
         "script": "alertify.prompt('a callback will be invoked on cancel.').set('oncancel', function(){ alertify.error('Cancel');} );",
         "remark": "To prevent the dialog from closing, either set <code>closeEvent.cancel = true</code> or make your callback return <code>false</code> ."
-	}	
+	},	
+
+	{
+		"type": "p",
+		"name": "type",
+		"label": "{ String }",
+		"desc": "Gets or sets the HTML type of the input field. <br/><br/><span>Supported types:</span> <code>text</code>, <code>color</code>, <code>date</code>, <code>datetime-local</code>, <code>email</code>, <code>month</code>, <code>number</code>, <code>password</code>, <code>search</code>, <code>tel</code>, <code>time</code>, <code>week</code>.",
+		"defaultValue": "text",
+        "script": "alertify.prompt('Input (text):').set('type', 'text');",
+        "list": {
+            "value": "text",
+            "items": [ "text", "color", "date", "datetime-local", "email", "month", "number", "password", "search", "tel", "time", "week" ]
+        }
+	}
 ]
