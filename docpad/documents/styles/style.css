@@ -45,3 +45,11 @@ section.blue .carbon-poweredby {
     color: rgb(230, 244, 249);
 
 }
+
+
+/*custom messge */
+.ajs-message.ajs-custom { 
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #31708f;
+}
