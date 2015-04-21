@@ -13,12 +13,15 @@
             // once transition is complete, set focus
             setFocus(instance);
 
+            //restore scroll to prevent document jump
+            restoreScrollPosition();
+
             // allow handling key up after transition ended.
             cancelKeyup = false;
 
             // allow custom `onfocus` method
             if (typeof instance.get('onfocus') === 'function') {
-                instance.get('onfocus')();
+                instance.get('onfocus').call(instance);
             }
 
             // unbind the event

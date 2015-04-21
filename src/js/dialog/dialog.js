@@ -91,21 +91,35 @@
              *  A minimum height equal to the sum of header/footer heights.
              *
              *
-             * @param {Number} width    The new dialog width in pixels.
-             * @param {Number} height   The new dialog height in pixels.
+             * @param {Number or String} width    The new dialog width in pixels or in percent.
+             * @param {Number or String} height   The new dialog height in pixels or in percent.
              *
              * @return {Object} The dialog instance.
              */
             resizeTo:function(width,height){
-                if(!isNaN(width) && !isNaN(height) && this.get('resizable') === true){
+                var w = parseFloat(width),
+                    h = parseFloat(height),
+                    regex = /(\d*\.\d+|\d+)%/
+                ;
+
+                if(!isNaN(w) && !isNaN(h) && this.get('resizable') === true){
+
+                    if(('' + width).match(regex)){
+                        w = w / 100 * document.documentElement.clientWidth ;
+                    }
+
+                    if(('' + height).match(regex)){
+                        h = h / 100 * document.documentElement.clientHeight;
+                    }
+
                     var element = this.elements.dialog;
                     if (element.style.maxWidth !== 'none') {
                         element.style.minWidth = (minWidth = element.offsetWidth) + 'px';
                     }
                     element.style.maxWidth = 'none';
                     element.style.minHeight = this.elements.header.offsetHeight + this.elements.footer.offsetHeight + 'px';
-                    element.style.width = width + 'px';
-                    element.style.height = height + 'px';
+                    element.style.width = w + 'px';
+                    element.style.height = h + 'px';
                 }
                 return this;
             },
@@ -162,9 +176,10 @@
             */
             setHeader:function(content){
                 if(typeof content === 'string'){
+                    clearContents(this.elements.header);
                     this.elements.header.innerHTML = content;
                 }else if (content instanceof window.HTMLElement && this.elements.header.firstChild !== content){
-                    this.elements.header.innerHTML = '';
+                    clearContents(this.elements.header);
                     this.elements.header.appendChild(content);
                 }
                 return this;
@@ -177,9 +192,10 @@
             */
             setContent:function(content){
                 if(typeof content === 'string'){
+                    clearContents(this.elements.content);
                     this.elements.content.innerHTML = content;
                 }else if (content instanceof window.HTMLElement && this.elements.content.firstChild !== content){
-                    this.elements.content.innerHTML = '';
+                    clearContents(this.elements.content);
                     this.elements.content.appendChild(content);
                 }
                 return this;
@@ -224,6 +240,9 @@
                         this.set('modal', modal);
                     }
 					
+                    //save scroll to prevent document jump
+                    saveScrollPosition();
+
                     ensureNoOverflow();
 					
                     // allow custom dialog class on show
@@ -268,7 +287,7 @@
 
                     // allow custom `onshow` method
                     if ( typeof this.get('onshow') === 'function' ) {
-                        this.get('onshow')();
+                        this.get('onshow').call(this);
                     }
 
                 }else{
@@ -318,7 +337,7 @@
 
                     // allow custom `onclose` method
                     if ( typeof this.get('onclose') === 'function' ) {
-                        this.get('onclose')();
+                        this.get('onclose').call(this);
                     }
 					
                     //remove from open dialogs               

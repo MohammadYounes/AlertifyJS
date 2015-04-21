@@ -218,8 +218,10 @@
                  */
                 setContent: function (content) {
                     if (typeof content === 'string') {
+                        clearContents(this.element);
                         this.element.innerHTML = content;
-                    } else {
+                    } else if (content instanceof window.HTMLElement && this.element.firstChild !== content) {
+                        clearContents(this.element);
                         this.element.appendChild(content);
                     }
                     return this;

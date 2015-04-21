@@ -97,7 +97,11 @@
 			{"name": "wait", "type":"Number", "desc":"Time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked."},
 			{"name": "callback", "type":"Function", "desc":"A callback function to be invoked when the message is dismissed."}
 		],
-		"script": "alertify.notify('default message.', 'custom', 2, function(){console.log('dismissed');});"
+		"script": [
+            "//using custom CSS",
+            "// .ajs-message.ajs-custom { color: #31708f;  background-color: #d9edf7;  border-color: #31708f; }",
+            "alertify.notify('custom message.', 'custom', 2, function(){console.log('dismissed');});"
+        ]
 	},
     
     {

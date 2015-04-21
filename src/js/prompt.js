@@ -85,9 +85,10 @@
             },
             setMessage: function (message) {
                 if (typeof message === 'string') {
+                    clearContents(p);
                     p.innerHTML = message;
                 } else if (message instanceof window.HTMLElement && p.firstChild !== message) {
-                    p.innerHTML = '';
+                    clearContents(p);
                     p.appendChild(message);
                 }
             },
@@ -97,6 +98,7 @@
                 onok: undefined,
                 oncancel: undefined,
                 value: '',
+                type:'text',
                 reverseButtons: undefined,
             },
             settingUpdated: function (key, oldValue, newValue) {
@@ -106,6 +108,27 @@
                     break;
                 case 'value':
                     input.value = newValue;
+                    break;
+                case 'type':
+                    switch (newValue) {
+                    case 'text':
+                    case 'color':
+                    case 'date':
+                    case 'datetime-local':
+                    case 'email':
+                    case 'month':
+                    case 'number':
+                    case 'password':
+                    case 'search':
+                    case 'tel':
+                    case 'time':
+                    case 'week':
+                        input.type = newValue;
+                        break;
+                    default:
+                        input.type = 'text';
+                        break;
+                    }
                     break;
                 case 'labels':
                     if (newValue.ok && this.__internal.buttons[0].element) {
@@ -130,7 +153,7 @@
                 case 0:
                     this.value = input.value;
                     if (typeof this.get('onok') === 'function') {
-                        returnValue = this.get('onok').call(undefined, closeEvent, this.value);
+                        returnValue = this.get('onok').call(this, closeEvent, this.value);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }
@@ -138,7 +161,7 @@
                     break;
                 case 1:
                     if (typeof this.get('oncancel') === 'function') {
-                        returnValue = this.get('oncancel').call(undefined, closeEvent);
+                        returnValue = this.get('oncancel').call(this, closeEvent);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }
