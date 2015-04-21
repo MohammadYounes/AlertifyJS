@@ -9,6 +9,23 @@ module.exports = function (grunt) {
             build: ['staging', 'build']
         },
 
+        usebanner: {
+            dist: {
+                options: {
+                    position: 'top',
+                    banner: '/**\n' +
+                            ' * <%= pkg.name %> <%= pkg.version %> <%= pkg.homepage %>\n' +
+                            ' * <%= pkg.description %>\n' +
+                            ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %> \n' +
+                            ' * Licensed under <%= pkg.licenses[0].type %> <<%= pkg.licenses[0].url %>>*/\n',
+                    linebreak: false
+                },
+                files: {
+                    src: ['build/**/*.css']
+                }
+            }
+        },
+
         less: {
             options: {
                 paths: ['./src/less'],
@@ -67,8 +84,6 @@ module.exports = function (grunt) {
 
         cssmin: {
             options: {
-                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-                        '<%= pkg.author %> */\n',
                 report: 'gzip'
             },
             min: {
@@ -114,16 +129,10 @@ module.exports = function (grunt) {
             options: {
                 stripBanners: false,
                 banner: '/**\n' +
-                        ' * <%= pkg.name %>\n' +
+                        ' * <%= pkg.name %> <%= pkg.version %> <%= pkg.homepage %>\n' +
                         ' * <%= pkg.description %>\n' +
-                        ' *\n' +
-                        ' * @author <%= pkg.author %> \n' +
-                        ' * @copyright <%= grunt.template.today("yyyy") %>\n' +
-                        ' * @license <%= pkg.licenses[0].type %> <<%= pkg.licenses[0].url %>>\n' +
-                        ' * @link <%= pkg.homepage %>\n' +
-                        ' * @module <%= pkg.name %>\n' +
-                        ' * @version <%= pkg.version %>\n' +
-                        ' */\n'
+                        ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %> \n' +
+                        ' * Licensed under <%= pkg.licenses[0].type %> <<%= pkg.licenses[0].url %>>*/\n',
             },
             dist: {
                 src: [
@@ -213,10 +222,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-banner');
 
     // Default task
-    grunt.registerTask('css', ['less', 'autoprefixer:build', 'rtlcss','copy:rtl', 'copy:ltr','cssmin']);
+    grunt.registerTask('css', ['less', 'autoprefixer:build', 'rtlcss', 'copy:rtl', 'copy:ltr', 'cssmin', 'usebanner']);
     grunt.registerTask('build', ['clean:build', 'css', 'concat', 'uglify', 'compress', 'copy:build']);
     grunt.registerTask('default', ['build', 'jshint']);
 };

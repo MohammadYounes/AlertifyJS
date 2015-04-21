@@ -1,14 +1,8 @@
 /**
- * alertifyjs
+ * alertifyjs 1.4.0 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
- *
- * @author Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
- * @copyright 2015
- * @license MIT <http://opensource.org/licenses/mit-license.php>
- * @link http://alertifyjs.com
- * @module alertifyjs
- * @version 1.3.0
- */
+ * Copyright 2015 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
+ * Licensed under MIT <http://opensource.org/licenses/mit-license.php>*/
 ( function ( window ) {
     'use strict';
     
@@ -123,6 +117,17 @@
     function getScrollLeft(){
         return ((document.documentElement && document.documentElement.scrollLeft) || document.body.scrollLeft);
     }
+
+    /**
+    * Helper: clear contents
+    *
+    */
+    function clearContents(element){
+        while (element.lastChild) {
+            element.removeChild(element.lastChild);
+        }
+    }
+        
 
     /**
      * Use a closure to return proper event listener method. Try to use
@@ -534,6 +539,19 @@
             
             //add to the end of the DOM tree.
             document.body.appendChild(instance.elements.root);
+        }
+
+        /**
+         * Helper: maintains scroll position
+         *
+         */
+        var scrollX, scrollY;
+        function saveScrollPosition(){
+            scrollX = window.scrollX;
+            scrollY = window.scrollY;
+        }
+        function restoreScrollPosition(){
+            window.scrollTo(scrollX, scrollY);
         }
 
         /**
@@ -1312,12 +1330,15 @@
             // once transition is complete, set focus
             setFocus(instance);
 
+            //restore scroll to prevent document jump
+            restoreScrollPosition();
+
             // allow handling key up after transition ended.
             cancelKeyup = false;
 
             // allow custom `onfocus` method
             if (typeof instance.get('onfocus') === 'function') {
-                instance.get('onfocus')();
+                instance.get('onfocus').call(instance);
             }
 
             // unbind the event
@@ -2009,21 +2030,35 @@
              *  A minimum height equal to the sum of header/footer heights.
              *
              *
-             * @param {Number} width    The new dialog width in pixels.
-             * @param {Number} height   The new dialog height in pixels.
+             * @param {Number or String} width    The new dialog width in pixels or in percent.
+             * @param {Number or String} height   The new dialog height in pixels or in percent.
              *
              * @return {Object} The dialog instance.
              */
             resizeTo:function(width,height){
-                if(!isNaN(width) && !isNaN(height) && this.get('resizable') === true){
+                var w = parseFloat(width),
+                    h = parseFloat(height),
+                    regex = /(\d*\.\d+|\d+)%/
+                ;
+
+                if(!isNaN(w) && !isNaN(h) && this.get('resizable') === true){
+
+                    if(('' + width).match(regex)){
+                        w = w / 100 * document.documentElement.clientWidth ;
+                    }
+
+                    if(('' + height).match(regex)){
+                        h = h / 100 * document.documentElement.clientHeight;
+                    }
+
                     var element = this.elements.dialog;
                     if (element.style.maxWidth !== 'none') {
                         element.style.minWidth = (minWidth = element.offsetWidth) + 'px';
                     }
                     element.style.maxWidth = 'none';
                     element.style.minHeight = this.elements.header.offsetHeight + this.elements.footer.offsetHeight + 'px';
-                    element.style.width = width + 'px';
-                    element.style.height = height + 'px';
+                    element.style.width = w + 'px';
+                    element.style.height = h + 'px';
                 }
                 return this;
             },
@@ -2080,9 +2115,10 @@
             */
             setHeader:function(content){
                 if(typeof content === 'string'){
+                    clearContents(this.elements.header);
                     this.elements.header.innerHTML = content;
                 }else if (content instanceof window.HTMLElement && this.elements.header.firstChild !== content){
-                    this.elements.header.innerHTML = '';
+                    clearContents(this.elements.header);
                     this.elements.header.appendChild(content);
                 }
                 return this;
@@ -2095,9 +2131,10 @@
             */
             setContent:function(content){
                 if(typeof content === 'string'){
+                    clearContents(this.elements.content);
                     this.elements.content.innerHTML = content;
                 }else if (content instanceof window.HTMLElement && this.elements.content.firstChild !== content){
-                    this.elements.content.innerHTML = '';
+                    clearContents(this.elements.content);
                     this.elements.content.appendChild(content);
                 }
                 return this;
@@ -2142,6 +2179,9 @@
                         this.set('modal', modal);
                     }
 					
+                    //save scroll to prevent document jump
+                    saveScrollPosition();
+
                     ensureNoOverflow();
 					
                     // allow custom dialog class on show
@@ -2186,7 +2226,7 @@
 
                     // allow custom `onshow` method
                     if ( typeof this.get('onshow') === 'function' ) {
-                        this.get('onshow')();
+                        this.get('onshow').call(this);
                     }
 
                 }else{
@@ -2236,7 +2276,7 @@
 
                     // allow custom `onclose` method
                     if ( typeof this.get('onclose') === 'function' ) {
-                        this.get('onclose')();
+                        this.get('onclose').call(this);
                     }
 					
                     //remove from open dialogs               
@@ -2479,8 +2519,10 @@
                  */
                 setContent: function (content) {
                     if (typeof content === 'string') {
+                        clearContents(this.element);
                         this.element.innerHTML = content;
-                    } else {
+                    } else if (content instanceof window.HTMLElement && this.element.firstChild !== content) {
+                        clearContents(this.element);
                         this.element.appendChild(content);
                     }
                     return this;
@@ -2923,7 +2965,7 @@
             },
             callback: function (closeEvent) {
                 if (typeof this.get('onok') === 'function') {
-                    var returnValue = this.get('onok').call(undefined, closeEvent);
+                    var returnValue = this.get('onok').call(this, closeEvent);
                     if (typeof returnValue !== 'undefined') {
                         closeEvent.cancel = !returnValue;
                     }
@@ -3091,7 +3133,7 @@
                 switch (closeEvent.index) {
                 case 0:
                     if (typeof this.get('onok') === 'function') {
-                        returnValue = this.get('onok').call(undefined, closeEvent);
+                        returnValue = this.get('onok').call(this, closeEvent);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }
@@ -3099,7 +3141,7 @@
                     break;
                 case 1:
                     if (typeof this.get('oncancel') === 'function') {
-                        returnValue = this.get('oncancel').call(undefined, closeEvent);
+                        returnValue = this.get('oncancel').call(this, closeEvent);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }
@@ -3204,9 +3246,10 @@
             },
             setMessage: function (message) {
                 if (typeof message === 'string') {
+                    clearContents(p);
                     p.innerHTML = message;
                 } else if (message instanceof window.HTMLElement && p.firstChild !== message) {
-                    p.innerHTML = '';
+                    clearContents(p);
                     p.appendChild(message);
                 }
             },
@@ -3216,6 +3259,7 @@
                 onok: undefined,
                 oncancel: undefined,
                 value: '',
+                type:'text',
                 reverseButtons: undefined,
             },
             settingUpdated: function (key, oldValue, newValue) {
@@ -3225,6 +3269,27 @@
                     break;
                 case 'value':
                     input.value = newValue;
+                    break;
+                case 'type':
+                    switch (newValue) {
+                    case 'text':
+                    case 'color':
+                    case 'date':
+                    case 'datetime-local':
+                    case 'email':
+                    case 'month':
+                    case 'number':
+                    case 'password':
+                    case 'search':
+                    case 'tel':
+                    case 'time':
+                    case 'week':
+                        input.type = newValue;
+                        break;
+                    default:
+                        input.type = 'text';
+                        break;
+                    }
                     break;
                 case 'labels':
                     if (newValue.ok && this.__internal.buttons[0].element) {
@@ -3249,7 +3314,7 @@
                 case 0:
                     this.value = input.value;
                     if (typeof this.get('onok') === 'function') {
-                        returnValue = this.get('onok').call(undefined, closeEvent, this.value);
+                        returnValue = this.get('onok').call(this, closeEvent, this.value);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }
@@ -3257,7 +3322,7 @@
                     break;
                 case 1:
                     if (typeof this.get('oncancel') === 'function') {
-                        returnValue = this.get('oncancel').call(undefined, closeEvent);
+                        returnValue = this.get('oncancel').call(this, closeEvent);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }

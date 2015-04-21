@@ -1,4 +1,12 @@
 # Release Notes
+
+* **v1.4.0** [22 Apr. 2015]
+  * Prompt dialog: Added support for changing the HTML type of the input field.
+  * Support percent unit in `ResizeTo` method.
+  * Maintain document scroll position.
+  * Allow reusing dialog contents by not destroying the DOM, plus faster content clearing.
+  * Fixes the context for some callbacks.
+
 * **v1.3.0** [14 Mar. 2015]
   * New API feature: autoReset option to control whether to reset dialog size/position on window resize or not.
   * Always use a copy of buttons definition. Fixes #32
