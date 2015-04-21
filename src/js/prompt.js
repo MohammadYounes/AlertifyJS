@@ -85,9 +85,10 @@
             },
             setMessage: function (message) {
                 if (typeof message === 'string') {
+                    clearContents(p);
                     p.innerHTML = message;
                 } else if (message instanceof window.HTMLElement && p.firstChild !== message) {
-                    p.innerHTML = '';
+                    clearContents(p);
                     p.appendChild(message);
                 }
             },

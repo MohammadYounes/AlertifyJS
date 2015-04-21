@@ -112,3 +112,14 @@
     function getScrollLeft(){
         return ((document.documentElement && document.documentElement.scrollLeft) || document.body.scrollLeft);
     }
+
+    /**
+    * Helper: clear contents
+    *
+    */
+    function clearContents(element){
+        while (element.lastChild) {
+            element.removeChild(element.lastChild);
+        }
+    }
+        

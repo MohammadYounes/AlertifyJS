@@ -176,9 +176,10 @@
             */
             setHeader:function(content){
                 if(typeof content === 'string'){
+                    clearContents(this.elements.header);
                     this.elements.header.innerHTML = content;
                 }else if (content instanceof window.HTMLElement && this.elements.header.firstChild !== content){
-                    this.elements.header.innerHTML = '';
+                    clearContents(this.elements.header);
                     this.elements.header.appendChild(content);
                 }
                 return this;
@@ -191,9 +192,10 @@
             */
             setContent:function(content){
                 if(typeof content === 'string'){
+                    clearContents(this.elements.content);
                     this.elements.content.innerHTML = content;
                 }else if (content instanceof window.HTMLElement && this.elements.content.firstChild !== content){
-                    this.elements.content.innerHTML = '';
+                    clearContents(this.elements.content);
                     this.elements.content.appendChild(content);
                 }
                 return this;
