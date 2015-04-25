@@ -96,20 +96,56 @@ hljs: 	'light'
 </pre>	
 		</div>
 	 </div>
+
+
+<div class="segment">
+    <h2 id="cdn">AlertifyJS CDN</h2>
+    <p>Latest compiled and minified JavaScript and CSS files are hosted on <a href="http://www.jsdelivr.com/#!alertifyjs" target="_blank">cdn.jsdelivr.net</a> </p>
+ 
+<pre>
+<code class="html">
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/themes/bootstrap.min.css"/>
+
+<!-- 
+    RTL version
+-->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/alertify.rtl.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/themes/default.rtl.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/themes/semantic.rtl.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/themes/bootstrap.rtl.min.css"/>
+
+</code>
+</pre>		  
+
+</div>
+
 	 
-	 <div class="grid two">
-	 	<div class="column double">
-		  <h2>Install with NuGet</h2>
+ <div class="grid two">
+ 	<div class="column double">
+	  <h2>Install with NuGet</h2>
 <pre>
 <code class="lang-bash">
 PM> Install-Package AlertifyJS
 
 </code>
 </pre>		  
-		</div>
 	</div>
+</div>
 <div class="grid two">
-<div class="column double">
+    <div class="column double">
 		  <h2>Install with NPM</h2>
 <pre>
 <code class="lang-bash">
@@ -117,7 +153,7 @@ npm install alertifyjs --save
 
 </code>
 </pre>		  
-		</div>
+	</div>
 </div>
 
 
