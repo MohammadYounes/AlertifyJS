@@ -108,7 +108,7 @@ hljs: 	'light'
 <script src="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/alertify.min.js"></script>
 
 <!-- CSS -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/alertify.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/alertify.min.css"/>
 <!-- Default theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/themes/default.min.css"/>
 <!-- Semantic UI theme -->
