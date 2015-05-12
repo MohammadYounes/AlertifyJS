@@ -1,5 +1,5 @@
 /**
- * alertifyjs 1.4.0 http://alertifyjs.com
+ * alertifyjs 1.4.1 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  * Copyright 2015 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under MIT <http://opensource.org/licenses/mit-license.php>*/
@@ -2987,7 +2987,7 @@
             timer: null,
             index: null,
             text: null,
-            duratuin: null,
+            duration: null,
             task: function (event, self) {
                 if (self.isOpen()) {
                     self.__internal.buttons[autoConfirm.index].element.innerHTML = autoConfirm.text + ' (&#8207;' + autoConfirm.duration + '&#8207;) ';
@@ -3312,9 +3312,9 @@
                 var returnValue;
                 switch (closeEvent.index) {
                 case 0:
-                    this.value = input.value;
+                    this.settings.value = input.value;
                     if (typeof this.get('onok') === 'function') {
-                        returnValue = this.get('onok').call(this, closeEvent, this.value);
+                        returnValue = this.get('onok').call(this, closeEvent, this.settings.value);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }

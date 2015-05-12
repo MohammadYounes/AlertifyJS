@@ -1,5 +1,8 @@
 # Release Notes
 
+* **v1.4.1** [12 May. 2015]
+  * Fixes Prompt Dialog value handling. #59
+
 * **v1.4.0** [22 Apr. 2015]
   * Prompt dialog: Added support for changing the HTML type of the input field.
   * Support percent unit in `ResizeTo` method.
