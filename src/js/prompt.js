@@ -151,9 +151,9 @@
                 var returnValue;
                 switch (closeEvent.index) {
                 case 0:
-                    this.value = input.value;
+                    this.settings.value = input.value;
                     if (typeof this.get('onok') === 'function') {
-                        returnValue = this.get('onok').call(this, closeEvent, this.value);
+                        returnValue = this.get('onok').call(this, closeEvent, this.settings.value);
                         if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }
