@@ -12,7 +12,7 @@
             timer: null,
             index: null,
             text: null,
-            duratuin: null,
+            duration: null,
             task: function (event, self) {
                 if (self.isOpen()) {
                     self.__internal.buttons[autoConfirm.index].element.innerHTML = autoConfirm.text + ' (&#8207;' + autoConfirm.duration + '&#8207;) ';
