@@ -5,6 +5,8 @@
 AlertifyJS
 ==========
 
+[![Join the chat at https://gitter.im/MohammadYounes/AlertifyJS](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MohammadYounes/AlertifyJS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
 
 > AlertifyJS is an extreme makeover of <a href="http://www.github.com/fabien-d/alertify.js">alertify.js</a> by <a href="http://www.github.com/fabien-d">@fabien-d</a>
