@@ -1,5 +1,9 @@
 # Release Notes
 
+* **v1.5.0** [28 Sep. 2015]
+  * New API feature: `destroy` method.
+  * Fixes maintaining scroll position in IE. #76
+  
 * **v1.4.1** [12 May. 2015]
   * Fixes Prompt Dialog value handling. #59
 

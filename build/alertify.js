@@ -1,5 +1,5 @@
 /**
- * alertifyjs 1.4.1 http://alertifyjs.com
+ * alertifyjs 1.5.0 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  * Copyright 2015 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under MIT <http://opensource.org/licenses/mit-license.php>*/
@@ -127,7 +127,68 @@
             element.removeChild(element.lastChild);
         }
     }
+    /**
+     * Extends a given prototype by merging properties from base into sub.
+     *
+     * @sub {Object} sub The prototype being overwritten.
+     * @base {Object} base The prototype being written.
+     *
+     * @return {Object} The extended prototype.
+     */
+    function copy(src) {
+        if(null === src)
+          return src;
         
+        if(Array.isArray(src)){
+          var cpy = [];  
+          for(var x=0;x<src.length;x+=1){
+            cpy.push(copy(src[x]));
+          }
+          return cpy;          
+        }
+      
+        if(src instanceof Date){
+          return new Date(src.getTime());
+        }
+      
+        if(src instanceof RegExp){
+          var cpy = new RegExp(src.source);
+          cpy.global = src.global;
+          cpy.ignoreCase = src.ignoreCase;
+          cpy.multiline = src.multiline;
+          cpy.lastIndex = src.lastIndex;
+          return cpy;
+        }
+        
+        if(typeof src === 'object'){
+          var cpy = {};
+          // copy dialog pototype over definition.
+          for (var prop in src) {
+              if (src.hasOwnProperty(prop)) {
+                  cpy[prop] = copy(src[prop]);
+              }
+          }
+          return cpy;
+        }
+      
+        return src;        
+    }
+    /**
+      * Helper: destruct the dialog
+      *
+      */
+    function destruct(instance, initialize){
+      //delete the dom and it's references.
+      var root = instance.elements.root;
+      root.parentNode.removeChild(root);
+      delete instance.elements;
+      //copy back initial settings.
+      instance.settings = copy(instance.__settings);
+      //re-reference init function.
+      instance.__init = initialize;
+      //delete __internal variable to allow re-initialization. 
+      delete instance.__internal;
+    }
 
     /**
      * Use a closure to return proper event listener method. Try to use
@@ -315,6 +376,10 @@
 				
                 //no need to expose init after this.
                 delete instance.__init;
+              
+                //keep a copy of initial dialog settings
+                if(!this.__settings)
+                  this.__settings = copy(this.settings);
 				
                 //in case the script was included before body.
                 //after first dialog gets initialized, it won't be null anymore!				
@@ -352,13 +417,13 @@
                 if(Array.isArray(setup.buttons)){
                     for(var b=0;b<setup.buttons.length;b+=1){
                         var ref  = setup.buttons[b],
-                            copy = {};
+                            cpy = {};
                         for (var i in ref) {
                             if (ref.hasOwnProperty(i)) {
-                                copy[i] = ref[i];
+                                cpy[i] = ref[i];
                             }
                         }
-                        buttonsDefinition.push(copy);
+                        buttonsDefinition.push(cpy);
                     }
                 }
 
@@ -410,7 +475,8 @@
                     buttonsClickHandler:undefined,
                     commandsClickHandler:undefined,
                     transitionInHandler:undefined,
-                    transitionOutHandler:undefined
+                    transitionOutHandler:undefined,
+                    destroy:undefined
                 };
 				
                                 
@@ -547,8 +613,8 @@
          */
         var scrollX, scrollY;
         function saveScrollPosition(){
-            scrollX = window.scrollX;
-            scrollY = window.scrollY;
+            scrollX = getScrollLeft();
+            scrollY = getScrollTop();
         }
         function restoreScrollPosition(){
             window.scrollTo(scrollX, scrollY);
@@ -1375,6 +1441,11 @@
             if (alertify.defaults.maintainFocus && instance.__internal.activeElement) {
                 instance.__internal.activeElement.focus();
                 instance.__internal.activeElement = null;
+            }
+            
+            //destory the instance
+            if (typeof instance.__internal.destroy === 'function') {
+              instance.__internal.destroy.apply(instance);
             }
         }
         /* Controls moving a dialog around */
@@ -2296,7 +2367,25 @@
             closeOthers:function(){
                 alertify.closeAll(this);
                 return this;
-            }
+            },
+            /**
+             * Destroys this dialog instance
+             *
+             * @return {undefined}
+             */
+            destroy:function(){
+              if (this.__internal.isOpen ) {
+                //mark dialog for destruction, this will be called on tranistionOut event.
+                this.__internal.destroy = function(){
+                  destruct(this, initialize);
+                }
+                //close the dialog to unbind all events.
+                this.close();
+              }else{
+                destruct(this, initialize);
+              }
+              return this;
+            },
         };
 	} () );
     var notifier = (function () {
