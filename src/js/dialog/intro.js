@@ -65,6 +65,10 @@
 				
                 //no need to expose init after this.
                 delete instance.__init;
+              
+                //keep a copy of initial dialog settings
+                if(!this.__settings)
+                  this.__settings = copy(this.settings);
 				
                 //in case the script was included before body.
                 //after first dialog gets initialized, it won't be null anymore!				
@@ -102,13 +106,13 @@
                 if(Array.isArray(setup.buttons)){
                     for(var b=0;b<setup.buttons.length;b+=1){
                         var ref  = setup.buttons[b],
-                            copy = {};
+                            cpy = {};
                         for (var i in ref) {
                             if (ref.hasOwnProperty(i)) {
-                                copy[i] = ref[i];
+                                cpy[i] = ref[i];
                             }
                         }
-                        buttonsDefinition.push(copy);
+                        buttonsDefinition.push(cpy);
                     }
                 }
 
@@ -160,7 +164,8 @@
                     buttonsClickHandler:undefined,
                     commandsClickHandler:undefined,
                     transitionInHandler:undefined,
-                    transitionOutHandler:undefined
+                    transitionOutHandler:undefined,
+                    destroy:undefined
                 };
 				
                                 

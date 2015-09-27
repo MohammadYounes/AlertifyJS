@@ -59,4 +59,9 @@
                 instance.__internal.activeElement.focus();
                 instance.__internal.activeElement = null;
             }
+            
+            //destory the instance
+            if (typeof instance.__internal.destroy === 'function') {
+              instance.__internal.destroy.apply(instance);
+            }
         }
