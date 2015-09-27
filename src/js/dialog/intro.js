@@ -297,8 +297,8 @@
          */
         var scrollX, scrollY;
         function saveScrollPosition(){
-            scrollX = window.scrollX;
-            scrollY = window.scrollY;
+            scrollX = getScrollLeft();
+            scrollY = getScrollTop();
         }
         function restoreScrollPosition(){
             window.scrollTo(scrollX, scrollY);
