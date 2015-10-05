@@ -3,7 +3,7 @@
         "type": "p",
         "name": "modal",
         "label": "{Boolean}",
-        "desc": "Sets the dialog display mode",
+        "desc": "Sets the dialog display mode, When set to <code>true</code> a screen dimmer will be used and access to the page contents will be prevented.",
         "defaultValue": "true",
         "script": "alertify.{component}('Modal: false').set('modal', false);",
         "toggle": { "value": false }
@@ -252,7 +252,7 @@
         "label": "{Boolean}",
         "desc": "Gets a value that indicates whether the dialog is maximized.",
         "params": [ ],
-        "script": "var isModal = alertify.{component}().isMaximized();",
+        "script": "var isMaximized = alertify.{component}().isMaximized();",
         "exec": false
     },
 
@@ -262,7 +262,7 @@
         "label": "{Boolean}",
         "desc": "Gets a value that indicates whether the dialog is pinned.",
         "params": [ ],
-        "script": "var isModal = alertify.{component}().isPinned();",
+        "script": "var isPinned = alertify.{component}().isPinned();",
         "exec": false
     },
 
