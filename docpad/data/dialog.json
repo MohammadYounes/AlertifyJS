@@ -308,7 +308,7 @@
         "type": "m",
         "name": "destroy",
         "label": "",
-        "desc": "Destroys the dialog instance, this will close the dialog, delete the associted DOM and reset all settings to it's initial state.",
+        "desc": "Destroys the dialog instance, this will close the dialog, delete the associted DOM and reset all settings to its initial state.",
         "params": [ ],
         "script": "alertify.{component}().destroy();",
         "exec": false
