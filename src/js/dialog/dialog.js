@@ -364,16 +364,16 @@
              * @return {undefined}
              */
             destroy:function(){
-              if (this.__internal.isOpen ) {
-                //mark dialog for destruction, this will be called on tranistionOut event.
-                this.__internal.destroy = function(){
-                  destruct(this, initialize);
+                if (this.__internal.isOpen ) {
+                    //mark dialog for destruction, this will be called on tranistionOut event.
+                    this.__internal.destroy = function(){
+                        destruct(this, initialize);
+                    };
+                    //close the dialog to unbind all events.
+                    this.close();
+                }else{
+                    destruct(this, initialize);
                 }
-                //close the dialog to unbind all events.
-                this.close();
-              }else{
-                destruct(this, initialize);
-              }
-              return this;
+                return this;
             },
         };

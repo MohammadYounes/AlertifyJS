@@ -131,56 +131,56 @@
      * @return {Object} The extended prototype.
      */
     function copy(src) {
-        if(null === src)
-          return src;
-        
+        if(null === src){
+            return src;
+        }
+        var cpy;
         if(Array.isArray(src)){
-          var cpy = [];  
-          for(var x=0;x<src.length;x+=1){
-            cpy.push(copy(src[x]));
-          }
-          return cpy;          
+            cpy = [];
+            for(var x=0;x<src.length;x+=1){
+                cpy.push(copy(src[x]));
+            }
+            return cpy;
         }
       
         if(src instanceof Date){
-          return new Date(src.getTime());
+            return new Date(src.getTime());
         }
       
         if(src instanceof RegExp){
-          var cpy = new RegExp(src.source);
-          cpy.global = src.global;
-          cpy.ignoreCase = src.ignoreCase;
-          cpy.multiline = src.multiline;
-          cpy.lastIndex = src.lastIndex;
-          return cpy;
+            cpy = new RegExp(src.source);
+            cpy.global = src.global;
+            cpy.ignoreCase = src.ignoreCase;
+            cpy.multiline = src.multiline;
+            cpy.lastIndex = src.lastIndex;
+            return cpy;
         }
         
         if(typeof src === 'object'){
-          var cpy = {};
-          // copy dialog pototype over definition.
-          for (var prop in src) {
-              if (src.hasOwnProperty(prop)) {
-                  cpy[prop] = copy(src[prop]);
-              }
-          }
-          return cpy;
+            cpy = {};
+            // copy dialog pototype over definition.
+            for (var prop in src) {
+                if (src.hasOwnProperty(prop)) {
+                    cpy[prop] = copy(src[prop]);
+                }
+            }
+            return cpy;
         }
-      
-        return src;        
+        return src;
     }
     /**
       * Helper: destruct the dialog
       *
       */
     function destruct(instance, initialize){
-      //delete the dom and it's references.
-      var root = instance.elements.root;
-      root.parentNode.removeChild(root);
-      delete instance.elements;
-      //copy back initial settings.
-      instance.settings = copy(instance.__settings);
-      //re-reference init function.
-      instance.__init = initialize;
-      //delete __internal variable to allow re-initialization. 
-      delete instance.__internal;
+        //delete the dom and it's references.
+        var root = instance.elements.root;
+        root.parentNode.removeChild(root);
+        delete instance.elements;
+        //copy back initial settings.
+        instance.settings = copy(instance.__settings);
+        //re-reference init function.
+        instance.__init = initialize;
+        //delete __internal variable to allow re-initialization.
+        delete instance.__internal;
     }

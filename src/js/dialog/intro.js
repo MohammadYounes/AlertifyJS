@@ -67,9 +67,9 @@
                 delete instance.__init;
               
                 //keep a copy of initial dialog settings
-                if(!this.__settings)
-                  this.__settings = copy(this.settings);
-				
+                if(!instance.__settings){
+                    instance.__settings = copy(instance.settings);
+                }
                 //in case the script was included before body.
                 //after first dialog gets initialized, it won't be null anymore!				
                 if(null === reflow){
