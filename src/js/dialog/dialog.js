@@ -42,6 +42,10 @@
                 }
                 return this;
             },
+            bringToFront:function(){
+                bringToFront(null, this);
+                return this;
+            },
             /**
              * Move the dialog to a specific x/y coordinates
              *
