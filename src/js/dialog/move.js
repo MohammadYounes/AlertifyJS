@@ -6,7 +6,10 @@
             //holds the current Y offset when move starts
             offsetY = 0,
             xProp = 'pageX',
-            yProp = 'pageY'
+            yProp = 'pageY',
+            bounds = null,
+            refreshTop = false,
+            moveDelegate = null
         ;
 
         /**
@@ -18,9 +21,41 @@
          * @return {undefined}
          */
         function moveElement(event, element) {
-            element.style.left = (event[xProp] - offsetX) + 'px';
-            element.style.top = (event[yProp] - offsetY) + 'px';
+            var left = (event[xProp] - offsetX),
+                top  = (event[yProp] - offsetY);
+
+            if(refreshTop){
+                top -= document.body.scrollTop;
+            }
+           
+            element.style.left = left + 'px';
+            element.style.top = top + 'px';
+           
         }
+        /**
+         * Helper: sets the element top/left coordinates within screen bounds
+         *
+         * @param {Event} event	DOM event object.
+         * @param {Node} element The element being moved.
+         * 
+         * @return {undefined}
+         */
+        function moveElementBounded(event, element) {
+            var left = (event[xProp] - offsetX),
+                top  = (event[yProp] - offsetY);
+
+            if(refreshTop){
+                top -= document.body.scrollTop;
+            }
+            
+            element.style.left = Math.min(bounds.maxLeft, Math.max(bounds.minLeft, left)) + 'px';
+            if(refreshTop){
+                element.style.top = Math.min(bounds.maxTop, Math.max(bounds.minTop, top)) + 'px';
+            }else{
+                element.style.top = Math.max(bounds.minTop, top) + 'px';
+            }
+        }
+            
 
         /**
          * Triggers the start of a move event, attached to the header element mouse down event.
@@ -33,7 +68,7 @@
          */
         function beginMove(event, instance) {
             if (resizable === null && !instance.isMaximized() && instance.get('movable')) {
-                var eventSrc;
+                var eventSrc, left=0, top=0;
                 if (event.type === 'touchstart') {
                     event.preventDefault();
                     eventSrc = event.targetTouches[0];
@@ -45,22 +80,52 @@
 
                 if (eventSrc) {
 
-                    movable = instance;
-                    offsetX = eventSrc[xProp];
-                    offsetY = eventSrc[yProp];
-
                     var element = instance.elements.dialog;
                     addClass(element, classes.capture);
 
                     if (element.style.left) {
-                        offsetX -= parseInt(element.style.left, 10);
+                        left = parseInt(element.style.left, 10);
                     }
 
                     if (element.style.top) {
-                        offsetY -= parseInt(element.style.top, 10);
+                        top = parseInt(element.style.top, 10);
                     }
-                    moveElement(eventSrc, element);
+                    
+                    offsetX = eventSrc[xProp] - left;
+                    offsetY = eventSrc[yProp] - top;
 
+                    if(instance.isModal()){
+                        offsetY += instance.elements.modal.scrollTop;
+                    }else if(instance.isPinned()){
+                        offsetY -= document.body.scrollTop;
+                    }
+                    
+                    if(instance.get('moveBounded')){
+                        var current = element,
+                            offsetLeft = -left,
+                            offsetTop = -top;
+                        
+                        //calc offset
+                        do {
+                            offsetLeft += current.offsetLeft;
+                            offsetTop += current.offsetTop;
+                        } while (current = current.offsetParent);
+                        
+                        bounds = {
+                            maxLeft : offsetLeft,
+                            minLeft : -offsetLeft,
+                            maxTop  : document.documentElement.clientHeight - element.clientHeight - offsetTop,
+                            minTop  : -offsetTop
+                        };
+                        moveDelegate = moveElementBounded;
+                    }else{
+                        bounds = null;
+                        moveDelegate = moveElement;
+                    }
+                    
+                    refreshTop = !instance.isModal() && instance.isPinned();
+                    movable = instance;
+                    moveDelegate(eventSrc, element);
                     addClass(document.body, classes.noSelection);
                     return false;
                 }
@@ -84,7 +149,7 @@
                     eventSrc = event;
                 }
                 if (eventSrc) {
-                    moveElement(eventSrc, movable.elements.dialog);
+                    moveDelegate(eventSrc, movable.elements.dialog);
                 }
             }
         }
@@ -98,7 +163,7 @@
         function endMove() {
             if (movable) {
                 var element = movable.elements.dialog;
-                movable = null;
+                movable = bounds = null;
                 removeClass(document.body, classes.noSelection);
                 removeClass(element, classes.capture);
             }

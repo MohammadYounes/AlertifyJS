@@ -142,6 +142,7 @@
                         frameless:undefined,
                         pinned: undefined,
                         movable: undefined,
+                        moveBounded:undefined,
                         resizable: undefined,
                         autoReset: undefined,
                         closable: undefined,
@@ -269,6 +270,7 @@
                 instance.set('frameless', setup.options.frameless === undefined ? alertify.defaults.frameless : setup.options.frameless);
 							
                 instance.set('movable', setup.options.movable === undefined ? alertify.defaults.movable : setup.options.movable);
+                instance.set('moveBounded', setup.options.moveBounded === undefined ? alertify.defaults.moveBounded : setup.options.moveBounded);
                 instance.set('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
                 instance.set('autoReset', setup.options.autoReset === undefined ? alertify.defaults.autoReset : setup.options.autoReset);
 				

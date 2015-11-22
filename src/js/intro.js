@@ -22,6 +22,7 @@
         basic:false,
         frameless:false,
         movable:true,
+        moveBounded:false,
         resizable:true,
         closable:true,
         closableByDimmer:true,
