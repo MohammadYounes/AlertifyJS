@@ -1,5 +1,5 @@
 /**
- * alertifyjs 1.5.0 http://alertifyjs.com
+ * alertifyjs 1.6.0 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  * Copyright 2015 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under MIT <http://opensource.org/licenses/mit-license.php>*/
@@ -27,6 +27,7 @@
         basic:false,
         frameless:false,
         movable:true,
+        moveBounded:false,
         resizable:true,
         closable:true,
         closableByDimmer:true,
@@ -136,58 +137,58 @@
      * @return {Object} The extended prototype.
      */
     function copy(src) {
-        if(null === src)
-          return src;
-        
+        if(null === src){
+            return src;
+        }
+        var cpy;
         if(Array.isArray(src)){
-          var cpy = [];  
-          for(var x=0;x<src.length;x+=1){
-            cpy.push(copy(src[x]));
-          }
-          return cpy;          
+            cpy = [];
+            for(var x=0;x<src.length;x+=1){
+                cpy.push(copy(src[x]));
+            }
+            return cpy;
         }
       
         if(src instanceof Date){
-          return new Date(src.getTime());
+            return new Date(src.getTime());
         }
       
         if(src instanceof RegExp){
-          var cpy = new RegExp(src.source);
-          cpy.global = src.global;
-          cpy.ignoreCase = src.ignoreCase;
-          cpy.multiline = src.multiline;
-          cpy.lastIndex = src.lastIndex;
-          return cpy;
+            cpy = new RegExp(src.source);
+            cpy.global = src.global;
+            cpy.ignoreCase = src.ignoreCase;
+            cpy.multiline = src.multiline;
+            cpy.lastIndex = src.lastIndex;
+            return cpy;
         }
         
         if(typeof src === 'object'){
-          var cpy = {};
-          // copy dialog pototype over definition.
-          for (var prop in src) {
-              if (src.hasOwnProperty(prop)) {
-                  cpy[prop] = copy(src[prop]);
-              }
-          }
-          return cpy;
+            cpy = {};
+            // copy dialog pototype over definition.
+            for (var prop in src) {
+                if (src.hasOwnProperty(prop)) {
+                    cpy[prop] = copy(src[prop]);
+                }
+            }
+            return cpy;
         }
-      
-        return src;        
+        return src;
     }
     /**
       * Helper: destruct the dialog
       *
       */
     function destruct(instance, initialize){
-      //delete the dom and it's references.
-      var root = instance.elements.root;
-      root.parentNode.removeChild(root);
-      delete instance.elements;
-      //copy back initial settings.
-      instance.settings = copy(instance.__settings);
-      //re-reference init function.
-      instance.__init = initialize;
-      //delete __internal variable to allow re-initialization. 
-      delete instance.__internal;
+        //delete the dom and it's references.
+        var root = instance.elements.root;
+        root.parentNode.removeChild(root);
+        delete instance.elements;
+        //copy back initial settings.
+        instance.settings = copy(instance.__settings);
+        //re-reference init function.
+        instance.__init = initialize;
+        //delete __internal variable to allow re-initialization.
+        delete instance.__internal;
     }
 
     /**
@@ -378,9 +379,9 @@
                 delete instance.__init;
               
                 //keep a copy of initial dialog settings
-                if(!this.__settings)
-                  this.__settings = copy(this.settings);
-				
+                if(!instance.__settings){
+                    instance.__settings = copy(instance.settings);
+                }
                 //in case the script was included before body.
                 //after first dialog gets initialized, it won't be null anymore!				
                 if(null === reflow){
@@ -453,6 +454,7 @@
                         frameless:undefined,
                         pinned: undefined,
                         movable: undefined,
+                        moveBounded:undefined,
                         resizable: undefined,
                         autoReset: undefined,
                         closable: undefined,
@@ -580,6 +582,7 @@
                 instance.set('frameless', setup.options.frameless === undefined ? alertify.defaults.frameless : setup.options.frameless);
 							
                 instance.set('movable', setup.options.movable === undefined ? alertify.defaults.movable : setup.options.movable);
+                instance.set('moveBounded', setup.options.moveBounded === undefined ? alertify.defaults.moveBounded : setup.options.moveBounded);
                 instance.set('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
                 instance.set('autoReset', setup.options.autoReset === undefined ? alertify.defaults.autoReset : setup.options.autoReset);
 				
@@ -1445,7 +1448,7 @@
             
             //destory the instance
             if (typeof instance.__internal.destroy === 'function') {
-              instance.__internal.destroy.apply(instance);
+                instance.__internal.destroy.apply(instance);
             }
         }
         /* Controls moving a dialog around */
@@ -1456,7 +1459,10 @@
             //holds the current Y offset when move starts
             offsetY = 0,
             xProp = 'pageX',
-            yProp = 'pageY'
+            yProp = 'pageY',
+            bounds = null,
+            refreshTop = false,
+            moveDelegate = null
         ;
 
         /**
@@ -1468,9 +1474,41 @@
          * @return {undefined}
          */
         function moveElement(event, element) {
-            element.style.left = (event[xProp] - offsetX) + 'px';
-            element.style.top = (event[yProp] - offsetY) + 'px';
+            var left = (event[xProp] - offsetX),
+                top  = (event[yProp] - offsetY);
+
+            if(refreshTop){
+                top -= document.body.scrollTop;
+            }
+           
+            element.style.left = left + 'px';
+            element.style.top = top + 'px';
+           
         }
+        /**
+         * Helper: sets the element top/left coordinates within screen bounds
+         *
+         * @param {Event} event	DOM event object.
+         * @param {Node} element The element being moved.
+         * 
+         * @return {undefined}
+         */
+        function moveElementBounded(event, element) {
+            var left = (event[xProp] - offsetX),
+                top  = (event[yProp] - offsetY);
+
+            if(refreshTop){
+                top -= document.body.scrollTop;
+            }
+            
+            element.style.left = Math.min(bounds.maxLeft, Math.max(bounds.minLeft, left)) + 'px';
+            if(refreshTop){
+                element.style.top = Math.min(bounds.maxTop, Math.max(bounds.minTop, top)) + 'px';
+            }else{
+                element.style.top = Math.max(bounds.minTop, top) + 'px';
+            }
+        }
+            
 
         /**
          * Triggers the start of a move event, attached to the header element mouse down event.
@@ -1483,7 +1521,7 @@
          */
         function beginMove(event, instance) {
             if (resizable === null && !instance.isMaximized() && instance.get('movable')) {
-                var eventSrc;
+                var eventSrc, left=0, top=0;
                 if (event.type === 'touchstart') {
                     event.preventDefault();
                     eventSrc = event.targetTouches[0];
@@ -1495,22 +1533,52 @@
 
                 if (eventSrc) {
 
-                    movable = instance;
-                    offsetX = eventSrc[xProp];
-                    offsetY = eventSrc[yProp];
-
                     var element = instance.elements.dialog;
                     addClass(element, classes.capture);
 
                     if (element.style.left) {
-                        offsetX -= parseInt(element.style.left, 10);
+                        left = parseInt(element.style.left, 10);
                     }
 
                     if (element.style.top) {
-                        offsetY -= parseInt(element.style.top, 10);
+                        top = parseInt(element.style.top, 10);
                     }
-                    moveElement(eventSrc, element);
+                    
+                    offsetX = eventSrc[xProp] - left;
+                    offsetY = eventSrc[yProp] - top;
 
+                    if(instance.isModal()){
+                        offsetY += instance.elements.modal.scrollTop;
+                    }else if(instance.isPinned()){
+                        offsetY -= document.body.scrollTop;
+                    }
+                    
+                    if(instance.get('moveBounded')){
+                        var current = element,
+                            offsetLeft = -left,
+                            offsetTop = -top;
+                        
+                        //calc offset
+                        do {
+                            offsetLeft += current.offsetLeft;
+                            offsetTop += current.offsetTop;
+                        } while (current = current.offsetParent);
+                        
+                        bounds = {
+                            maxLeft : offsetLeft,
+                            minLeft : -offsetLeft,
+                            maxTop  : document.documentElement.clientHeight - element.clientHeight - offsetTop,
+                            minTop  : -offsetTop
+                        };
+                        moveDelegate = moveElementBounded;
+                    }else{
+                        bounds = null;
+                        moveDelegate = moveElement;
+                    }
+                    
+                    refreshTop = !instance.isModal() && instance.isPinned();
+                    movable = instance;
+                    moveDelegate(eventSrc, element);
                     addClass(document.body, classes.noSelection);
                     return false;
                 }
@@ -1534,7 +1602,7 @@
                     eventSrc = event;
                 }
                 if (eventSrc) {
-                    moveElement(eventSrc, movable.elements.dialog);
+                    moveDelegate(eventSrc, movable.elements.dialog);
                 }
             }
         }
@@ -1548,7 +1616,7 @@
         function endMove() {
             if (movable) {
                 var element = movable.elements.dialog;
-                movable = null;
+                movable = bounds = null;
                 removeClass(document.body, classes.noSelection);
                 removeClass(element, classes.capture);
             }
@@ -2052,6 +2120,10 @@
                 }
                 return this;
             },
+            bringToFront:function(){
+                bringToFront(null, this);
+                return this;
+            },
             /**
              * Move the dialog to a specific x/y coordinates
              *
@@ -2374,17 +2446,17 @@
              * @return {undefined}
              */
             destroy:function(){
-              if (this.__internal.isOpen ) {
-                //mark dialog for destruction, this will be called on tranistionOut event.
-                this.__internal.destroy = function(){
-                  destruct(this, initialize);
+                if (this.__internal.isOpen ) {
+                    //mark dialog for destruction, this will be called on tranistionOut event.
+                    this.__internal.destroy = function(){
+                        destruct(this, initialize);
+                    };
+                    //close the dialog to unbind all events.
+                    this.close();
+                }else{
+                    destruct(this, initialize);
                 }
-                //close the dialog to unbind all events.
-                this.close();
-              }else{
-                destruct(this, initialize);
-              }
-              return this;
+                return this;
             },
         };
 	} () );

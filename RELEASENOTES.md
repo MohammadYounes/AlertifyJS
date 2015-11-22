@@ -1,5 +1,8 @@
 # Release Notes
 
+* **v1.6.0** [23 Nov. 2015]
+  * New API feature: `bringToFront` method and `moveBounded` option.
+  
 * **v1.5.0** [28 Sep. 2015]
   * New API feature: `destroy` method.
   * Fixes maintaining scroll position in IE. #76
@@ -15,7 +18,7 @@
   * Fixes the context for some callbacks.
 
 * **v1.3.0** [14 Mar. 2015]
-  * New API feature: autoReset option to control whether to reset dialog size/position on window resize or not.
+  * New API feature: `autoReset` option to control whether to reset dialog size/position on window resize or not.
   * Always use a copy of buttons definition. Fixes #32
 
 * **v1.2.1** [06 Mar. 2015]
@@ -23,7 +26,7 @@
   * Fixes a problem with using AlertifyJS in Ember-CLI. #27
 
 * **v1.2.0** [17 Feb. 2015]
-  * New API feature: closableByDimmer option.
+  * New API feature: `closableByDimmer` option.
   * Published to [NPM](https://www.npmjs.com/package/alertifyjs) **Thanks @dantman**
     * Support installation via `npm install alertifyjs --save`.
     * Support use of `require('alertifyjs')` in loaders such as Browserify.
