@@ -21,7 +21,7 @@ component:	'prompt'
   <section class="dark">
     <div class="content">
       <!--Defult usage-->
-      <div class="segment">
+      <div class="segment has-menu">
         <h1><i class="fa fa-flash"></i> Default usage</h1>
         <hr />
         <p>You create a prompt dialog by invoking <code> alertify.prompt(...)</code></p>
@@ -66,67 +66,9 @@ alertify.prompt('This is a prompt dialog!', 'some value',
           </a>
         </div>
       </div>
-
-      <!--Settings-->
-      <div class="segment">
-
-        <h1><i class="fa fa-book"></i> API reference </h1>
-        <hr />
-				
-				<%for segment in @getDocData(@document.component):%>	
-				<%- @partial('segment',false, segment) %>
-				<%end%>
-
-        <br /><br />
-
-        <div class="segment">
-          <div class="ui small info message">
-            <div class="content">
-              <p>
-                <i class="fa fa-info-circle"></i>
-                You can use the <code>.setting()</code> method to set multiple values at once, Also works as a getter. Or use <code>.get()</code> and <code>.set()</code> aliases.
-              </p>
-            </div>
-          </div>
-          <div>
-<pre>
-<code class="lang-javascript">
-//get the closable setting value.
-var closable = alertify.dialog('prompt').setting('closable');
-//grab the dialog instance and set multiple settings at once.
-alertify.dialog('prompt')
-  .set({
-    'labels':{ok:'Yup!', cancel:'Nop!'},
-    'message': 'This dialog is : ' + (closable ? ' ' : ' not ') + 'closable.' ,
-    'onok': function(){ alertify.success('Nice!');},
-    'oncancel': function(){ alertify.error('Still nice!');}
-  }).show();
-</code> 
-</pre>
-            <div class="RIGHT">
-              <a class="button example" href="javascript:void(0);">
-                <span> Run </span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div><!--//Settings-->
-
-
-      <!--Common Settings-->
-      <div class="segment">
-
-        <h1><i class="fa fa-book"></i> API reference (Common)</h1>
-        <hr />
-        <p>This refers to settings/methods that are common to all dialogs.</p>
-				
-				<%for segment in @getDocData('dialog', @document.component):%>	
-				<%- @partial('segment', false, segment) %>
-				<%end%>
-
-      </div><!--//Common Settings-->
-			
-			<br/>
-			<br/>
+      <!--//Defult usage-->
+      
+      <%- @partial('menu', true) %>
+      
     </div>
   </section>

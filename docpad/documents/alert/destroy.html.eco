@@ -1,0 +1,37 @@
+---
+layout: 'default'
+hljs: 	'light'
+component:	'alert'
+prop: 'destroy'
+propType: 'm'
+label: ''
+---
+
+<section class="blue">
+    <div class="content">
+        <div class="grid two">
+            <div class="column">
+                <h1> Alert Dialog</h1>
+                An alert dialog is often used if you want to make sure information comes through to the user.
+                When an alert dialog pops up, the user will have to click "OK" to proceed.
+            </div>
+            <div class="right column">
+                <%- @partial('ad') %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="dark">
+    <div class="content">
+        <!--Settings-->
+        <div class="segment has-menu">
+            <%- @partial('segment',false, @getDataItem(@document.component, @document.prop)) %>
+        </div>
+        <!--//Settings-->
+        <%- @partial('menu', true, @getDataItem(@document.component, @document.prop)) %>
+    </div>
+</section>
+
+
+

@@ -110,6 +110,7 @@
 		"label": "",
 		"desc": "Dismisses all open notifications.",
 		"params": [],
-		"script": ["alertify.dismissAll();"]
+		"script": ["alertify.dismissAll();"],
+        "remark": "To distinguish between an auto-dismiss event or a click event, the callback is passed a boolean flag indicating if the message was clicked."
 	}
 ]

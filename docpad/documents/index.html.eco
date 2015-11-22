@@ -1,6 +1,7 @@
 ---
 layout: 'default'
 ---
+<%if 1==1 :%> <%end%>
 <!--intro-->  
   <section class="intro dark">
     <div class="content">

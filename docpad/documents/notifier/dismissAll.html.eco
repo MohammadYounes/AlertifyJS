@@ -1,0 +1,33 @@
+---
+layout: 'default'
+hljs: 	'light'
+component:	'notifier'
+prop: 'dismissAll'
+propType: 'm'
+label: ''
+---
+
+<section class="blue">
+    <div class="content">
+        <div class="grid two">
+            <div class="column">
+                <h1> Notifier </h1>
+                Unobtrusive notification messages can be used to give feedback to users.
+            </div>
+            <div class="right column">
+                <%- @partial('ad') %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="dark">
+    <div class="content">
+        <!--Settings-->
+        <div class="segment has-menu">
+            <%- @partial('segment',false, @getDataItem(@document.component, @document.prop)) %>
+        </div>
+        <!--//Settings-->
+        <%- @partial('menu', true, @getDataItem(@document.component, @document.prop)) %>
+    </div>
+</section>

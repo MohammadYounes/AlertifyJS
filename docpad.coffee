@@ -42,12 +42,12 @@ docpadConfig = {
 				'/build/css/alertify.css'
 				'/build/css/themes/default.css'
 				'/css/normalize.min.css'
-				'/css/font-awesome.min.css'
+				'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'
 				'/css/semantic.min.css'
 				'http://fonts.googleapis.com/earlyaccess/droidarabickufi.css'
 				'http://fonts.googleapis.com/css?family=Droid+Sans:400,700'
 				'/css/site.min.css',
-                'styles/style.css'
+                '/styles/style.css'
 			]
 
 			# The website's scripts
@@ -80,20 +80,50 @@ docpadConfig = {
 				items = items.sort (a,b) ->
 					if (a.name > b.name)
 						1
-					else if (a.name < b.name || a.type == 'm')
+					else if (a.name < b.name) # || a.type == 'm')
 						-1
 					else
 						0
 				# sort by type
-				.sort (a,b) ->
-					if (a.type > b.type)
-						-1
-					else if (a.type < b.type)
+				# .sort (a,b) ->
+				#	if (a.type > b.type)
+				#		-1
+				#	else if (a.type < b.type)
+				#		1
+				#	else
+				#		0
+			items
+
+		# Get the documentation data
+		getData: (name,type) ->
+			items = this.getDocData(name,null,false)
+            
+			if name.indexOf('notifi') < 0
+                items = items.concat(this.getDocData('dialog',name,false))
+				
+			items = (item for item in items when item.type == type)
+            
+			items.sort (a,b) ->
+					if (a.name > b.name)
 						1
+					else if (a.name < b.name) # || a.type == 'm')
+						-1
 					else
 						0
-			items
-			
+
+		# Get the documentation of single prop
+		getDataItem: (name,prop) ->
+			items = this.getDocData(name,null,false)
+			isDialog = name.indexOf('notifi') < 0
+			if isDialog
+                items = items.concat(this.getDocData('dialog',name,false))
+				
+			items = (item for item in items when item.name == prop)
+            
+			items[0].isDialog = isDialog
+    
+			items[0]
+            
 		# Get the prepared site/document title
 		# Often we would like to specify particular formatting to our page's title
 		# we can apply that formatting here			

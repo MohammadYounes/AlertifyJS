@@ -21,7 +21,7 @@ component:	'notifier'
     <div class="content">
 
         <!--Defult usage-->
-        <div class="segment">
+        <div class="segment has-menu">
             <h1><i class="fa fa-flash"></i> Default usage</h1>
             <hr />
             <p>You create notification message by invoking <code> alertify.notify(...)</code></p>
@@ -48,62 +48,8 @@ var notification = alertify.notify('sample', 'success', 5, function(){  console.
                 </a>
             </div>
         </div>
-        <!--//Defult usage-->
-        <!--API reference-->
-        <div class="segment">
-            <h1><i class="fa fa-book"></i> API Reference</h1>
-            <hr />
-
-
-            <%for segment in @getDocData(@document.component):%>
-            <%- @partial('segment',false, segment) %>
-            <%end%>
-
-            <br /><br />
-
-            <div class="segment">
-                <div class="ui small info message">
-                    <div class="content">
-                        <p>
-                            <i class="fa fa-info-circle"></i>
-                            To distinguish between an auto-dismiss event or a click event, the callback is passed a boolean flag indicating if the message was clicked.
-                        </p>
-                    </div>
-                </div>
-<pre>
-<code class="lang-javascript">
-alertify.message('Click me to show an alert!', 5, function(isClicked){
-if(isClicked)
-	alertify.alert('The message was clicked!');
-});
-</code> 
-</pre>
-                <div class="RIGHT">
-                    <a class="button example" href="javascript:void(0);">
-                        <span> Run </span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-        <!--//API reference-->
-        <!--notification object -->
-        <div class="segment">
-            <h1><i class="fa fa-book"></i> Notification Object</h1>
-            <hr />
-
-
-            <%for segment in @getDocData('notification'):%>
-            <%- @partial('segment',false, segment) %>
-            <%end%>
-        </div>
-        <!--//notification object -->
-        <br /><br />
+        <!--//Defult usage-->        
+        
+        <%- @partial('menu', true) %>
     </div>
-
-
-
-
-
-
 </section>

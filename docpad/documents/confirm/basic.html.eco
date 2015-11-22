@@ -1,0 +1,34 @@
+---
+layout: 'default'
+hljs: 	'light'
+component:	'confirm'
+prop: 'basic'
+propType: 'p'
+label: '{Boolean}'
+---
+
+<section class="blue">
+    <div class="content">
+        <div class="grid two">
+            <div class="column">
+                <h1> Confirm Dialog</h1>
+                A confirm dialog is often used if you want the user to verify or accept something.
+                When a confirm dialog pops up, the user will have to click either "OK" or "Cancel" to proceed.
+            </div>
+            <div class="right column">
+                <%- @partial('ad') %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="dark">
+    <div class="content">
+        <!--Settings-->
+        <div class="segment has-menu">
+            <%- @partial('segment',false, @getDataItem(@document.component, @document.prop)) %>
+        </div>
+        <!--//Settings-->
+        <%- @partial('menu', true, @getDataItem(@document.component, @document.prop)) %>
+    </div>
+</section>

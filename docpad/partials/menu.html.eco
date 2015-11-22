@@ -1,0 +1,56 @@
+<div class="accordion">
+    <div>
+        <a class="item <%= if !@name then 'active'%>" href="/<%=@document.component%>.html"> <i class="fa fa-book"></i>  Default Usage </a>
+    </div>
+    <div>
+
+        <% if @getData(@document.component,'p').length :%>
+        <input name="accordion" id="p" type="radio"<%= if !@name || (!@document.subComponent && @document.propType == 'p') then 'checked="checked"' else '' %> />
+        <label for="p"><i class="fa"></i> Properties</label>
+        <div class="menu">
+            <%for segment in @getData(@document.component,'p'):%>
+            <a class="item <%= if @name == segment.name then 'active' else '' %>" href="/<%=@document.component%>/<%=segment.name %>.html"><i class="fa fa-cog"></i> <%= segment.name %></a>
+            <%end%>
+        </div>
+        <% end %>
+    </div>
+    <div>
+        <% if @getData(@document.component,'m').length :%>
+        <input name="accordion" id="m" type="radio" <%= if !@document.subComponent && @document.propType == 'm' then 'checked="checked"' else '' %> />
+        <label for="m"><i class="fa"></i> Methods</label>
+        <div class="menu">
+            <%for segment in @getData(@document.component,'m'):%>
+            <a class="item <%= if @name == segment.name then 'active' else '' %>" href="/<%=@document.component%>/<%=segment.name %>.html"><i class="fa fa-wrench"></i> <%= segment.name %></a>
+            <%end%>
+        </div>
+        <% end %>
+    </div>
+    <div>
+        <% if @getData(@document.component,'e').length :%>
+        <input name="accordion" id="e" type="radio" <%= if !@document.subComponent && @document.propType == 'e' then 'checked="checked"' else '' %> />
+        <label for="e"><i class="fa"></i> Events</label>
+        <div class="menu">
+            <%for segment in @getData(@document.component,'e'):%>
+            <a class="item <%= if @name == segment.name then 'active' else '' %>" href="/<%=@document.component%>/<%=segment.name %>.html"><i class="fa fa-flash"></i> <%= segment.name %></a>
+            <%end%>
+        </div>
+        <% end %>
+    </div>
+    <div>
+        <% if @document.component.indexOf('notifi') == 0:%>
+        <input name="accordion" id="n" type="radio" <%= if @document.subComponent == 'notification' then 'checked="checked"' else '' %> />
+        <label for="n"><i class="fa"></i> Notification Object</label>
+        <div class="menu">
+            <%for segment in @getData('notification','p'):%>
+            <a class="item <%= if @name == segment.name then 'active' else '' %>" href="/notification/<%=segment.name %>.html"><i class="fa fa-cog"></i> <%= segment.name %></a>
+            <%end%>
+            <%for segment in @getData('notification','m'):%>
+            <a class="item <%= if @name == segment.name then 'active' else '' %>" href="/notification/<%=segment.name %>.html"><i class="fa fa-wrench"></i> <%= segment.name %></a>
+            <%end%>
+            <%for segment in @getData('notification','e'):%>
+            <a class="item <%= if @name == segment.name then 'active' else '' %>" href="/notification/<%=segment.name %>.html"><i class="fa fa-flash"></i> <%= segment.name %></a>
+            <%end%>
+        </div>
+        <% end %>
+    </div>
+</div>

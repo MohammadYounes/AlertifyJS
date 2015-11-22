@@ -38,6 +38,15 @@
         "script": "alertify.{component}('Movable: false').set('movable', false);",
         "toggle": { "value": false }
     },
+    
+    {
+        "type": "p",
+        "name": "moveBounded",
+        "label": "{Boolean}",
+        "desc": "Gets or sets a value indicating whether a movable dialog is allowed to go off-screen or not.",
+        "defaultValue": "false",
+        "script": "alertify.{component}('Try moving this off the screen').set({'movable':true, 'moveBounded': true});"        
+    },
 
     {
         "type": "p",
@@ -113,7 +122,7 @@
     },
 
     {
-        "type": "p",
+        "type": "e",
         "name": "onshow",
         "label": "{Function}",
         "desc": "Gets or sets a function to invoke when the dialog is shown",
@@ -125,7 +134,7 @@
     },
 
     {
-        "type": "p",
+        "type": "e",
         "name": "onclose",
         "label": "{Function}",
         "desc": "Gets or sets a function to invoke when the dialog is closed",
@@ -135,7 +144,7 @@
     },
 
     {
-        "type": "p",
+        "type": "e",
         "name": "onfocus",
         "label": "{Function}",
         "desc": "Gets or sets a function to invoke when the dialog is focused for the first time.",
@@ -302,6 +311,16 @@
         "script": "alertify.{component}('Resized to 100%,250px').set('resizable',true).resizeTo('100%',250);",
         "exec": true,
         "remark": "The dialog must be <b>resizable</b> and it can be resized to a <b>minimum width</b> equal to the initial display width and a <b>minimum height</b> equal to the sum of header and footer heights. <br/> You can also pass a percent of the document <code>clientWidth</code>/<code>clientHeight</code>."
+    },
+
+    {
+        "type": "m",
+        "name": "bringToFront",
+        "label": "chainable",
+        "desc": "Brings the dialog to front of other dialogs (Will do nothing if the dialog is behind an open modal).",
+        "params": [ ],
+        "script": "alertify.{component}().bringToFront();",
+        "exec": false
     },
     
     {

@@ -1,8 +1,8 @@
 <div class="segment">
 
-	<h2 id="<%= @name %>">
+	<h1 id="<%= @name %>">
 		<a href="#<%= @name %>">
-			<i class="fa fa-<%= if @type == 'p' then 'cog' else 'wrench' %>"></i>
+			<i class="fa fa-<%= if @type == 'p' then 'cog' else if @type == 'm' then 'wrench' else 'flash' %>"></i>
 		</a>
 		<%= @name %>
 		<%if @type == 'm' :%>
@@ -13,18 +13,9 @@
 		)
 		<%end%>
 		<code><%= @label %></code>
-	</h2>
+	</h1>
+    <hr/>
 	<div>
-        <% if @remark :%>
-        <div class="ui small info message">
-            <div class="content">
-                <p>
-                    <i class="fa fa-info-circle"></i>
-                    <%-@remark%> 
-                </p>
-            </div>
-        </div>
-        <% end %>
 		<p><span>Description:</span> <%- @desc %></p>
 		<% if @defaultValue :%>
 		<p><span> Default:</span> <code><%= @defaultValue %></code></p>
@@ -78,3 +69,50 @@
 	</div>
 	<br/>
 </div>
+
+
+<%if (@isDialog && @type == 'p') || @remark :%>
+<h2> <i class="fa fa-info-circle"></i> Remarks </h2>
+<% end %>
+
+<% if @remark :%>
+<div class="ui small info message">
+    <div class="content">
+        <p>
+            <%-@remark%> 
+        </p>
+    </div>
+</div>
+<% end %>
+
+<%if @isDialog && @type == 'p' :%>
+<div class="segment">
+    <div class="ui small info message">
+        <div class="content">
+            <p>
+                You can use the <code>.setting()</code> method to set multiple values at once, Also works as a getter. Or use <code>.get()</code> and <code>.set()</code> aliases.
+            </p>
+        </div>
+    </div>
+    <div>
+<pre>
+<code class="lang-javascript">
+//get the closable setting value.
+var closable = alertify.alert().setting('closable');
+//grab the dialog instance using its parameter-less constructor then set multiple settings at once.
+alertify.alert()
+  .setting({
+    'label':'Agree',
+    'message': 'This dialog is : ' + (closable ? ' ' : ' not ') + 'closable.' ,
+    'onok': function(){ alertify.success('Great');}
+  }).show();
+</code> 
+</pre>
+        <div class="RIGHT">
+            <a class="button example" href="javascript:void(0);">
+                <span> Run </span>
+            </a>
+        </div>
+    </div>
+</div>
+<%end%>            
