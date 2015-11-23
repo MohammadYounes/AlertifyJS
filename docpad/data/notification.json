@@ -1,6 +1,6 @@
 [
     {
-        "type": "p",
+        "type": "e",
         "name": "ondismiss",
         "label": "{ Function }",
         "desc": "Sets or gets the callback function to be invoked before dismissing the notification [<b> if the invocation result === false , notification dismissal will be canceled </b>].",

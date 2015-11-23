@@ -4,7 +4,7 @@ hljs: 	'light'
 component:	'notifier'
 subComponent: 'notification'
 prop: 'ondismiss'
-propType: 'p'
+propType: 'e'
 label: '{ Function }'
 ---
 
