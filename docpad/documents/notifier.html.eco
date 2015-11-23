@@ -22,7 +22,7 @@ component:	'notifier'
 
         <!--Defult usage-->
         <div class="segment has-menu">
-            <h1><i class="fa fa-flash"></i> Default usage</h1>
+            <h1><i class="fa fa-book"></i> Default usage</h1>
             <hr />
             <p>You create notification message by invoking <code> alertify.notify(...)</code></p>
 

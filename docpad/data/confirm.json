@@ -37,7 +37,7 @@
 	},	
 	
 	{
-		"type": "p",
+		"type": "e",
 		"name": "onok",
 		"label": "{ Function }",
 		"desc": "Gets or sets a callback function to be invoked when the user clicks 'Ok' button.",
@@ -47,7 +47,7 @@
 	},	
 	
 	{
-		"type": "p",
+		"type": "e",
 		"name": "oncancel",
 		"label": "{ Function }",
 		"desc": "Gets or sets a callback function to be invoked when the user clicks 'Cancel' button or closes the dialog.",
