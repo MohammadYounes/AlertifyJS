@@ -3,7 +3,7 @@ layout: 'default'
 hljs: 	'light'
 component:	'prompt'
 prop: 'oncancel'
-propType: 'p'
+propType: 'e'
 label: '{ Function }'
 ---
 

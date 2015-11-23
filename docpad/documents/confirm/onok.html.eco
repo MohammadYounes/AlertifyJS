@@ -3,7 +3,7 @@ layout: 'default'
 hljs: 	'light'
 component:	'confirm'
 prop: 'onok'
-propType: 'p'
+propType: 'e'
 label: '{ Function }'
 ---
 
