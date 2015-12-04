@@ -31,8 +31,12 @@
 				<p><span> Parameters:</span> none</p>
 			<% end %>			
 		<%end%>
-
-
+        <% if @return :%>
+            <p><span> Returns:</span></p>
+            <blockquote>
+                <p><%=@return%></p>
+            </blockquote>
+        <%end%>
             
 <pre>
 <code class="lang-javascript"><% if typeof @script == 'string' :%> <%- @script %> <% else :%> <%for line in @script:%><%-line+'\n'%> <%end%> <% end %></code>

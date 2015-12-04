@@ -186,6 +186,83 @@
 
     {
         "type": "m",
+        "name": "setHeader",
+        "label": "chainable",
+        "desc": "Sets the contents of the dialog header.",
+        "params": [
+            { "name": "content", "type": "String or DOM Element", "desc": "The header content." }
+        ],
+        "script": "alertify.{component}('Hello World!').setHeader('<em> HTML Header </em> ');"
+    },
+    
+    {
+        "type": "m",
+        "name": "setContent",
+        "label": "chainable",
+        "desc": "Sets the contents of the dialog.",
+        "params": [
+            { "name": "content", "type": "String or DOM Element", "desc": "The dialog content." }
+        ],
+        "script": "alertify.{component}().setContent('<h1> Hello World! </h1>').show();",
+        "remark": "<b>Important:</b> This method replaces the entire dialog contents. For example, if used with a prompt dialog, the input field will be lost."
+    },    
+    
+    {
+        "type": "m",
+        "name": "setting",
+        "label": "",
+        "desc": "Gets or Sets dialog settings/options ",
+        "params": [
+            { "name": "key", "type": "String or Object", "desc": "A string specifying a setting/option key or object holding key/value pairs." },
+            { "name": "value", "type": "Optional", "desc": "The value associated with the key (in case it was a string)." }
+        ],
+        "script": [
+            "// set a single setting/option",
+            "alertify.{component}().setting('modal', false).show();",
+            "// set multiple settings/options",
+            "alertify.{component}().setting({'modal':false, 'closable':false});",
+            "// get a setting/option value",
+            "var isMaximizable = alertify.{component}().get('maximizable');"
+        ],
+        "exec": false,
+        "remark": "A separate <code>.get()</code> and <code>.set()</code> aliases are also available."
+    },
+    
+    {
+        "type": "m",
+        "name": "set",
+        "label": "chainable",
+        "desc": "Sets dialog settings/options.",
+        "params": [
+            { "name": "key", "type": "String or Object", "desc": "A string specifying a setting/option key or object holding key/value pairs." },
+            { "name": "value", "type": "Optional", "desc": "The value associated with the key (in case it was a string)." }
+        ],
+        "script": [
+            "// set a single setting/option",
+            "alertify.{component}().set('modal', false).show();",
+            "// set multiple settings/options",
+            "alertify.{component}().set({'modal':false, 'closable':false});"
+        ],
+        "exec": false,
+        "remark": "This method is an alias for <code>.setting()</code> method set mode."
+    },
+    
+    {
+        "type": "m",
+        "name": "get",
+        "label": "",
+        "desc": "Gets the dialog setting/option value.",
+        "params": [
+            { "name": "key", "type": "String", "desc": "The setting/option key." }
+        ],
+        "return": "The setting/option value." ,
+        "exec": false,
+        "script": "var isModal = alertify.{component}().get('modal');",
+        "remark": "This method is an alias for <code>.setting()</code> method get mode."
+    },
+    
+    {
+        "type": "m",
         "name": "maximize",
         "label": "chainable",
         "desc": "Maximizes the dialog.",
@@ -273,6 +350,35 @@
         "params": [ ],
         "script": "var isPinned = alertify.{component}().isPinned();",
         "exec": false
+    },
+
+    {
+        "type": "m",
+        "name": "show",
+        "label": "chainable",
+        "desc": "Shows the dialog",
+        "params": [ ],
+        "script": "alertify.{component}().set('message', '{component} dialog!').show();"
+    },
+
+    {
+        "type": "m",
+        "name": "showModal",
+        "label": "chainable",
+        "desc": "Updates the dialog display mode to <b>Modal</b> and shows the dialog.",
+        "params": [ ],
+        "script": "alertify.{component}().set('message','This is a modal {component} dialog!').showModal();"
+    },
+
+    {
+        "type": "m",
+        "name": "close",
+        "label": "chainable",
+        "desc": "Closes the current dialog instance.",
+        "params": [ ],
+        "script": "alertify.{component}().close();",
+        "exec": false,
+        "remark": "Use <code>alertify.closeAll()</code> to close all open dialogs. <br/> Use <code>alertify.closeOthers()</code> to close all open dialogs except this one."
     },
 
     {
