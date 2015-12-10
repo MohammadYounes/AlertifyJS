@@ -124,12 +124,12 @@
 		  </div>
 		 </div>
 		
-        <a href="http://www.isresponsive.com" target="_blank">
+        <a href="http://www.isresponsive.com" target="_blank" style="margin-bottom:20px;">
           <img src="http://www.isresponsive.com/Images/logo2.png">
           <div>www.isResponsive.com</div>
         </a>
         
-        <a href="https://www.keycdn.com/?a=10668" style="margin: 0 10%;">
+        <a href="https://www.keycdn.com/?a=10668" target="_blank" style="margin: 0 10%;">
           <img src=" https://logos.keycdn.com/keycdn-logo-white.png" alt="KeyCDN" width="115">
           <div>www.keycdn.com</div>
         </a>
