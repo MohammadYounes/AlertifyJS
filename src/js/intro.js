@@ -84,7 +84,10 @@
     function removeClass(element,classNames){
         var classes = classNames.split(' ');
         for(var x=0;x<classes.length;x+=1){
-            element.className = element.className.replace(' ' + classes[x], '');
+            element.className = element.className.replace(
+                new RegExp('(?:^|\s)' + classes[x] + '(?!\S)', 'g'),
+                '' 
+            );
         }
     }
 
