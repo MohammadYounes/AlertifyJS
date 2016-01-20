@@ -1,7 +1,7 @@
 /**
- * alertifyjs 1.6.0 http://alertifyjs.com
+ * alertifyjs 1.6.1 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
- * Copyright 2015 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
+ * Copyright 2016 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under MIT <http://opensource.org/licenses/mit-license.php>*/
 ( function ( window ) {
     'use strict';
@@ -86,11 +86,16 @@
      * 
      * @return {undefined}
      */
-    function removeClass(element,classNames){
-        var classes = classNames.split(' ');
-        for(var x=0;x<classes.length;x+=1){
-            element.className = element.className.replace(' ' + classes[x], '');
+    function removeClass(element, classNames) {
+        var original = element.className.split(' ');
+        var toBeRemoved = classNames.split(' ');
+        for (var x = 0; x < toBeRemoved.length; x += 1) {
+            var index = original.indexOf(toBeRemoved[x]);
+            if (index > -1){
+                original.splice(index,1);
+            }
         }
+        element.className = original.join(' ');
     }
 
     /**

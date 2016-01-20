@@ -1,5 +1,8 @@
 # Release Notes
 
+* **v1.6.1** [20 Jan. 2016]
+  * Fixes a bug in removing classes from `body` element. #86
+  
 * **v1.6.0** [23 Nov. 2015]
   * New API feature: `bringToFront` method and `moveBounded` option.
   
