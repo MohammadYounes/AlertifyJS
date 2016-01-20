@@ -81,14 +81,15 @@
      * 
      * @return {undefined}
      */
-    function removeClass(element,classNames){
-        var classes = classNames.split(' ');
-        for(var x=0;x<classes.length;x+=1){
-            element.className = element.className.replace(
-                new RegExp('(?:^|\s)' + classes[x] + '(?!\S)', 'g'),
-                '' 
-            );
+    function removeClass(element, classNames) {
+        var original = element.className.split(' ');
+        var toBeRemoved = classNames.split(' ');
+        for (var x = 0; x < toBeRemoved.length; x += 1) {
+            var index = original.indexOf(toBeRemoved[x]);
+            if (index > -1)
+                original.splice(index,1);
         }
+        element.className = original.join(' ');
     }
 
     /**
