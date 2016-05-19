@@ -219,17 +219,17 @@ function factory(){
 			// this.elements.body           ==> Dialog body div
 			// this.elements.content        ==> Dialog body content div
 			// this.elements.footer         ==> Dialog footer div
-			// this.elements.resizeHandle   ==> Dialog rezie handle div			
+			// this.elements.resizeHandle   ==> Dialog resize handle div			
 			
 			// Dialog commands (Pin/Maximize/Close)
-			// this.elements.commands           ==> Object conatining dialog command buttons references
+			// this.elements.commands           ==> Object containing  dialog command buttons references
 			// this.elements.commands.container ==> Root commands div
 			// this.elements.commands.pin       ==> Pin command button
 			// this.elements.commands.maximize  ==> Maximize command button
 			// this.elements.commands.close     ==> Close command button
 			
 			// Dialog action buttons (Ok, cancel ... etc)
-			// this.elements.buttons                ==>  Object conatining dialog action buttons references
+			// this.elements.buttons                ==>  Object containing  dialog action buttons references
 			// this.elements.buttons.primary        ==>  Primary buttons div
 			// this.elements.buttons.auxiliary      ==>  Auxiliary buttons div
 			
