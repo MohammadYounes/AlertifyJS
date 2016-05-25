@@ -1,5 +1,16 @@
 # Release Notes
 
+* **v1.7.0** [26 May. 2016]
+  * New API feature - Extended set of event callbacks: 
+    * `onmove`: Gets or sets a function to invoke when the dialog is about to move.
+    * `onmoved`: Gets or sets a function to invoke once the dialog has been moved.
+    * `onresize`: Gets or sets a function to invoke when the dialog is about to resize.
+    * `onresized`: Gets or sets a function to invoke once the dialog has been resized.
+    * `onmaximize`: Gets or sets a function to invoke when the dialog is about to maximize.
+    * `onmaximized`: Gets or sets a function to invoke once the dialog has been maximized.
+    * `onrestore`: Gets or sets a function to invoke when a maximized dialog is about to restore.
+    * `onrestored`: Gets or sets a function to invoke once a maximized dialog has been restored.
+
 * **v1.6.1** [20 Jan. 2016]
   * Fixes a bug in removing classes from `body` element. #86
   

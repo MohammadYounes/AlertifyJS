@@ -15,11 +15,15 @@ hljs: 	'light'
 		</div>
 	</div>
 </section>
-
+<section class="lic">
+    <div class="content">
+        Looking for a commercial licenese ?  Keep your source code proprietary and <a href="https://www.uplabs.com/posts/alertifyjs" target="_blank"> Buy a Commercial License Today!</a>
+    </div>
+</section>
 <section class="dark">
 <div class="content">
 
-	  <!-- Download -->  
+	  <!-- Download -->
 	  <h1>
 		<i class="fa fa-cloud-download fa-lg"></i> Download (v<%=@getPackage().version%>)
 	  </h1>
@@ -199,8 +203,10 @@ npm install alertifyjs --save
   <!-- //Usage -->
   <!-- Defaults -->
   <div class="segment">
-  <h1>
-  <i class="fa fa-book fa-lg"></i> Defaults</h1>
+	<h1 id="defaults">
+		<a href="#defaults"><i class="fa fa-book fa-lg"></i></a>
+		Defaults
+	</h1>
   <hr />
   <p> The following are the global defaults used by AlertifyJS, override with your own prior to components initialization.</p>
 

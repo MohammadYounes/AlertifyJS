@@ -1,5 +1,5 @@
 /**
- * alertifyjs 1.6.1 http://alertifyjs.com
+ * alertifyjs 1.7.0 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  * Copyright 2016 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under MIT <http://opensource.org/licenses/mit-license.php>*/
@@ -313,6 +313,19 @@
             cancel: false
         };
     }
+    /**
+    * Helper for dispatching events.
+    *
+    * @param  {string} evenType The type of the event to disptach.
+    * @param  {object} instance The dialog instance disptaching the event.
+    *
+    * @return {object}
+    */
+    function dispatchEvent(eventType, instance) {
+        if ( typeof instance.get(eventType) === 'function' ) {
+            instance.get(eventType).call(instance);
+        }
+    }
 
 
     /**
@@ -473,6 +486,14 @@
                         onshow:undefined,
                         onclose:undefined,
                         onfocus:undefined,
+                        onmove:undefined,
+                        onmoved:undefined,
+                        onresize:undefined,
+                        onresized:undefined,
+                        onmaximize:undefined,
+                        onmaximized:undefined,
+                        onrestore:undefined,
+                        onrestored:undefined
                     },
                     resetHandler:undefined,
                     beginMoveHandler:undefined,
@@ -994,11 +1015,15 @@
          * @return {undefined}
          */
         function maximize(instance) {
+            // allow custom `onmaximize` method
+            dispatchEvent('onmaximize', instance);
             //maximize the dialog 
             addClass(instance.elements.root, classes.maximized);
             if (instance.isOpen()) {
                 ensureNoOverflow();
             }
+            // allow custom `onmaximized` method
+            dispatchEvent('onmaximized', instance);
         }
 
         /**
@@ -1009,11 +1034,15 @@
          * @return {undefined}
          */
         function restore(instance) {
+            // allow custom `onrestore` method
+            dispatchEvent('onrestore', instance);
             //maximize the dialog 
             removeClass(instance.elements.root, classes.maximized);
             if (instance.isOpen()) {
                 ensureNoOverflow();
             }
+            // allow custom `onrestored` method
+            dispatchEvent('onrestored', instance);
         }
 
         /**
@@ -1411,9 +1440,7 @@
             cancelKeyup = false;
 
             // allow custom `onfocus` method
-            if (typeof instance.get('onfocus') === 'function') {
-                instance.get('onfocus').call(instance);
-            }
+            dispatchEvent('onfocus', instance);
 
             // unbind the event
             off(instance.elements.dialog, transition.type, instance.__internal.transitionInHandler);
@@ -1581,6 +1608,9 @@
                         moveDelegate = moveElement;
                     }
                     
+                    // allow custom `onmove` method
+                    dispatchEvent('onmove', instance);
+
                     refreshTop = !instance.isModal() && instance.isPinned();
                     movable = instance;
                     moveDelegate(eventSrc, element);
@@ -1620,10 +1650,12 @@
          */
         function endMove() {
             if (movable) {
-                var element = movable.elements.dialog;
+                var instance = movable;
                 movable = bounds = null;
                 removeClass(document.body, classes.noSelection);
-                removeClass(element, classes.capture);
+                removeClass(instance.elements.dialog, classes.capture);
+                // allow custom `onmoved` method
+                dispatchEvent('onmoved', instance);
             }
         }
 
@@ -1763,6 +1795,9 @@
                     eventSrc = event;
                 }
                 if (eventSrc) {
+                    // allow custom `onresize` method
+                    dispatchEvent('onresize', instance);
+                    
                     resizable = instance;
                     handleOffset = instance.elements.resizeHandle.offsetHeight / 2;
                     var element = instance.elements.dialog;
@@ -1812,11 +1847,13 @@
          */
         function endResize() {
             if (resizable) {
-                var element = resizable.elements.dialog;
+                var instance = resizable;
                 resizable = null;
                 removeClass(document.body, classes.noSelection);
-                removeClass(element, classes.capture);
+                removeClass(instance.elements.dialog, classes.capture);
                 cancelClick = true;
+                // allow custom `onresized` method
+                dispatchEvent('onresized', instance);
             }
         }
 
@@ -2139,6 +2176,9 @@
              */
             moveTo:function(x,y){
                 if(!isNaN(x) && !isNaN(y)){
+                    // allow custom `onmove` method
+                    dispatchEvent('onmove', this);
+                    
                     var element = this.elements.dialog,
                         current = element,
                         offsetLeft = 0,
@@ -2168,6 +2208,9 @@
 
                     element.style.left = left + 'px';
                     element.style.top = top + 'px';
+                    
+                    // allow custom `onmoved` method
+                    dispatchEvent('onmoved', this);
                 }
                 return this;
             },
@@ -2190,7 +2233,10 @@
                 ;
 
                 if(!isNaN(w) && !isNaN(h) && this.get('resizable') === true){
-
+                    
+                    // allow custom `onresize` method
+                    dispatchEvent('onresize', this);
+                    
                     if(('' + width).match(regex)){
                         w = w / 100 * document.documentElement.clientWidth ;
                     }
@@ -2207,6 +2253,9 @@
                     element.style.minHeight = this.elements.header.offsetHeight + this.elements.footer.offsetHeight + 'px';
                     element.style.width = w + 'px';
                     element.style.height = h + 'px';
+                    
+                    // allow custom `onresized` method
+                    dispatchEvent('onresized', this);
                 }
                 return this;
             },
@@ -2304,9 +2353,9 @@
                 
                 // ensure initialization
                 initialize(this);
-								
+
                 if ( !this.__internal.isOpen ) {
-					
+
                     // add to open dialogs
                     this.__internal.isOpen = true;
                     openDialogs.push(this);
@@ -2326,12 +2375,12 @@
                     if(modal !== undefined){
                         this.set('modal', modal);
                     }
-					
+
                     //save scroll to prevent document jump
                     saveScrollPosition();
 
                     ensureNoOverflow();
-					
+
                     // allow custom dialog class on show
                     if(typeof className === 'string' && className !== ''){
                         this.__internal.className = className;
@@ -2344,7 +2393,7 @@
                     }else if(this.isMaximized()){
                         restore(this);
                     }
-					
+
                     updateAbsPositionFix(this);
 
                     removeClass(this.elements.root, classes.animationOut);
@@ -2373,9 +2422,7 @@
                     }
 
                     // allow custom `onshow` method
-                    if ( typeof this.get('onshow') === 'function' ) {
-                        this.get('onshow').call(this);
-                    }
+                    dispatchEvent('onshow', this);
 
                 }else{
                     // reset move updates
@@ -2398,9 +2445,9 @@
              */
             close: function () {
                 if (this.__internal.isOpen ) {
-					
+
                     unbindEvents(this);
-					
+
                     removeClass(this.elements.root, classes.animationIn);
                     addClass(this.elements.root, classes.animationOut);
 
@@ -2423,16 +2470,14 @@
                     }
 
                     // allow custom `onclose` method
-                    if ( typeof this.get('onclose') === 'function' ) {
-                        this.get('onclose').call(this);
-                    }
-					
+                    dispatchEvent('onclose', this);
+
                     //remove from open dialogs               
                     openDialogs.splice(openDialogs.indexOf(this),1);
                     this.__internal.isOpen = false;
-					
+
                     ensureNoOverflow();
-					
+
                 }
                 return this;
             },

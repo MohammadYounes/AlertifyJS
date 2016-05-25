@@ -16,12 +16,19 @@ component:	'alert'
       </div>
     </div>
   </section>
-  
+  <section class="lic">
+      <div class="content">
+          Looking for a commercial licenese ?  Keep your source code proprietary and <a href="https://www.uplabs.com/posts/alertifyjs" target="_blank"> Buy a Commercial License Today!</a>
+      </div>
+  </section>
   <section class="dark">
     <div class="content">
       <!--Defult usage-->
       <div class="segment">
-        <h1><i class="fa fa-flash"></i> Default usage</h1>
+        <h1 id="usage">
+          <a href="#usage"><i class="fa fa-book"></i></a>
+          Default usage
+        </h1>
         <hr />
         <p>
 					To create a new dialog, you use the <code>alertify.dialog</code>  API. 
@@ -118,7 +125,10 @@ alertify
       <!--Factory-->
 			
       <div class="segment">
-        <h1><i class="fa fa-wrench"></i> Factory Function </h1>
+        <h1 id="factory">
+          <a href="#factory"><i class="fa fa-wrench"></i></a>
+           Factory Function
+        </h1>
         <hr />
 				<p>The factory function should return an object with the different options to tell <b>AlertifyJS</b> how the dialog should behave when created.</p>
 
@@ -183,22 +193,33 @@ function factory(){
 					/* dialog options, these override the defaults */
 					options: {
 						title: ...,
-                        modal: ...,
-                        basic:...,
-                        frameless:...,
-                        pinned: ...,
-                        movable: ...,
-                        resizable: ...,
-                        closable: ...,
-                        maximizable: ...,
-                        startMaximized: ...,
-                        pinnable: ...,
-                        transition: ...,
-                        padding:...,
-                        overflow:...,
-                        onshow:...,
-                        onclose:...,
-                        onfocus:...,
+						modal: ...,
+						basic:...,
+						frameless:...,
+						pinned: ...,
+						movable: ...,
+						moveBounded:...,
+						resizable: ...,
+						autoReset: ...,
+						closable: ...,
+						closableByDimmer: ...,
+						maximizable: ...,
+						startMaximized: ...,
+						pinnable: ...,
+						transition: ...,
+						padding:...,
+						overflow:...,
+						onshow:...,
+						onclose:...,
+						onfocus:...,
+						onmove:...,
+						onmoved:...,
+						onresize:...,
+						onresized:...,
+						onmaximize:...,
+						onmaximized:...,
+						onrestore:...,
+						onrestored:...
 					}
 				};
 		 },

@@ -140,7 +140,6 @@
         "desc": "Gets or sets a function to invoke when the dialog is closed",
         "defaultValue": "undefined",
         "script": "alertify.{component}('Demo').set({onshow:null, onclose:function(){ alertify.message('{component} was closed.')}});"
-
     },
 
     {
@@ -149,8 +148,132 @@
         "label": "{Function}",
         "desc": "Gets or sets a function to invoke when the dialog is focused for the first time.",
         "defaultValue": "undefined",
-        "script": "alertify.{component}('Demo').set({onfocus:function(){ alertify.message('{component} onfocus callback.')},onshow:null, onclose:null});"
+        "script": "alertify.{component}('Demo').set({onfocus:function(){ alertify.message('{component} - onfocus callback.')}});"
+    },
+    
+    {
+        "type": "e",
+        "name": "onmove",
+        "label": "{Function}",
+        "desc": "Gets or sets a function to invoke when the dialog is about to move.",
+        "defaultValue": "undefined",
+        "script": ["alertify.{component}('The call back will be invoked when this dialog is about to move.')",
+                   "        .set({",
+                   "            onmove:function(){ ",
+                   "                alertify.message('{component} - onmove callback.')",
+                   "            },",
+                   "            movable:true",
+                   "        });"
+                ]
+    },
 
+    {
+        "type": "e",
+        "name": "onmoved",
+        "label": "{Function}",
+        "desc": "Gets or sets a function to invoke once the dialog has been moved.",
+        "defaultValue": "undefined",
+        "script": ["alertify.{component}('The call back will be invoked once this dialog is moved.')",
+                   "        .set({",
+                   "            onmoved:function(){ ",
+                   "                alertify.message('{component} - onmoved callback.')",
+                   "            },",
+                   "            movable:true",
+                   "        });"
+                ]
+    },
+
+    {
+        "type": "e",
+        "name": "onresize",
+        "label": "{Function}",
+        "desc": "Gets or sets a function to invoke when the dialog is about to resize.",
+        "defaultValue": "undefined",
+        "script": ["alertify.{component}('The call back will be invoked when this dialog is about to resize.')",
+                   "        .set({",
+                   "            onresize:function(){ ",
+                   "                alertify.message('{component} - onresize callback.')",
+                   "            },",
+                   "            resizable:true",
+                   "        });"
+                ]
+    },
+    {
+        "type": "e",
+        "name": "onresized",
+        "label": "{Function}",
+        "desc": "Gets or sets a function to invoke once the dialog has been resized.",
+        "defaultValue": "undefined",
+        "script": ["alertify.{component}('The call back will be invoked once this dialog is resized.')",
+                   "        .set({",
+                   "            onresized:function(){ ",
+                   "                alertify.message('{component} - onresized callback.')",
+                   "            },",
+                   "            resizable:true",
+                   "        });"
+                ]
+    },
+    {
+        "type": "e",
+        "name": "onmaximize",
+        "label": "{Function}",
+        "desc": "Gets or sets a function to invoke when the dialog is about to maximize.",
+        "defaultValue": "undefined",
+        "script": ["alertify.{component}('The call back will be invoked when this dialog is about to maximize.')",
+                   "        .set({",
+                   "            onmaximize:function(){ ",
+                   "                alertify.message('{component} - onmaximize callback.')",
+                   "            },",
+                   "            maximizable:true",
+                   "        });"
+                ]
+    },
+    {
+        "type": "e",
+        "name": "onmaximized",
+        "label": "{Function}",
+        "desc": "Gets or sets a function to invoke when the dialog has been maximized.",
+        "defaultValue": "undefined",
+        "script": ["alertify.{component}('The call back will be invoked once this dialog is fully maximized.')",
+                   "        .set({",
+                   "            onmaximized:function(){ ",
+                   "                alertify.message('{component} - onmaximized callback.')",
+                   "            },",
+                   "            maximizable:true",
+                   "        });"
+                ]
+    },
+    {
+        "type": "e",
+        "name": "onrestore",
+        "label": "{Function}",
+        "desc": "Gets or sets a function to invoke when a maximized dialog is about to restore.",
+        "defaultValue": "undefined",
+        "script": ["alertify.{component}('The call back will be invoked when this dialog is about to restore.')",
+                   "        .set({",
+                   "            onrestore:function(){ ",
+                   "                alertify.message('{component} - onrestore callback.')",
+                   "            },",
+                   "            maximizable:true",
+                   "        })",
+                   "        .maximize();"
+                ]
+    },
+    {
+        "type": "e",
+        "name": "onrestored",
+        "label": "{Function}",
+        "desc": "Gets or sets a function to invoke when a maximized dialog has been restored.",
+        "defaultValue": "undefined",
+        "script": ["alertify.{component}('The call back will be invoked once this dialog is fully restored.')",
+                   "        .set({",
+                   "            onrestored:function(){ ",
+                   "                alertify.message('{component} - onrestored callback.')",
+                   "            },",
+                   "            maximizable:true",
+                   "        })",
+                   "        .maximize();"
+                ]
     },
 
     {
