@@ -17,12 +17,19 @@ component:	'prompt'
       </div>
     </div>
   </section>
-  
+  <section class="lic">
+    <div class="content">
+        Looking for a commercial licenese ?  Keep your source code proprietary and <a href="https://www.uplabs.com/posts/alertifyjs" target="_blank"> Buy a Commercial License Today!</a>
+    </div>
+  </section>
   <section class="dark">
     <div class="content">
       <!--Defult usage-->
       <div class="segment has-menu">
-        <h1><i class="fa fa-book"></i> Default usage</h1>
+        <h1 id="usage">
+          <a href="#usage"><i class="fa fa-book"></i></a>
+          Default usage
+        </h1>
         <hr />
         <p>You create a prompt dialog by invoking <code> alertify.prompt(...)</code></p>
 
@@ -47,17 +54,10 @@ component:	'prompt'
  *
  * alertify.prompt(title, message, value, onok, oncancel);
  * 
- * overloads:
- *
- * alertify.prompt(message);
- * alertify.prompt(message, value);
- * alertify.prompt(message, value, onok);
- * alertify.prompt(message, value, onok, oncancel);
- *
- */  
-alertify.prompt('This is a prompt dialog!', 'some value', 
-	function(evt, value){ alertify.message('You entered: ' + value);}
-);
+ */
+alertify.prompt( 'Prompt Title', 'Prompt Message', 'Prompt Value'
+               , function(evt, value) { alertify.success('You entered: ' + value) }
+               , function() { alertify.error('Cancel') });
 </code> 
 </pre>
         <div class="RIGHT">
@@ -65,6 +65,69 @@ alertify.prompt('This is a prompt dialog!', 'some value',
             <span> Run </span>
           </a>
         </div>
+        <h1 id="overloads">
+		      <a href="#overloads"><i class="fa fa-cogs"></i></a>
+		      Overloads
+        </h1>
+        <p>For convenience, the following overloads are also available:</p>
+        
+<pre>
+<code class="lang-javascript">
+/*
+ * @message {String or DOMElement} The dialog contents.
+ * 
+ * alertify.prompt(message);
+ *
+ */
+alertify.prompt('Prompt Message');
+</code> 
+</pre>
+
+<pre>
+<code class="lang-javascript">
+/*
+ * @message {String or DOMElement} The dialog contents.
+ * @value {String} The default input value. 
+ *
+ * alertify.prompt(message, value);
+ *
+ */  
+alertify.prompt('Prompt Message', 'Prompt Value');
+</code> 
+</pre>
+
+<pre>
+<code class="lang-javascript">
+/*
+ * @message {String or DOMElement} The dialog contents.
+ * @value {String} The default input value. 
+ * @onok {Function} Invoked when the user clicks OK button.
+ *
+ * alertify.prompt(message, value, onok);
+ *
+ */  
+alertify.prompt('Prompt Message', 'Prompt Value'
+               , function(evt, value) { alertify.success('You entered: ' + value) });
+</code> 
+</pre>
+
+<pre>
+<code class="lang-javascript">
+/*
+ * @message {String or DOMElement} The dialog contents.
+ * @value {String} The default input value. 
+ * @onok {Function} Invoked when the user clicks OK button.
+ * @oncancel {Function} Invoked when the user clicks Cancel button or closes the dialog.
+ *
+ * alertify.prompt(message, value, onok, oncancel);
+ *
+ */  
+alertify.prompt( 'Prompt Message', 'Prompt Value'
+               , function(evt, value) { alertify.success('You entered: ' + value) }
+               , function() { alertify.error('Cancel') });
+</code> 
+</pre>
+        
       </div>
       <!--//Defult usage-->
       

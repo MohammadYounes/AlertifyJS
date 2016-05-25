@@ -17,12 +17,19 @@ component:	'confirm'
       </div>
     </div>
   </section>
-  
+  <section class="lic">
+    <div class="content">
+        Looking for a commercial licenese ?  Keep your source code proprietary and <a href="https://www.uplabs.com/posts/alertifyjs" target="_blank"> Buy a Commercial License Today!</a>
+    </div>
+  </section>
   <section class="dark">
     <div class="content">
       <!--Defult usage-->
       <div class="segment has-menu">
-        <h1><i class="fa fa-book"></i> Default usage</h1>
+        <h1 id="usage">
+          <a href="#usage"><i class="fa fa-book"></i></a>
+          Default usage
+        </h1>
         <hr />
         <p>You create a confirm dialog by invoking <code> alertify.confirm(...)</code></p>
 
@@ -45,15 +52,10 @@ component:	'confirm'
  * @oncancel {Function} Invoked when the user clicks Cancel button or closes the dialog.
  *
  * alertify.confirm(title, message, onok, oncancel);
- * 
- * overloads:
  *
- *  alertify.confirm(message);
- *  alertify.confirm(message, onok);
- *  alertify.confirm(message, onok, oncancel);
- *
- */  
-alertify.confirm('This is a confirm message!');
+ */
+alertify.confirm('Confirm Title', 'Confirm Message', function(){ alertify.success('Ok') }
+                , function(){ alertify.error('Cancel')});
 </code> 
 </pre>
         <div class="RIGHT">
@@ -61,6 +63,49 @@ alertify.confirm('This is a confirm message!');
             <span> Run </span>
           </a>
         </div>
+        <h1 id="overloads">
+		      <a href="#overloads"><i class="fa fa-cogs"></i></a>
+		      Overloads
+        </h1>
+        <p>For convenience, the following overloads are also available:</p>
+        
+<pre>
+<code class="lang-javascript">
+/*
+ * @message {String or DOMElement} The dialog contents.
+ *
+ *  alertify.confirm(message);
+ *
+ */
+alertify.confirm('Confirm Message');
+</code> 
+</pre>
+<pre>
+
+<code class="lang-javascript">
+/*
+ * @message {String or DOMElement} The dialog contents.
+ * @onok {Function} Invoked when the user clicks OK button.
+ *
+ *  alertify.confirm(message, onok);
+ *
+ */  
+alertify.confirm('Confirm Message', function(){ alertify.success('Ok') });
+</code> 
+</pre>
+<pre>
+<code class="lang-javascript">
+/*
+ * @message {String or DOMElement} The dialog contents.
+ * @onok {Function} Invoked when the user clicks OK button.
+ * @oncancel {Function} Invoked when the user clicks Cancel button or closes the dialog.
+ *
+ *  alertify.confirm(message, onok, oncancel);
+ *
+ */
+alertify.confirm('Confirm Message', function(){ alertify.success('Ok') }, function(){ alertify.error('Cancel')});
+</code> 
+</pre>
       </div>
       <!--//Defult usage-->
      
