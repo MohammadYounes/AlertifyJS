@@ -123,6 +123,9 @@
                         moveDelegate = moveElement;
                     }
                     
+                    // allow custom `onmove` method
+                    dispatchEvent('onmove', instance);
+
                     refreshTop = !instance.isModal() && instance.isPinned();
                     movable = instance;
                     moveDelegate(eventSrc, element);
@@ -162,10 +165,12 @@
          */
         function endMove() {
             if (movable) {
-                var element = movable.elements.dialog;
+                var instance = movable;
                 movable = bounds = null;
                 removeClass(document.body, classes.noSelection);
-                removeClass(element, classes.capture);
+                removeClass(instance.elements.dialog, classes.capture);
+                // allow custom `onmoved` method
+                dispatchEvent('onmoved', instance);
             }
         }
 

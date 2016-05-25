@@ -20,9 +20,7 @@
             cancelKeyup = false;
 
             // allow custom `onfocus` method
-            if (typeof instance.get('onfocus') === 'function') {
-                instance.get('onfocus').call(instance);
-            }
+            dispatchEvent('onfocus', instance);
 
             // unbind the event
             off(instance.elements.dialog, transition.type, instance.__internal.transitionInHandler);

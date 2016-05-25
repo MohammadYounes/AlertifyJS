@@ -94,6 +94,9 @@
                     eventSrc = event;
                 }
                 if (eventSrc) {
+                    // allow custom `onresize` method
+                    dispatchEvent('onresize', instance);
+                    
                     resizable = instance;
                     handleOffset = instance.elements.resizeHandle.offsetHeight / 2;
                     var element = instance.elements.dialog;
@@ -143,11 +146,13 @@
          */
         function endResize() {
             if (resizable) {
-                var element = resizable.elements.dialog;
+                var instance = resizable;
                 resizable = null;
                 removeClass(document.body, classes.noSelection);
-                removeClass(element, classes.capture);
+                removeClass(instance.elements.dialog, classes.capture);
                 cancelClick = true;
+                // allow custom `onresized` method
+                dispatchEvent('onresized', instance);
             }
         }
 

@@ -83,11 +83,15 @@
          * @return {undefined}
          */
         function maximize(instance) {
+            // allow custom `onmaximize` method
+            dispatchEvent('onmaximize', instance);
             //maximize the dialog 
             addClass(instance.elements.root, classes.maximized);
             if (instance.isOpen()) {
                 ensureNoOverflow();
             }
+            // allow custom `onmaximized` method
+            dispatchEvent('onmaximized', instance);
         }
 
         /**
@@ -98,11 +102,15 @@
          * @return {undefined}
          */
         function restore(instance) {
+            // allow custom `onrestore` method
+            dispatchEvent('onrestore', instance);
             //maximize the dialog 
             removeClass(instance.elements.root, classes.maximized);
             if (instance.isOpen()) {
                 ensureNoOverflow();
             }
+            // allow custom `onrestored` method
+            dispatchEvent('onrestored', instance);
         }
 
         /**

@@ -56,6 +56,9 @@
              */
             moveTo:function(x,y){
                 if(!isNaN(x) && !isNaN(y)){
+                    // allow custom `onmove` method
+                    dispatchEvent('onmove', this);
+                    
                     var element = this.elements.dialog,
                         current = element,
                         offsetLeft = 0,
@@ -85,6 +88,9 @@
 
                     element.style.left = left + 'px';
                     element.style.top = top + 'px';
+                    
+                    // allow custom `onmoved` method
+                    dispatchEvent('onmoved', this);
                 }
                 return this;
             },
@@ -107,7 +113,10 @@
                 ;
 
                 if(!isNaN(w) && !isNaN(h) && this.get('resizable') === true){
-
+                    
+                    // allow custom `onresize` method
+                    dispatchEvent('onresize', this);
+                    
                     if(('' + width).match(regex)){
                         w = w / 100 * document.documentElement.clientWidth ;
                     }
@@ -124,6 +133,9 @@
                     element.style.minHeight = this.elements.header.offsetHeight + this.elements.footer.offsetHeight + 'px';
                     element.style.width = w + 'px';
                     element.style.height = h + 'px';
+                    
+                    // allow custom `onresized` method
+                    dispatchEvent('onresized', this);
                 }
                 return this;
             },
@@ -221,9 +233,9 @@
                 
                 // ensure initialization
                 initialize(this);
-								
+
                 if ( !this.__internal.isOpen ) {
-					
+
                     // add to open dialogs
                     this.__internal.isOpen = true;
                     openDialogs.push(this);
@@ -243,12 +255,12 @@
                     if(modal !== undefined){
                         this.set('modal', modal);
                     }
-					
+
                     //save scroll to prevent document jump
                     saveScrollPosition();
 
                     ensureNoOverflow();
-					
+
                     // allow custom dialog class on show
                     if(typeof className === 'string' && className !== ''){
                         this.__internal.className = className;
@@ -261,7 +273,7 @@
                     }else if(this.isMaximized()){
                         restore(this);
                     }
-					
+
                     updateAbsPositionFix(this);
 
                     removeClass(this.elements.root, classes.animationOut);
@@ -290,9 +302,7 @@
                     }
 
                     // allow custom `onshow` method
-                    if ( typeof this.get('onshow') === 'function' ) {
-                        this.get('onshow').call(this);
-                    }
+                    dispatchEvent('onshow', this);
 
                 }else{
                     // reset move updates
@@ -315,9 +325,9 @@
              */
             close: function () {
                 if (this.__internal.isOpen ) {
-					
+
                     unbindEvents(this);
-					
+
                     removeClass(this.elements.root, classes.animationIn);
                     addClass(this.elements.root, classes.animationOut);
 
@@ -340,16 +350,14 @@
                     }
 
                     // allow custom `onclose` method
-                    if ( typeof this.get('onclose') === 'function' ) {
-                        this.get('onclose').call(this);
-                    }
-					
+                    dispatchEvent('onclose', this);
+
                     //remove from open dialogs               
                     openDialogs.splice(openDialogs.indexOf(this),1);
                     this.__internal.isOpen = false;
-					
+
                     ensureNoOverflow();
-					
+
                 }
                 return this;
             },
