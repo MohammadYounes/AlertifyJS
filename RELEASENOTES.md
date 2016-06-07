@@ -1,4 +1,6 @@
 # Release Notes
+* **v1.7.1** [8 Jun. 2016]
+ * Reset Prompt Dialog default value on cancellation. #106
 
 * **v1.7.0** [26 May. 2016]
   * New API feature - Extended set of event callbacks: 
