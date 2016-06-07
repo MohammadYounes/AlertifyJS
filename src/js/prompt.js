@@ -166,6 +166,9 @@
                             closeEvent.cancel = !returnValue;
                         }
                     }
+                    if(!closeEvent.cancel){
+                        input.value = this.settings.value;
+                    }
                     break;
                 }
             }
