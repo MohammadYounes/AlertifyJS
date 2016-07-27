@@ -62,7 +62,7 @@
         function initialize(instance){
             
             if(!instance.__internal){
-				
+
                 //no need to expose init after this.
                 delete instance.__init;
               
@@ -71,13 +71,13 @@
                     instance.__settings = copy(instance.settings);
                 }
                 //in case the script was included before body.
-                //after first dialog gets initialized, it won't be null anymore!				
+                //after first dialog gets initialized, it won't be null anymore!
                 if(null === reflow){
                     // set tabindex attribute on body element this allows script to give it
                     // focus after the dialog is closed
                     document.body.setAttribute( 'tabindex', '0' );
                 }
-				
+
                 //get dialog buttons/focus setup
                 var setup;
                 if(typeof instance.setup === 'function'){
@@ -269,32 +269,19 @@
                 internal.transitionInHandler = delegate(instance, handleTransitionInEvent);
                 internal.transitionOutHandler = delegate(instance, handleTransitionOutEvent);
 
-                
                 //settings
-                instance.set('title', setup.options.title === undefined ? alertify.defaults.glossary.title : setup.options.title);
-				
-                instance.set('modal', setup.options.modal === undefined ? alertify.defaults.modal : setup.options.modal);
-                instance.set('basic', setup.options.basic === undefined ? alertify.defaults.basic : setup.options.basic);
-                instance.set('frameless', setup.options.frameless === undefined ? alertify.defaults.frameless : setup.options.frameless);
-							
-                instance.set('movable', setup.options.movable === undefined ? alertify.defaults.movable : setup.options.movable);
-                instance.set('moveBounded', setup.options.moveBounded === undefined ? alertify.defaults.moveBounded : setup.options.moveBounded);
-                instance.set('resizable', setup.options.resizable === undefined ? alertify.defaults.resizable : setup.options.resizable);
-                instance.set('autoReset', setup.options.autoReset === undefined ? alertify.defaults.autoReset : setup.options.autoReset);
-				
-                instance.set('closable', setup.options.closable === undefined ? alertify.defaults.closable : setup.options.closable);
-                instance.set('closableByDimmer', setup.options.closableByDimmer === undefined ? alertify.defaults.closableByDimmer : setup.options.closableByDimmer);
-                instance.set('maximizable', setup.options.maximizable === undefined ? alertify.defaults.maximizable : setup.options.maximizable);
-                instance.set('startMaximized', setup.options.startMaximized === undefined ? alertify.defaults.startMaximized : setup.options.startMaximized);
-				
-                instance.set('pinnable', setup.options.pinnable === undefined ? alertify.defaults.pinnable : setup.options.pinnable);
-                instance.set('pinned', setup.options.pinned === undefined ? alertify.defaults.pinned : setup.options.pinned);
-				
-                instance.set('transition', setup.options.transition === undefined ? alertify.defaults.transition : setup.options.transition);
-
-                instance.set('padding', setup.options.padding === undefined ? alertify.defaults.padding : setup.options.padding);
-                instance.set('overflow', setup.options.overflow === undefined ? alertify.defaults.overflow : setup.options.overflow);
-				
+                for(var opKey in internal.options){
+                    if(setup.options[opKey] !== undefined){
+                        // if found in user options
+                        instance.set(opKey, setup.options[opKey]);
+                    }else if(alertify.defaults.hasOwnProperty(opKey)) {
+                        // else if found in defaults options
+                        instance.set(opKey, alertify.defaults[opKey]);
+                    }else if(opKey === 'title' ) {
+                        // else if title key, use alertify.defaults.glossary
+                        instance.set(opKey, alertify.defaults.glossary[opKey]);
+                    }
+                }
 
                 // allow dom customization
                 if(typeof instance.build === 'function'){
