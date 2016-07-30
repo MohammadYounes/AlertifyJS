@@ -28,32 +28,32 @@
             },
             //common class names
             classes = {
+                animationIn: 'ajs-in',
+                animationOut: 'ajs-out',
                 base: 'alertify',
-                prefix: 'ajs-',
+                basic:'ajs-basic',
+                capture: 'ajs-capture',
+                closable:'ajs-closable',
+                fixed: 'ajs-fixed',
+                frameless:'ajs-frameless',
                 hidden: 'ajs-hidden',
+                maximize: 'ajs-maximize',
+                maximized: 'ajs-maximized',
+                maximizable:'ajs-maximizable',
+                modeless: 'ajs-modeless',
+                movable: 'ajs-movable',
                 noSelection: 'ajs-no-selection',
                 noOverflow: 'ajs-no-overflow',
                 noPadding:'ajs-no-padding',
-                modeless: 'ajs-modeless',
-                movable: 'ajs-movable',
-                resizable: 'ajs-resizable',
-                capture: 'ajs-capture',
-                fixed: 'ajs-fixed',
-                closable:'ajs-closable',
-                maximizable:'ajs-maximizable',
-                maximize: 'ajs-maximize',
-                restore: 'ajs-restore',
-                pinnable:'ajs-pinnable',
-                unpinned:'ajs-unpinned',
                 pin:'ajs-pin',
-                maximized: 'ajs-maximized',
-                animationIn: 'ajs-in',
-                animationOut: 'ajs-out',
+                pinnable:'ajs-pinnable',
+                prefix: 'ajs-',
+                resizable: 'ajs-resizable',
+                restore: 'ajs-restore',
                 shake:'ajs-shake',
-                basic:'ajs-basic',
-                frameless:'ajs-frameless'
+                unpinned:'ajs-unpinned',
             };
-			
+
         /**
          * Helper: initializes the dialog instance
          * 
@@ -176,19 +176,18 @@
                     transitionOutHandler:undefined,
                     destroy:undefined
                 };
-				
-                                
+
                 var elements = {};
                 //root node
                 elements.root = document.createElement('div');
                 
                 elements.root.className = classes.base + ' ' + classes.hidden + ' ';
-				
+
                 elements.root.innerHTML = templates.dimmer + templates.modal;
                 
                 //dimmer
                 elements.dimmer = elements.root.firstChild;
-				
+
                 //dialog
                 elements.modal = elements.root.lastChild;
                 elements.modal.innerHTML = templates.dialog;
@@ -318,12 +317,34 @@
                     requiresNoOverflow+=1;
                 }
             }
-            if(requiresNoOverflow === 0){
+            if(requiresNoOverflow === 0 && document.body.className.indexOf(classes.noOverflow) >= 0){
                 //last open modal or last maximized one
                 removeClass(document.body, classes.noOverflow);
+                preventBodyShift(false);
             }else if(requiresNoOverflow > 0 && document.body.className.indexOf(classes.noOverflow) < 0){
                 //first open modal or first maximized one
+                preventBodyShift(true);
                 addClass(document.body, classes.noOverflow);
+            }
+        }
+        var top = '', topScroll = 0;
+        /**
+         * Helper: prevents body shift.
+         *
+         */
+        function preventBodyShift(add){
+            if(alertify.defaults.preventBodyShift && document.documentElement.scrollHeight > document.documentElement.clientHeight){
+                if(add ){//&& openDialogs[openDialogs.length-1].elements.dialog.clientHeight <= document.documentElement.clientHeight){
+                    topScroll = scrollY;
+                    top = window.getComputedStyle(document.body).top;
+                    addClass(document.body, classes.fixed);
+                    document.body.style.top = -scrollY + 'px';
+                } else {
+                    scrollY = topScroll;
+                    document.body.style.top = top;
+                    removeClass(document.body, classes.fixed);
+                    restoreScrollPosition();
+                }
             }
         }
 		
@@ -353,27 +374,27 @@
 
                 //make modal
                 removeClass(instance.elements.root, classes.modeless);
-				
+
                 //only if open
                 if(instance.isOpen()){
                     unbindModelessEvents(instance);
-					
+
                     //in case a pinned modless dialog was made modal while open.
                     updateAbsPositionFix(instance);
-					
+
                     ensureNoOverflow();
                 }
             }else{
                 //make modelss
                 addClass(instance.elements.root, classes.modeless);
-								
+
                 //only if open
                 if(instance.isOpen()){
                     bindModelessEvents(instance);
-					
+
                     //in case pin/unpin was called while a modal is open
                     updateAbsPositionFix(instance);
-										
+
                     ensureNoOverflow();
                 }
             }
@@ -575,7 +596,7 @@
                             callback.call(instance,key, old, value);
                         }
                         result.items.push({'key': key, 'value': value , 'found':true});
-						
+
                     }else{
                         result.items.push({'key': key, 'value': value , 'found':false});
                     }
@@ -586,4 +607,3 @@
             }
             return result;
         }
-		

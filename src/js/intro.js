@@ -18,23 +18,24 @@
      * @type {Object}
      */
     var defaults = {
-        modal:true,
+        autoReset:true,
         basic:false,
-        frameless:false,
-        movable:true,
-        moveBounded:false,
-        resizable:true,
         closable:true,
         closableByDimmer:true,
+        frameless:false,
+        maintainFocus:true, //global default not per instance, applies to all dialogs
         maximizable:true,
-        startMaximized:false,
+        modal:true,
+        movable:true,
+        moveBounded:false,
+        overflow:true,
+        padding: true,
         pinnable:true,
         pinned:true,
-        padding: true,
-        overflow:true,
-        maintainFocus:true,
+        preventBodyShift:false, //global default not per instance, applies to all dialogs
+        resizable:true,
+        startMaximized:false,
         transition:'pulse',
-        autoReset:true,
         notifier:{
             delay:5,
             position:'bottom-right'

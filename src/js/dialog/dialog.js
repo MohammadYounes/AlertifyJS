@@ -352,7 +352,7 @@
                     // allow custom `onclose` method
                     dispatchEvent('onclose', this);
 
-                    //remove from open dialogs               
+                    //remove from open dialogs
                     openDialogs.splice(openDialogs.indexOf(this),1);
                     this.__internal.isOpen = false;
 
