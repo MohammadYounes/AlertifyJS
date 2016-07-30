@@ -3,32 +3,6 @@ layout: 'default'
 hljs: 	'light'
 component:	'alert'
 ---
-<section class="blue">
-    <div class="content">
-      <div class="grid two">
-        <div class="column">
-          <h1> Test Page</h1>
-		  Page used for testing 
-        </div>
-        <div class="right column">
-          <%- @partial('ad') %>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div style="display:none">
-<iframe id="c" width="100%" height="100%" marginheight="0" marginwidth="0" frameborder="0" src="test.html"></iframe>
-    <div id="c2" style="background:red;height:100%;">
-    This my custom content
-        <select> 
-            <option> First </option>
-            <option> Second </option>
-        </select>
-
-        <textarea> Demo </textarea>
-
-    </div>
-  </div>
   <section class="dark">
     <div class="content">
       <div class="segment">
@@ -36,49 +10,31 @@ component:	'alert'
         <hr />
 <pre>
 <code class="lang-javascript">
-var onok = function (msg) {
-    alertify.notify(msg);
-    return false;
-};
-var showCustomAlert = function (message, buttons) {
-    if (!alertify.custom) {
-        alertify.dialog('custom', function factory() {
-            return {
-                setup: function () {
-                    return {
-                        buttons: buttons,
-                        options: options
-                    };
-                }
-            };
-        }, true, 'alert');
-    }
-    return alertify.custom('title', message, function () {
-        return onok(message);
-    });
-};
-
-var buttons = [{text:'Okay'}],
-    options =  {
-                    modal: false,
-                    pinnable: false,
-                    resizeable: true,
-                    maximizable: false
-                };
-
-showCustomAlert('message 1', buttons, options).set('modal', true);
-showCustomAlert('message 2', buttons,options);
-</code> 
+alertify.alert('<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>Test');
+</code>
 </pre>
-
-
         <div class="RIGHT">
           <a class="button example" href="javascript:void(0);">
             <span> Run </span>
           </a>
         </div>
       </div>
-			<br/>
-			<br/>
+
+
+      <div class="segment">
+        <h1><i class="fa fa-code"></i> Demo</h1>
+        <hr />
+<pre>
+<code class="lang-javascript">
+alertify.alert('Test');
+</code>
+</pre>
+        <div class="RIGHT">
+          <a class="button example" href="javascript:void(0);">
+            <span> Run </span>
+          </a>
+        </div>
+        <div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
+      </div>
     </div>
   </section>

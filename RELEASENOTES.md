@@ -1,4 +1,9 @@
 # Release Notes
+* **v1.8.0** [30 Jul. 2016]
+  * Change license to GPLv3.
+  * New global option `preventBodyShift` to prevent body shifting when showing a modal dialog, You may get a double scrollbar when dialog content overflows the screen.
+  * Fixes a bug where some dialog options were uninitialized by the factory function. #108
+
 * **v1.7.1** [8 Jun. 2016]
  * Reset Prompt Dialog default value on cancellation. #106
 

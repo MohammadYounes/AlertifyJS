@@ -1,6 +1,6 @@
 {
   "name": "alertifyjs",
-  "version": "1.7.1",
+  "version": "1.8.0",
   "description": "AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.",
   "homepage": "http://alertifyjs.com",
   "keywords": [
@@ -48,8 +48,8 @@
   },
   "licenses": [
     {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/mit-license.php"
+      "type": "GPL 3",
+      "url": "https://opensource.org/licenses/gpl-3.0"
     }
   ]
 }
