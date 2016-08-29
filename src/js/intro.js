@@ -38,7 +38,8 @@
         transition:'pulse',
         notifier:{
             delay:5,
-            position:'bottom-right'
+            position:'bottom-right',
+            dismissAll: false
         },
         glossary:{
             title:'AlertifyJS',

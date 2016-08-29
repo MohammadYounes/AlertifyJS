@@ -22,6 +22,7 @@
                 instance.__internal = {
                     position: alertify.defaults.notifier.position,
                     delay: alertify.defaults.notifier.delay,
+                    dismissAll: alertify.defaults.notifier.dismissAll,
                 };
 
                 element = document.createElement('DIV');
@@ -264,6 +265,9 @@
                     case 'delay':
                         this.__internal.delay = value;
                         break;
+                    case 'dismissAll':
+                        this.__internal.dismissAll = value;
+                        break;
                     }
                 }
                 return this;
@@ -293,6 +297,8 @@
                 //ensure notifier init
                 initialize(this);
                 //create new notification message
+                if(this.__internal && this.__internal.dismissAll == true)
+                    this.dismissAll();
                 var div = document.createElement('div');
                 div.className = classes.message + ((typeof type === 'string' && type !== '') ? ' ajs-' + type : '');
                 return create(div, callback);
