@@ -56,7 +56,7 @@ npm update; npm install;
 grunt
 ```
 
-* Start documnetation server
+* Start documentation server
 ```
 docpad run
 ```
