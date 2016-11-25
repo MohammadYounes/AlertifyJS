@@ -16,6 +16,12 @@ AlertifyJS is a javascript framework for developing pretty browser dialogs and n
 Install-Package AlertifyJS
 ```
 
+####Install with [Bower](http://bower.io/search/?q=alertify-js)
+
+```
+bower install alertify-js --save
+```
+
 
 Documentation
 ==========
