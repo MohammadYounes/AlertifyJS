@@ -825,6 +825,9 @@
             max-height: 100%;
             padding: 15px;
             margin-top: 10px;
+            &.ajs-has-close {
+                padding-right:30px;
+            }
         }
 
         &.success {
@@ -837,6 +840,17 @@
 
         &.warning {
             background: rgba(252, 248, 215, 0.95);
+        }
+
+        .ajs-close {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width:30px;
+            height:48px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABGdBTUEAALGPC/xhBQAAAFBJREFUGBl1j0EKADEIA+ve/P9f9bh1hEihNBfjVCO1v7RKVqJK4h8gM5cAPR42AkQEpSXPwMTyoi13n5N9YqJehm3Fnr7nL1D0ZEbD5OubGyC7a9gx+9eNAAAAAElFTkSuQmCC);
+            background-repeat: no-repeat;
+            background-position: center center;
         }
     }
 

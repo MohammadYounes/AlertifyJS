@@ -154,7 +154,15 @@
                         reflow = this.element.offsetWidth;
                         addClass(this.element, classes.visible);
                         // attach click event
-                        on(this.element, 'click', this.__internal.clickHandler);
+                        if (!alertify.defaults.notifier.closeButton) {
+                            on(this.element, 'click', this.__internal.clickHandler);
+                        } else {
+                            var close = document.createElement('span');
+                            addClass(close, 'ajs-close');
+                            addClass(this.element, 'ajs-has-close');
+                            this.element.appendChild(close);
+                            on(close, 'click', this.__internal.clickHandler);
+                        }
                         return this.delay(wait);
                     }
                     return this;
