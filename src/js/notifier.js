@@ -155,16 +155,6 @@
                         }
                         reflow = this.element.offsetWidth;
                         addClass(this.element, classes.visible);
-                        // attach click event
-                        if (!alertify.defaults.notifier.closeButton) {
-                            on(this.element, 'click', this.__internal.clickHandler);
-                        } else {
-                            var close = document.createElement('span');
-                            addClass(close, classes.close);
-                            addClass(this.element, classes.hasClose);
-                            this.element.appendChild(close);
-                            on(close, 'click', this.__internal.clickHandler);
-                        }
                         return this.delay(wait);
                     }
                     return this;
@@ -233,6 +223,15 @@
                     } else if (content instanceof window.HTMLElement && this.element.firstChild !== content) {
                         clearContents(this.element);
                         this.element.appendChild(content);
+                    }
+                    if (alertify.defaults.notifier.closeButton) {
+                        var close = document.createElement('span');
+                        addClass(close, classes.close);
+                        addClass(this.element, classes.hasClose);
+                        this.element.appendChild(close);
+                        on(close, 'click', this.__internal.clickHandler);
+                    } else {
+                        on(this.element, 'click', this.__internal.clickHandler);
                     }
                     return this;
                 },
