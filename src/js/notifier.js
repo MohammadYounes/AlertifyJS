@@ -10,7 +10,9 @@
                 bottom: 'ajs-bottom',
                 left: 'ajs-left',
                 visible: 'ajs-visible',
-                hidden: 'ajs-hidden'
+                hidden: 'ajs-hidden',
+                close: 'ajs-close',
+                hasClose: 'ajs-has-close'
             };
         /**
          * Helper: initializes the notifier instance
@@ -158,8 +160,8 @@
                             on(this.element, 'click', this.__internal.clickHandler);
                         } else {
                             var close = document.createElement('span');
-                            addClass(close, 'ajs-close');
-                            addClass(this.element, 'ajs-has-close');
+                            addClass(close, classes.close);
+                            addClass(this.element, classes.hasClose);
                             this.element.appendChild(close);
                             on(close, 'click', this.__internal.clickHandler);
                         }
