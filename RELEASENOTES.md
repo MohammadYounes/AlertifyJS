@@ -1,4 +1,7 @@
 # Release Notes
+* **v1.9.0** [26 Jan. 2017]
+  * New notifier global option `closeButton` to add a close button to notifications, This feature helps users copy the contents of a message. Thanks (@pmusaraj - #134).
+
 * **v1.8.0** [30 Jul. 2016]
   * Change license to GPLv3.
   * New global option `preventBodyShift` to prevent body shifting when showing a modal dialog, You may get a double scrollbar when dialog content overflows the screen.

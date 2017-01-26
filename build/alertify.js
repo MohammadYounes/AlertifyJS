@@ -1,7 +1,7 @@
 /**
- * alertifyjs 1.8.0 http://alertifyjs.com
+ * alertifyjs 1.9.0 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
- * Copyright 2016 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
+ * Copyright 2017 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under GPL 3 <https://opensource.org/licenses/gpl-3.0>*/
 ( function ( window ) {
     'use strict';
@@ -43,7 +43,8 @@
         transition:'pulse',
         notifier:{
             delay:5,
-            position:'bottom-right'
+            position:'bottom-right',
+            closeButton:false
         },
         glossary:{
             title:'AlertifyJS',
@@ -2531,7 +2532,8 @@
                 bottom: 'ajs-bottom',
                 left: 'ajs-left',
                 visible: 'ajs-visible',
-                hidden: 'ajs-hidden'
+                hidden: 'ajs-hidden',
+                close: 'ajs-close'
             };
         /**
          * Helper: initializes the notifier instance
@@ -2600,7 +2602,9 @@
         function create(div, callback) {
 
             function clickDelegate(event, instance) {
-                instance.dismiss(true);
+                if(!instance.__internal.closeButton || event.target.getAttribute('data-close') === 'true'){
+                    instance.dismiss(true);
+                }
             }
 
             function transitionDone(event, instance) {
@@ -2662,6 +2666,7 @@
                             wait = _wait;
                             break;
                         }
+                        this.__internal.closeButton = alertify.defaults.notifier.closeButton;
                         // set contents
                         if (typeof content !== 'undefined') {
                             this.setContent(content);
@@ -2744,6 +2749,12 @@
                     } else if (content instanceof window.HTMLElement && this.element.firstChild !== content) {
                         clearContents(this.element);
                         this.element.appendChild(content);
+                    }
+                    if(this.__internal.closeButton){
+                        var close = document.createElement('span');
+                        addClass(close, classes.close);
+                        close.setAttribute('data-close', true);
+                        this.element.appendChild(close);
                     }
                     return this;
                 },
