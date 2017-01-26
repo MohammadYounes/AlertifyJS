@@ -11,8 +11,7 @@
                 left: 'ajs-left',
                 visible: 'ajs-visible',
                 hidden: 'ajs-hidden',
-                close: 'ajs-close',
-                hasClose: 'ajs-has-close'
+                close: 'ajs-close'
             };
         /**
          * Helper: initializes the notifier instance
@@ -81,7 +80,9 @@
         function create(div, callback) {
 
             function clickDelegate(event, instance) {
-                instance.dismiss(true);
+                if(!instance.__internal.closeButton || event.target.getAttribute('data-close') === 'true'){
+                    instance.dismiss(true);
+                }
             }
 
             function transitionDone(event, instance) {
@@ -143,6 +144,7 @@
                             wait = _wait;
                             break;
                         }
+                        this.__internal.closeButton = alertify.defaults.notifier.closeButton;
                         // set contents
                         if (typeof content !== 'undefined') {
                             this.setContent(content);
@@ -155,6 +157,8 @@
                         }
                         reflow = this.element.offsetWidth;
                         addClass(this.element, classes.visible);
+                        // attach click event
+                        on(this.element, 'click', this.__internal.clickHandler);
                         return this.delay(wait);
                     }
                     return this;
@@ -224,14 +228,11 @@
                         clearContents(this.element);
                         this.element.appendChild(content);
                     }
-                    if (alertify.defaults.notifier.closeButton) {
+                    if(this.__internal.closeButton){
                         var close = document.createElement('span');
                         addClass(close, classes.close);
-                        addClass(this.element, classes.hasClose);
+                        close.setAttribute('data-close', true);
                         this.element.appendChild(close);
-                        on(close, 'click', this.__internal.clickHandler);
-                    } else {
-                        on(this.element, 'click', this.__internal.clickHandler);
                     }
                     return this;
                 },
