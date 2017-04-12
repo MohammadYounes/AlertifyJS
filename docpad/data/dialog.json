@@ -135,6 +135,15 @@
 
     {
         "type": "e",
+        "name": "onclosing",
+        "label": "{Function}",
+        "desc": "Gets or sets a function to invoke before closing the dialog. A <code>false</code> invocation result will prevent the dialog from closing.",
+        "defaultValue": "undefined",
+        "script": "alertify.{component}('Demo').set({ onclosing:function(){ alertify.message('{component} is about to close.')}});",
+        "remark": "To prevent the dialog from closing, make your callback return <code>false</code>."
+    },
+    {
+        "type": "e",
         "name": "onclose",
         "label": "{Function}",
         "desc": "Gets or sets a function to invoke when the dialog is closed",
