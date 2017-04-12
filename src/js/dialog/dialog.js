@@ -325,38 +325,41 @@
              */
             close: function () {
                 if (this.__internal.isOpen ) {
+                    // custom `onclosing` event
+                    if(dispatchEvent('onclosing', this) !== false){
 
-                    unbindEvents(this);
+                        unbindEvents(this);
 
-                    removeClass(this.elements.root, classes.animationIn);
-                    addClass(this.elements.root, classes.animationOut);
+                        removeClass(this.elements.root, classes.animationIn);
+                        addClass(this.elements.root, classes.animationOut);
 
-                    // set 1s fallback in case transition event doesn't fire
-                    clearTimeout( this.__internal.timerOut );
-                    this.__internal.timerOut = setTimeout( this.__internal.transitionOutHandler, transition.supported ? 1000 : 100 );
-                    // hide dialog
-                    addClass(this.elements.root, classes.hidden);
-                    //reflow
-                    reflow = this.elements.modal.offsetWidth;
+                        // set 1s fallback in case transition event doesn't fire
+                        clearTimeout( this.__internal.timerOut );
+                        this.__internal.timerOut = setTimeout( this.__internal.transitionOutHandler, transition.supported ? 1000 : 100 );
+                        // hide dialog
+                        addClass(this.elements.root, classes.hidden);
+                        //reflow
+                        reflow = this.elements.modal.offsetWidth;
 
-                    // remove custom dialog class on hide
-                    if (typeof this.__internal.className !== 'undefined' && this.__internal.className !== '') {
-                        removeClass(this.elements.root, this.__internal.className);
+                        // remove custom dialog class on hide
+                        if (typeof this.__internal.className !== 'undefined' && this.__internal.className !== '') {
+                            removeClass(this.elements.root, this.__internal.className);
+                        }
+
+                        // internal on close event
+                        if(typeof this.hooks.onclose === 'function'){
+                            this.hooks.onclose.call(this);
+                        }
+
+                        // allow custom `onclose` method
+                        dispatchEvent('onclose', this);
+
+                        //remove from open dialogs
+                        openDialogs.splice(openDialogs.indexOf(this),1);
+                        this.__internal.isOpen = false;
+
+                        ensureNoOverflow();
                     }
-
-                    // internal on close event
-                    if(typeof this.hooks.onclose === 'function'){
-                        this.hooks.onclose.call(this);
-                    }
-
-                    // allow custom `onclose` method
-                    dispatchEvent('onclose', this);
-
-                    //remove from open dialogs
-                    openDialogs.splice(openDialogs.indexOf(this),1);
-                    this.__internal.isOpen = false;
-
-                    ensureNoOverflow();
 
                 }
                 return this;

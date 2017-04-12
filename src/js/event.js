@@ -121,11 +121,11 @@
     * @param  {string} evenType The type of the event to disptach.
     * @param  {object} instance The dialog instance disptaching the event.
     *
-    * @return {object}
+    * @return   {any}   The result of the invoked function.
     */
     function dispatchEvent(eventType, instance) {
         if ( typeof instance.get(eventType) === 'function' ) {
-            instance.get(eventType).call(instance);
+            return instance.get(eventType).call(instance);
         }
     }
 

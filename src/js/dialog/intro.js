@@ -154,6 +154,7 @@
                         padding:undefined,
                         overflow:undefined,
                         onshow:undefined,
+                        onclosing:undefined,
                         onclose:undefined,
                         onfocus:undefined,
                         onmove:undefined,
