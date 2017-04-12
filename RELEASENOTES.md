@@ -1,4 +1,7 @@
 # Release Notes
+* **v1.10.0** [12 Apr. 2017]
+  * New `onclosing` event: Gets or sets a function to invoke when the dialog is about to close. #140
+
 * **v1.9.0** [26 Jan. 2017]
   * New notifier global option `closeButton` to add a close button to notifications, This feature helps users copy the contents of a message. Thanks (@pmusaraj - #134).
 
