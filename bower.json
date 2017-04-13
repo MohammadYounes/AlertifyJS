@@ -1,0 +1,16 @@
+{
+  "name": "alertify-js",
+  "description": "AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.",
+  "version": "1.0.1",
+  "main": "build/alertify.js",
+  "license": "MIT",
+  "ignore": [
+    ".gitignore",
+    ".jshintrc",
+    "docpad",
+    "src",
+    "Gruntfile.js",
+    "docpad.coffee",
+    "package.json"
+  ]
+}
