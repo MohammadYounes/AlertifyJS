@@ -13,13 +13,13 @@ AlertifyJS is a javascript framework for developing pretty browser dialogs and n
 
 
 
-###Install with [NuGet](https://www.nuget.org/packages/AlertifyJS/)
+### Install with [NuGet](https://www.nuget.org/packages/AlertifyJS/)
 
 ```
 Install-Package AlertifyJS
 ```
 
-###Install with [NPM](https://www.npmjs.com/package/alertifyjs/)
+### Install with [NPM](https://www.npmjs.com/package/alertifyjs/)
 
 ```
 npm install alertifyjs --save
@@ -61,6 +61,12 @@ grunt
 docpad run
 ```
 * Open your browser to http://localhost:9778/
+
+
+Dependencies 
+==========
+None.
+
 
 Community Contribution
 ==========
