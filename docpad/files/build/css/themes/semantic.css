@@ -1,5 +1,5 @@
 /**
- * alertifyjs 1.10.0 http://alertifyjs.com
+ * alertifyjs 1.11.0 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  * Copyright 2017 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under GPL 3 <https://opensource.org/licenses/gpl-3.0>*/
@@ -12,7 +12,8 @@
   min-height: 137px;
   background-color: #F4F4F4;
   border: 1px solid #DDD;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border-radius: 5px;
 }
 .alertify .ajs-header {
@@ -39,8 +40,12 @@
   outline: 0;
   color: rgba(0, 0, 0, 0.7);
   border-radius: .3125em;
+  -webkit-transition: background-color 0.3s ease-out, border-color 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: background-color 0.3s ease-out, border-color 0.2s ease, -webkit-box-shadow 0.2s ease;
   transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
-  box-sizing: border-box;
+  transition: background-color 0.3s ease-out, box-shadow 0.2s ease, border-color 0.2s ease, -webkit-box-shadow 0.2s ease;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .alertify .ajs-body .ajs-content .ajs-input:active {
   border-color: rgba(0, 0, 0, 0.3);
