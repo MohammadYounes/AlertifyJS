@@ -40,9 +40,12 @@ module.exports = function (grunt) {
             }
         },
 
-        autoprefixer: {
+        postcss: {
             options: {
-                browsers: ['last 2 version']
+                map: false,
+                processors: [
+                    require('autoprefixer')({browsers: 'last 2 versions'}),
+                ]
             },
             build: {
                 expand: true,
@@ -212,7 +215,7 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-rtlcss');
-    grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
@@ -226,7 +229,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-banner');
 
     // Default task
-    grunt.registerTask('css', ['less', 'autoprefixer:build', 'rtlcss', 'copy:rtl', 'copy:ltr', 'cssmin', 'usebanner']);
+    grunt.registerTask('css', ['less', 'postcss:build', 'rtlcss', 'copy:rtl', 'copy:ltr', 'cssmin', 'usebanner']);
     grunt.registerTask('build', ['clean:build', 'css', 'concat', 'uglify', 'compress', 'copy:build']);
     grunt.registerTask('default', ['build', 'jshint']);
 };

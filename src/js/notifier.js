@@ -9,13 +9,14 @@
                 right: 'ajs-right',
                 bottom: 'ajs-bottom',
                 left: 'ajs-left',
+                center: 'ajs-center',
                 visible: 'ajs-visible',
                 hidden: 'ajs-hidden',
                 close: 'ajs-close'
             };
         /**
          * Helper: initializes the notifier instance
-         * 
+         *
          */
         function initialize(instance) {
 
@@ -35,7 +36,7 @@
                 document.body.appendChild(element);
             }
         }
-        
+
         function pushInstance(instance) {
             instance.__internal.pushed = true;
             openInstances.push(instance);
@@ -46,7 +47,7 @@
         }
         /**
          * Helper: update the notifier instance position
-         * 
+         *
          */
         function updatePosition(instance) {
             element.className = classes.base;
@@ -57,8 +58,14 @@
             case 'top-left':
                 addClass(element, classes.top + ' ' + classes.left);
                 break;
+            case 'top-center':
+                addClass(element, classes.top + ' ' + classes.center);
+                break;
             case 'bottom-left':
                 addClass(element, classes.bottom + ' ' + classes.left);
+                break;
+            case 'bottom-center':
+                addClass(element, classes.bottom + ' ' + classes.center);
                 break;
 
             default:
@@ -115,10 +122,10 @@
                 /* notification DOM element*/
                 element: div,
                 /*
-                 * Pushes a notification message 
+                 * Pushes a notification message
                  * @param {string or DOMElement} content The notification message content
                  * @param {Number} wait The time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked.
-                 * 
+                 *
                  */
                 push: function (_content, _wait) {
                     if (!this.__internal.pushed) {
@@ -166,18 +173,18 @@
                 /*
                  * {Function} callback function to be invoked before dismissing the notification message.
                  * Remarks: A return value === 'false' will cancel the dismissal
-                 * 
+                 *
                  */
                 ondismiss: function () { },
                 /*
                  * {Function} callback function to be invoked when the message is dismissed.
-                 * 
+                 *
                  */
                 callback: callback,
                 /*
-                 * Dismisses the notification message 
+                 * Dismisses the notification message
                  * @param {Boolean} clicked A flag indicating if the dismissal was caused by a click.
-                 * 
+                 *
                  */
                 dismiss: function (clicked) {
                     if (this.__internal.pushed) {
@@ -204,7 +211,7 @@
                 /*
                  * Delays the notification message dismissal
                  * @param {Number} wait The time (in seconds) to wait before the message is dismissed, a value of 0 means keep open till clicked.
-                 * 
+                 *
                  */
                 delay: function (wait) {
                     clearTimers(this);
@@ -218,7 +225,7 @@
                 /*
                  * Sets the notification message contents
                  * @param {string or DOMElement} content The notification message content
-                 * 
+                 *
                  */
                 setContent: function (content) {
                     if (typeof content === 'string') {
@@ -238,7 +245,7 @@
                 },
                 /*
                  * Dismisses all open notifications except this.
-                 * 
+                 *
                  */
                 dismissOthers: function () {
                     notifier.dismissAll(this);
@@ -250,7 +257,7 @@
         //notifier api
         return {
             /**
-             * Gets or Sets notifier settings. 
+             * Gets or Sets notifier settings.
              *
              * @param {string} key The setting name
              * @param {Variant} value The setting value.
@@ -279,14 +286,14 @@
                 return this;
             },
             /**
-             * [Alias] Sets dialog settings/options 
+             * [Alias] Sets dialog settings/options
              */
             set:function(key,value){
                 this.setting(key,value);
                 return this;
             },
             /**
-             * [Alias] Gets dialog settings/options 
+             * [Alias] Gets dialog settings/options
              */
             get:function(key){
                 return this.setting(key);

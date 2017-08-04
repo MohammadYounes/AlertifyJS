@@ -1,4 +1,7 @@
 # Release Notes
+* **v1.11.0** [4 Aug. 2017]
+  * Adds `top-center` and `bottom-center` position options for notifier. #13
+
 * **v1.10.0** [12 Apr. 2017]
   * New `onclosing` event: Gets or sets a function to invoke when the dialog is about to close. #140
 

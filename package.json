@@ -1,6 +1,6 @@
 {
   "name": "alertifyjs",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.",
   "homepage": "http://alertifyjs.com",
   "keywords": [
@@ -25,8 +25,9 @@
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-cli": "~0.1",
-    "grunt-rtlcss": "x.x.x",
-    "grunt-autoprefixer": "x.x.x",
+    "grunt-rtlcss": "1.6.0",
+    "autoprefixer" : "x.x.x",
+    "grunt-postcss" : "~0.8.0",
     "grunt-contrib-less": "x.x.x",
     "grunt-contrib-cssmin": "x.x.x",
     "grunt-contrib-copy": "x.x.x",
