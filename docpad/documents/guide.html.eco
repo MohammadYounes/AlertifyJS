@@ -109,27 +109,27 @@ hljs: 	'light'
 <pre>
 <code class="html">
 <!-- JavaScript -->
-<script src="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/alertify.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@<%=@getPackage().version%>/build/alertify.min.js"></script>
 
 <!-- CSS -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/alertify.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@<%=@getPackage().version%>/build/css/alertify.min.css"/>
 <!-- Default theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/themes/default.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@<%=@getPackage().version%>/build/css/themes/default.min.css"/>
 <!-- Semantic UI theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/themes/semantic.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@<%=@getPackage().version%>/build/css/themes/semantic.min.css"/>
 <!-- Bootstrap theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/themes/bootstrap.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@<%=@getPackage().version%>/build/css/themes/bootstrap.min.css"/>
 
 <!-- 
     RTL version
 -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/alertify.rtl.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@<%=@getPackage().version%>/build/css/alertify.rtl.min.css"/>
 <!-- Default theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/themes/default.rtl.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@<%=@getPackage().version%>/build/css/themes/default.rtl.min.css"/>
 <!-- Semantic UI theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/themes/semantic.rtl.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@<%=@getPackage().version%>/build/css/themes/semantic.rtl.min.css"/>
 <!-- Bootstrap theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/<%=@getPackage().version%>/css/themes/bootstrap.rtl.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@<%=@getPackage().version%>/build/css/themes/bootstrap.rtl.min.css"/>
 
 </code>
 </pre>		  
