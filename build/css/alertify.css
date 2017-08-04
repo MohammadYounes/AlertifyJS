@@ -1,5 +1,5 @@
 /**
- * alertifyjs 1.10.0 http://alertifyjs.com
+ * alertifyjs 1.11.0 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  * Copyright 2017 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under GPL 3 <https://opensource.org/licenses/gpl-3.0>*/
@@ -312,9 +312,12 @@
 .alertify .ajs-modal {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
+  -webkit-transition-property: opacity, visibility;
   transition-property: opacity, visibility;
-  transition-timing-function: linear;
-  transition-duration: 250ms;
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
+  -webkit-transition-duration: 250ms;
+          transition-duration: 250ms;
 }
 .alertify.ajs-hidden .ajs-dimmer,
 .alertify.ajs-hidden .ajs-modal {
@@ -440,7 +443,8 @@
   60%,
   80%,
   100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     opacity: 0;
@@ -477,7 +481,8 @@
   60%,
   80%,
   100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
     opacity: 0;
@@ -625,13 +630,15 @@
   0% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
             transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
-    transition-timing-function: ease-in;
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
     opacity: 0;
   }
   40% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
             transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
-    transition-timing-function: ease-in;
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
   }
   60% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
@@ -651,13 +658,15 @@
   0% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
             transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
-    transition-timing-function: ease-in;
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
     opacity: 0;
   }
   40% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
             transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
-    transition-timing-function: ease-in;
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
   }
   60% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
@@ -709,13 +718,15 @@
   0% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
             transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-    transition-timing-function: ease-in;
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
     opacity: 0;
   }
   40% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
             transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
-    transition-timing-function: ease-in;
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
   }
   60% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
@@ -735,13 +746,15 @@
   0% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
             transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-    transition-timing-function: ease-in;
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
     opacity: 0;
   }
   40% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
             transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
-    transition-timing-function: ease-in;
+    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;
   }
   60% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
@@ -838,12 +851,16 @@
   margin: 0;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
-  transition-duration: 250ms;
-  transition-timing-function: linear;
+  -webkit-transition-duration: 250ms;
+          transition-duration: 250ms;
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
 }
 .alertify-notifier .ajs-message.ajs-visible {
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition-duration: 500ms;
+          transition-duration: 500ms;
+  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   opacity: 1;
   max-height: 100%;
   padding: 15px;
@@ -894,4 +911,28 @@
 }
 .alertify-notifier.ajs-left .ajs-message.ajs-visible {
   left: 0;
+}
+.alertify-notifier.ajs-center {
+  left: 50%;
+}
+.alertify-notifier.ajs-center .ajs-message {
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.alertify-notifier.ajs-center .ajs-message.ajs-visible {
+  left: 50%;
+  -webkit-transition-timing-function: cubic-bezier(0.57, 0.43, 0.1, 0.65);
+          transition-timing-function: cubic-bezier(0.57, 0.43, 0.1, 0.65);
+}
+.alertify-notifier.ajs-center.ajs-top .ajs-message {
+  top: -300px;
+}
+.alertify-notifier.ajs-center.ajs-top .ajs-message.ajs-visible {
+  top: 0;
+}
+.alertify-notifier.ajs-center.ajs-bottom .ajs-message {
+  bottom: -300px;
+}
+.alertify-notifier.ajs-center.ajs-bottom .ajs-message.ajs-visible {
+  bottom: 0;
 }
