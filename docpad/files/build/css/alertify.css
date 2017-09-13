@@ -936,3 +936,12 @@
 .alertify-notifier.ajs-center.ajs-bottom .ajs-message.ajs-visible {
   bottom: 0;
 }
+.ajs-ajs-ie8.alertify-notifier .ajs-ajs-message.ajs-ajs-success {
+  background: #5abd71;
+}
+.ajs-ajs-ie8.alertify-notifier .ajs-ajs-error.ajs-ajs-message {
+  background: #d95c5c;
+}
+.ajs-ajs-ie8.alertify-notifier .ajs-ajs-warning.ajs-ajs-message {
+  background: #fcf8da;
+}

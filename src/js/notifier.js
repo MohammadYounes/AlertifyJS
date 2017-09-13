@@ -14,6 +14,11 @@
                 hidden: 'ajs-hidden',
                 close: 'ajs-close'
             };
+        var isIE = function isIE (ver) {
+            var b = document.createElement('b');
+            b.innerHTML = '<!--[if IE ' + ver + ']><i></i><![endif]-->';
+            return b.getElementsByTagName('i').length === 1;
+        };
         /**
          * Helper: initializes the notifier instance
          *
@@ -72,6 +77,9 @@
             case 'bottom-right':
                 addClass(element, classes.bottom + ' ' + classes.right);
                 break;
+            }
+            if (isIE(8)) {
+                addClass(element, 'ajs-ie8');
             }
         }
 
