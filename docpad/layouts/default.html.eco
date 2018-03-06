@@ -116,14 +116,9 @@
           <img width="40" src="https://avatars0.githubusercontent.com/u/7704547?s=140">
           <div>www.rtlcss.com</div>
         </a>
-		
-		<div class="right">
-          <img width="40" src="https://avatars1.githubusercontent.com/u/5796209?s=140">
-          <div>
-		  	<a href="http://semantic-ui.com" target="_blank">Semantic UI</a> 		  	
-		  </div>
-		 </div>
-		
+        <a href="https://www.creative-tim.com/?affiliate_id=105248" target="_blank" class="right">
+          <img class="sponsor" src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png"><br>Creative Tim
+        </a>		
         <a href="http://www.isresponsive.com" target="_blank" style="margin-bottom:20px;">
           <img src="http://www.isresponsive.com/Images/logo2.png">
           <div>www.isResponsive.com</div>

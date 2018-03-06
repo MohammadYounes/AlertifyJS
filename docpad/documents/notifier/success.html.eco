@@ -20,9 +20,12 @@ label: ''
         </div>
     </div>
 </section>
-<section class="lic">
+<section class="sponsor">
     <div class="content">
-        Looking for a commercial license ?  Keep your source code proprietary and <a href="https://www.uplabs.com/posts/alertifyjs" target="_blank"> Buy a Commercial License Today!</a>
+        <a href="https://www.creative-tim.com/?affiliate_id=105248" target="_blank">
+            Creative Tim<img class="sponsor" src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png">
+        </a>
+        Premium Bootstrap themes, templates, UI Kits and more...
     </div>
 </section>
 <section class="dark">
@@ -33,5 +36,10 @@ label: ''
         </div>
         <!--//Settings-->
         <%- @partial('menu', true, @getDataItem(@document.component, @document.prop)) %>
+    </div>
+</section>
+<section class="lic">
+    <div class="content">
+        Looking for a commercial license ?  Keep your source code proprietary and <a href="https://www.uplabs.com/posts/alertifyjs" target="_blank"> Buy a Commercial License Today!</a>
     </div>
 </section>
