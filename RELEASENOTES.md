@@ -1,4 +1,8 @@
 # Release Notes
+* **v1.11.1** [24 Mar. 2018]
+  * Set body `tabindex` only when a dialog is shown. #145
+  * Remove duplicate case statement. #181
+
 * **v1.11.0** [4 Aug. 2017]
   * Adds `top-center` and `bottom-center` position options for notifier. #13
 

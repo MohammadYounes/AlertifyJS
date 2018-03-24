@@ -1,7 +1,7 @@
 /**
- * alertifyjs 1.11.0 http://alertifyjs.com
+ * alertifyjs 1.11.1 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
- * Copyright 2017 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
+ * Copyright 2018 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under GPL 3 <https://opensource.org/licenses/gpl-3.0>*/
 ( function ( window ) {
     'use strict';
@@ -340,6 +340,8 @@
             usedKeys = [],
             //dummy variable, used to trigger dom reflow.
             reflow = null,
+            //holds body tab index in case it has any.
+            tabindex = false,
             //condition for detecting safari
             isSafari = window.navigator.userAgent.indexOf('Safari') > -1 && window.navigator.userAgent.indexOf('Chrome') < 0,
             //dialog building blocks
@@ -402,14 +404,7 @@
                 if(!instance.__settings){
                     instance.__settings = copy(instance.settings);
                 }
-                //in case the script was included before body.
-                //after first dialog gets initialized, it won't be null anymore!
-                if(null === reflow){
-                    // set tabindex attribute on body element this allows script to give it
-                    // focus after the dialog is closed
-                    document.body.setAttribute( 'tabindex', '0' );
-                }
-
+                
                 //get dialog buttons/focus setup
                 var setup;
                 if(typeof instance.setup === 'function'){
@@ -836,9 +831,6 @@
                 break;
             case 'resizable':
                 updateResizable(instance);
-                break;
-            case 'transition':
-                updateTransition(instance,newValue, oldValue);
                 break;
             case 'padding':
                 if(newValue){
@@ -2376,6 +2368,11 @@
                         this.__internal.activeElement = document.activeElement;
                     }
 
+                    // set tabindex attribute on body element this allows script to give it focusable
+                    if(!document.body.hasAttribute('tabindex')) {
+                        document.body.setAttribute( 'tabindex', tabindex = '0');
+                    }
+
                     //allow custom dom manipulation updates before showing the dialog.
                     if(typeof this.prepare === 'function'){
                         this.prepare();
@@ -2492,6 +2489,10 @@
                         ensureNoOverflow();
                     }
 
+                }
+                // last dialog and tab index was set by us, remove it.
+                if(!openDialogs.length && tabindex === '0'){
+                    document.body.removeAttribute('tabindex')
                 }
                 return this;
             },
