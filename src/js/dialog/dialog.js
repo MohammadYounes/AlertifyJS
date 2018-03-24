@@ -245,6 +245,11 @@
                         this.__internal.activeElement = document.activeElement;
                     }
 
+                    // set tabindex attribute on body element this allows script to give it focusable
+                    if(!document.body.hasAttribute('tabindex')) {
+                        document.body.setAttribute( 'tabindex', tabindex = '0');
+                    }
+
                     //allow custom dom manipulation updates before showing the dialog.
                     if(typeof this.prepare === 'function'){
                         this.prepare();
@@ -361,6 +366,10 @@
                         ensureNoOverflow();
                     }
 
+                }
+                // last dialog and tab index was set by us, remove it.
+                if(!openDialogs.length && tabindex === '0'){
+                    document.body.removeAttribute('tabindex')
                 }
                 return this;
             },

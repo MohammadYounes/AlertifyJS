@@ -8,6 +8,8 @@
             usedKeys = [],
             //dummy variable, used to trigger dom reflow.
             reflow = null,
+            //holds body tab index in case it has any.
+            tabindex = false,
             //condition for detecting safari
             isSafari = window.navigator.userAgent.indexOf('Safari') > -1 && window.navigator.userAgent.indexOf('Chrome') < 0,
             //dialog building blocks
@@ -70,14 +72,7 @@
                 if(!instance.__settings){
                     instance.__settings = copy(instance.settings);
                 }
-                //in case the script was included before body.
-                //after first dialog gets initialized, it won't be null anymore!
-                if(null === reflow){
-                    // set tabindex attribute on body element this allows script to give it
-                    // focus after the dialog is closed
-                    document.body.setAttribute( 'tabindex', '0' );
-                }
-
+                
                 //get dialog buttons/focus setup
                 var setup;
                 if(typeof instance.setup === 'function'){
