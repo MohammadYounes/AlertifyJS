@@ -489,7 +489,10 @@
         "name": "show",
         "label": "chainable",
         "desc": "Shows the dialog",
-        "params": [ ],
+        "params": [ 
+            {"name": "modal", "type": "Boolean", "desc": "Indicates whether to show this dialog as modal or not."},
+            {"name": "className", "type": "String", "desc": "Specifies a custom class name to add to the dialog."}
+        ],
         "script": "alertify.{component}().set('message', '{component} dialog!').show();"
     },
 
@@ -498,7 +501,9 @@
         "name": "showModal",
         "label": "chainable",
         "desc": "Updates the dialog display mode to <b>Modal</b> and shows the dialog.",
-        "params": [ ],
+        "params": [ 
+            {"name": "className", "type": "String", "desc": "Specifies a custom class name to add to the dialog."}
+        ],
         "script": "alertify.{component}().set('message','This is a modal {component} dialog!').showModal();"
     },
 
