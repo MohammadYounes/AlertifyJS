@@ -505,9 +505,6 @@
             case 'resizable':
                 updateResizable(instance);
                 break;
-            case 'transition':
-                updateTransition(instance,newValue, oldValue);
-                break;
             case 'padding':
                 if(newValue){
                     removeClass(instance.elements.root, classes.noPadding);
