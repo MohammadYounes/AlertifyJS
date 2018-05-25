@@ -62,13 +62,24 @@
                     message = _title;
                     break;
                 case 2:
-                    message = _title;
-                    onok = _message;
+                    if(typeof(_message)=='function'){
+                        message = _title;
+                        onok = _message;
+                    }else{
+                        title = _title;
+                        message = _message;
+                    }
                     break;
                 case 3:
-                    message = _title;
-                    onok = _message;
-                    oncancel = _onok;
+                    if(typeof(_message)!='function' && typeof(_onok)=='function'){
+                        title = _title;
+                        message = _message;
+                        onok = _onok;
+                    }else{
+                        message = _title;
+                        onok = _message;
+                        oncancel = _onok;
+                    }
                     break;
                 case 4:
                     title = _title;
