@@ -1,5 +1,5 @@
 <div>
     <% if 'static' in @getEnvironments() :%>
-        <script async="" type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=alertifyjs" id="_carbonads_js"></script>
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYI55QJ&placement=alertifyjscom" id="_carbonads_js"></script>
     <% end %>
 </div>

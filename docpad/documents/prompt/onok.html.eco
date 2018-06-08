@@ -21,12 +21,9 @@ label: '{ Function }'
         </div>
     </div>
 </section>
-<section class="sponsor">
+<section class="lic">
     <div class="content">
-        <a href="https://secure.avangate.com/affiliate.php?ACCOUNT=CREATIV&AFFILIATE=105248&PATH=http%3A%2F%2Fwww.creative-tim.com" target="_blank">
-            Creative Tim<img class="sponsor" src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png">
-        </a>
-        Premium Bootstrap themes, templates, UI Kits and more...
+        Looking for a commercial license ?  Keep your source code proprietary and <a href="https://www.uplabs.com/posts/alertifyjs" target="_blank"> Buy a Commercial License Today!</a>
     </div>
 </section>
 <section class="dark">
@@ -37,10 +34,5 @@ label: '{ Function }'
         </div>
         <!--//Settings-->
         <%- @partial('menu', true, @getDataItem(@document.component, @document.prop)) %>
-    </div>
-</section>
-<section class="lic">
-    <div class="content">
-        Looking for a commercial license ?  Keep your source code proprietary and <a href="https://www.uplabs.com/posts/alertifyjs" target="_blank"> Buy a Commercial License Today!</a>
     </div>
 </section>
