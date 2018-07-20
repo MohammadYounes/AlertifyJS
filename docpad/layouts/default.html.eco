@@ -9,14 +9,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="shortcut icon" href="http://alertifyjs.com/favicon.ico">
-	<link rel="apple-touch-icon image_src" href="http://alertifyjs.com/apple-touch-icon-precomposed.png">
+	<link rel="shortcut icon" href="//alertifyjs.com/favicon.ico">
+	<link rel="apple-touch-icon image_src" href="//alertifyjs.com/apple-touch-icon-precomposed.png">
 	
 	<!-- Open graph -->
 	<meta property="og:title" content="AlertifyJS" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="http://www.alertifyjs.com/" />
-	<meta property="og:image" content="http://alertifyjs.com/og.png" />
+	<meta property="og:url" content="//www.alertifyjs.com/" />
+	<meta property="og:image" content="//alertifyjs.com/og.png" />
 	<meta name="og:description" content="JavaScript framework for developing pretty browser dialogs and notifications.">
 	
 	<!-- Site Properities -->
@@ -39,14 +39,14 @@
 <body>
 <header>
     <div class="content">
-      <a class="logo" data-text="<%=@getPackage().version%>" href="http://www.alertifyjs.com"><img src="/css/logo.sm.png" /></a>
+      <a class="logo" data-text="<%=@getPackage().version%>" href="//www.alertifyjs.com"><img src="/css/logo.sm.png" /></a>
       <a href="#" class="bars"><i class="fa fa-2x fa-bars"></i></a>
       <div class="menu">
         <ul>
           <li class="aux">
             <div>
-              <iframe src="http://ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="25"></iframe>
-              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=http://alertifyjs.com/&amp;via=alertifyjs" title="Twitter Tweet Button" width="110" height="25"></iframe>
+              <iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="25"></iframe>
+              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=http://alertifyjs.com/&amp;via=alertifyjs" title="Twitter Tweet Button" width="110" height="25"></iframe>
             </div>
           </li>
           <li><a href="/guide.html">Getting Started</a></li>
@@ -78,20 +78,20 @@
 		<div class="ui horizontal center list">
 			<div class="item"></div>
 			<div class="item">
-				<iframe src="http://ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true"
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true"
 								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
 			</div>
 			<div class="item">
-				<iframe src="http://ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=fork&amp;count=true"
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=fork&amp;count=true"
 								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
 
 			</div>
 			<div class="item">
-				<iframe src="http://platform.twitter.com/widgets/follow_button.1404859412.html#_=1406289087792&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=AlertifyJS&amp;show_count=true&amp;show_screen_name=true&amp;size=m"
+				<iframe src="//platform.twitter.com/widgets/follow_button.1404859412.html#_=1406289087792&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=AlertifyJS&amp;show_count=true&amp;show_screen_name=true&amp;size=m"
 								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
 			</div>
 			<div class="item">
-				<iframe src="http://platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=http://alertifyjs.com/&amp;via=alertifyjs"
+				<iframe src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=http://alertifyjs.com/&amp;via=alertifyjs"
 								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
 			</div>
 		</div>
@@ -101,29 +101,29 @@
 <section class="dark">
     <div class="content">
       <div class="links">
-        <a href="http://github.com/MohammadYounes/alertifyjs/issues" target="_blank">Report an issue</a> |
-        <a href="http://github.com/MohammadYounes/alertifyjs" target="_blank">View on GitHub</a> |
-        Follow Me on <a href="http://www.github.com/MohammadYounes" target="_blank"> <i class="fa fa-github"></i> GitHub</a> and
-        <a href="http://www.twitter.com/AlertifyJS" target="_blank"> <i class="fa fa-twitter"></i> Twitter</a>
+        <a href="//github.com/MohammadYounes/alertifyjs/issues" target="_blank">Report an issue</a> |
+        <a href="//github.com/MohammadYounes/alertifyjs" target="_blank">View on GitHub</a> |
+        Follow Me on <a href="//www.github.com/MohammadYounes" target="_blank"> <i class="fa fa-github"></i> GitHub</a> and
+        <a href="//www.twitter.com/AlertifyJS" target="_blank"> <i class="fa fa-twitter"></i> Twitter</a>
       </div>
       <div class="links">
-        Created by <a href="http://www.github.com/MohammadYounes" style="color:orange" target="_blank">Mohammad Younes</a> | Licensed under <a href="https://opensource.org/licenses/gpl-3.0"> GPLv3 </a>
+        Created by <a href="//www.github.com/MohammadYounes" style="color:orange" target="_blank">Mohammad Younes</a> | Licensed under <a href="https://opensource.org/licenses/gpl-3.0"> GPLv3 </a>
       </div>
 		
       
       <div class="affiliates">
-        <a href="http://rtlcss.com" target="_blank">
-          <img width="40" src="https://avatars0.githubusercontent.com/u/7704547?s=140">
+        <a href="//rtlcss.com" target="_blank">
+          <img width="40" src="//avatars0.githubusercontent.com/u/7704547?s=140">
           <div>www.rtlcss.com</div>
         </a>
         
         <a href="http://www.isresponsive.com" target="_blank">
-          <img src="http://www.isresponsive.com/Images/logo2.png">
+          <img src="//rtlcss.com/img/isresponsive.png">
           <div>www.isResponsive.com</div>
         </a>
         
-        <a href="https://www.keycdn.com/?a=10668" target="_blank">
-          <img src=" https://logos.keycdn.com/keycdn-logo-white.png" alt="KeyCDN" width="115">
+        <a href="//www.keycdn.com/?a=10668" target="_blank">
+          <img src="//logos.keycdn.com/keycdn-logo-white.png" alt="KeyCDN" width="115">
           <div>www.keycdn.com</div>
         </a>
         
