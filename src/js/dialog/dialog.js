@@ -369,7 +369,7 @@
                 }
                 // last dialog and tab index was set by us, remove it.
                 if(!openDialogs.length && tabindex === '0'){
-                    document.body.removeAttribute('tabindex')
+                    document.body.removeAttribute('tabindex');
                 }
                 return this;
             },
@@ -388,15 +388,17 @@
              * @return {undefined}
              */
             destroy:function(){
-                if (this.__internal.isOpen ) {
-                    //mark dialog for destruction, this will be called on tranistionOut event.
-                    this.__internal.destroy = function(){
+                if(this.__internal) {
+                    if (this.__internal.isOpen ) {
+                        //mark dialog for destruction, this will be called on tranistionOut event.
+                        this.__internal.destroy = function(){
+                            destruct(this, initialize);
+                        };
+                        //close the dialog to unbind all events.
+                        this.close();
+                    }else if(!this.__internal.destroy){
                         destruct(this, initialize);
-                    };
-                    //close the dialog to unbind all events.
-                    this.close();
-                }else{
-                    destruct(this, initialize);
+                    }
                 }
                 return this;
             },

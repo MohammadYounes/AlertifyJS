@@ -181,14 +181,16 @@
       *
       */
     function destruct(instance, initialize){
-        //delete the dom and it's references.
-        var root = instance.elements.root;
-        root.parentNode.removeChild(root);
-        delete instance.elements;
-        //copy back initial settings.
-        instance.settings = copy(instance.__settings);
-        //re-reference init function.
-        instance.__init = initialize;
-        //delete __internal variable to allow re-initialization.
-        delete instance.__internal;
+        if(instance.elements){
+            //delete the dom and it's references.
+            var root = instance.elements.root;
+            root.parentNode.removeChild(root);
+            delete instance.elements;
+            //copy back initial settings.
+            instance.settings = copy(instance.__settings);
+            //re-reference init function.
+            instance.__init = initialize;
+            //delete __internal variable to allow re-initialization.
+            delete instance.__internal;
+        }
     }

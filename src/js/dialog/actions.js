@@ -1,3 +1,5 @@
+        // stores last call timestamp to prevent triggering the callback twice.
+        var callbackTS = 0;
         // flag to cancel keyup event if already handled by click event (pressing Enter on a focusted button).
         var cancelKeyup = false;
         /** 
@@ -9,18 +11,20 @@
          * @return {undefined}
          */
         function triggerCallback(instance, check) {
-            for (var idx = 0; idx < instance.__internal.buttons.length; idx += 1) {
-                var button = instance.__internal.buttons[idx];
-                if (!button.element.disabled && check(button)) {
-                    var closeEvent = createCloseEvent(idx, button);
-                    if (typeof instance.callback === 'function') {
-                        instance.callback.apply(instance, [closeEvent]);
+            if(Date.now() - callbackTS > 200 && (callbackTS = Date.now())){
+                for (var idx = 0; idx < instance.__internal.buttons.length; idx += 1) {
+                    var button = instance.__internal.buttons[idx];
+                    if (!button.element.disabled && check(button)) {
+                        var closeEvent = createCloseEvent(idx, button);
+                        if (typeof instance.callback === 'function') {
+                            instance.callback.apply(instance, [closeEvent]);
+                        }
+                        //close the dialog only if not canceled.
+                        if (closeEvent.cancel === false) {
+                            instance.close();
+                        }
+                        break;
                     }
-                    //close the dialog only if not canceled.
-                    if (closeEvent.cancel === false) {
-                        instance.close();
-                    }
-                    break;
                 }
             }
         }

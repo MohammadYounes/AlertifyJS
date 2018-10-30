@@ -249,8 +249,10 @@
             }
         }
 
-        // flag to cancel click event if already handled by end resize event (the mousedown, mousemove, mouseup sequence fires a click event.).
-        var cancelClick = false;
+        
+        var cancelClick = false,// flag to cancel click event if already handled by end resize event (the mousedown, mousemove, mouseup sequence fires a click event.).
+            modalClickHandlerTS=0 // stores last click timestamp to prevent executing the handler twice on double click.
+            ;
 
         /**
          * Helper: closes the modal dialog when clicking the modal
@@ -261,10 +263,12 @@
          * @return {undefined}
          */
         function modalClickHandler(event, instance) {
-            var target = event.srcElement || event.target;
-            if (!cancelClick && target === instance.elements.modal && instance.get('closableByDimmer') === true) {
-                triggerClose(instance);
+            if(event.timeStamp - modalClickHandlerTS > 200 && (modalClickHandlerTS = event.timeStamp) && !cancelClick){
+                var target = event.srcElement || event.target;
+                if (instance.get('closableByDimmer') === true && target === instance.elements.modal) {
+                    triggerClose(instance);
+                }
+                cancelClick = false;
+                return false;
             }
-            cancelClick = false;
-            return false;
         }
