@@ -1,4 +1,7 @@
 # Release Notes
+* **v1.11.2** [30 Oct. 2018]
+  * Prevent triggering duplicate callbacks - #199
+
 * **v1.11.1** [24 Mar. 2018]
   * Set body `tabindex` only when a dialog is shown. #145
   * Remove duplicate case statement. #181
