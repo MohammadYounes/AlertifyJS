@@ -176,7 +176,8 @@
                 var elements = {};
                 //root node
                 elements.root = document.createElement('div');
-                
+                //prevent FOUC in case of async styles loading.
+                elements.root.style = 'display:none';
                 elements.root.className = classes.base + ' ' + classes.hidden + ' ';
 
                 elements.root.innerHTML = templates.dimmer + templates.modal;
@@ -329,13 +330,13 @@
          *
          */
         function preventBodyShift(add){
-            if(alertify.defaults.preventBodyShift && document.documentElement.scrollHeight > document.documentElement.clientHeight){
-                if(add ){//&& openDialogs[openDialogs.length-1].elements.dialog.clientHeight <= document.documentElement.clientHeight){
+            if(alertify.defaults.preventBodyShift){
+                if(add && document.documentElement.scrollHeight > document.documentElement.clientHeight ){//&& openDialogs[openDialogs.length-1].elements.dialog.clientHeight <= document.documentElement.clientHeight){
                     topScroll = scrollY;
                     top = window.getComputedStyle(document.body).top;
                     addClass(document.body, classes.fixed);
                     document.body.style.top = -scrollY + 'px';
-                } else {
+                } else if(!add) {
                     scrollY = topScroll;
                     document.body.style.top = top;
                     removeClass(document.body, classes.fixed);

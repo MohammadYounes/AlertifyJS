@@ -280,7 +280,7 @@
                     }
 
                     updateAbsPositionFix(this);
-
+                    this.elements.root.removeAttribute('style');
                     removeClass(this.elements.root, classes.animationOut);
                     addClass(this.elements.root, classes.animationIn);
 
