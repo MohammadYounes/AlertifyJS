@@ -1,4 +1,9 @@
 # Release Notes
+
+* **v1.11.3** [31 May. 2018]
+  * Prevent FOUC in case of async styles loading. #205
+  * Ensure `preventBodyShift` restores scrollbars. #206
+
 * **v1.11.2** [30 Oct. 2018]
   * Prevent triggering duplicate callbacks - #199
 
