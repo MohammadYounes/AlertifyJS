@@ -42,10 +42,10 @@ docpadConfig = {
 				'/build/css/alertify.css'
 				'/build/css/themes/default.css'
 				'/css/normalize.min.css'
-				'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'
+				'//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'
 				'/css/semantic.min.css'
-				'http://fonts.googleapis.com/earlyaccess/droidarabickufi.css'
-				'http://fonts.googleapis.com/css?family=Droid+Sans:400,700'
+				'//fonts.googleapis.com/earlyaccess/droidarabickufi.css'
+				'//fonts.googleapis.com/css?family=Droid+Sans:400,700'
 				'/css/site.min.css',
                 '/styles/style.css'
 			]

@@ -46,7 +46,7 @@
           <li class="aux">
             <div>
               <iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="25"></iframe>
-              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=http://alertifyjs.com/&amp;via=alertifyjs" title="Twitter Tweet Button" width="110" height="25"></iframe>
+              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs" title="Twitter Tweet Button" width="110" height="25"></iframe>
             </div>
           </li>
           <li><a href="/guide.html">Getting Started</a></li>
@@ -91,7 +91,7 @@
 								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
 			</div>
 			<div class="item">
-				<iframe src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=http://alertifyjs.com/&amp;via=alertifyjs"
+				<iframe src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs"
 								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
 			</div>
 		</div>
