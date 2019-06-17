@@ -1,5 +1,8 @@
 # Release Notes
 
+* **v1.11.4** [17 Jun. 2018]
+  * Fix SCRIPT5045: Assignment to read-only properties is not allowed in strict mode (IE11). #210
+
 * **v1.11.3** [31 May. 2018]
   * Prevent FOUC in case of async styles loading. #205
   * Ensure `preventBodyShift` restores scrollbars. #206

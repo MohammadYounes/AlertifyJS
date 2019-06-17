@@ -1,5 +1,5 @@
 /**
- * alertifyjs 1.11.3 http://alertifyjs.com
+ * alertifyjs 1.11.4 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  * Copyright 2019 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under GPL 3 <https://opensource.org/licenses/gpl-3.0>*/
@@ -511,7 +511,7 @@
                 //root node
                 elements.root = document.createElement('div');
                 //prevent FOUC in case of async styles loading.
-                elements.root.style = 'display:none';
+                elements.root.style.display = 'none';
                 elements.root.className = classes.base + ' ' + classes.hidden + ' ';
 
                 elements.root.innerHTML = templates.dimmer + templates.modal;
