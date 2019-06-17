@@ -177,7 +177,7 @@
                 //root node
                 elements.root = document.createElement('div');
                 //prevent FOUC in case of async styles loading.
-                elements.root.style = 'display:none';
+                elements.root.style.display = 'none';
                 elements.root.className = classes.base + ' ' + classes.hidden + ' ';
 
                 elements.root.innerHTML = templates.dimmer + templates.modal;
