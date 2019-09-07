@@ -24,7 +24,17 @@
 		"desc": "Gets or sets the name of the button to recieve default focus.",
 		"defaultValue": "'ok'",
 		"script": "alertify.confirm('Cancel button is focused by default.').set('defaultFocus', 'cancel');"
-	},	
+	},
+	
+	{
+		"type": "p",
+		"name": "defaultFocusOff",
+		"label": "{ Boolean }",
+		"desc": "Gets or sets a value indicating whether <code>defaultFocus</code> is enabled or not. Useful to prevent long dialogs from jumping to bottom on open.",
+		"defaultValue": "false",
+		"script": "alertify.confirm('<p style=\"height:100vh;\"> Long paragraph ... </p>').set('defaultFocusOff', true);",
+		"toggle": { "value": false }
+	},
 	
 	{
 		"type": "p",

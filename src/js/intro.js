@@ -1,6 +1,6 @@
 ( function ( window ) {
     'use strict';
-    
+    var NOT_DISABLED_NOT_RESET = ':not(:disabled):not(.ajs-reset)';
     /**
      * Keys enum
      * @type {Object}
@@ -11,7 +11,8 @@
         F1: 112,
         F12: 123,
         LEFT: 37,
-        RIGHT: 39
+        RIGHT: 39,
+        TAB: 9
     };
     /**
      * Default options 
@@ -23,6 +24,7 @@
         closable:true,
         closableByDimmer:true,
         frameless:false,
+        defaultFocusOff:false,
         maintainFocus:true, //global default not per instance, applies to all dialogs
         maximizable:true,
         modal:true,
@@ -36,6 +38,7 @@
         resizable:true,
         startMaximized:false,
         transition:'pulse',
+        tabbable:['button', '[href]', 'input', 'select', 'textarea', '[tabindex]:not([tabindex^="-"])'+NOT_DISABLED_NOT_RESET].join(NOT_DISABLED_NOT_RESET+','),//global
         notifier:{
             delay:5,
             position:'bottom-right',

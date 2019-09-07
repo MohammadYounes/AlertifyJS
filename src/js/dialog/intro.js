@@ -135,6 +135,7 @@
                         modal: undefined,
                         basic:undefined,
                         frameless:undefined,
+                        defaultFocusOff:undefined,
                         pinned: undefined,
                         movable: undefined,
                         moveBounded:undefined,

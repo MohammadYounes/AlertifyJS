@@ -37,9 +37,9 @@
                     element = focus.element.call(instance);
                     break;
                 }
-                
+
                 // if no focus element, default to first reset element.
-                if ((typeof element === 'undefined' || element === null) && instance.__internal.buttons.length === 0) {
+                if (instance.get('defaultFocusOff') === true || ((typeof element === 'undefined' || element === null) && instance.__internal.buttons.length === 0)) {
                     element = instance.elements.reset[0];
                 }
                 // focus
@@ -73,39 +73,50 @@
                     }
                 }
             }
-            // if modal
-            if (instance && instance.isModal()) {
-                // determine reset target to enable forward/backward tab cycle.
-                var resetTarget, target = event.srcElement || event.target;
-                var lastResetElement = target === instance.elements.reset[1] || (instance.__internal.buttons.length === 0 && target === document.body);
 
-                // if last reset link, then go to maximize or close
-                if (lastResetElement) {
-                    if (instance.get('maximizable')) {
-                        resetTarget = instance.elements.commands.maximize;
-                    } else if (instance.get('closable')) {
-                        resetTarget = instance.elements.commands.close;
+            if(instance) {
+                // if modal
+                if (instance.isModal()) {
+                    // determine reset target to enable forward/backward tab cycle.
+                    var firstReset = instance.elements.reset[0],
+                        lastReset = instance.elements.reset[1],
+                        lastFocusedElement = event.relatedTarget,
+                        within = instance.elements.root.contains(lastFocusedElement),
+                        target = event.srcElement || event.target,
+                        resetTarget;
+
+                    //if the previous focused element element was outside the modal do nthing
+                    if(  /*first show */
+                        (target === firstReset && !within) ||
+                         /*focus cycle */
+                        (target === lastReset && lastFocusedElement == firstReset))
+                        return
+                    else if(target === lastReset || target === document.body)
+                        resetTarget = firstReset
+                    else if(target === firstReset && lastFocusedElement == lastReset){
+                        resetTarget = findTabbable(instance)
+                    }else if(target == firstReset && within){
+                        resetTarget = findTabbable(instance, true)
                     }
+                    // focus
+                    setFocus(instance, resetTarget);
                 }
-                // if no reset target found, try finding the best button
-                if (resetTarget === undefined) {
-                    if (typeof instance.__internal.focus.element === 'number') {
-                        // button focus element, go to first available button
-                        if (target === instance.elements.reset[0]) {
-                            resetTarget = instance.elements.buttons.auxiliary.firstChild || instance.elements.buttons.primary.firstChild;
-                        } else if (lastResetElement) {
-                            //restart the cycle by going to first reset link
-                            resetTarget = instance.elements.reset[0];
-                        }
-                    } else {
-                        // will reach here when tapping backwards, so go to last child
-                        // The focus element SHOULD NOT be a button (logically!).
-                        if (target === instance.elements.reset[0]) {
-                            resetTarget = instance.elements.buttons.primary.lastChild || instance.elements.buttons.auxiliary.lastChild;
-                        }
-                    }
+            }
+        }
+        function findTabbable(instance, last){
+            var tabbables = [].slice.call(instance.elements.dialog.querySelectorAll(defaults.tabbable));
+            last && tabbables.reverse()
+            for(var x=0;x<tabbables.length;x++){
+                var tabbable = tabbables[x]
+                //check if visible
+                if(!!(tabbable.offsetParent || tabbable.offsetWidth || tabbable.offsetHeight || tabbable.getClientRects().length)){
+                    return tabbable
                 }
-                // focus
-                setFocus(instance, resetTarget);
+            }
+        }
+        function recycleTab(event) {
+            var instance = openDialogs[openDialogs.length - 1];
+            if (instance && event.shiftKey && event.keyCode === keys.TAB) {
+                instance.elements.reset[1].focus()
             }
         }

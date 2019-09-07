@@ -29,8 +29,9 @@
             // common events
             on(instance.elements.commands.container, 'click', instance.__internal.commandsClickHandler);
             on(instance.elements.footer, 'click', instance.__internal.buttonsClickHandler);
-            on(instance.elements.reset[0], 'focus', instance.__internal.resetHandler);
-            on(instance.elements.reset[1], 'focus', instance.__internal.resetHandler);
+            on(instance.elements.reset[0], 'focusin', instance.__internal.resetHandler);
+            on(instance.elements.reset[0], 'keydown', recycleTab);
+            on(instance.elements.reset[1], 'focusin', instance.__internal.resetHandler);
 
             //prevent handling key up when dialog is being opened by a key stroke.
             cancelKeyup = true;
@@ -79,8 +80,9 @@
             // common events
             off(instance.elements.commands.container, 'click', instance.__internal.commandsClickHandler);
             off(instance.elements.footer, 'click', instance.__internal.buttonsClickHandler);
-            off(instance.elements.reset[0], 'focus', instance.__internal.resetHandler);
-            off(instance.elements.reset[1], 'focus', instance.__internal.resetHandler);
+            off(instance.elements.reset[0], 'focusin', instance.__internal.resetHandler);
+            off(instance.elements.reset[0], 'keydown', recycleTab);
+            off(instance.elements.reset[1], 'focusin', instance.__internal.resetHandler);
 
             // hook out transition handler
             on(instance.elements.dialog, transition.type, instance.__internal.transitionOutHandler);
