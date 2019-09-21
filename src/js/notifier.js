@@ -26,7 +26,7 @@
                     delay: alertify.defaults.notifier.delay,
                 };
 
-                element = document.createElement('DIV');
+                 el = document.createElement("div");
 
                 updatePosition(instance);
             }
