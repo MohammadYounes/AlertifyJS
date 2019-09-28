@@ -1,5 +1,13 @@
 # Release Notes
 
+* **v1.12.0** [28 Sep. 2019]
+  * New API features: 
+    * `invokeOnCloseOff` option. #218/#219
+    * Global pre/post init hooks. #216
+    * Expose notifier classes, allowing them to be renamed. #217
+  * Add `defaultFocusOff` option to Confirm dialog. #212
+  * Fix locking in tab cycle inside modals.
+
 * **v1.11.4** [17 Jun. 2018]
   * Fix SCRIPT5045: Assignment to read-only properties is not allowed in strict mode (IE11). #210
 

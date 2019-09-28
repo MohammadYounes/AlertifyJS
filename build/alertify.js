@@ -1,11 +1,11 @@
 /**
- * alertifyjs 1.11.4 http://alertifyjs.com
+ * alertifyjs 1.12.0 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  * Copyright 2019 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under GPL 3 <https://opensource.org/licenses/gpl-3.0>*/
 ( function ( window ) {
     'use strict';
-    
+    var NOT_DISABLED_NOT_RESET = ':not(:disabled):not(.ajs-reset)';
     /**
      * Keys enum
      * @type {Object}
@@ -16,7 +16,8 @@
         F1: 112,
         F12: 123,
         LEFT: 37,
-        RIGHT: 39
+        RIGHT: 39,
+        TAB: 9
     };
     /**
      * Default options 
@@ -27,7 +28,9 @@
         basic:false,
         closable:true,
         closableByDimmer:true,
+        invokeOnCloseOff:false,
         frameless:false,
+        defaultFocusOff:false,
         maintainFocus:true, //global default not per instance, applies to all dialogs
         maximizable:true,
         modal:true,
@@ -41,10 +44,24 @@
         resizable:true,
         startMaximized:false,
         transition:'pulse',
+        tabbable:['button', '[href]', 'input', 'select', 'textarea', '[tabindex]:not([tabindex^="-"])'+NOT_DISABLED_NOT_RESET].join(NOT_DISABLED_NOT_RESET+','),//global
         notifier:{
             delay:5,
             position:'bottom-right',
-            closeButton:false
+            closeButton:false,
+            classes: {
+                base: 'alertify-notifier',
+                prefix:'ajs-',
+                message: 'ajs-message',
+                top: 'ajs-top',
+                right: 'ajs-right',
+                bottom: 'ajs-bottom',
+                left: 'ajs-left',
+                center: 'ajs-center',
+                visible: 'ajs-visible',
+                hidden: 'ajs-hidden',
+                close: 'ajs-close'
+            }
         },
         glossary:{
             title:'AlertifyJS',
@@ -62,6 +79,10 @@
             input:'ajs-input',
             ok:'ajs-ok',
             cancel:'ajs-cancel',
+        },
+        hooks:{
+            preinit:function(){},
+            postinit:function(){}
         }
     };
     
@@ -398,7 +419,8 @@
         function initialize(instance){
             
             if(!instance.__internal){
-
+                //invoke preinit global hook
+                alertify.defaults.hooks.preinit(instance);
                 //no need to expose init after this.
                 delete instance.__init;
               
@@ -469,6 +491,7 @@
                         modal: undefined,
                         basic:undefined,
                         frameless:undefined,
+                        defaultFocusOff:undefined,
                         pinned: undefined,
                         movable: undefined,
                         moveBounded:undefined,
@@ -476,6 +499,7 @@
                         autoReset: undefined,
                         closable: undefined,
                         closableByDimmer: undefined,
+                        invokeOnCloseOff:undefined,
                         maximizable: undefined,
                         startMaximized: undefined,
                         pinnable: undefined,
@@ -617,8 +641,11 @@
                 if(typeof instance.build === 'function'){
                     instance.build();
                 }
+
+                //invoke postinit global hook
+                alertify.defaults.hooks.postinit(instance);
             }
-            
+
             //add to the end of the DOM tree.
             document.body.appendChild(instance.elements.root);
         }
@@ -947,7 +974,7 @@
         function triggerClose(instance) {
             var found;
             triggerCallback(instance, function (button) {
-                return found = (button.invokeOnClose === true);
+                return found = instance.get('invokeOnCloseOff') !== true && (button.invokeOnClose === true);
             });
             //none of the buttons registered as onclose callback
             //close the dialog
@@ -1360,9 +1387,9 @@
                     element = focus.element.call(instance);
                     break;
                 }
-                
+
                 // if no focus element, default to first reset element.
-                if ((typeof element === 'undefined' || element === null) && instance.__internal.buttons.length === 0) {
+                if (instance.get('defaultFocusOff') === true || ((typeof element === 'undefined' || element === null) && instance.__internal.buttons.length === 0)) {
                     element = instance.elements.reset[0];
                 }
                 // focus
@@ -1396,40 +1423,51 @@
                     }
                 }
             }
-            // if modal
-            if (instance && instance.isModal()) {
-                // determine reset target to enable forward/backward tab cycle.
-                var resetTarget, target = event.srcElement || event.target;
-                var lastResetElement = target === instance.elements.reset[1] || (instance.__internal.buttons.length === 0 && target === document.body);
 
-                // if last reset link, then go to maximize or close
-                if (lastResetElement) {
-                    if (instance.get('maximizable')) {
-                        resetTarget = instance.elements.commands.maximize;
-                    } else if (instance.get('closable')) {
-                        resetTarget = instance.elements.commands.close;
+            if(instance) {
+                // if modal
+                if (instance.isModal()) {
+                    // determine reset target to enable forward/backward tab cycle.
+                    var firstReset = instance.elements.reset[0],
+                        lastReset = instance.elements.reset[1],
+                        lastFocusedElement = event.relatedTarget,
+                        within = instance.elements.root.contains(lastFocusedElement),
+                        target = event.srcElement || event.target,
+                        resetTarget;
+
+                    //if the previous focused element element was outside the modal do nthing
+                    if(  /*first show */
+                        (target === firstReset && !within) ||
+                         /*focus cycle */
+                        (target === lastReset && lastFocusedElement == firstReset))
+                        return
+                    else if(target === lastReset || target === document.body)
+                        resetTarget = firstReset
+                    else if(target === firstReset && lastFocusedElement == lastReset){
+                        resetTarget = findTabbable(instance)
+                    }else if(target == firstReset && within){
+                        resetTarget = findTabbable(instance, true)
                     }
+                    // focus
+                    setFocus(instance, resetTarget);
                 }
-                // if no reset target found, try finding the best button
-                if (resetTarget === undefined) {
-                    if (typeof instance.__internal.focus.element === 'number') {
-                        // button focus element, go to first available button
-                        if (target === instance.elements.reset[0]) {
-                            resetTarget = instance.elements.buttons.auxiliary.firstChild || instance.elements.buttons.primary.firstChild;
-                        } else if (lastResetElement) {
-                            //restart the cycle by going to first reset link
-                            resetTarget = instance.elements.reset[0];
-                        }
-                    } else {
-                        // will reach here when tapping backwards, so go to last child
-                        // The focus element SHOULD NOT be a button (logically!).
-                        if (target === instance.elements.reset[0]) {
-                            resetTarget = instance.elements.buttons.primary.lastChild || instance.elements.buttons.auxiliary.lastChild;
-                        }
-                    }
+            }
+        }
+        function findTabbable(instance, last){
+            var tabbables = [].slice.call(instance.elements.dialog.querySelectorAll(defaults.tabbable));
+            last && tabbables.reverse()
+            for(var x=0;x<tabbables.length;x++){
+                var tabbable = tabbables[x]
+                //check if visible
+                if(!!(tabbable.offsetParent || tabbable.offsetWidth || tabbable.offsetHeight || tabbable.getClientRects().length)){
+                    return tabbable
                 }
-                // focus
-                setFocus(instance, resetTarget);
+            }
+        }
+        function recycleTab(event) {
+            var instance = openDialogs[openDialogs.length - 1];
+            if (instance && event.shiftKey && event.keyCode === keys.TAB) {
+                instance.elements.reset[1].focus()
             }
         }
         /**
@@ -1964,8 +2002,9 @@
             // common events
             on(instance.elements.commands.container, 'click', instance.__internal.commandsClickHandler);
             on(instance.elements.footer, 'click', instance.__internal.buttonsClickHandler);
-            on(instance.elements.reset[0], 'focus', instance.__internal.resetHandler);
-            on(instance.elements.reset[1], 'focus', instance.__internal.resetHandler);
+            on(instance.elements.reset[0], 'focusin', instance.__internal.resetHandler);
+            on(instance.elements.reset[0], 'keydown', recycleTab);
+            on(instance.elements.reset[1], 'focusin', instance.__internal.resetHandler);
 
             //prevent handling key up when dialog is being opened by a key stroke.
             cancelKeyup = true;
@@ -2014,8 +2053,9 @@
             // common events
             off(instance.elements.commands.container, 'click', instance.__internal.commandsClickHandler);
             off(instance.elements.footer, 'click', instance.__internal.buttonsClickHandler);
-            off(instance.elements.reset[0], 'focus', instance.__internal.resetHandler);
-            off(instance.elements.reset[1], 'focus', instance.__internal.resetHandler);
+            off(instance.elements.reset[0], 'focusin', instance.__internal.resetHandler);
+            off(instance.elements.reset[0], 'keydown', recycleTab);
+            off(instance.elements.reset[1], 'focusin', instance.__internal.resetHandler);
 
             // hook out transition handler
             on(instance.elements.dialog, transition.type, instance.__internal.transitionOutHandler);
@@ -2542,18 +2582,7 @@
         var reflow,
             element,
             openInstances = [],
-            classes = {
-                base: 'alertify-notifier',
-                message: 'ajs-message',
-                top: 'ajs-top',
-                right: 'ajs-right',
-                bottom: 'ajs-bottom',
-                left: 'ajs-left',
-                center: 'ajs-center',
-                visible: 'ajs-visible',
-                hidden: 'ajs-hidden',
-                close: 'ajs-close'
-            };
+            classes = defaults.notifier.classes;
         /**
          * Helper: initializes the notifier instance
          *
@@ -2851,7 +2880,7 @@
                 initialize(this);
                 //create new notification message
                 var div = document.createElement('div');
-                div.className = classes.message + ((typeof type === 'string' && type !== '') ? ' ajs-' + type : '');
+                div.className = classes.message + ((typeof type === 'string' && type !== '') ? ' ' + classes.prefix + type : '');
                 return create(div, callback);
             },
             /**
