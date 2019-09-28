@@ -143,6 +143,7 @@
                         autoReset: undefined,
                         closable: undefined,
                         closableByDimmer: undefined,
+                        invokeOnCloseOff:undefined,
                         maximizable: undefined,
                         startMaximized: undefined,
                         pinnable: undefined,

@@ -23,8 +23,20 @@
 		"label": "{ Function }",
 		"desc": "Gets or sets a callback function to be invoked when the user clicks 'Ok' button or closes the dialog.",
 		"defaultValue": "undefined",
-        "script": "alertify.alert('a callback will be invoked on ok.').set('onok', function(closeEvent){ alertify.success('Ok');} );",
-        "remark": "To prevent the dialog from closing, either set <code>closeEvent.cancel = true</code> or make your callback return <code>false</code> ."
+    "script": "alertify.alert('a callback will be invoked on ok.').set('onok', function(closeEvent){ alertify.success('Ok');} );",
+    "remark": "To prevent the dialog from closing, either set <code>closeEvent.cancel = true</code> or make your callback return <code>false</code> ."
+	},
+
+	{
+		"type": "p",
+		"name": "invokeOnCloseOff",
+		"label": "{Boolean}",
+		"desc": "Gets or sets a value indicating whether closing the dialog via <b>Close</b> button or <b>Dimmer</b> should look for and trigger the action of a button having <code>invokeOnClose</code> set to <code>true</code>. Useful when you want to differentiate between closing the dialog or clicking an action that closes it.",
+		"defaultValue": "false",
+		"script": ["alertify.alert('invokeOnCloseOff: true')",
+							 "        .set({'invokeOnCloseOff': true,'onok': function(){alertify.success('Ok')} });"
+						],
+		"toggle": { "value": true }
 	}
 	
 ]

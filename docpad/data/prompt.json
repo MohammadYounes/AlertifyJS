@@ -59,5 +59,17 @@
             "value": "text",
             "items": [ "text", "color", "date", "datetime-local", "email", "month", "number", "password", "search", "tel", "time", "week" ]
         }
+	},
+
+	{
+		"type": "p",
+		"name": "invokeOnCloseOff",
+		"label": "{Boolean}",
+		"desc": "Gets or sets a value indicating whether closing the dialog via <b>Close</b> button or <b>Dimmer</b> should look for and trigger the action of a button having <code>invokeOnClose</code> set to <code>true</code>. Useful when you want to differentiate between closing the dialog or clicking an action that closes it.",
+		"defaultValue": "false",
+		"script": ["alertify.prompt('invokeOnCloseOff: true')",
+							 "        .set({'invokeOnCloseOff': true, 'oncancel':function(){alertify.error('Cancel')} });"
+							],
+		"toggle": { "value": true }
 	}
 ]

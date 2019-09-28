@@ -9,7 +9,7 @@
         function triggerClose(instance) {
             var found;
             triggerCallback(instance, function (button) {
-                return found = (button.invokeOnClose === true);
+                return found = instance.get('invokeOnCloseOff') !== true && (button.invokeOnClose === true);
             });
             //none of the buttons registered as onclose callback
             //close the dialog
