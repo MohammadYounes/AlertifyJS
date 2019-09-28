@@ -43,7 +43,20 @@
         notifier:{
             delay:5,
             position:'bottom-right',
-            closeButton:false
+            closeButton:false,
+            classes: {
+                base: 'alertify-notifier',
+                prefix:'ajs-',
+                message: 'ajs-message',
+                top: 'ajs-top',
+                right: 'ajs-right',
+                bottom: 'ajs-bottom',
+                left: 'ajs-left',
+                center: 'ajs-center',
+                visible: 'ajs-visible',
+                hidden: 'ajs-hidden',
+                close: 'ajs-close'
+            }
         },
         glossary:{
             title:'AlertifyJS',

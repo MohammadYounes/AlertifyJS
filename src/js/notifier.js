@@ -2,18 +2,7 @@
         var reflow,
             element,
             openInstances = [],
-            classes = {
-                base: 'alertify-notifier',
-                message: 'ajs-message',
-                top: 'ajs-top',
-                right: 'ajs-right',
-                bottom: 'ajs-bottom',
-                left: 'ajs-left',
-                center: 'ajs-center',
-                visible: 'ajs-visible',
-                hidden: 'ajs-hidden',
-                close: 'ajs-close'
-            };
+            classes = defaults.notifier.classes;
         /**
          * Helper: initializes the notifier instance
          *
@@ -311,7 +300,7 @@
                 initialize(this);
                 //create new notification message
                 var div = document.createElement('div');
-                div.className = classes.message + ((typeof type === 'string' && type !== '') ? ' ajs-' + type : '');
+                div.className = classes.message + ((typeof type === 'string' && type !== '') ? ' ' + classes.prefix + type : '');
                 return create(div, callback);
             },
             /**
