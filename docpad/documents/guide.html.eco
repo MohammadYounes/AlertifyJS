@@ -278,7 +278,14 @@ alertify.defaults = {
             ok:'ajs-ok',
 			// class name attached to cancel button 
             cancel:'ajs-cancel'
-        }
+        },
+		// global hooks
+        hooks:{
+			// invoked before initializing any dialog
+            preinit:function(instance){},
+			// invoked after initializing any dialog
+            postinit:function(instance){},
+        },
     };
 
 </code> 

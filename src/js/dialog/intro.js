@@ -64,7 +64,8 @@
         function initialize(instance){
             
             if(!instance.__internal){
-
+                //invoke preinit global hook
+                alertify.defaults.hooks.preinit(instance);
                 //no need to expose init after this.
                 delete instance.__init;
               
@@ -285,8 +286,11 @@
                 if(typeof instance.build === 'function'){
                     instance.build();
                 }
+
+                //invoke postinit global hook
+                alertify.defaults.hooks.postinit(instance);
             }
-            
+
             //add to the end of the DOM tree.
             document.body.appendChild(instance.elements.root);
         }

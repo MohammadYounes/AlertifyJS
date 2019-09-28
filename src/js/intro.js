@@ -74,6 +74,10 @@
             input:'ajs-input',
             ok:'ajs-ok',
             cancel:'ajs-cancel',
+        },
+        hooks:{
+            preinit:function(){},
+            postinit:function(){}
         }
     };
     
