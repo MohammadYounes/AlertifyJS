@@ -1,48 +1,42 @@
     /**
-     * Use a closure to return proper event listener method. Try to use
-     * `addEventListener` by default but fallback to `attachEvent` for
-     * unsupported browser. The closure simply ensures that the test doesn't
-     * happen every time the method is called.
-     *
-     * @param    {Node}     el    Node element
-     * @param    {String}   event Event type
-     * @param    {Function} fn    Callback of event
-     * @return   {Function}
+     * Test to check if passive event listeners are supported.
      */
-    var on = (function () {
-        if (document.addEventListener) {
-            return function (el, event, fn, useCapture) {
-                el.addEventListener(event, fn, useCapture === true);
-            };
-        } else if (document.attachEvent) {
-            return function (el, event, fn) {
-                el.attachEvent('on' + event, fn);
-            };
-        }
-    }());
+    var IsPassiveSupported = false
+    try {
+        var options = Object.defineProperty({}, 'passive', {
+            get: function () {
+                IsPassiveSupported = true
+            }
+        })
+        window.addEventListener('test', options, options)
+        window.removeEventListener('test', options, options)
+    } catch (e) {}
+
+     /**
+     * Removes an event listener
+     *
+     * @param {HTMLElement} el The EventTarget to register the listenr on.
+     * @param {string} event The event type to listen for.
+     * @param {Function} handler The function to handle the event.
+     * @param {boolean} useCapture Specifices if the event to be dispatched to the registered listener before being dispatched to any EventTarget beneath it in the DOM tree.
+     * @param {boolean} passive A Boolean which, if true, indicates that the function specified by listener will never call preventDefault().
+     */
+    var on = function (el, event, fn, useCapture, passive) {
+        el.addEventListener(event, fn, IsPassiveSupported ? { capture: useCapture, passive: passive } : useCapture === true)
+    }
 
     /**
-     * Use a closure to return proper event listener method. Try to use
-     * `removeEventListener` by default but fallback to `detachEvent` for
-     * unsupported browser. The closure simply ensures that the test doesn't
-     * happen every time the method is called.
+     * Removes an event listener
      *
-     * @param    {Node}     el    Node element
-     * @param    {String}   event Event type
-     * @param    {Function} fn    Callback of event
-     * @return   {Function}
+     * @param {HTMLElement} el The EventTarget to unregister the listenr from.
+     * @param {string} event The event type to remove.
+     * @param {Function} fn The event handler to remove.
+     * @param {boolean} useCapture Specifices if the event to be dispatched to the registered listener before being dispatched to any EventTarget beneath it in the DOM tree.
+     * @param {boolean} passive A Boolean which, if true, indicates that the function specified by listener will never call preventDefault().
      */
-    var off = (function () {
-        if (document.removeEventListener) {
-            return function (el, event, fn, useCapture) {
-                el.removeEventListener(event, fn, useCapture === true);
-            };
-        } else if (document.detachEvent) {
-            return function (el, event, fn) {
-                el.detachEvent('on' + event, fn);
-            };
-        }
-    }());
+    var off = function (el, event, fn, useCapture, passive) {
+        el.removeEventListener(event, fn, IsPassiveSupported ? { capture: useCapture, passive: passive } : useCapture === true)
+    }
 
     /**
      * Prevent default event from firing

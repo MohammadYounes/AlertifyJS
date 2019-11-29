@@ -16,12 +16,12 @@
 
                 //move
                 on(document.documentElement, 'mousemove', move);
-                on(document.documentElement, 'touchmove', move);
+                on(document.documentElement, 'touchmove', move, false, false);
                 on(document.documentElement, 'mouseup', endMove);
                 on(document.documentElement, 'touchend', endMove);
                 //resize
                 on(document.documentElement, 'mousemove', resize);
-                on(document.documentElement, 'touchmove', resize);
+                on(document.documentElement, 'touchmove', resize, false, false);
                 on(document.documentElement, 'mouseup', endResize);
                 on(document.documentElement, 'touchend', endResize);
             }
@@ -137,7 +137,7 @@
          */
         function bindMovableEvents(instance) {
             on(instance.elements.header, 'mousedown', instance.__internal.beginMoveHandler);
-            on(instance.elements.header, 'touchstart', instance.__internal.beginMoveHandler);
+            on(instance.elements.header, 'touchstart', instance.__internal.beginMoveHandler, false, false);
         }
 
         /**
@@ -149,7 +149,7 @@
          */
         function unbindMovableEvents(instance) {
             off(instance.elements.header, 'mousedown', instance.__internal.beginMoveHandler);
-            off(instance.elements.header, 'touchstart', instance.__internal.beginMoveHandler);
+            off(instance.elements.header, 'touchstart', instance.__internal.beginMoveHandler, false, false);
         }
 
 
@@ -163,7 +163,7 @@
          */
         function bindResizableEvents(instance) {
             on(instance.elements.resizeHandle, 'mousedown', instance.__internal.beginResizeHandler);
-            on(instance.elements.resizeHandle, 'touchstart', instance.__internal.beginResizeHandler);
+            on(instance.elements.resizeHandle, 'touchstart', instance.__internal.beginResizeHandler, false, false);
         }
 
         /**
@@ -175,7 +175,7 @@
          */
         function unbindResizableEvents(instance) {
             off(instance.elements.resizeHandle, 'mousedown', instance.__internal.beginResizeHandler);
-            off(instance.elements.resizeHandle, 'touchstart', instance.__internal.beginResizeHandler);
+            off(instance.elements.resizeHandle, 'touchstart', instance.__internal.beginResizeHandler, false, false);
         }
 
         /**
