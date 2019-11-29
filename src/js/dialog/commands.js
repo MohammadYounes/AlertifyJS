@@ -268,7 +268,6 @@
                 if (instance.get('closableByDimmer') === true && target === instance.elements.modal) {
                     triggerClose(instance);
                 }
-                cancelClick = false;
-                return false;
             }
+            cancelClick = false;
         }
