@@ -1,5 +1,11 @@
 # Release Notes
 
+* **v1.13.0** [30 Nov. 2019]
+  * New API features: `transitionOff` option.
+  * Treat Document Level Touch Event Listeners as Passive. #222
+  * Add support `prefers-reduced-motion` @media rule. #224
+  * Fix `closableByDimmer` stops working after resize. #225
+
 * **v1.12.0** [28 Sep. 2019]
   * New API features: 
     * `invokeOnCloseOff` option. #218/#219

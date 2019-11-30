@@ -1,5 +1,5 @@
 /**
- * alertifyjs 1.12.0 http://alertifyjs.com
+ * alertifyjs 1.13.0 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  * Copyright 2019 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under GPL 3 <https://opensource.org/licenses/gpl-3.0>*/
@@ -44,6 +44,7 @@
         resizable:true,
         startMaximized:false,
         transition:'pulse',
+        transitionOff:false,
         tabbable:['button', '[href]', 'input', 'select', 'textarea', '[tabindex]:not([tabindex^="-"])'+NOT_DISABLED_NOT_RESET].join(NOT_DISABLED_NOT_RESET+','),//global
         notifier:{
             delay:5,
@@ -222,50 +223,44 @@
     }
 
     /**
-     * Use a closure to return proper event listener method. Try to use
-     * `addEventListener` by default but fallback to `attachEvent` for
-     * unsupported browser. The closure simply ensures that the test doesn't
-     * happen every time the method is called.
-     *
-     * @param    {Node}     el    Node element
-     * @param    {String}   event Event type
-     * @param    {Function} fn    Callback of event
-     * @return   {Function}
+     * Test to check if passive event listeners are supported.
      */
-    var on = (function () {
-        if (document.addEventListener) {
-            return function (el, event, fn, useCapture) {
-                el.addEventListener(event, fn, useCapture === true);
-            };
-        } else if (document.attachEvent) {
-            return function (el, event, fn) {
-                el.attachEvent('on' + event, fn);
-            };
-        }
-    }());
+    var IsPassiveSupported = false
+    try {
+        var options = Object.defineProperty({}, 'passive', {
+            get: function () {
+                IsPassiveSupported = true
+            }
+        })
+        window.addEventListener('test', options, options)
+        window.removeEventListener('test', options, options)
+    } catch (e) {}
+
+     /**
+     * Removes an event listener
+     *
+     * @param {HTMLElement} el The EventTarget to register the listenr on.
+     * @param {string} event The event type to listen for.
+     * @param {Function} handler The function to handle the event.
+     * @param {boolean} useCapture Specifices if the event to be dispatched to the registered listener before being dispatched to any EventTarget beneath it in the DOM tree.
+     * @param {boolean} passive A Boolean which, if true, indicates that the function specified by listener will never call preventDefault().
+     */
+    var on = function (el, event, fn, useCapture, passive) {
+        el.addEventListener(event, fn, IsPassiveSupported ? { capture: useCapture, passive: passive } : useCapture === true)
+    }
 
     /**
-     * Use a closure to return proper event listener method. Try to use
-     * `removeEventListener` by default but fallback to `detachEvent` for
-     * unsupported browser. The closure simply ensures that the test doesn't
-     * happen every time the method is called.
+     * Removes an event listener
      *
-     * @param    {Node}     el    Node element
-     * @param    {String}   event Event type
-     * @param    {Function} fn    Callback of event
-     * @return   {Function}
+     * @param {HTMLElement} el The EventTarget to unregister the listenr from.
+     * @param {string} event The event type to remove.
+     * @param {Function} fn The event handler to remove.
+     * @param {boolean} useCapture Specifices if the event to be dispatched to the registered listener before being dispatched to any EventTarget beneath it in the DOM tree.
+     * @param {boolean} passive A Boolean which, if true, indicates that the function specified by listener will never call preventDefault().
      */
-    var off = (function () {
-        if (document.removeEventListener) {
-            return function (el, event, fn, useCapture) {
-                el.removeEventListener(event, fn, useCapture === true);
-            };
-        } else if (document.detachEvent) {
-            return function (el, event, fn) {
-                el.detachEvent('on' + event, fn);
-            };
-        }
-    }());
+    var off = function (el, event, fn, useCapture, passive) {
+        el.removeEventListener(event, fn, IsPassiveSupported ? { capture: useCapture, passive: passive } : useCapture === true)
+    }
 
     /**
      * Prevent default event from firing
@@ -409,6 +404,7 @@
                 restore: 'ajs-restore',
                 shake:'ajs-shake',
                 unpinned:'ajs-unpinned',
+                noTransition:'ajs-no-transition'
             };
 
         /**
@@ -504,6 +500,7 @@
                         startMaximized: undefined,
                         pinnable: undefined,
                         transition: undefined,
+                        transitionOff: undefined,
                         padding:undefined,
                         overflow:undefined,
                         onshow:undefined,
@@ -719,7 +716,24 @@
             addClass(instance.elements.root, classes.prefix + value);
             reflow = instance.elements.root.offsetWidth;
         }
-		
+
+        /**
+         * Toggles the dialog no transition 
+         *
+         * @param {Object} instance The dilog instance.
+         *
+         * @return {undefined}
+         */
+        function updateTransitionOff(instance){
+            if (instance.get('transitionOff')) {
+                // add class
+                addClass(instance.elements.root, classes.noTransition);
+            } else {
+                // remove class
+                removeClass(instance.elements.root, classes.noTransition);
+            }
+        }
+
         /**
          * Toggles the dialog display mode
          *
@@ -878,6 +892,9 @@
                 break;
             case 'transition':
                 updateTransition(instance,newValue, oldValue);
+                break;
+            case 'transitionOff':
+                updateTransitionOff(instance);
                 break;
             }
 
@@ -1233,9 +1250,8 @@
                 if (instance.get('closableByDimmer') === true && target === instance.elements.modal) {
                     triggerClose(instance);
                 }
-                cancelClick = false;
-                return false;
             }
+            cancelClick = false;
         }
 
         // stores last call timestamp to prevent triggering the callback twice.
@@ -1485,9 +1501,6 @@
             // once transition is complete, set focus
             setFocus(instance);
 
-            //restore scroll to prevent document jump
-            restoreScrollPosition();
-
             // allow handling key up after transition ended.
             cancelKeyup = false;
 
@@ -1524,12 +1537,6 @@
                 restore(instance);
             }
 
-            // return focus to the last active element
-            if (alertify.defaults.maintainFocus && instance.__internal.activeElement) {
-                instance.__internal.activeElement.focus();
-                instance.__internal.activeElement = null;
-            }
-            
             //destory the instance
             if (typeof instance.__internal.destroy === 'function') {
                 instance.__internal.destroy.apply(instance);
@@ -1989,12 +1996,12 @@
 
                 //move
                 on(document.documentElement, 'mousemove', move);
-                on(document.documentElement, 'touchmove', move);
+                on(document.documentElement, 'touchmove', move, false, false);
                 on(document.documentElement, 'mouseup', endMove);
                 on(document.documentElement, 'touchend', endMove);
                 //resize
                 on(document.documentElement, 'mousemove', resize);
-                on(document.documentElement, 'touchmove', resize);
+                on(document.documentElement, 'touchmove', resize, false, false);
                 on(document.documentElement, 'mouseup', endResize);
                 on(document.documentElement, 'touchend', endResize);
             }
@@ -2110,7 +2117,7 @@
          */
         function bindMovableEvents(instance) {
             on(instance.elements.header, 'mousedown', instance.__internal.beginMoveHandler);
-            on(instance.elements.header, 'touchstart', instance.__internal.beginMoveHandler);
+            on(instance.elements.header, 'touchstart', instance.__internal.beginMoveHandler, false, false);
         }
 
         /**
@@ -2122,7 +2129,7 @@
          */
         function unbindMovableEvents(instance) {
             off(instance.elements.header, 'mousedown', instance.__internal.beginMoveHandler);
-            off(instance.elements.header, 'touchstart', instance.__internal.beginMoveHandler);
+            off(instance.elements.header, 'touchstart', instance.__internal.beginMoveHandler, false, false);
         }
 
 
@@ -2136,7 +2143,7 @@
          */
         function bindResizableEvents(instance) {
             on(instance.elements.resizeHandle, 'mousedown', instance.__internal.beginResizeHandler);
-            on(instance.elements.resizeHandle, 'touchstart', instance.__internal.beginResizeHandler);
+            on(instance.elements.resizeHandle, 'touchstart', instance.__internal.beginResizeHandler, false, false);
         }
 
         /**
@@ -2148,7 +2155,7 @@
          */
         function unbindResizableEvents(instance) {
             off(instance.elements.resizeHandle, 'mousedown', instance.__internal.beginResizeHandler);
-            off(instance.elements.resizeHandle, 'touchstart', instance.__internal.beginResizeHandler);
+            off(instance.elements.resizeHandle, 'touchstart', instance.__internal.beginResizeHandler, false, false);
         }
 
         /**
@@ -2475,6 +2482,9 @@
                     // show dialog
                     removeClass(this.elements.root, classes.hidden);
 
+                    //restore scroll to prevent document jump
+                    restoreScrollPosition();
+
                     // internal on show event
                     if(typeof this.hooks.onshow === 'function'){
                         this.hooks.onshow.call(this);
@@ -2519,6 +2529,12 @@
                         addClass(this.elements.root, classes.hidden);
                         //reflow
                         reflow = this.elements.modal.offsetWidth;
+
+                        // return focus to the last active element
+                        if (alertify.defaults.maintainFocus && this.__internal.activeElement) {
+                            this.__internal.activeElement.focus();
+                            this.__internal.activeElement = null;
+                        }
 
                         // remove custom dialog class on hide
                         if (typeof this.__internal.className !== 'undefined' && this.__internal.className !== '') {
@@ -2596,7 +2612,10 @@
                 };
 
                 element = document.createElement('DIV');
-
+                var transitionOff = 'transitionOff' in defaults.notifier ? defaults.notifier.transitionOff : defaults.transitionOff
+                if(transitionOff){
+                    addClass(element, 'ajs-no-transition')
+                }
                 updatePosition(instance);
             }
 
@@ -2619,7 +2638,7 @@
          *
          */
         function updatePosition(instance) {
-            element.className = classes.base;
+            addClass(element,classes.base);
             switch (instance.__internal.position) {
             case 'top-right':
                 addClass(element, classes.top + ' ' + classes.right);
