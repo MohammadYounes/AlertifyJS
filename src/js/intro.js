@@ -39,6 +39,7 @@
         resizable:true,
         startMaximized:false,
         transition:'pulse',
+        transitionOff:false,
         tabbable:['button', '[href]', 'input', 'select', 'textarea', '[tabindex]:not([tabindex^="-"])'+NOT_DISABLED_NOT_RESET].join(NOT_DISABLED_NOT_RESET+','),//global
         notifier:{
             delay:5,

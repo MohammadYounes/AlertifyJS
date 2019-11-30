@@ -919,3 +919,24 @@
         }
     }
 }
+
+.no-transition {
+    &.alertify {
+        .dimmer, .modal, .dialog {
+            transition: none!important;
+            animation: none!important;
+        }
+    }
+    &.alertify-notifier {
+        .message {
+            transition: none!important;
+            animation: none!important;
+        }
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .no-transition();
+}
+
+

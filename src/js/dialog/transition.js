@@ -13,9 +13,6 @@
             // once transition is complete, set focus
             setFocus(instance);
 
-            //restore scroll to prevent document jump
-            restoreScrollPosition();
-
             // allow handling key up after transition ended.
             cancelKeyup = false;
 
@@ -52,12 +49,6 @@
                 restore(instance);
             }
 
-            // return focus to the last active element
-            if (alertify.defaults.maintainFocus && instance.__internal.activeElement) {
-                instance.__internal.activeElement.focus();
-                instance.__internal.activeElement = null;
-            }
-            
             //destory the instance
             if (typeof instance.__internal.destroy === 'function') {
                 instance.__internal.destroy.apply(instance);

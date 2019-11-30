@@ -16,7 +16,10 @@
                 };
 
                 element = document.createElement('DIV');
-
+                var transitionOff = 'transitionOff' in defaults.notifier ? defaults.notifier.transitionOff : defaults.transitionOff
+                if(transitionOff){
+                    addClass(element, 'ajs-no-transition')
+                }
                 updatePosition(instance);
             }
 
@@ -39,7 +42,7 @@
          *
          */
         function updatePosition(instance) {
-            element.className = classes.base;
+            addClass(element,classes.base);
             switch (instance.__internal.position) {
             case 'top-right':
                 addClass(element, classes.top + ' ' + classes.right);

@@ -54,6 +54,7 @@
                 restore: 'ajs-restore',
                 shake:'ajs-shake',
                 unpinned:'ajs-unpinned',
+                noTransition:'ajs-no-transition'
             };
 
         /**
@@ -149,6 +150,7 @@
                         startMaximized: undefined,
                         pinnable: undefined,
                         transition: undefined,
+                        transitionOff: undefined,
                         padding:undefined,
                         overflow:undefined,
                         onshow:undefined,
@@ -364,7 +366,24 @@
             addClass(instance.elements.root, classes.prefix + value);
             reflow = instance.elements.root.offsetWidth;
         }
-		
+
+        /**
+         * Toggles the dialog no transition 
+         *
+         * @param {Object} instance The dilog instance.
+         *
+         * @return {undefined}
+         */
+        function updateTransitionOff(instance){
+            if (instance.get('transitionOff')) {
+                // add class
+                addClass(instance.elements.root, classes.noTransition);
+            } else {
+                // remove class
+                removeClass(instance.elements.root, classes.noTransition);
+            }
+        }
+
         /**
          * Toggles the dialog display mode
          *
@@ -523,6 +542,9 @@
                 break;
             case 'transition':
                 updateTransition(instance,newValue, oldValue);
+                break;
+            case 'transitionOff':
+                updateTransitionOff(instance);
                 break;
             }
 

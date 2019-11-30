@@ -301,6 +301,9 @@
                     // show dialog
                     removeClass(this.elements.root, classes.hidden);
 
+                    //restore scroll to prevent document jump
+                    restoreScrollPosition();
+
                     // internal on show event
                     if(typeof this.hooks.onshow === 'function'){
                         this.hooks.onshow.call(this);
@@ -345,6 +348,12 @@
                         addClass(this.elements.root, classes.hidden);
                         //reflow
                         reflow = this.elements.modal.offsetWidth;
+
+                        // return focus to the last active element
+                        if (alertify.defaults.maintainFocus && this.__internal.activeElement) {
+                            this.__internal.activeElement.focus();
+                            this.__internal.activeElement = null;
+                        }
 
                         // remove custom dialog class on hide
                         if (typeof this.__internal.className !== 'undefined' && this.__internal.className !== '') {
