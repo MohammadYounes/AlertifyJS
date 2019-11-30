@@ -26,7 +26,9 @@ layout: 'default'
 
       <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=alertifyjs" id="_carbonads_js"></script> 
       <hr/>
-
+      <div class="segment">
+        <%- @partial('nomotion') %>
+      </div>
       <div class="grid six">
         <div class="column">
           <h3><i class="fa fa-magic fa-lg"></i> Feature-rich</h3>

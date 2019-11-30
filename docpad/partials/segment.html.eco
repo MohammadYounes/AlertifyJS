@@ -9,7 +9,7 @@
 		(
 			<%for p, index in @params:%>	
 				<%=p.name%><%=if index < @params.length-1 then "," %>
-			<%end%>				
+			<%end%>
 		)
 		<%end%>
 		<code><%= @label %></code>

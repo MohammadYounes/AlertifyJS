@@ -22,7 +22,9 @@ hljs: 	'light'
 </section>
 <section class="dark">
 <div class="content">
-
+      <div class="segment">
+        <%- @partial('nomotion') %>
+      </div>
 	  <!-- Download -->
 	  <h1>
 		<i class="fa fa-cloud-download fa-lg"></i> Download (v<%=@getPackage().version%>)
@@ -234,6 +236,7 @@ alertify.defaults = {
         resizable:true,
         startMaximized:false,
         transition:'pulse',
+        transitionOff:false,
         tabbable:'button:not(:disabled):not(.ajs-reset),[href]:not(:disabled):not(.ajs-reset),input:not(:disabled):not(.ajs-reset),select:not(:disabled):not(.ajs-reset),textarea:not(:disabled):not(.ajs-reset),[tabindex]:not([tabindex^="-"]):not(:disabled):not(.ajs-reset)',  // <== global default not per instance, applies to all dialogs
 
         // notifier defaults

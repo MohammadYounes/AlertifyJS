@@ -2,9 +2,9 @@
 layout: 'default'
 hljs: 	'light'
 component:	'alert'
-prop: 'showModal'
-propType: 'm'
-label: 'chainable'
+prop: 'transitionOff'
+propType: 'p'
+label: '{Boolean}'
 ---
 
 <section class="blue">

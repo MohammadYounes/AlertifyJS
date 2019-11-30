@@ -4,7 +4,7 @@
     </div>
     <% if @getData(@document.component,'p').length :%>
     <div>        
-        <input name="accordion" id="p" type="radio" <%= if !@name || (!@document.subComponent && @document.propType == 'p') then "checked='checked'" else "" %> />
+        <input name="accordion" id="p" type="checkbox" <%= if !@name || (!@document.subComponent && @document.propType == 'p') then "checked='checked'" else "" %> />
         <label for="p"><i class="fa"></i> Properties</label>
         <div class="menu">
             <%for segment in @getData(@document.component,'p'):%>
@@ -15,7 +15,7 @@
     <% end %>
     <% if @getData(@document.component,'m').length :%>
     <div>        
-        <input name="accordion" id="m" type="radio" <%= if !@document.subComponent && @document.propType == 'm' then "checked='checked'" else '' %> />
+        <input name="accordion" id="m" type="checkbox" <%= if !@document.subComponent && @document.propType == 'm' then "checked='checked'" else '' %> />
         <label for="m"><i class="fa"></i> Methods</label>
         <div class="menu">
             <%for segment in @getData(@document.component,'m'):%>
@@ -26,7 +26,7 @@
     <% end %>
     <% if @getData(@document.component,'e').length :%>
     <div>
-        <input name="accordion" id="e" type="radio" <%= if !@document.subComponent && @document.propType == 'e' then "checked='checked'" else '' %> />
+        <input name="accordion" id="e" type="checkbox" <%= if !@document.subComponent && @document.propType == 'e' then "checked='checked'" else '' %> />
         <label for="e"><i class="fa"></i> Events</label>
         <div class="menu">
             <%for segment in @getData(@document.component,'e'):%>
@@ -37,7 +37,7 @@
     <% end %>
     <% if @document.component.indexOf('notifi') == 0:%>
     <div>        
-        <input name="accordion" id="n" type="radio" <%= if @document.subComponent == 'notification' then "checked='checked'" else '' %> />
+        <input name="accordion" id="n" type="checkbox" <%= if @document.subComponent == 'notification' then "checked='checked'" else '' %> />
         <label for="n"><i class="fa"></i> Notification Object</label>
         <div class="menu">
             <%for segment in @getData('notification','p'):%>

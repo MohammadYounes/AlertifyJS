@@ -1,19 +1,19 @@
 ---
 layout: 'default'
 hljs: 	'light'
-component:	'alert'
-prop: 'showModal'
-propType: 'm'
-label: 'chainable'
+component:	'confirm'
+prop: 'transitionOff'
+propType: 'p'
+label: '{Boolean}'
 ---
 
 <section class="blue">
     <div class="content">
         <div class="grid two">
             <div class="column">
-                <h1> Alert Dialog</h1>
-                An alert dialog is often used if you want to make sure information comes through to the user.
-                When an alert dialog pops up, the user will have to click "OK" to proceed.
+                <h1> Confirm Dialog</h1>
+                A confirm dialog is often used if you want the user to verify or accept something.
+                When a confirm dialog pops up, the user will have to click either "OK" or "Cancel" to proceed.
             </div>
             <div class="right column">
                 <%- @partial('ad') %>
@@ -37,6 +37,3 @@ label: 'chainable'
         <%- @partial('menu', true, @getDataItem(@document.component, @document.prop)) %>
     </div>
 </section>
-
-
-

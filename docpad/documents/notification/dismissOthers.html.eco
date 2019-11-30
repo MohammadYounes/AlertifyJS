@@ -30,6 +30,7 @@ label: 'chainable'
     <div class="content">
         <!--Settings-->
         <div class="segment has-menu">
+            <%- @partial('nomotion') %>
             <%- @partial('segment',false, @getDataItem(@document.subComponent, @document.prop)) %>
         </div>
         <!--//Settings-->

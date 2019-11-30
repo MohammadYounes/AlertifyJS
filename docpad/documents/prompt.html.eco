@@ -26,6 +26,7 @@ component:	'prompt'
     <div class="content">
       <!--Defult usage-->
       <div class="segment has-menu">
+        <%- @partial('nomotion') %>
         <h1 id="usage">
           <a href="#usage"><i class="fa fa-book"></i></a>
           Default usage

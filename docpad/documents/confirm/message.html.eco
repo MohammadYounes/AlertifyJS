@@ -30,6 +30,7 @@ label: '{ String or DOMElement }'
     <div class="content">
         <!--Settings-->
         <div class="segment has-menu">
+            <%- @partial('nomotion') %>
             <%- @partial('segment',false, @getDataItem(@document.component, @document.prop)) %>
         </div>
         <!--//Settings-->

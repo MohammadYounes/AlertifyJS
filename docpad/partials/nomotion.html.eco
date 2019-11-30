@@ -1,0 +1,7 @@
+<div class="ui small warning message no-motion">
+  <div class="content">
+      <p>
+        <i class="fa fa-warning"></i> All of AlertifyJS animation/transition effects are disabled due to user preference that the system minimizes the amount of animation or motion it uses. See <b>prefers-reduced-motion</b> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank">CSS media feature</a>.
+      </p>
+  </div>
+</div>

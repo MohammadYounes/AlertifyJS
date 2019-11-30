@@ -122,6 +122,16 @@
     },
 
     {
+        "type": "p",
+        "name": "transitionOff",
+        "label": "{Boolean}",
+        "desc": "Gets or sets a value indicating whether transition effect is disabled or not",
+        "defaultValue": "false",
+        "script": "alertify.dialog('{component}').set({transitionOff:true,message: 'Transition Off: true'}).show();",
+        "toggle": { "value": true }
+    },
+
+    {
         "type": "e",
         "name": "onshow",
         "label": "{Function}",
