@@ -89,14 +89,14 @@
                     if(  /*first show */
                         (target === firstReset && !within) ||
                          /*focus cycle */
-                        (target === lastReset && lastFocusedElement == firstReset))
-                        return
-                    else if(target === lastReset || target === document.body)
-                        resetTarget = firstReset
-                    else if(target === firstReset && lastFocusedElement == lastReset){
-                        resetTarget = findTabbable(instance)
-                    }else if(target == firstReset && within){
-                        resetTarget = findTabbable(instance, true)
+                        (target === lastReset && lastFocusedElement === firstReset)){
+                        return;
+                    }else if(target === lastReset || target === document.body){
+                        resetTarget = firstReset;
+                    }else if(target === firstReset && lastFocusedElement === lastReset){
+                        resetTarget = findTabbable(instance);
+                    }else if(target === firstReset && within){
+                        resetTarget = findTabbable(instance, true);
                     }
                     // focus
                     setFocus(instance, resetTarget);
@@ -105,18 +105,20 @@
         }
         function findTabbable(instance, last){
             var tabbables = [].slice.call(instance.elements.dialog.querySelectorAll(defaults.tabbable));
-            last && tabbables.reverse()
-            for(var x=0;x<tabbables.length;x++){
-                var tabbable = tabbables[x]
+            if(last){
+                tabbables.reverse();
+            }
+            for(var x=0;x<tabbables.length;x+=1){
+                var tabbable = tabbables[x];
                 //check if visible
                 if(!!(tabbable.offsetParent || tabbable.offsetWidth || tabbable.offsetHeight || tabbable.getClientRects().length)){
-                    return tabbable
+                    return tabbable;
                 }
             }
         }
         function recycleTab(event) {
             var instance = openDialogs[openDialogs.length - 1];
             if (instance && event.shiftKey && event.keyCode === keys.TAB) {
-                instance.elements.reset[1].focus()
+                instance.elements.reset[1].focus();
             }
         }

@@ -1,15 +1,15 @@
     /**
      * Test to check if passive event listeners are supported.
      */
-    var IsPassiveSupported = false
+    var IsPassiveSupported = false;
     try {
         var options = Object.defineProperty({}, 'passive', {
             get: function () {
-                IsPassiveSupported = true
+                IsPassiveSupported = true;
             }
-        })
-        window.addEventListener('test', options, options)
-        window.removeEventListener('test', options, options)
+        });
+        window.addEventListener('test', options, options);
+        window.removeEventListener('test', options, options);
     } catch (e) {}
 
      /**
@@ -22,8 +22,8 @@
      * @param {boolean} passive A Boolean which, if true, indicates that the function specified by listener will never call preventDefault().
      */
     var on = function (el, event, fn, useCapture, passive) {
-        el.addEventListener(event, fn, IsPassiveSupported ? { capture: useCapture, passive: passive } : useCapture === true)
-    }
+        el.addEventListener(event, fn, IsPassiveSupported ? { capture: useCapture, passive: passive } : useCapture === true);
+    };
 
     /**
      * Removes an event listener
@@ -35,8 +35,8 @@
      * @param {boolean} passive A Boolean which, if true, indicates that the function specified by listener will never call preventDefault().
      */
     var off = function (el, event, fn, useCapture, passive) {
-        el.removeEventListener(event, fn, IsPassiveSupported ? { capture: useCapture, passive: passive } : useCapture === true)
-    }
+        el.removeEventListener(event, fn, IsPassiveSupported ? { capture: useCapture, passive: passive } : useCapture === true);
+    };
 
     /**
      * Prevent default event from firing
