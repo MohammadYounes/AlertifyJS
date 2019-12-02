@@ -36,7 +36,7 @@ hljs: 	'light'
 			<br/><br/><br/>
 			<!--Father Turan Video-->
 			<div class="segment">
-				<h2 id="V20212019"> <a href="#V20212019"><i class="fa fa-video-camera"></i> </a> How to use Alertify JS in Angular </h1>
+				<h2 id="V20212019"> <a href="#V20212019"><i class="fa fa-video-camera"></i> </a> How to use AlertifyJS in Angular </h1>
 				<hr />
 				<div class="video">
 					<iframe width="100%" height="750" src="//www.youtube.com/embed/0nDHUJaejYA?origin=http://www.alertifyjs.com" frameborder="0" allowfullscreen></iframe>
