@@ -22,24 +22,28 @@ hljs: 	'light'
 </section>
 <section class="dark">
 	<div class="content">
-	
-	    <!--Webucator Video-->
+			<!--Webucator Video-->
 	    <div class="segment">
-		    <h1 id="V21012015"> <a href="#V21012015"><i class="fa fa-video-camera"></i> </a> How to Use AlertifyJS <sup>21 Jan. 2015 </sup> </h1>
+		    <h2 id="V21012015"> <a href="#V21012015"><i class="fa fa-video-camera"></i> </a> How to Use AlertifyJS </h1>
 		    <hr />
+				<p> In this video, Brian from <a href="https://www.webucator.com" target="_blank">Webucator</a> walks you through using AlertifyJS. Also he takes a look at the dialogs factory for creating custom dialogs.</p>
+				<p> Webucator provides onsite and online training on technologies such as Microsoft ASP.NET, XML, Windows, Java, Adobe Flash, HTML5, <a href="https://www.webucator.com/webdesign/javascript.cfm" target="_blank">JavaScript</a>, Dreamweaver, and much more.</p>
+				<div class="video">
+						<iframe width="100%" height="750" src="//www.youtube.com/embed/GODhPuM5cEE?origin=http://www.alertifyjs.com" frameborder="0" allowfullscreen></iframe>
+				</div>
+      </div>
+      <!--//Webucator Video-->
+			<br/><br/><br/>
+			<!--Father Turan Video-->
+			<div class="segment">
+				<h2 id="V20212019"> <a href="#V20212019"><i class="fa fa-video-camera"></i> </a> How to use Alertify JS in Angular </h1>
+				<hr />
+				<div class="video">
+					<iframe width="100%" height="750" src="//www.youtube.com/embed/0nDHUJaejYA?origin=http://www.alertifyjs.com" frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>
+			<!--//Father Turan Video-->
 
-            <p> In this video, Brian from <a href="https://www.webucator.com" target="_blank">Webucator</a> walks you through using AlertifyJS. Also he takes a look at the dialogs factory for creating custom dialogs.</p>
-
-            <p> Webucator provides onsite and online training on technologies such as Microsoft ASP.NET, XML, Windows, Java, Adobe Flash, HTML5, <a href="https://www.webucator.com/webdesign/javascript.cfm" target="_blank">JavaScript</a>, Dreamweaver, and much more.</p>
-
-            <div class="video">
-                <iframe width="100%" height="750" src="//www.youtube.com/embed/GODhPuM5cEE?origin=http://www.alertifyjs.com" frameborder="0" allowfullscreen></iframe>
-            </div>
-
-        </div>
-        <!--//Webucator Video-->	
-	
 	</div>
-
 <br/><br/>
 </section>
