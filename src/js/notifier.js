@@ -2,7 +2,8 @@
         var reflow,
             element,
             openInstances = [],
-            classes = defaults.notifier.classes;
+            classes = defaults.notifier.classes,
+            baseClass = classes.base;
         /**
          * Helper: initializes the notifier instance
          *
@@ -16,9 +17,9 @@
                 };
 
                 element = document.createElement('DIV');
-                var transitionOff = 'transitionOff' in defaults.notifier ? defaults.notifier.transitionOff : defaults.transitionOff
+                var transitionOff = 'transitionOff' in defaults.notifier ? defaults.notifier.transitionOff : defaults.transitionOff;
                 if(transitionOff){
-                    addClass(element, 'ajs-no-transition')
+                    baseClass = classes.base + ' ajs-no-transition';
                 }
                 updatePosition(instance);
             }
@@ -42,7 +43,7 @@
          *
          */
         function updatePosition(instance) {
-            addClass(element,classes.base);
+            element.className = baseClass;
             switch (instance.__internal.position) {
             case 'top-right':
                 addClass(element, classes.top + ' ' + classes.right);
