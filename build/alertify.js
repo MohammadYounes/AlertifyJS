@@ -1,5 +1,5 @@
 /**
- * alertifyjs 1.13.0 http://alertifyjs.com
+ * alertifyjs 1.13.1 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  * Copyright 2019 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under GPL 3 <https://opensource.org/licenses/gpl-3.0>*/
@@ -225,15 +225,15 @@
     /**
      * Test to check if passive event listeners are supported.
      */
-    var IsPassiveSupported = false
+    var IsPassiveSupported = false;
     try {
         var options = Object.defineProperty({}, 'passive', {
             get: function () {
-                IsPassiveSupported = true
+                IsPassiveSupported = true;
             }
-        })
-        window.addEventListener('test', options, options)
-        window.removeEventListener('test', options, options)
+        });
+        window.addEventListener('test', options, options);
+        window.removeEventListener('test', options, options);
     } catch (e) {}
 
      /**
@@ -246,8 +246,8 @@
      * @param {boolean} passive A Boolean which, if true, indicates that the function specified by listener will never call preventDefault().
      */
     var on = function (el, event, fn, useCapture, passive) {
-        el.addEventListener(event, fn, IsPassiveSupported ? { capture: useCapture, passive: passive } : useCapture === true)
-    }
+        el.addEventListener(event, fn, IsPassiveSupported ? { capture: useCapture, passive: passive } : useCapture === true);
+    };
 
     /**
      * Removes an event listener
@@ -259,8 +259,8 @@
      * @param {boolean} passive A Boolean which, if true, indicates that the function specified by listener will never call preventDefault().
      */
     var off = function (el, event, fn, useCapture, passive) {
-        el.removeEventListener(event, fn, IsPassiveSupported ? { capture: useCapture, passive: passive } : useCapture === true)
-    }
+        el.removeEventListener(event, fn, IsPassiveSupported ? { capture: useCapture, passive: passive } : useCapture === true);
+    };
 
     /**
      * Prevent default event from firing
@@ -1455,14 +1455,14 @@
                     if(  /*first show */
                         (target === firstReset && !within) ||
                          /*focus cycle */
-                        (target === lastReset && lastFocusedElement == firstReset))
-                        return
-                    else if(target === lastReset || target === document.body)
-                        resetTarget = firstReset
-                    else if(target === firstReset && lastFocusedElement == lastReset){
-                        resetTarget = findTabbable(instance)
-                    }else if(target == firstReset && within){
-                        resetTarget = findTabbable(instance, true)
+                        (target === lastReset && lastFocusedElement === firstReset)){
+                        return;
+                    }else if(target === lastReset || target === document.body){
+                        resetTarget = firstReset;
+                    }else if(target === firstReset && lastFocusedElement === lastReset){
+                        resetTarget = findTabbable(instance);
+                    }else if(target === firstReset && within){
+                        resetTarget = findTabbable(instance, true);
                     }
                     // focus
                     setFocus(instance, resetTarget);
@@ -1471,19 +1471,21 @@
         }
         function findTabbable(instance, last){
             var tabbables = [].slice.call(instance.elements.dialog.querySelectorAll(defaults.tabbable));
-            last && tabbables.reverse()
-            for(var x=0;x<tabbables.length;x++){
-                var tabbable = tabbables[x]
+            if(last){
+                tabbables.reverse();
+            }
+            for(var x=0;x<tabbables.length;x+=1){
+                var tabbable = tabbables[x];
                 //check if visible
                 if(!!(tabbable.offsetParent || tabbable.offsetWidth || tabbable.offsetHeight || tabbable.getClientRects().length)){
-                    return tabbable
+                    return tabbable;
                 }
             }
         }
         function recycleTab(event) {
             var instance = openDialogs[openDialogs.length - 1];
             if (instance && event.shiftKey && event.keyCode === keys.TAB) {
-                instance.elements.reset[1].focus()
+                instance.elements.reset[1].focus();
             }
         }
         /**
@@ -2598,7 +2600,8 @@
         var reflow,
             element,
             openInstances = [],
-            classes = defaults.notifier.classes;
+            classes = defaults.notifier.classes,
+            baseClass = classes.base;
         /**
          * Helper: initializes the notifier instance
          *
@@ -2612,9 +2615,9 @@
                 };
 
                 element = document.createElement('DIV');
-                var transitionOff = 'transitionOff' in defaults.notifier ? defaults.notifier.transitionOff : defaults.transitionOff
+                var transitionOff = 'transitionOff' in defaults.notifier ? defaults.notifier.transitionOff : defaults.transitionOff;
                 if(transitionOff){
-                    addClass(element, 'ajs-no-transition')
+                    baseClass = classes.base + ' ajs-no-transition';
                 }
                 updatePosition(instance);
             }
@@ -2638,7 +2641,7 @@
          *
          */
         function updatePosition(instance) {
-            addClass(element,classes.base);
+            element.className = baseClass;
             switch (instance.__internal.position) {
             case 'top-right':
                 addClass(element, classes.top + ' ' + classes.right);

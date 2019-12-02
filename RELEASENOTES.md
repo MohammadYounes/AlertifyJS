@@ -1,5 +1,8 @@
 # Release Notes
 
+* **v1.13.1** [02 Dec. 2019]
+  * Fix changing Notifier position does not reset class name.
+
 * **v1.13.0** [30 Nov. 2019]
   * New API features: `transitionOff` option.
   * Treat Document Level Touch Event Listeners as Passive. #222
