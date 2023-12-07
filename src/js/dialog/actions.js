@@ -41,7 +41,7 @@
             var target = event.srcElement || event.target;
             triggerCallback(instance, function (button) {
                 // if this button caused the click, cancel keyup event
-                return button.element === target && (cancelKeyup = true);
+                return button.element.contains(target) && (cancelKeyup = true);
             });
         }
 
