@@ -152,6 +152,16 @@
             element.removeChild(element.lastChild);
         }
     }
+
+    /**
+     * detects strings, checks for both string and String instances
+     * this is unlike typeof(x) === 'string' which only accepts primitive strings
+     *
+     */
+    function isString(thing) {
+        return Object.prototype.toString.call(thing) === '[object String]';
+    }
+
     /**
      * Extends a given prototype by merging properties from base into sub.
      *

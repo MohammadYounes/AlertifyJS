@@ -221,7 +221,7 @@
                  *
                  */
                 setContent: function (content) {
-                    if (typeof content === 'string') {
+                    if (isString(content)) {
                         clearContents(this.element);
                         this.element.innerHTML = content;
                     } else if (content instanceof window.HTMLElement && this.element.firstChild !== content) {

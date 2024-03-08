@@ -352,7 +352,7 @@
                 }
             }
         }
-		
+
         /**
          * Sets the name of the transition used to show/hide the dialog
          * 
@@ -360,7 +360,7 @@
          *
          */
         function updateTransition(instance, value, oldValue){
-            if(typeof oldValue === 'string'){
+            if(isString(oldValue)){
                 removeClass(instance.elements.root,classes.prefix +  oldValue);
             }
             addClass(instance.elements.root, classes.prefix + value);
