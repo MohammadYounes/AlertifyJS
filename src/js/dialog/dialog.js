@@ -191,7 +191,7 @@
             * @return {undefined}
             */
             setHeader:function(content){
-                if(typeof content === 'string'){
+                if(isString(content)){
                     clearContents(this.elements.header);
                     this.elements.header.innerHTML = content;
                 }else if (content instanceof window.HTMLElement && this.elements.header.firstChild !== content){
@@ -207,7 +207,7 @@
             * @return {undefined}
             */
             setContent:function(content){
-                if(typeof content === 'string'){
+                if(isString(content)){
                     clearContents(this.elements.content);
                     this.elements.content.innerHTML = content;
                 }else if (content instanceof window.HTMLElement && this.elements.content.firstChild !== content){
