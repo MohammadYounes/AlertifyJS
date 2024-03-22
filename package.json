@@ -22,6 +22,7 @@
     "url": "git@github.com:MohammadYounes/AlertifyJS.git"
   },
   "main": "./build/alertify.js",
+  "style": "./build/css/alertify.css",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-cli": "~0.1",

@@ -84,7 +84,7 @@
                 //nothing
             },
             setMessage: function (message) {
-                if (typeof message === 'string') {
+                if (isString(message)) {
                     clearContents(p);
                     p.innerHTML = message;
                 } else if (message instanceof window.HTMLElement && p.firstChild !== message) {
