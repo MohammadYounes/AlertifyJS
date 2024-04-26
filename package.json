@@ -38,7 +38,7 @@
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-compress": "^2.0.0",
     "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-connect": "~4.0.0",
     "grunt-contrib-copy": "x.x.x",
     "grunt-contrib-cssmin": "x.x.x",
     "grunt-contrib-jshint": "~0.6.4",
