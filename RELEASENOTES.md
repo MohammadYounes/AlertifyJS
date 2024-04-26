@@ -1,7 +1,7 @@
 # Release Notes
 
-* **UNRELEASED**
-  * * You can now `@import "alertifyjs"` to get the `build/css/alertify.css` with some modern build tools #264
+* **v1.14.0** [26 Apr. 2024]
+  * You can now `@import "alertifyjs"` to get the `build/css/alertify.css` with some modern build tools #264
   * Support wrapped instances of string #261
 
 * **v1.13.1** [02 Dec. 2019]
