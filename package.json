@@ -32,7 +32,7 @@
     "docpad-plugin-livereload": "~2.6.0",
     "docpad-plugin-marked": "~2.2.1",
     "docpad-plugin-partials": "~2.9.1",
-    "grunt": "~0.4.1",
+    "grunt": "~1.5.3",
     "grunt-banner": "~0.3.1",
     "grunt-cli": "~0.1",
     "grunt-contrib-clean": "~0.5.0",
