@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns:og="http://ogp.me/ns#" class="no-js"> <!--<![endif]-->
+<head>
+	<!-- Standard Meta -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="//alertifyjs.com/favicon.ico">
+	<link rel="apple-touch-icon image_src" href="//alertifyjs.com/apple-touch-icon-precomposed.png">
+	
+	<!-- Open graph -->
+	<meta property="og:title" content="AlertifyJS" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="//www.alertifyjs.com/" />
+	<meta property="og:image" content="//alertifyjs.com/og.png" />
+	<meta name="og:description" content="JavaScript framework for developing pretty browser dialogs and notifications.">
+	
+	<!-- Site Properities -->
+	<title>ALERTIFY JS</title>
+	<meta name="description" content="AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications." />
+	<meta name="keywords" content="alert, notify, alertify, pretty, browser, dialog, notification, js, javascript, growl, css" />
+
+	<!-- DocPad Meta -->
+	<meta name="generator" content="DocPad v6.79.4" />
+
+	<!-- DocPad Styles + Our Own -->
+	<link  rel="stylesheet" href="/build/css/alertify.css" /><link  rel="stylesheet" href="/build/css/themes/default.css" /><link  rel="stylesheet" href="/css/normalize.min.css" /><link  rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" /><link  rel="stylesheet" href="/css/semantic.min.css" /><link  rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/droidarabickufi.css" /><link  rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Sans:400,700" /><link  rel="stylesheet" href="/css/site.min.css" /><link  rel="stylesheet" href="/styles/style.css" />
+	
+	
+	<link rel="stylesheet" href="/css/highlight.default.min.css"/>
+	
+</head>
+<body>
+<header>
+    <div class="content">
+      <a class="logo" data-text="1.14.0" href="//www.alertifyjs.com"><img src="/css/logo.sm.png" /></a>
+      <a href="#" class="bars"><i class="fa fa-2x fa-bars"></i></a>
+      <div class="menu">
+        <ul>
+          <li class="aux">
+            <div>
+              <iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="25"></iframe>
+              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs" title="Twitter Tweet Button" width="110" height="25"></iframe>
+            </div>
+          </li>
+          <li><a href="/guide.html">Getting Started</a></li>
+          <li class="sub">
+            <a href="javascript:void(0);">Components</a>
+            <ul>
+              <li><a href="/alert.html">Alert</a></li>
+              <li><a href="/confirm.html">Confirm</a></li>
+              <li><a href="/prompt.html">Prompt</a></li>
+              <li><a href="/notifier.html">Notifier</a></li>
+            </ul>
+          </li>
+		  <li><a href="/factory.html">Dialogs Factory</a></li>
+          <li><a href="/examples.html">Examples</a></li>
+          <li><a href="/tutorials.html">Tutorials</a></li>
+       
+        </ul>
+      </div><!--//menu-->
+	  
+    </div>
+  </header>
+
+ <section class="blue">
+	<div class="content">
+		<div class="grid two">
+			<div class="column">
+				<h1> Examples</h1>
+				 Live examples of using AlertifyJS.
+			</div>
+			<div class="right column">
+			  <div>
+    
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYI55QJ&placement=alertifyjscom" id="_carbonads_js"></script>
+    
+</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="lic">
+    <div class="content">
+        Looking for a commercial license ?  Keep your source code proprietary and <a href="https://www.uplabs.com/posts/alertifyjs" target="_blank"> Buy a Commercial License Today!</a>
+    </div>
+</section>
+<section class="dark">
+	<div class="content">
+
+	<!--Arabic dialogs-->
+	<div class="segment">
+        <div class="ui small warning message no-motion">
+  <div class="content">
+      <p>
+        <i class="fa fa-warning"></i> All of AlertifyJS animation/transition effects are disabled due to user preference that the system minimizes the amount of animation or motion it uses. See <b>prefers-reduced-motion</b> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank">CSS media feature</a>.
+      </p>
+  </div>
+</div>
+		<h1 id="RTL"> <a href="#RTL"><i class="fa fa-code"></i> </a> RTL Layout - Arabic </h1>
+		<hr />		
+
+<pre class="example"><code class="hljs xml">
+<span class="hljs-comment">&lt;!-- set document direction --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">dir</span>=<span class="hljs-value">"rtl"</span> <span class="hljs-attribute">lang</span>=<span class="hljs-value">"ar"</span>&gt;</span> ... <span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- include the RTL css files--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"{PATH}/alertify.rtl.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"{PATH}/themes/default.rtl.css"</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- include alertify script --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"{PATH}/alertify.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- then override glossary values --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span>&gt;</span><span class="javascript">
+alertify.defaults.glossary.title = <span class="hljs-string">'أليرتفاي جي اس'</span>;
+alertify.defaults.glossary.ok = <span class="hljs-string">'موافق'</span>;
+alertify.defaults.glossary.cancel = <span class="hljs-string">'إلغاء'</span>;
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+
+</code></pre> 
+
+			<div class="RIGHT">		
+				<a class="button" href="javascript:ViewArabic();">
+					<span> Run Example </span>
+				</a>
+			</div>
+	<br/>
+  </div><!--//Arabic-->
+	
+	
+	
+	
+<!--Semantic dialogs-->
+	<div class="segment">
+		<h1 id="semantic"><a href="#semantic"><i class="fa fa-code"></i> </a> Themes -  Semantic UI </h1>
+		<hr />
+
+<pre class="example"><code class="hljs xml">
+<span class="hljs-comment">&lt;!-- include alertify.css --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"{PATH}/alertify.css"</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- include semantic ui theme  --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"{PATH}/themes/semantic.css"</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- include alertify script --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"{PATH}/alertify.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span>&gt;</span><span class="javascript">        
+<span class="hljs-comment">//override defaults</span>
+alertify.defaults.transition = <span class="hljs-string">"zoom"</span>;
+alertify.defaults.theme.ok = <span class="hljs-string">"ui positive button"</span>;
+alertify.defaults.theme.cancel = <span class="hljs-string">"ui black button"</span>;
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>        
+
+</code></pre> 
+
+			<div class="RIGHT">		
+				<a class="button" href="javascript:ViewSemantic();">
+					<span> Run Example </span>
+				</a>
+			</div>
+	<br/>			
+  </div><!--//Semantic dialogs-->
+	
+	
+<!--Bootstrap dialogs-->
+	<div class="segment">
+		<h1 id="bootstrap"><a href="#bootstrap"><i class="fa fa-code"></i> </a> Themes -  Bootstrap </h1>
+		<hr />
+
+<pre class="example"><code class="hljs xml">
+<span class="hljs-comment">&lt;!-- include alertify.css --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"{PATH}/alertify.css"</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- include boostrap theme  --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"{PATH}/themes/bootstrap.css"</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- include alertify script --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"{PATH}/alertify.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span>&gt;</span><span class="javascript">
+<span class="hljs-comment">//override defaults</span>
+alertify.defaults.transition = <span class="hljs-string">"slide"</span>;
+alertify.defaults.theme.ok = <span class="hljs-string">"btn btn-primary"</span>;
+alertify.defaults.theme.cancel = <span class="hljs-string">"btn btn-danger"</span>;
+alertify.defaults.theme.input = <span class="hljs-string">"form-control"</span>;
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+
+</code></pre> 
+
+			<div class="RIGHT">		
+				<a class="button" href="javascript:ViewBootstrap();">
+					<span> Run Example </span>
+				</a>
+			</div>
+	<br/>		
+  </div><!--//Bootstrap dialogs-->
+		
+
+
+<!--Multi dialogs-->
+	<div class="segment">
+		<h1 id="multi-dialog"><a href="#multi-dialog"><i class="fa fa-code"></i> </a> Multi Dialogs</h1>
+		<hr />
+
+<pre class="example"><code class="hljs javascript">
+window.showAlert = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    alertify.alert(<span class="hljs-string">'&lt;a href="javascript:showConfirm();"&gt;Show Confirm&lt;/a&gt;'</span>);
+}
+
+window.showConfirm = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    alertify.confirm(<span class="hljs-string">'&lt;a href="javascript:showAlert();"&gt;Show Alert&lt;/a&gt;'</span>);
+}
+<span class="hljs-comment">//works with modeless too</span>
+alertify.alert().setting(<span class="hljs-string">'modal'</span>, <span class="hljs-literal">false</span>);
+alertify.confirm().setting(<span class="hljs-string">'modal'</span>, <span class="hljs-literal">false</span>);
+
+window.showAlert();
+
+</code></pre> 
+
+			<div class="RIGHT">
+				<div class="ui inverted toggle checkbox example">
+					<input type="checkbox" >
+					<label>Toggle</label>
+				</div>
+			
+				<a class="button example" href="javascript:void(0);">
+					<span> Run </span>
+				</a>
+			</div>
+	<br/>
+  </div><!--//Multi dialogs-->
+
+
+
+	<!--License Agreement-->
+		<div class="segment">
+			<h1 id="license"><a href="#license"><i class="fa fa-code"></i> </a> License Agreement</h1>
+			<hr />
+
+<div id="la" style="display:none">
+The MIT License (MIT)
+
+Copyright (c) 2014 Mohammad Younes
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+</div>
+
+
+<pre class="example"><code class="hljs xml">
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"la"</span>&gt;</span>
+
+The MIT License (MIT)
+
+Copyright (c) 2014 Mohammad Younes
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre> 
+
+
+
+<pre class="example"><code class="hljs javascript">
+<span class="hljs-keyword">var</span> pre = document.createElement(<span class="hljs-string">'pre'</span>);
+<span class="hljs-comment">//custom style.</span>
+pre.style.maxHeight = <span class="hljs-string">"400px"</span>;
+pre.style.margin = <span class="hljs-string">"0"</span>;
+pre.style.padding = <span class="hljs-string">"24px"</span>;
+pre.style.whiteSpace = <span class="hljs-string">"pre-wrap"</span>;
+pre.style.textAlign = <span class="hljs-string">"justify"</span>;
+pre.appendChild(document.createTextNode($(<span class="hljs-string">'#la'</span>).text()));
+<span class="hljs-comment">//show as confirm</span>
+alertify.confirm(pre, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+        alertify.success(<span class="hljs-string">'Accepted'</span>);
+    },<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+        alertify.error(<span class="hljs-string">'Declined'</span>);
+    }).set({labels:{ok:<span class="hljs-string">'Accept'</span>, cancel: <span class="hljs-string">'Decline'</span>}, padding: <span class="hljs-literal">false</span>});
+
+</code></pre> 
+
+			<div class="RIGHT">
+				<a class="button example" href="javascript:void(0);">
+					<span> Run </span>
+				</a>
+			</div>
+  </div><!--//License Agreement-->
+
+
+
+  <!--Minimal dialog-->
+	<div class="segment">
+		<h1 id="minimal"><a href="#minimal"><i class="fa fa-code"></i> </a> Minimal Dialog </h1>
+		<hr />
+
+<pre class="example"><code class="hljs javascript">
+alertify.minimalDialog || alertify.dialog(<span class="hljs-string">'minimalDialog'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    <span class="hljs-keyword">return</span> {
+        main:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(content)</span>{</span>
+            <span class="hljs-keyword">this</span>.setContent(content); 
+        }
+    };
+});
+alertify.minimalDialog(<span class="hljs-string">"Minimal button-less dialog."</span>);
+</code></pre> 
+
+			<div class="RIGHT">		
+				<a class="button example" href="javascript:void(0);">
+					<span> Run </span>
+				</a>
+			</div>
+	<br/>		
+  </div><!--//Minimal dialog-->
+
+
+
+  <!--Generic dialog-->
+	<div class="segment">
+		<h1 id="generic"><a href="#generic"><i class="fa fa-code"></i> </a> Button-Less Generic Dialog </h1>
+		<hr />
+<div style="display:none">
+<form id="loginForm">
+    <fieldset>
+        <label> Username </label>
+        <input type="text" value="Mohammad"/> 
+
+        <label> Password </label>
+        <input type="password" value="password"/> 
+
+        <input type="submit" value="Login"/>
+    </fieldset>
+</form>
+</div>
+
+<pre class="example"><code class="hljs xml"><span class="hljs-comment">&lt;!-- the form to be viewed as dialog--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"loginForm"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">fieldset</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span> Username <span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"Mohammad"</span>/&gt;</span> 
+
+        <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span> Password <span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"password"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"password"</span>/&gt;</span> 
+
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"Login"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">fieldset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span>
+</code></pre>
+
+
+<pre class="example"><code class="hljs javascript">
+alertify.genericDialog || alertify.dialog(<span class="hljs-string">'genericDialog'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    <span class="hljs-keyword">return</span> {
+        main:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(content)</span>{</span>
+            <span class="hljs-keyword">this</span>.setContent(content);
+        },
+        setup:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+            <span class="hljs-keyword">return</span> {
+                focus:{
+                    element:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+                        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.elements.body.querySelector(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'selector'</span>));
+                    },
+                    select:<span class="hljs-literal">true</span>
+                },
+                options:{
+                    basic:<span class="hljs-literal">true</span>,
+                    maximizable:<span class="hljs-literal">false</span>,
+                    resizable:<span class="hljs-literal">false</span>,
+                    padding:<span class="hljs-literal">false</span>
+                }
+            };
+        },
+        settings:{
+            selector:<span class="hljs-literal">undefined</span>
+        }
+    };
+});
+<span class="hljs-comment">//force focusing password box</span>
+alertify.genericDialog ($(<span class="hljs-string">'#loginForm'</span>)[<span class="hljs-number">0</span>]).set(<span class="hljs-string">'selector'</span>, <span class="hljs-string">'input[type="password"]'</span>);
+</code></pre> 
+
+			<div class="RIGHT">		
+				<a class="button example" href="javascript:void(0);">
+					<span> Run </span>
+				</a>
+			</div>
+	<br/>		
+  </div><!--//Generic dialog-->
+		
+
+  <!--Youtube dialog-->
+	<div class="segment">
+		<h1 id="youtube"><a href="#youtube"><i class="fa fa-code"></i> </a> Youtube Dialog </h1>
+		<hr />
+
+<pre class="example"><code class="hljs javascript">
+alertify.YoutubeDialog || alertify.dialog(<span class="hljs-string">'YoutubeDialog'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    <span class="hljs-keyword">var</span> iframe;
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-comment">// dialog constructor function, this will be called when the user calls alertify.YoutubeDialog(videoId)</span>
+        main:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(videoId)</span>{</span>
+            <span class="hljs-comment">//set the videoId setting and return current instance for chaining.</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.set({ 
+                <span class="hljs-string">'videoId'</span>: videoId
+            });
+        },
+        <span class="hljs-comment">// we only want to override two options (padding and overflow).</span>
+        setup:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+            <span class="hljs-keyword">return</span> {
+                options:{
+                    <span class="hljs-comment">//disable both padding and overflow control.</span>
+                    padding : !<span class="hljs-number">1</span>,
+                    overflow: !<span class="hljs-number">1</span>,
+                }
+            };
+        },
+        <span class="hljs-comment">// This will be called once the DOM is ready and will never be invoked again.</span>
+        <span class="hljs-comment">// Here we create the iframe to embed the video.</span>
+        build:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>           
+            <span class="hljs-comment">// create the iframe element</span>
+            iframe = document.createElement(<span class="hljs-string">'iframe'</span>);
+            iframe.frameBorder = <span class="hljs-string">"no"</span>;
+            iframe.width = <span class="hljs-string">"100%"</span>;
+            iframe.height = <span class="hljs-string">"100%"</span>;
+            <span class="hljs-comment">// add it to the dialog</span>
+            <span class="hljs-keyword">this</span>.elements.content.appendChild(iframe);
+
+            <span class="hljs-comment">//give the dialog initial height (half the screen height).</span>
+            <span class="hljs-keyword">this</span>.elements.body.style.minHeight = screen.height * <span class="hljs-number">.5</span> + <span class="hljs-string">'px'</span>;
+        },
+        <span class="hljs-comment">// dialog custom settings</span>
+        settings:{
+            videoId:<span class="hljs-literal">undefined</span>
+        },
+        <span class="hljs-comment">// listen and respond to changes in dialog settings.</span>
+        settingUpdated:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(key, oldValue, newValue)</span>{</span>
+            <span class="hljs-keyword">switch</span>(key){
+               <span class="hljs-keyword">case</span> <span class="hljs-string">'videoId'</span>:
+                    iframe.src = <span class="hljs-string">"https://www.youtube.com/embed/"</span> + newValue + <span class="hljs-string">"?enablejsapi=1"</span>;
+                <span class="hljs-keyword">break</span>;   
+            }
+        },
+        <span class="hljs-comment">// listen to internal dialog events.</span>
+        hooks:{
+            <span class="hljs-comment">// triggered when the dialog is closed, this is seperate from user defined onclose</span>
+            onclose: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+                iframe.contentWindow.postMessage(<span class="hljs-string">'{"event":"command","func":"pauseVideo","args":""}'</span>,<span class="hljs-string">'*'</span>);
+            },
+            <span class="hljs-comment">// triggered when a dialog option gets update.</span>
+            <span class="hljs-comment">// warning! this will not be triggered for settings updates.</span>
+            onupdate: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(option,oldValue, newValue)</span>{</span>
+                <span class="hljs-keyword">switch</span>(option){
+                    <span class="hljs-keyword">case</span> <span class="hljs-string">'resizable'</span>:
+                        <span class="hljs-keyword">if</span>(newValue){
+                            <span class="hljs-keyword">this</span>.elements.content.removeAttribute(<span class="hljs-string">'style'</span>);
+                            iframe &amp;&amp; iframe.removeAttribute(<span class="hljs-string">'style'</span>);
+                        }<span class="hljs-keyword">else</span>{
+                            <span class="hljs-keyword">this</span>.elements.content.style.minHeight = <span class="hljs-string">'inherit'</span>;
+                            iframe &amp;&amp; (iframe.style.minHeight = <span class="hljs-string">'inherit'</span>);
+                        }
+                    <span class="hljs-keyword">break</span>;    
+                }    
+            }
+        }
+    };
+});
+<span class="hljs-comment">//show the dialog</span>
+alertify.YoutubeDialog(<span class="hljs-string">'GODhPuM5cEE'</span>).set({frameless:<span class="hljs-literal">false</span>});
+</code></pre> 
+
+			<div class="RIGHT">		
+                <div class="ui inverted toggle checkbox example">
+					<input type="checkbox">
+					<label>Frameless</label>
+				</div>
+				<a class="button example" href="javascript:void(0);">
+					<span> Run </span>
+				</a>
+			</div>
+	<br/>		
+
+
+  </div><!--//Youtube dialog-->
+
+
+
+		<br/>
+		<br/>
+	</div>
+</section>
+
+<!--footer-->
+<section>
+<div class="content">
+	<div class="links">
+		<div class="ui horizontal center list">
+			<div class="item"></div>
+			<div class="item">
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=fork&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+
+			</div>
+			<div class="item">
+				<iframe src="//platform.twitter.com/widgets/follow_button.1404859412.html#_=1406289087792&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=AlertifyJS&amp;show_count=true&amp;show_screen_name=true&amp;size=m"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<section class="dark">
+    <div class="content">
+      <div class="links">
+        <a href="//github.com/MohammadYounes/alertifyjs/issues" target="_blank">Report an issue</a> |
+        <a href="//github.com/MohammadYounes/alertifyjs" target="_blank">View on GitHub</a> |
+        Follow Me on <a href="//www.github.com/MohammadYounes" target="_blank"> <i class="fa fa-github"></i> GitHub</a> and
+        <a href="//www.twitter.com/AlertifyJS" target="_blank"> <i class="fa fa-twitter"></i> Twitter</a>
+      </div>
+      <div class="links">
+        Created by <a href="//www.github.com/MohammadYounes" style="color:orange" target="_blank">Mohammad Younes</a> | Licensed under <a href="https://opensource.org/licenses/gpl-3.0"> GPLv3 </a>
+      </div>
+		
+      
+      <div class="affiliates">
+        <a href="//rtlcss.com" target="_blank">
+          <img width="40" src="//avatars0.githubusercontent.com/u/7704547?s=140">
+          <div>www.rtlcss.com</div>
+        </a>
+        
+        <a href="http://www.isresponsive.com" target="_blank">
+          <img src="//rtlcss.com/img/isresponsive.png">
+          <div>www.isResponsive.com</div>
+        </a>
+        
+        <a href="//www.keycdn.com/?a=10668" target="_blank">
+          <img src="//logos.keycdn.com/keycdn-logo-white.png" alt="KeyCDN" width="115">
+          <div>www.keycdn.com</div>
+        </a>
+        
+      </div>
+    </div>
+ </section>	
+<!--//footer-->
+
+	<!-- DocPad Scripts + Our Own -->
+	<script defer="defer"  src="/build/alertify.js"></script><script defer="defer"  src="/js/jquery-1.11.1.min.js"></script><script defer="defer"  src="/js/jquery.mobile.custom.min.js"></script><script defer="defer"  src="/js/scrollLock.min.js"></script><script defer="defer"  src="/js/semantic.min.js"></script><script defer="defer"  src="/js/site.min.js"></script><script defer="defer"  src="/scripts/script.js"></script>
+	
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53445787-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns:og="http://ogp.me/ns#" class="no-js"> <!--<![endif]-->
+<head>
+	<!-- Standard Meta -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="//alertifyjs.com/favicon.ico">
+	<link rel="apple-touch-icon image_src" href="//alertifyjs.com/apple-touch-icon-precomposed.png">
+	
+	<!-- Open graph -->
+	<meta property="og:title" content="AlertifyJS" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="//www.alertifyjs.com/" />
+	<meta property="og:image" content="//alertifyjs.com/og.png" />
+	<meta name="og:description" content="JavaScript framework for developing pretty browser dialogs and notifications.">
+	
+	<!-- Site Properities -->
+	<title>ALERTIFY JS</title>
+	<meta name="description" content="AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications." />
+	<meta name="keywords" content="alert, notify, alertify, pretty, browser, dialog, notification, js, javascript, growl, css" />
+
+	<!-- DocPad Meta -->
+	<meta name="generator" content="DocPad v6.79.4" />
+
+	<!-- DocPad Styles + Our Own -->
+	<link  rel="stylesheet" href="/build/css/alertify.css" /><link  rel="stylesheet" href="/build/css/themes/default.css" /><link  rel="stylesheet" href="/css/normalize.min.css" /><link  rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" /><link  rel="stylesheet" href="/css/semantic.min.css" /><link  rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/droidarabickufi.css" /><link  rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Sans:400,700" /><link  rel="stylesheet" href="/css/site.min.css" /><link  rel="stylesheet" href="/styles/style.css" />
+	
+	
+	<link rel="stylesheet" href="/css/highlight.default.min.css"/>
+	
+</head>
+<body>
+<header>
+    <div class="content">
+      <a class="logo" data-text="1.14.0" href="//www.alertifyjs.com"><img src="/css/logo.sm.png" /></a>
+      <a href="#" class="bars"><i class="fa fa-2x fa-bars"></i></a>
+      <div class="menu">
+        <ul>
+          <li class="aux">
+            <div>
+              <iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="25"></iframe>
+              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs" title="Twitter Tweet Button" width="110" height="25"></iframe>
+            </div>
+          </li>
+          <li><a href="/guide.html">Getting Started</a></li>
+          <li class="sub">
+            <a href="javascript:void(0);">Components</a>
+            <ul>
+              <li><a href="/alert.html">Alert</a></li>
+              <li><a href="/confirm.html">Confirm</a></li>
+              <li><a href="/prompt.html">Prompt</a></li>
+              <li><a href="/notifier.html">Notifier</a></li>
+            </ul>
+          </li>
+		  <li><a href="/factory.html">Dialogs Factory</a></li>
+          <li><a href="/examples.html">Examples</a></li>
+          <li><a href="/tutorials.html">Tutorials</a></li>
+       
+        </ul>
+      </div><!--//menu-->
+	  
+    </div>
+  </header>
+
+ <section class="blue">
+	<div class="content">
+		<div class="grid two">
+			<div class="column">
+				<h1> Getting Started </h1>
+				 A quick guide of how to download and use AlertifyJS.
+			</div>		
+			<div class="right column">
+			  <div>
+    
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYI55QJ&placement=alertifyjscom" id="_carbonads_js"></script>
+    
+</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="lic">
+    <div class="content">
+        Looking for a commercial license ?  Keep your source code proprietary and <a href="https://www.uplabs.com/posts/alertifyjs" target="_blank"> Buy a Commercial License Today!</a>
+    </div>
+</section>
+<section class="dark">
+<div class="content">
+      <div class="segment">
+        <div class="ui small warning message no-motion">
+  <div class="content">
+      <p>
+        <i class="fa fa-warning"></i> All of AlertifyJS animation/transition effects are disabled due to user preference that the system minimizes the amount of animation or motion it uses. See <b>prefers-reduced-motion</b> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank">CSS media feature</a>.
+      </p>
+  </div>
+</div>
+      </div>
+	  <!-- Download -->
+	  <h1>
+		<i class="fa fa-cloud-download fa-lg"></i> Download (v1.14.0)
+	  </h1>
+	  <hr />
+	  <div class="grid two">
+		<div class="column">
+		  <h2> AlertifyJS</h2>
+		  <div>Compiled and minified CSS, JavaScript. No docs or original source files are included.</div>
+		  
+		  <div style="margin:35px 0;">
+		   <a class="button" href="/build/alertifyjs.zip">
+			<span>Download Library</span>
+		   </a>
+		  </div>
+  	
+		  	<h4>Contents</h4>			
+
+<pre class="example"><code class="hljs bash">alertifyjs/
+├── css/
+│   ├── alertify.css
+│   ├── alertify.min.css
+│   ├── alertify.rtl.css
+│   ├── alertify.rtl.min.css
+│   └── themes/
+│       ├── bootstrap.css
+│       ├── bootstrap.min.css
+│       ├── bootstrap.rtl.css
+│       ├── bootstrap.rtl.min.css
+│       ├── default.css
+│       ├── default.min.css
+│       ├── default.rtl.css
+│       ├── default.rtl.min.css
+│       ├── semantic.css
+│       ├── semantic.min.css
+│       ├── semantic.rtl.css
+│       └── semantic.min.rtl.css
+├── alertify.js
+└── alertify.min.js
+</code></pre>
+
+		</div>		
+		<div class="column">
+		  <h2>Source Code</h2>
+		  Source Javascript, Less and AlertifyJS docs (see steps for running docs locally).
+		  <div style="margin:35px 0;">
+		    <a class="button" href="https://github.com/MohammadYounes/AlertifyJS/archive/master.zip">
+			  <span>Download Source</span>
+		    </a>
+		  </div>
+		  <h4>Contents</h4>			
+
+<pre class="example"><code class="hljs bash">alertifyjs/
+│
+├── build/ <span class="hljs-comment"># &lt;= build output</span>
+│   └── css/
+│       └── themes/
+│
+│
+├── docpad/ <span class="hljs-comment"># &lt;= documentation server</span>
+│   ├── data/
+│   ├── documents/
+│   ├── files/
+│   ├── layouts/
+│   └── partials/
+│
+│
+│
+└── src <span class="hljs-comment"># &lt;= AlertifyJS source files</span>
+   ├── js/
+   │  └── dialog/
+   └── less/
+      └── themes/
+</code></pre>
+	
+		</div>
+	 </div>
+
+
+<div class="segment">
+    <h2 id="cdn">AlertifyJS CDN</h2>
+    <p>Latest compiled and minified JavaScript and CSS files are hosted on <a href="http://www.jsdelivr.com/#!alertifyjs" target="_blank">cdn.jsdelivr.net</a> </p>
+ 
+
+<pre class="example"><code class="hljs xml">
+<span class="hljs-comment">&lt;!-- JavaScript --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- CSS --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"</span>/&gt;</span>
+<span class="hljs-comment">&lt;!-- Default theme --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"</span>/&gt;</span>
+<span class="hljs-comment">&lt;!-- Semantic UI theme --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/semantic.min.css"</span>/&gt;</span>
+<span class="hljs-comment">&lt;!-- Bootstrap theme --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css"</span>/&gt;</span>
+
+<span class="hljs-comment">&lt;!-- 
+    RTL version
+--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.rtl.min.css"</span>/&gt;</span>
+<span class="hljs-comment">&lt;!-- Default theme --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.rtl.min.css"</span>/&gt;</span>
+<span class="hljs-comment">&lt;!-- Semantic UI theme --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/semantic.rtl.min.css"</span>/&gt;</span>
+<span class="hljs-comment">&lt;!-- Bootstrap theme --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.rtl.min.css"</span>/&gt;</span>
+
+</code></pre>
+		  
+
+</div>
+
+	 
+ <div class="grid two">
+ 	<div class="column double">
+	  <h2>Install with NuGet</h2>
+
+<pre class="example"><code class="hljs bash">
+PM&gt; Install-Package AlertifyJS
+
+</code></pre>
+		  
+	</div>
+</div>
+<div class="grid two">
+    <div class="column double">
+		  <h2>Install with NPM</h2>
+
+<pre class="example"><code class="hljs bash">
+npm install alertifyjs --save
+
+</code></pre>
+		  
+	</div>
+</div>
+
+
+	<!-- //Download -->
+
+
+	<!-- Usage -->
+	 <h1>
+		<i class="fa fa-flash fa-lg"></i> Usage
+	 </h1>
+	 <hr />
+	
+		  <h3> <i class="fa fa-check"></i> Include JS </h3>
+
+<pre class="example"><code class="hljs xml"><span class="hljs-comment">&lt;!-- include the script --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"{PATH}/alertify.min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre> 
+
+          <h3> <i class="fa fa-check"></i> Include CSS </h3>
+
+<pre class="example"><code class="hljs xml"><span class="hljs-comment">&lt;!-- include the style --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"{PATH}/alertify.min.css"</span> /&gt;</span>
+<span class="hljs-comment">&lt;!-- include a theme --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"{PATH}/themes/default.min.css"</span> /&gt;</span>
+</code></pre> 
+
+
+
+
+	<div class="segment">
+            <h3> <i class="fa fa-check"></i> Start coding!</h3>
+
+<pre class="example"><code class="hljs javascript">alertify.alert(<span class="hljs-string">'Ready!'</span>);
+</code></pre> 
+
+          <div class="RIGHT">
+            <a class="button example" href="javascript:void(0);">
+              <span> Run </span>
+            </a>
+		  </div>
+	</div>
+  
+  <!-- //Usage -->
+  <!-- Defaults -->
+  <div class="segment">
+	<h1 id="defaults">
+		<a href="#defaults"><i class="fa fa-book fa-lg"></i></a>
+		Defaults
+	</h1>
+  <hr />
+  <p> The following are the global defaults used by AlertifyJS, override with your own prior to components initialization.</p>
+
+  
+<pre class="example"><code class="hljs javascript">
+alertify.defaults = {
+        <span class="hljs-comment">// dialogs defaults</span>
+        autoReset:<span class="hljs-literal">true</span>,
+        basic:<span class="hljs-literal">false</span>,
+        closable:<span class="hljs-literal">true</span>,
+        closableByDimmer:<span class="hljs-literal">true</span>,
+        invokeOnCloseOff:<span class="hljs-literal">false</span>,
+        frameless:<span class="hljs-literal">false</span>,
+        defaultFocusOff:<span class="hljs-literal">false</span>,
+        maintainFocus:<span class="hljs-literal">true</span>, <span class="hljs-comment">// &lt;== global default not per instance, applies to all dialogs</span>
+        maximizable:<span class="hljs-literal">true</span>,
+        modal:<span class="hljs-literal">true</span>,
+        movable:<span class="hljs-literal">true</span>,
+        moveBounded:<span class="hljs-literal">false</span>,
+        overflow:<span class="hljs-literal">true</span>,
+        padding: <span class="hljs-literal">true</span>,
+        pinnable:<span class="hljs-literal">true</span>,
+        pinned:<span class="hljs-literal">true</span>,
+        preventBodyShift:<span class="hljs-literal">false</span>, <span class="hljs-comment">// &lt;== global default not per instance, applies to all dialogs</span>
+        resizable:<span class="hljs-literal">true</span>,
+        startMaximized:<span class="hljs-literal">false</span>,
+        transition:<span class="hljs-string">'pulse'</span>,
+        transitionOff:<span class="hljs-literal">false</span>,
+        tabbable:<span class="hljs-string">'button:not(:disabled):not(.ajs-reset),[href]:not(:disabled):not(.ajs-reset),input:not(:disabled):not(.ajs-reset),select:not(:disabled):not(.ajs-reset),textarea:not(:disabled):not(.ajs-reset),[tabindex]:not([tabindex^="-"]):not(:disabled):not(.ajs-reset)'</span>,  <span class="hljs-comment">// &lt;== global default not per instance, applies to all dialogs</span>
+
+        <span class="hljs-comment">// notifier defaults</span>
+        notifier:{
+        <span class="hljs-comment">// auto-dismiss wait time (in seconds)  </span>
+            delay:<span class="hljs-number">5</span>,
+        <span class="hljs-comment">// default position</span>
+            position:<span class="hljs-string">'bottom-right'</span>,
+        <span class="hljs-comment">// adds a close button to notifier messages</span>
+            closeButton: <span class="hljs-literal">false</span>,
+        <span class="hljs-comment">// provides the ability to rename notifier classes</span>
+            classes : {
+                base: <span class="hljs-string">'alertify-notifier'</span>,
+                prefix:<span class="hljs-string">'ajs-'</span>,
+                message: <span class="hljs-string">'ajs-message'</span>,
+                top: <span class="hljs-string">'ajs-top'</span>,
+                right: <span class="hljs-string">'ajs-right'</span>,
+                bottom: <span class="hljs-string">'ajs-bottom'</span>,
+                left: <span class="hljs-string">'ajs-left'</span>,
+                center: <span class="hljs-string">'ajs-center'</span>,
+                visible: <span class="hljs-string">'ajs-visible'</span>,
+                hidden: <span class="hljs-string">'ajs-hidden'</span>,
+                close: <span class="hljs-string">'ajs-close'</span>
+            }
+        },
+
+        <span class="hljs-comment">// language resources </span>
+        glossary:{
+            <span class="hljs-comment">// dialogs default title</span>
+            title:<span class="hljs-string">'AlertifyJS'</span>,
+            <span class="hljs-comment">// ok button text</span>
+            ok: <span class="hljs-string">'OK'</span>,
+            <span class="hljs-comment">// cancel button text</span>
+            cancel: <span class="hljs-string">'Cancel'</span>            
+        },
+
+        <span class="hljs-comment">// theme settings</span>
+        theme:{
+            <span class="hljs-comment">// class name attached to prompt dialog input textbox.</span>
+            input:<span class="hljs-string">'ajs-input'</span>,
+            <span class="hljs-comment">// class name attached to ok button</span>
+            ok:<span class="hljs-string">'ajs-ok'</span>,
+            <span class="hljs-comment">// class name attached to cancel button </span>
+            cancel:<span class="hljs-string">'ajs-cancel'</span>
+        },
+        <span class="hljs-comment">// global hooks</span>
+        hooks:{
+            <span class="hljs-comment">// invoked before initializing any dialog</span>
+            preinit:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(instance)</span>{</span>},
+            <span class="hljs-comment">// invoked after initializing any dialog</span>
+            postinit:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(instance)</span>{</span>},
+        },
+    };
+
+</code></pre> 
+
+	</div>
+	<!-- //Defaults -->
+
+</div>
+</section>
+
+<!--footer-->
+<section>
+<div class="content">
+	<div class="links">
+		<div class="ui horizontal center list">
+			<div class="item"></div>
+			<div class="item">
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=fork&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+
+			</div>
+			<div class="item">
+				<iframe src="//platform.twitter.com/widgets/follow_button.1404859412.html#_=1406289087792&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=AlertifyJS&amp;show_count=true&amp;show_screen_name=true&amp;size=m"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<section class="dark">
+    <div class="content">
+      <div class="links">
+        <a href="//github.com/MohammadYounes/alertifyjs/issues" target="_blank">Report an issue</a> |
+        <a href="//github.com/MohammadYounes/alertifyjs" target="_blank">View on GitHub</a> |
+        Follow Me on <a href="//www.github.com/MohammadYounes" target="_blank"> <i class="fa fa-github"></i> GitHub</a> and
+        <a href="//www.twitter.com/AlertifyJS" target="_blank"> <i class="fa fa-twitter"></i> Twitter</a>
+      </div>
+      <div class="links">
+        Created by <a href="//www.github.com/MohammadYounes" style="color:orange" target="_blank">Mohammad Younes</a> | Licensed under <a href="https://opensource.org/licenses/gpl-3.0"> GPLv3 </a>
+      </div>
+		
+      
+      <div class="affiliates">
+        <a href="//rtlcss.com" target="_blank">
+          <img width="40" src="//avatars0.githubusercontent.com/u/7704547?s=140">
+          <div>www.rtlcss.com</div>
+        </a>
+        
+        <a href="http://www.isresponsive.com" target="_blank">
+          <img src="//rtlcss.com/img/isresponsive.png">
+          <div>www.isResponsive.com</div>
+        </a>
+        
+        <a href="//www.keycdn.com/?a=10668" target="_blank">
+          <img src="//logos.keycdn.com/keycdn-logo-white.png" alt="KeyCDN" width="115">
+          <div>www.keycdn.com</div>
+        </a>
+        
+      </div>
+    </div>
+ </section>	
+<!--//footer-->
+
+	<!-- DocPad Scripts + Our Own -->
+	<script defer="defer"  src="/build/alertify.js"></script><script defer="defer"  src="/js/jquery-1.11.1.min.js"></script><script defer="defer"  src="/js/jquery.mobile.custom.min.js"></script><script defer="defer"  src="/js/scrollLock.min.js"></script><script defer="defer"  src="/js/semantic.min.js"></script><script defer="defer"  src="/js/site.min.js"></script><script defer="defer"  src="/scripts/script.js"></script>
+	
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53445787-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

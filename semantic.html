@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Standard Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Site Properities -->
+	<title>ALERTIFY JS - Semantic UI</title>
+	<meta name="description" content="AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.">
+	<meta name="keywords" content="alert, notify, alertify, dialog, notification, js, javascript, growl, css">
+	
+	<link rel="stylesheet" href="/build/css/alertify.css">
+	<link rel="stylesheet" href="/build/css/themes/semantic.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/semantic-ui/0.19.3/css/semantic.min.css">
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Sans:400,700">
+	
+	<style type="text/css">
+	body { 
+		font-family:"Droid Sans","Droid Arabic Kufi","Helvetica Neue","Helvetica","Arial",sans-serif;
+		-webkit-overflow-scrolling: touch; 	
+	}
+		
+	.ui.button, .ui.buttons .button { margin: .25em; }
+	</style>
+	</head>
+	<body>
+		<div style="text-align:center;padding:40px;">
+			<a id="alert" class="ui animated button">
+				<div class="visible content">Alert</div>
+				<div class="hidden content">
+					<i class="right arrow icon"></i>
+				</div>
+			</a>
+
+			<a id="confirm" class="ui animated button">
+				<div class="visible content">Confirm</div>
+				<div class="hidden content">
+					<i class="right arrow icon"></i>
+				</div>
+			</a>
+
+			<a id="prompt" class="ui animated button">
+				<div class="visible content">Prompt</div>
+				<div class="hidden content">
+					<i class="right arrow icon"></i>
+				</div>
+			</a>
+		</div>	
+	<script src="/build/alertify.js"></script>
+	<script src="/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		
+		alertify.defaults.transition = "zoom";
+		alertify.defaults.theme.ok = "ui positive button";
+		alertify.defaults.theme.cancel = "ui black button";
+		
+		$(function(){			
+			$('#alert').click(function(){
+				alertify.alert('Semantic UI');
+			});
+			
+			$('#confirm').click(function(){
+				alertify.confirm('Semantic UI');
+			});
+			
+			$('#prompt').click(function(){
+				alertify.prompt('Semantic UI');
+			});
+		});
+	</script>	
+	</body>
+</html>

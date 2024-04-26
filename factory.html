@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns:og="http://ogp.me/ns#" class="no-js"> <!--<![endif]-->
+<head>
+	<!-- Standard Meta -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="//alertifyjs.com/favicon.ico">
+	<link rel="apple-touch-icon image_src" href="//alertifyjs.com/apple-touch-icon-precomposed.png">
+	
+	<!-- Open graph -->
+	<meta property="og:title" content="AlertifyJS" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="//www.alertifyjs.com/" />
+	<meta property="og:image" content="//alertifyjs.com/og.png" />
+	<meta name="og:description" content="JavaScript framework for developing pretty browser dialogs and notifications.">
+	
+	<!-- Site Properities -->
+	<title>ALERTIFY JS</title>
+	<meta name="description" content="AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications." />
+	<meta name="keywords" content="alert, notify, alertify, pretty, browser, dialog, notification, js, javascript, growl, css" />
+
+	<!-- DocPad Meta -->
+	<meta name="generator" content="DocPad v6.79.4" />
+
+	<!-- DocPad Styles + Our Own -->
+	<link  rel="stylesheet" href="/build/css/alertify.css" /><link  rel="stylesheet" href="/build/css/themes/default.css" /><link  rel="stylesheet" href="/css/normalize.min.css" /><link  rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" /><link  rel="stylesheet" href="/css/semantic.min.css" /><link  rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/droidarabickufi.css" /><link  rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Sans:400,700" /><link  rel="stylesheet" href="/css/site.min.css" /><link  rel="stylesheet" href="/styles/style.css" />
+	
+	
+	<link rel="stylesheet" href="/css/highlight.default.min.css"/>
+	
+</head>
+<body>
+<header>
+    <div class="content">
+      <a class="logo" data-text="1.14.0" href="//www.alertifyjs.com"><img src="/css/logo.sm.png" /></a>
+      <a href="#" class="bars"><i class="fa fa-2x fa-bars"></i></a>
+      <div class="menu">
+        <ul>
+          <li class="aux">
+            <div>
+              <iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="25"></iframe>
+              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs" title="Twitter Tweet Button" width="110" height="25"></iframe>
+            </div>
+          </li>
+          <li><a href="/guide.html">Getting Started</a></li>
+          <li class="sub">
+            <a href="javascript:void(0);">Components</a>
+            <ul>
+              <li><a href="/alert.html">Alert</a></li>
+              <li><a href="/confirm.html">Confirm</a></li>
+              <li><a href="/prompt.html">Prompt</a></li>
+              <li><a href="/notifier.html">Notifier</a></li>
+            </ul>
+          </li>
+		  <li><a href="/factory.html">Dialogs Factory</a></li>
+          <li><a href="/examples.html">Examples</a></li>
+          <li><a href="/tutorials.html">Tutorials</a></li>
+       
+        </ul>
+      </div><!--//menu-->
+	  
+    </div>
+  </header>
+
+ <section class="blue">
+    <div class="content">
+      <div class="grid two">
+        <div class="column">
+          <h1> Dialogs Factory</h1>
+          AlertifyJS not only provides a replacement for default browser dialogs, it makes it super easy to create your own!
+        </div>
+        <div class="right column">
+          <div>
+    
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYI55QJ&placement=alertifyjscom" id="_carbonads_js"></script>
+    
+</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="lic">
+      <div class="content">
+          Looking for a commercial license ?  Keep your source code proprietary and <a href="https://www.uplabs.com/posts/alertifyjs" target="_blank"> Buy a Commercial License Today!</a>
+      </div>
+  </section>
+  <section class="dark">
+    <div class="content">
+      <!--Defult usage-->
+      <div class="segment">
+				<div class="ui small warning message no-motion">
+  <div class="content">
+      <p>
+        <i class="fa fa-warning"></i> All of AlertifyJS animation/transition effects are disabled due to user preference that the system minimizes the amount of animation or motion it uses. See <b>prefers-reduced-motion</b> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank">CSS media feature</a>.
+      </p>
+  </div>
+</div>
+        <h1 id="usage">
+          <a href="#usage"><i class="fa fa-book"></i></a>
+          Default usage
+        </h1>
+        <hr />
+        <p>
+					To create a new dialog, you use the <code>alertify.dialog</code>  API. 
+					which takes a dialog name followed by a factory function. This factory function should return an object with the different options to create the dialog. 
+				</p>
+				
+				
+
+
+<pre class="example"><code class="hljs javascript">
+<span class="hljs-comment">/**
+ * Dialogs factory 
+ *
+ * @name      {string}   Dialog name.
+ * @Factory   {Function} Dialog factory function.
+ * @transient {Boolean}  Indicates whether to create a singleton or transient dialog.
+ * @base      {String}   The name of an existing dialog to inherit from.
+ *
+ * alertify.dialog(name, Factory, transient, base)
+ *
+ */</span>
+ 
+<span class="hljs-keyword">if</span>(!alertify.myAlert){
+  <span class="hljs-comment">//define a new dialog</span>
+  alertify.dialog(<span class="hljs-string">'myAlert'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">factory</span><span class="hljs-params">()</span>{</span>
+    <span class="hljs-keyword">return</span>{
+      main:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(message)</span>{</span>
+        <span class="hljs-keyword">this</span>.message = message;
+      },
+      setup:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+          <span class="hljs-keyword">return</span> { 
+            buttons:[{text: <span class="hljs-string">"cool!"</span>, key:<span class="hljs-number">27</span><span class="hljs-comment">/*Esc*/</span>}],
+            focus: { element:<span class="hljs-number">0</span> }
+          };
+      },
+      prepare:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+        <span class="hljs-keyword">this</span>.setContent(<span class="hljs-keyword">this</span>.message);
+      }
+  }});
+}
+<span class="hljs-comment">//launch it.</span>
+alertify.myAlert(<span class="hljs-string">"Browser dialogs made easy!"</span>);
+</code></pre> 
+
+
+
+        <div class="RIGHT">
+          <a class="button example" href="javascript:void(0);">
+            <span> Run </span>
+          </a>
+        </div>
+      </div>
+			
+			<div class="segment">
+			<br/><br/>
+			
+			<p>
+					Passing true to the transient (none singleton) parameter tells AlertifyJS to create a new dialog instance each time the dialog is invoked via <code>alertify.{dialogName}</code>. The last parameter 'base' enables the creation of new dialogs based on existing ones. 
+			</p>
+			
+				
+		
+
+<pre class="example"><code class="hljs javascript">
+<span class="hljs-comment">// Extend existing 'alert' dialog</span>
+<span class="hljs-keyword">if</span>(!alertify.errorAlert){
+  <span class="hljs-comment">//define a new errorAlert base on alert</span>
+  alertify.dialog(<span class="hljs-string">'errorAlert'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">factory</span><span class="hljs-params">()</span>{</span>
+    <span class="hljs-keyword">return</span>{
+            build:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+                <span class="hljs-keyword">var</span> errorHeader = <span class="hljs-string">'&lt;span class="fa fa-times-circle fa-2x" '</span>
+                +    <span class="hljs-string">'style="vertical-align:middle;color:#e10000;"&gt;'</span>
+                + <span class="hljs-string">'&lt;/span&gt; Application Error'</span>;
+                <span class="hljs-keyword">this</span>.setHeader(errorHeader);
+            }
+        };
+    },<span class="hljs-literal">true</span>,<span class="hljs-string">'alert'</span>);
+}
+<span class="hljs-comment">//launch it.</span>
+<span class="hljs-comment">// since this was transient, we can launch another instance at the same time.</span>
+alertify
+    .errorAlert(<span class="hljs-string">"This is a none singleton modal error alert! &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;"</span> +
+        <span class="hljs-string">"To show another error alert: "</span> + 
+      <span class="hljs-string">"&lt;a href='javascript:alertify.errorAlert(\"Another error\");'&gt; Click here &lt;/a&gt;"</span>);
+
+</code></pre> 
+
+		  <div class="RIGHT">
+				<a class="button example" href="javascript:void(0);">
+					<span> Run </span>
+				</a>
+			</div>
+			</div>
+      <!--Factory-->
+			
+      <div class="segment">
+        <h1 id="factory">
+          <a href="#factory"><i class="fa fa-wrench"></i></a>
+           Factory Function
+        </h1>
+        <hr />
+				<p>The factory function should return an object with the different options to tell <b>AlertifyJS</b> how the dialog should behave when created.</p>
+
+
+<pre class="example"><code class="hljs javascript">
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">factory</span><span class="hljs-params">()</span>{</span>
+    <span class="hljs-keyword">return</span> {
+         <span class="hljs-comment">// The dialog startup function</span>
+         <span class="hljs-comment">// This will be called each time the dialog is invoked</span>
+         <span class="hljs-comment">// For example: alertify.myDialog( data );</span>
+         main:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(params)</span>{</span>
+                 <span class="hljs-comment">// manipulate parameters and set options</span>
+                 <span class="hljs-keyword">this</span>.setting(<span class="hljs-string">'myProp'</span>, data);
+         },
+         <span class="hljs-comment">// The dialog setup function</span>
+         <span class="hljs-comment">// This should return the dialog setup object ( buttons, focus and options overrides ).</span>
+         setup:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+             <span class="hljs-keyword">return</span> {
+                    <span class="hljs-comment">/* buttons collection */</span>
+                    buttons:[
+                    
+                        <span class="hljs-comment">/*button defintion*/</span>
+                        {
+                             <span class="hljs-comment">/* button label */</span>
+                            text: <span class="hljs-string">'OK'</span>,
+                            
+                            <span class="hljs-comment">/*bind a keyboard key to the button */</span>
+                            key: <span class="hljs-number">27</span>, 
+                            
+                            <span class="hljs-comment">/* indicate if closing the dialog should trigger this button action */</span>
+                            invokeOnClose: <span class="hljs-literal">true</span>, 
+                            
+                            <span class="hljs-comment">/* custom button class name  */</span>
+                            className: alertify.defaults.theme.ok,
+                            
+                            <span class="hljs-comment">/* custom button attributes  */</span>
+                            attrs:{attribute:<span class="hljs-string">'value'</span>},
+                            
+                            <span class="hljs-comment">/* Defines the button scope, either primary (default) or auxiliary */</span>
+                            scope:<span class="hljs-string">'auxiliary'</span>,
+                            
+                            <span class="hljs-comment">/* The will conatin the button DOMElement once buttons are created */</span>
+                            element:<span class="hljs-literal">undefined</span>
+                        }
+                    ],
+                    
+                    <span class="hljs-comment">/* default focus */</span>
+                    focus:{                    
+                        <span class="hljs-comment">/* the element to receive default focus, has differnt meaning based on value type:
+                            number:     action button index.
+                            string:     querySelector to select from dialog body contents.
+                            function:   when invoked, should return the focus element.
+                            DOMElement: the focus element.
+                            object:     an object that implements .focus() and .select() functions. 
+                        */</span>
+                        element: <span class="hljs-number">0</span>,
+                        
+                        <span class="hljs-comment">/* indicates if the element should be selected on focus or not*/</span>
+                        select: <span class="hljs-literal">false</span>
+                        
+                    },
+                    <span class="hljs-comment">/* dialog options, these override the defaults */</span>
+                    options: {
+                        title: ...,
+                        modal: ...,
+                        basic:...,
+                        frameless:...,
+                        pinned: ...,
+                        movable: ...,
+                        moveBounded:...,
+                        resizable: ...,
+                        autoReset: ...,
+                        closable: ...,
+                        closableByDimmer: ...,
+                        maximizable: ...,
+                        startMaximized: ...,
+                        pinnable: ...,
+                        transition: ...,
+                        padding:...,
+                        overflow:...,
+                        onshow:...,
+                        onclose:...,
+                        onfocus:...,
+                        onmove:...,
+                        onmoved:...,
+                        onresize:...,
+                        onresized:...,
+                        onmaximize:...,
+                        onmaximized:...,
+                        onrestore:...,
+                        onrestored:...
+                    }
+                };
+         },
+         <span class="hljs-comment">// This will be called once the dialog DOM has been created, just before its added to the document.</span>
+         <span class="hljs-comment">// Its invoked only once.</span>
+         build:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+
+            <span class="hljs-comment">// Do custom DOM manipulation here, accessible via this.elements</span>
+            
+            <span class="hljs-comment">// this.elements.root           ==&gt; Root div </span>
+            <span class="hljs-comment">// this.elements.dimmer         ==&gt; Modal dimmer div</span>
+            <span class="hljs-comment">// this.elements.modal          ==&gt; Modal div (dialog wrapper)</span>
+            <span class="hljs-comment">// this.elements.dialog         ==&gt; Dialog div</span>
+            <span class="hljs-comment">// this.elements.reset          ==&gt; Array containing the tab reset anchor links</span>
+            <span class="hljs-comment">// this.elements.reset[0]       ==&gt; First reset element (button).</span>
+            <span class="hljs-comment">// this.elements.reset[1]       ==&gt; Second reset element (button).</span>
+            <span class="hljs-comment">// this.elements.header         ==&gt; Dialog header div</span>
+            <span class="hljs-comment">// this.elements.body           ==&gt; Dialog body div</span>
+            <span class="hljs-comment">// this.elements.content        ==&gt; Dialog body content div</span>
+            <span class="hljs-comment">// this.elements.footer         ==&gt; Dialog footer div</span>
+            <span class="hljs-comment">// this.elements.resizeHandle   ==&gt; Dialog resize handle div            </span>
+            
+            <span class="hljs-comment">// Dialog commands (Pin/Maximize/Close)</span>
+            <span class="hljs-comment">// this.elements.commands           ==&gt; Object containing  dialog command buttons references</span>
+            <span class="hljs-comment">// this.elements.commands.container ==&gt; Root commands div</span>
+            <span class="hljs-comment">// this.elements.commands.pin       ==&gt; Pin command button</span>
+            <span class="hljs-comment">// this.elements.commands.maximize  ==&gt; Maximize command button</span>
+            <span class="hljs-comment">// this.elements.commands.close     ==&gt; Close command button</span>
+            
+            <span class="hljs-comment">// Dialog action buttons (Ok, cancel ... etc)</span>
+            <span class="hljs-comment">// this.elements.buttons                ==&gt;  Object containing  dialog action buttons references</span>
+            <span class="hljs-comment">// this.elements.buttons.primary        ==&gt;  Primary buttons div</span>
+            <span class="hljs-comment">// this.elements.buttons.auxiliary      ==&gt;  Auxiliary buttons div</span>
+            
+            <span class="hljs-comment">// Each created button will be saved with the button definition inside buttons collection</span>
+            <span class="hljs-comment">// this.__internal.buttons[x].element</span>
+            
+         },
+         <span class="hljs-comment">// This will be called each time the dialog is shown</span>
+         prepare:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+             <span class="hljs-comment">// Do stuff that should be done every time the dialog is shown.</span>
+         },
+         <span class="hljs-comment">// This will be called each time an action button is clicked.</span>
+         callback:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(closeEvent)</span>{</span>
+            <span class="hljs-comment">//The closeEvent has the following properties</span>
+            <span class="hljs-comment">//</span>
+            <span class="hljs-comment">// index: The index of the button triggering the event.</span>
+            <span class="hljs-comment">// button: The button definition object.</span>
+            <span class="hljs-comment">// cancel: When set true, prevent the dialog from closing.</span>
+         }
+         <span class="hljs-comment">// To make use of AlertifyJS settings API, group your custom settings into a settings object.</span>
+         settings:{
+                 myProp:<span class="hljs-string">'value'</span>
+         },
+         <span class="hljs-comment">// AlertifyJS will invoke this each time a settings value gets updated.</span>
+         settingUpdated:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(key, oldValue, newValue)</span>{</span>
+                 <span class="hljs-comment">// Use this to respond to specific setting updates.</span>
+                 <span class="hljs-keyword">switch</span>(key){
+                    <span class="hljs-keyword">case</span> <span class="hljs-string">'myProp'</span>:
+                        <span class="hljs-comment">// Do something when 'myProp' changes</span>
+                        <span class="hljs-keyword">break</span>;
+                }
+         },
+         <span class="hljs-comment">// listen to internal dialog events.</span>
+         hooks:{
+            <span class="hljs-comment">// triggered when the dialog is shown, this is seperate from user defined onshow</span>
+            onshow: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+            },
+            <span class="hljs-comment">// triggered when the dialog is closed, this is seperate from user defined onclose</span>
+            onclose: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+            },
+            <span class="hljs-comment">// triggered when a dialog option gets updated.</span>
+            <span class="hljs-comment">// IMPORTANT: This will not be triggered for dialog custom settings updates ( use settingUpdated instead).</span>
+            onupdate: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+            }
+         }
+    }
+}
+</code></pre> 
+
+      <br /><br />
+
+        
+		</div><!--//Factory-->
+			
+			<br/>
+			<br/>
+    </div>
+  </section>
+
+<!--footer-->
+<section>
+<div class="content">
+	<div class="links">
+		<div class="ui horizontal center list">
+			<div class="item"></div>
+			<div class="item">
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=fork&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+
+			</div>
+			<div class="item">
+				<iframe src="//platform.twitter.com/widgets/follow_button.1404859412.html#_=1406289087792&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=AlertifyJS&amp;show_count=true&amp;show_screen_name=true&amp;size=m"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<section class="dark">
+    <div class="content">
+      <div class="links">
+        <a href="//github.com/MohammadYounes/alertifyjs/issues" target="_blank">Report an issue</a> |
+        <a href="//github.com/MohammadYounes/alertifyjs" target="_blank">View on GitHub</a> |
+        Follow Me on <a href="//www.github.com/MohammadYounes" target="_blank"> <i class="fa fa-github"></i> GitHub</a> and
+        <a href="//www.twitter.com/AlertifyJS" target="_blank"> <i class="fa fa-twitter"></i> Twitter</a>
+      </div>
+      <div class="links">
+        Created by <a href="//www.github.com/MohammadYounes" style="color:orange" target="_blank">Mohammad Younes</a> | Licensed under <a href="https://opensource.org/licenses/gpl-3.0"> GPLv3 </a>
+      </div>
+		
+      
+      <div class="affiliates">
+        <a href="//rtlcss.com" target="_blank">
+          <img width="40" src="//avatars0.githubusercontent.com/u/7704547?s=140">
+          <div>www.rtlcss.com</div>
+        </a>
+        
+        <a href="http://www.isresponsive.com" target="_blank">
+          <img src="//rtlcss.com/img/isresponsive.png">
+          <div>www.isResponsive.com</div>
+        </a>
+        
+        <a href="//www.keycdn.com/?a=10668" target="_blank">
+          <img src="//logos.keycdn.com/keycdn-logo-white.png" alt="KeyCDN" width="115">
+          <div>www.keycdn.com</div>
+        </a>
+        
+      </div>
+    </div>
+ </section>	
+<!--//footer-->
+
+	<!-- DocPad Scripts + Our Own -->
+	<script defer="defer"  src="/build/alertify.js"></script><script defer="defer"  src="/js/jquery-1.11.1.min.js"></script><script defer="defer"  src="/js/jquery.mobile.custom.min.js"></script><script defer="defer"  src="/js/scrollLock.min.js"></script><script defer="defer"  src="/js/semantic.min.js"></script><script defer="defer"  src="/js/site.min.js"></script><script defer="defer"  src="/scripts/script.js"></script>
+	
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53445787-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

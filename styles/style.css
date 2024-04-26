@@ -1,0 +1,55 @@
+/*generic button-less dialog example*/
+form>fieldset{ border:none;margin:0;padding:8px;text-align:center;}
+form input {width:80%;padding: 8px;margin: 4px;}
+form input[type="submit"] {margin: 24px 4px 0;}
+form label {display:block;}
+
+/*carbon*/
+div#carbonads {
+    min-height: 120px;
+    max-width: 330px; 
+    margin: 5px auto;
+    padding: 5px;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+}
+.carbon-wrap {
+    display: block;
+    padding: 5px;   
+}
+.carbon-img {
+    float: left;
+    margin: 5px;
+}
+.carbon-text {
+    display:block;
+    color: rgb(53, 54, 57);
+    font-size: .8em;
+    text-decoration: none;
+    margin: 5px 0 15px 5px;
+}
+.carbon-poweredby {
+    float:right;
+    font-size: .7em;
+    text-decoration: none;
+    color: rgb(53, 147, 210);
+}
+
+section.blue div#carbonads{
+    border-color:#4EAEEF;
+}
+section.blue .carbon-text{
+    color:#fff;
+}
+section.blue .carbon-poweredby {
+    color: rgb(230, 244, 249);
+
+}
+
+
+/*custom messge */
+.ajs-message.ajs-custom { 
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #31708f;
+}

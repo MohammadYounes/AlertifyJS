@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns:og="http://ogp.me/ns#" class="no-js"> <!--<![endif]-->
+<head>
+	<!-- Standard Meta -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="//alertifyjs.com/favicon.ico">
+	<link rel="apple-touch-icon image_src" href="//alertifyjs.com/apple-touch-icon-precomposed.png">
+	
+	<!-- Open graph -->
+	<meta property="og:title" content="AlertifyJS" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="//www.alertifyjs.com/" />
+	<meta property="og:image" content="//alertifyjs.com/og.png" />
+	<meta name="og:description" content="JavaScript framework for developing pretty browser dialogs and notifications.">
+	
+	<!-- Site Properities -->
+	<title>ALERTIFY JS</title>
+	<meta name="description" content="AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications." />
+	<meta name="keywords" content="alert, notify, alertify, pretty, browser, dialog, notification, js, javascript, growl, css" />
+
+	<!-- DocPad Meta -->
+	<meta name="generator" content="DocPad v6.79.4" />
+
+	<!-- DocPad Styles + Our Own -->
+	<link  rel="stylesheet" href="/build/css/alertify.css" /><link  rel="stylesheet" href="/build/css/themes/default.css" /><link  rel="stylesheet" href="/css/normalize.min.css" /><link  rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" /><link  rel="stylesheet" href="/css/semantic.min.css" /><link  rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/droidarabickufi.css" /><link  rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Sans:400,700" /><link  rel="stylesheet" href="/css/site.min.css" /><link  rel="stylesheet" href="/styles/style.css" />
+	
+	
+	<link rel="stylesheet" href="/css/highlight.default.min.css"/>
+	
+</head>
+<body>
+<header>
+    <div class="content">
+      <a class="logo" data-text="1.14.0" href="//www.alertifyjs.com"><img src="/css/logo.sm.png" /></a>
+      <a href="#" class="bars"><i class="fa fa-2x fa-bars"></i></a>
+      <div class="menu">
+        <ul>
+          <li class="aux">
+            <div>
+              <iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="25"></iframe>
+              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs" title="Twitter Tweet Button" width="110" height="25"></iframe>
+            </div>
+          </li>
+          <li><a href="/guide.html">Getting Started</a></li>
+          <li class="sub">
+            <a href="javascript:void(0);">Components</a>
+            <ul>
+              <li><a href="/alert.html">Alert</a></li>
+              <li><a href="/confirm.html">Confirm</a></li>
+              <li><a href="/prompt.html">Prompt</a></li>
+              <li><a href="/notifier.html">Notifier</a></li>
+            </ul>
+          </li>
+		  <li><a href="/factory.html">Dialogs Factory</a></li>
+          <li><a href="/examples.html">Examples</a></li>
+          <li><a href="/tutorials.html">Tutorials</a></li>
+       
+        </ul>
+      </div><!--//menu-->
+	  
+    </div>
+  </header>
+
+ <section class="blue">
+    <div class="content">
+        <div class="grid two">
+            <div class="column">
+                <h1> Prompt Dialog</h1>
+                A prompt dialog is often used if you want the user to input a value.
+                When a prompt dialog pops up, the user will have to click either "OK" or "Cancel" to proceed after entering an input value.
+            </div>
+            <div class="right column">
+                <div>
+    
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYI55QJ&placement=alertifyjscom" id="_carbonads_js"></script>
+    
+</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="lic">
+    <div class="content">
+        Looking for a commercial license ?  Keep your source code proprietary and <a href="https://www.uplabs.com/posts/alertifyjs" target="_blank"> Buy a Commercial License Today!</a>
+    </div>
+</section>
+<section class="dark">
+    <div class="content">
+        <!--Settings-->
+        <div class="segment has-menu">
+            <div class="ui small warning message no-motion">
+  <div class="content">
+      <p>
+        <i class="fa fa-warning"></i> All of AlertifyJS animation/transition effects are disabled due to user preference that the system minimizes the amount of animation or motion it uses. See <b>prefers-reduced-motion</b> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank">CSS media feature</a>.
+      </p>
+  </div>
+</div>
+            <div class="segment">
+
+	<h1 id="get">
+		<a href="#get">
+			<i class="fa fa-wrench"></i>
+		</a>
+		get
+		
+		(
+				
+				key
+			
+		)
+		
+		<code></code>
+	</h1>
+    <hr/>
+	<div>
+		<p><span>Description:</span> Gets the dialog setting/option value.</p>
+		
+			
+				<p><span> Parameters:</span></p>
+				<blockquote>
+							
+							<p>@key <code>{String}</code> The setting/option key.</p>
+										
+				</blockquote>
+						
+		
+        
+            <p><span> Returns:</span></p>
+            <blockquote>
+                <p>The setting/option value.</p>
+            </blockquote>
+        
+            
+
+<pre class="example"><code class="hljs javascript"> <span class="hljs-keyword">var</span> isModal = alertify.prompt().get(<span class="hljs-string">'modal'</span>); </code></pre>
+
+
+		           
+       
+		
+	</div>
+	<br/>
+</div>
+
+
+
+<h2> <i class="fa fa-info-circle"></i> Remarks </h2>
+
+
+
+<div class="ui small info message">
+    <div class="content">
+        <p>
+            This method is an alias for <code>.setting()</code> method get mode. 
+        </p>
+    </div>
+</div>
+
+
+            
+        </div>
+        <!--//Settings-->
+        <div class="accordion">
+    <div>
+        <a class="item " href="/prompt.html"> <i class="fa fa-book"></i>  Default Usage </a>
+    </div>
+    
+    <div>        
+        <input name="accordion" id="p" type="checkbox"  />
+        <label for="p"><i class="fa"></i> Properties</label>
+        <div class="menu">
+            
+            <a class="item " href="/prompt/autoReset.html"><i class="fa fa-cog"></i> autoReset</a>
+            
+            <a class="item " href="/prompt/basic.html"><i class="fa fa-cog"></i> basic</a>
+            
+            <a class="item " href="/prompt/closable.html"><i class="fa fa-cog"></i> closable</a>
+            
+            <a class="item " href="/prompt/closableByDimmer.html"><i class="fa fa-cog"></i> closableByDimmer</a>
+            
+            <a class="item " href="/prompt/frameless.html"><i class="fa fa-cog"></i> frameless</a>
+            
+            <a class="item " href="/prompt/invokeOnCloseOff.html"><i class="fa fa-cog"></i> invokeOnCloseOff</a>
+            
+            <a class="item " href="/prompt/labels.html"><i class="fa fa-cog"></i> labels</a>
+            
+            <a class="item " href="/prompt/maximizable.html"><i class="fa fa-cog"></i> maximizable</a>
+            
+            <a class="item " href="/prompt/message.html"><i class="fa fa-cog"></i> message</a>
+            
+            <a class="item " href="/prompt/modal.html"><i class="fa fa-cog"></i> modal</a>
+            
+            <a class="item " href="/prompt/movable.html"><i class="fa fa-cog"></i> movable</a>
+            
+            <a class="item " href="/prompt/moveBounded.html"><i class="fa fa-cog"></i> moveBounded</a>
+            
+            <a class="item " href="/prompt/overflow.html"><i class="fa fa-cog"></i> overflow</a>
+            
+            <a class="item " href="/prompt/padding.html"><i class="fa fa-cog"></i> padding</a>
+            
+            <a class="item " href="/prompt/pinnable.html"><i class="fa fa-cog"></i> pinnable</a>
+            
+            <a class="item " href="/prompt/resizable.html"><i class="fa fa-cog"></i> resizable</a>
+            
+            <a class="item " href="/prompt/reverseButtons.html"><i class="fa fa-cog"></i> reverseButtons</a>
+            
+            <a class="item " href="/prompt/startMaximized.html"><i class="fa fa-cog"></i> startMaximized</a>
+            
+            <a class="item " href="/prompt/transition.html"><i class="fa fa-cog"></i> transition</a>
+            
+            <a class="item " href="/prompt/transitionOff.html"><i class="fa fa-cog"></i> transitionOff</a>
+            
+            <a class="item " href="/prompt/type.html"><i class="fa fa-cog"></i> type</a>
+            
+        </div>
+    </div>
+    
+    
+    <div>        
+        <input name="accordion" id="m" type="checkbox" checked='checked' />
+        <label for="m"><i class="fa"></i> Methods</label>
+        <div class="menu">
+            
+            <a class="item " href="/prompt/bringToFront.html"><i class="fa fa-wrench"></i> bringToFront</a>
+            
+            <a class="item " href="/prompt/close.html"><i class="fa fa-wrench"></i> close</a>
+            
+            <a class="item " href="/prompt/closeOthers.html"><i class="fa fa-wrench"></i> closeOthers</a>
+            
+            <a class="item " href="/prompt/destroy.html"><i class="fa fa-wrench"></i> destroy</a>
+            
+            <a class="item active" href="/prompt/get.html"><i class="fa fa-wrench"></i> get</a>
+            
+            <a class="item " href="/prompt/isMaximized.html"><i class="fa fa-wrench"></i> isMaximized</a>
+            
+            <a class="item " href="/prompt/isModal.html"><i class="fa fa-wrench"></i> isModal</a>
+            
+            <a class="item " href="/prompt/isOpen.html"><i class="fa fa-wrench"></i> isOpen</a>
+            
+            <a class="item " href="/prompt/isPinned.html"><i class="fa fa-wrench"></i> isPinned</a>
+            
+            <a class="item " href="/prompt/maximize.html"><i class="fa fa-wrench"></i> maximize</a>
+            
+            <a class="item " href="/prompt/moveTo.html"><i class="fa fa-wrench"></i> moveTo</a>
+            
+            <a class="item " href="/prompt/pin.html"><i class="fa fa-wrench"></i> pin</a>
+            
+            <a class="item " href="/prompt/resizeTo.html"><i class="fa fa-wrench"></i> resizeTo</a>
+            
+            <a class="item " href="/prompt/restore.html"><i class="fa fa-wrench"></i> restore</a>
+            
+            <a class="item " href="/prompt/set.html"><i class="fa fa-wrench"></i> set</a>
+            
+            <a class="item " href="/prompt/setContent.html"><i class="fa fa-wrench"></i> setContent</a>
+            
+            <a class="item " href="/prompt/setHeader.html"><i class="fa fa-wrench"></i> setHeader</a>
+            
+            <a class="item " href="/prompt/setting.html"><i class="fa fa-wrench"></i> setting</a>
+            
+            <a class="item " href="/prompt/show.html"><i class="fa fa-wrench"></i> show</a>
+            
+            <a class="item " href="/prompt/showModal.html"><i class="fa fa-wrench"></i> showModal</a>
+            
+            <a class="item " href="/prompt/unpin.html"><i class="fa fa-wrench"></i> unpin</a>
+            
+        </div>
+    </div>
+    
+    
+    <div>
+        <input name="accordion" id="e" type="checkbox"  />
+        <label for="e"><i class="fa"></i> Events</label>
+        <div class="menu">
+            
+            <a class="item " href="/prompt/oncancel.html"><i class="fa fa-flash"></i> oncancel</a>
+            
+            <a class="item " href="/prompt/onclose.html"><i class="fa fa-flash"></i> onclose</a>
+            
+            <a class="item " href="/prompt/onclosing.html"><i class="fa fa-flash"></i> onclosing</a>
+            
+            <a class="item " href="/prompt/onfocus.html"><i class="fa fa-flash"></i> onfocus</a>
+            
+            <a class="item " href="/prompt/onmaximize.html"><i class="fa fa-flash"></i> onmaximize</a>
+            
+            <a class="item " href="/prompt/onmaximized.html"><i class="fa fa-flash"></i> onmaximized</a>
+            
+            <a class="item " href="/prompt/onmove.html"><i class="fa fa-flash"></i> onmove</a>
+            
+            <a class="item " href="/prompt/onmoved.html"><i class="fa fa-flash"></i> onmoved</a>
+            
+            <a class="item " href="/prompt/onok.html"><i class="fa fa-flash"></i> onok</a>
+            
+            <a class="item " href="/prompt/onresize.html"><i class="fa fa-flash"></i> onresize</a>
+            
+            <a class="item " href="/prompt/onresized.html"><i class="fa fa-flash"></i> onresized</a>
+            
+            <a class="item " href="/prompt/onrestore.html"><i class="fa fa-flash"></i> onrestore</a>
+            
+            <a class="item " href="/prompt/onrestored.html"><i class="fa fa-flash"></i> onrestored</a>
+            
+            <a class="item " href="/prompt/onshow.html"><i class="fa fa-flash"></i> onshow</a>
+            
+        </div>
+    </div>
+    
+    
+</div>
+    </div>
+</section>
+
+<!--footer-->
+<section>
+<div class="content">
+	<div class="links">
+		<div class="ui horizontal center list">
+			<div class="item"></div>
+			<div class="item">
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=fork&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+
+			</div>
+			<div class="item">
+				<iframe src="//platform.twitter.com/widgets/follow_button.1404859412.html#_=1406289087792&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=AlertifyJS&amp;show_count=true&amp;show_screen_name=true&amp;size=m"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<section class="dark">
+    <div class="content">
+      <div class="links">
+        <a href="//github.com/MohammadYounes/alertifyjs/issues" target="_blank">Report an issue</a> |
+        <a href="//github.com/MohammadYounes/alertifyjs" target="_blank">View on GitHub</a> |
+        Follow Me on <a href="//www.github.com/MohammadYounes" target="_blank"> <i class="fa fa-github"></i> GitHub</a> and
+        <a href="//www.twitter.com/AlertifyJS" target="_blank"> <i class="fa fa-twitter"></i> Twitter</a>
+      </div>
+      <div class="links">
+        Created by <a href="//www.github.com/MohammadYounes" style="color:orange" target="_blank">Mohammad Younes</a> | Licensed under <a href="https://opensource.org/licenses/gpl-3.0"> GPLv3 </a>
+      </div>
+		
+      
+      <div class="affiliates">
+        <a href="//rtlcss.com" target="_blank">
+          <img width="40" src="//avatars0.githubusercontent.com/u/7704547?s=140">
+          <div>www.rtlcss.com</div>
+        </a>
+        
+        <a href="http://www.isresponsive.com" target="_blank">
+          <img src="//rtlcss.com/img/isresponsive.png">
+          <div>www.isResponsive.com</div>
+        </a>
+        
+        <a href="//www.keycdn.com/?a=10668" target="_blank">
+          <img src="//logos.keycdn.com/keycdn-logo-white.png" alt="KeyCDN" width="115">
+          <div>www.keycdn.com</div>
+        </a>
+        
+      </div>
+    </div>
+ </section>	
+<!--//footer-->
+
+	<!-- DocPad Scripts + Our Own -->
+	<script defer="defer"  src="/build/alertify.js"></script><script defer="defer"  src="/js/jquery-1.11.1.min.js"></script><script defer="defer"  src="/js/jquery.mobile.custom.min.js"></script><script defer="defer"  src="/js/scrollLock.min.js"></script><script defer="defer"  src="/js/semantic.min.js"></script><script defer="defer"  src="/js/site.min.js"></script><script defer="defer"  src="/scripts/script.js"></script>
+	
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53445787-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

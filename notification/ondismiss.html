@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns:og="http://ogp.me/ns#" class="no-js"> <!--<![endif]-->
+<head>
+	<!-- Standard Meta -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="//alertifyjs.com/favicon.ico">
+	<link rel="apple-touch-icon image_src" href="//alertifyjs.com/apple-touch-icon-precomposed.png">
+	
+	<!-- Open graph -->
+	<meta property="og:title" content="AlertifyJS" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="//www.alertifyjs.com/" />
+	<meta property="og:image" content="//alertifyjs.com/og.png" />
+	<meta name="og:description" content="JavaScript framework for developing pretty browser dialogs and notifications.">
+	
+	<!-- Site Properities -->
+	<title>ALERTIFY JS</title>
+	<meta name="description" content="AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications." />
+	<meta name="keywords" content="alert, notify, alertify, pretty, browser, dialog, notification, js, javascript, growl, css" />
+
+	<!-- DocPad Meta -->
+	<meta name="generator" content="DocPad v6.79.4" />
+
+	<!-- DocPad Styles + Our Own -->
+	<link  rel="stylesheet" href="/build/css/alertify.css" /><link  rel="stylesheet" href="/build/css/themes/default.css" /><link  rel="stylesheet" href="/css/normalize.min.css" /><link  rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" /><link  rel="stylesheet" href="/css/semantic.min.css" /><link  rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/droidarabickufi.css" /><link  rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Sans:400,700" /><link  rel="stylesheet" href="/css/site.min.css" /><link  rel="stylesheet" href="/styles/style.css" />
+	
+	
+	<link rel="stylesheet" href="/css/highlight.default.min.css"/>
+	
+</head>
+<body>
+<header>
+    <div class="content">
+      <a class="logo" data-text="1.14.0" href="//www.alertifyjs.com"><img src="/css/logo.sm.png" /></a>
+      <a href="#" class="bars"><i class="fa fa-2x fa-bars"></i></a>
+      <div class="menu">
+        <ul>
+          <li class="aux">
+            <div>
+              <iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="25"></iframe>
+              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs" title="Twitter Tweet Button" width="110" height="25"></iframe>
+            </div>
+          </li>
+          <li><a href="/guide.html">Getting Started</a></li>
+          <li class="sub">
+            <a href="javascript:void(0);">Components</a>
+            <ul>
+              <li><a href="/alert.html">Alert</a></li>
+              <li><a href="/confirm.html">Confirm</a></li>
+              <li><a href="/prompt.html">Prompt</a></li>
+              <li><a href="/notifier.html">Notifier</a></li>
+            </ul>
+          </li>
+		  <li><a href="/factory.html">Dialogs Factory</a></li>
+          <li><a href="/examples.html">Examples</a></li>
+          <li><a href="/tutorials.html">Tutorials</a></li>
+       
+        </ul>
+      </div><!--//menu-->
+	  
+    </div>
+  </header>
+
+ <section class="blue">
+    <div class="content">
+        <div class="grid two">
+            <div class="column">
+                <h1> Notifier </h1>
+                Unobtrusive notification messages can be used to give feedback to users.
+            </div>
+            <div class="right column">
+                <div>
+    
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYI55QJ&placement=alertifyjscom" id="_carbonads_js"></script>
+    
+</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="lic">
+    <div class="content">
+        Looking for a commercial license ?  Keep your source code proprietary and <a href="https://www.uplabs.com/posts/alertifyjs" target="_blank"> Buy a Commercial License Today!</a>
+    </div>
+</section>
+<section class="dark">
+    <div class="content">
+        <!--Settings-->
+        <div class="segment has-menu">
+            <div class="ui small warning message no-motion">
+  <div class="content">
+      <p>
+        <i class="fa fa-warning"></i> All of AlertifyJS animation/transition effects are disabled due to user preference that the system minimizes the amount of animation or motion it uses. See <b>prefers-reduced-motion</b> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank">CSS media feature</a>.
+      </p>
+  </div>
+</div>
+            <div class="segment">
+
+	<h1 id="ondismiss">
+		<a href="#ondismiss">
+			<i class="fa fa-flash"></i>
+		</a>
+		ondismiss
+		
+		<code>{ Function }</code>
+	</h1>
+    <hr/>
+	<div>
+		<p><span>Description:</span> Sets or gets the callback function to be invoked before dismissing the notification [<b> if the invocation result === false , notification dismissal will be canceled </b>].</p>
+		
+		<p><span> Default:</span> <code>undefined</code></p>
+		
+        
+            
+
+<pre class="example"><code class="hljs javascript"> <span class="hljs-keyword">var</span> canDismiss = <span class="hljs-literal">false</span>;
+ <span class="hljs-keyword">var</span> notification = alertify.success(<span class="hljs-string">'You can dismiss this after 5 seconds!'</span>);
+ notification.ondismiss = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span> <span class="hljs-keyword">return</span> canDismiss; };
+ setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span> canDismiss = <span class="hljs-literal">true</span>;}, <span class="hljs-number">5000</span>);
+  </code></pre>
+
+
+		
+		<div class="RIGHT">			
+			
+			
+			
+			<a class="button example" href="javascript:void(0);">
+				<span> Run </span>
+			</a>
+		</div>
+		           
+       
+		
+	</div>
+	<br/>
+</div>
+
+
+
+
+
+
+            
+        </div>
+        <!--//Settings-->
+        <div class="accordion">
+    <div>
+        <a class="item " href="/notifier.html"> <i class="fa fa-book"></i>  Default Usage </a>
+    </div>
+    
+    <div>        
+        <input name="accordion" id="p" type="checkbox"  />
+        <label for="p"><i class="fa"></i> Properties</label>
+        <div class="menu">
+            
+            <a class="item " href="/notifier/delay.html"><i class="fa fa-cog"></i> delay</a>
+            
+            <a class="item " href="/notifier/position.html"><i class="fa fa-cog"></i> position</a>
+            
+        </div>
+    </div>
+    
+    
+    <div>        
+        <input name="accordion" id="m" type="checkbox"  />
+        <label for="m"><i class="fa"></i> Methods</label>
+        <div class="menu">
+            
+            <a class="item " href="/notifier/dismissAll.html"><i class="fa fa-wrench"></i> dismissAll</a>
+            
+            <a class="item " href="/notifier/error.html"><i class="fa fa-wrench"></i> error</a>
+            
+            <a class="item " href="/notifier/message.html"><i class="fa fa-wrench"></i> message</a>
+            
+            <a class="item " href="/notifier/notify.html"><i class="fa fa-wrench"></i> notify</a>
+            
+            <a class="item " href="/notifier/success.html"><i class="fa fa-wrench"></i> success</a>
+            
+            <a class="item " href="/notifier/warning.html"><i class="fa fa-wrench"></i> warning</a>
+            
+        </div>
+    </div>
+    
+    
+    
+    <div>        
+        <input name="accordion" id="n" type="checkbox" checked='checked' />
+        <label for="n"><i class="fa"></i> Notification Object</label>
+        <div class="menu">
+            
+            
+            <a class="item " href="/notification/delay.html"><i class="fa fa-wrench"></i> delay</a>
+            
+            <a class="item " href="/notification/dismiss.html"><i class="fa fa-wrench"></i> dismiss</a>
+            
+            <a class="item " href="/notification/dismissOthers.html"><i class="fa fa-wrench"></i> dismissOthers</a>
+            
+            <a class="item " href="/notification/push.html"><i class="fa fa-wrench"></i> push</a>
+            
+            <a class="item " href="/notification/setContent.html"><i class="fa fa-wrench"></i> setContent</a>
+            
+            
+            <a class="item " href="/notification/callback.html"><i class="fa fa-flash"></i> callback</a>
+            
+            <a class="item active" href="/notification/ondismiss.html"><i class="fa fa-flash"></i> ondismiss</a>
+            
+        </div>
+    </div>
+    
+</div>
+    </div>
+</section>
+
+<!--footer-->
+<section>
+<div class="content">
+	<div class="links">
+		<div class="ui horizontal center list">
+			<div class="item"></div>
+			<div class="item">
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=fork&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+
+			</div>
+			<div class="item">
+				<iframe src="//platform.twitter.com/widgets/follow_button.1404859412.html#_=1406289087792&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=AlertifyJS&amp;show_count=true&amp;show_screen_name=true&amp;size=m"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<section class="dark">
+    <div class="content">
+      <div class="links">
+        <a href="//github.com/MohammadYounes/alertifyjs/issues" target="_blank">Report an issue</a> |
+        <a href="//github.com/MohammadYounes/alertifyjs" target="_blank">View on GitHub</a> |
+        Follow Me on <a href="//www.github.com/MohammadYounes" target="_blank"> <i class="fa fa-github"></i> GitHub</a> and
+        <a href="//www.twitter.com/AlertifyJS" target="_blank"> <i class="fa fa-twitter"></i> Twitter</a>
+      </div>
+      <div class="links">
+        Created by <a href="//www.github.com/MohammadYounes" style="color:orange" target="_blank">Mohammad Younes</a> | Licensed under <a href="https://opensource.org/licenses/gpl-3.0"> GPLv3 </a>
+      </div>
+		
+      
+      <div class="affiliates">
+        <a href="//rtlcss.com" target="_blank">
+          <img width="40" src="//avatars0.githubusercontent.com/u/7704547?s=140">
+          <div>www.rtlcss.com</div>
+        </a>
+        
+        <a href="http://www.isresponsive.com" target="_blank">
+          <img src="//rtlcss.com/img/isresponsive.png">
+          <div>www.isResponsive.com</div>
+        </a>
+        
+        <a href="//www.keycdn.com/?a=10668" target="_blank">
+          <img src="//logos.keycdn.com/keycdn-logo-white.png" alt="KeyCDN" width="115">
+          <div>www.keycdn.com</div>
+        </a>
+        
+      </div>
+    </div>
+ </section>	
+<!--//footer-->
+
+	<!-- DocPad Scripts + Our Own -->
+	<script defer="defer"  src="/build/alertify.js"></script><script defer="defer"  src="/js/jquery-1.11.1.min.js"></script><script defer="defer"  src="/js/jquery.mobile.custom.min.js"></script><script defer="defer"  src="/js/scrollLock.min.js"></script><script defer="defer"  src="/js/semantic.min.js"></script><script defer="defer"  src="/js/site.min.js"></script><script defer="defer"  src="/scripts/script.js"></script>
+	
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53445787-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

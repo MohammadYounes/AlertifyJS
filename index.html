@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns:og="http://ogp.me/ns#" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns:og="http://ogp.me/ns#" class="no-js"> <!--<![endif]-->
+<head>
+	<!-- Standard Meta -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="//alertifyjs.com/favicon.ico">
+	<link rel="apple-touch-icon image_src" href="//alertifyjs.com/apple-touch-icon-precomposed.png">
+	
+	<!-- Open graph -->
+	<meta property="og:title" content="AlertifyJS" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="//www.alertifyjs.com/" />
+	<meta property="og:image" content="//alertifyjs.com/og.png" />
+	<meta name="og:description" content="JavaScript framework for developing pretty browser dialogs and notifications.">
+	
+	<!-- Site Properities -->
+	<title>ALERTIFY JS</title>
+	<meta name="description" content="AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications." />
+	<meta name="keywords" content="alert, notify, alertify, pretty, browser, dialog, notification, js, javascript, growl, css" />
+
+	<!-- DocPad Meta -->
+	<meta name="generator" content="DocPad v6.79.4" />
+
+	<!-- DocPad Styles + Our Own -->
+	<link  rel="stylesheet" href="/build/css/alertify.css" /><link  rel="stylesheet" href="/build/css/themes/default.css" /><link  rel="stylesheet" href="/css/normalize.min.css" /><link  rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" /><link  rel="stylesheet" href="/css/semantic.min.css" /><link  rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/droidarabickufi.css" /><link  rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Sans:400,700" /><link  rel="stylesheet" href="/css/site.min.css" /><link  rel="stylesheet" href="/styles/style.css" />
+	
+	
+	<link rel="stylesheet" href="/css/highlight.min.css"/>
+	
+</head>
+<body>
+<header>
+    <div class="content">
+      <a class="logo" data-text="1.14.0" href="//www.alertifyjs.com"><img src="/css/logo.sm.png" /></a>
+      <a href="#" class="bars"><i class="fa fa-2x fa-bars"></i></a>
+      <div class="menu">
+        <ul>
+          <li class="aux">
+            <div>
+              <iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="25"></iframe>
+              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs" title="Twitter Tweet Button" width="110" height="25"></iframe>
+            </div>
+          </li>
+          <li><a href="/guide.html">Getting Started</a></li>
+          <li class="sub">
+            <a href="javascript:void(0);">Components</a>
+            <ul>
+              <li><a href="/alert.html">Alert</a></li>
+              <li><a href="/confirm.html">Confirm</a></li>
+              <li><a href="/prompt.html">Prompt</a></li>
+              <li><a href="/notifier.html">Notifier</a></li>
+            </ul>
+          </li>
+		  <li><a href="/factory.html">Dialogs Factory</a></li>
+          <li><a href="/examples.html">Examples</a></li>
+          <li><a href="/tutorials.html">Tutorials</a></li>
+       
+        </ul>
+      </div><!--//menu-->
+	  
+    </div>
+  </header>
+
+  
+<!--intro-->  
+  <section class="intro dark">
+    <div class="content">
+      <div class="logo"></div>
+      <p> AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.</p>
+      <div class="buttons">
+        <a class="button" href="https://github.com/MohammadYounes/AlertifyJS">
+          <i class="fa fa-github fa-2x"></i>
+          <span>View on GitHub</span>
+        </a>
+        <a class="button" href="/build/alertifyjs.zip">
+          <i class="fa fa-download fa-2x"></i>
+          <span>Download</span>
+        </a>
+      </div>
+    </div>
+  </section>
+<!--//intro-->
+<!--features-->  
+<section>
+    <div class="content">
+
+      <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=alertifyjs" id="_carbonads_js"></script> 
+      <hr/>
+      <div class="segment">
+        <div class="ui small warning message no-motion">
+  <div class="content">
+      <p>
+        <i class="fa fa-warning"></i> All of AlertifyJS animation/transition effects are disabled due to user preference that the system minimizes the amount of animation or motion it uses. See <b>prefers-reduced-motion</b> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank">CSS media feature</a>.
+      </p>
+  </div>
+</div>
+      </div>
+      <div class="grid six">
+        <div class="column">
+          <h3><i class="fa fa-magic fa-lg"></i> Feature-rich</h3>
+          Packed with awesome features! Modal and Modelss view modes, Move, Resize and more!
+        </div>
+        <div class="column">
+          <h3> <i class="fa fa-cubes fa-lg"></i> Extensible</h3>
+          Extend existing dialogs, or create your own!  using AlertifyJS is very straightforward.
+        </div>
+        <div class="column">
+          <h3> <i class="fa fa-bell-o fa-lg"></i> Unobtrusive notifications</h3>
+          Unobtrusive notification messages can be used to give feedback to users.
+        </div>
+        <div class="column">
+          <h3> <i class="fa fa-css3 fa-lg"></i> Themeable </h3>
+          Three themes right out-of-the-box (AlertifyJS, Semantic and Bootstrap).
+		  <a href="examples.html#semantic">view example</a>
+        </div>
+        <div class="column">
+          <h3> <i class="fa fa-tablet fa-lg"></i> Responsive </h3>
+          Whether you use a desktop, laptop, tablet or mobile device. Have no worries!
+        </div>
+        <div class="column">
+          <h3> <i class="fa fa-language fa-lg"></i> i18n and RTL Support </h3>
+          Different language or a right-to-left layout! AlertifyJS got you covered.
+		  <a href="examples.html#RTL">view example</a>
+        </div>
+      </div>
+      <hr />
+      <div class="grid three">
+        <div class="column full">
+          <div class="segment">
+            <h2>
+              AlertifyJS not only provides a replacement for default browser dialogs, it makes it super easy to create your own!
+            </h2>
+
+<pre class="example"><code class="hljs javascript">
+<span class="hljs-keyword">if</span>(!alertify.myAlert){
+  <span class="hljs-comment">//define a new dialog</span>
+  alertify.dialog(<span class="hljs-string">'myAlert'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    <span class="hljs-keyword">return</span>{
+      main:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(message)</span>{</span>
+        <span class="hljs-keyword">this</span>.message = message;
+      },
+      setup:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+          <span class="hljs-keyword">return</span> { 
+            buttons:[{text: <span class="hljs-string">"cool!"</span>, key:<span class="hljs-number">27</span><span class="hljs-comment">/*Esc*/</span>}],
+            focus: { element:<span class="hljs-number">0</span> }
+          };
+      },
+      prepare:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+        <span class="hljs-keyword">this</span>.setContent(<span class="hljs-keyword">this</span>.message);
+      }
+  }});
+}
+<span class="hljs-comment">//launch it.</span>
+alertify.myAlert(<span class="hljs-string">"Browser dialogs made easy!"</span>);
+</code></pre> 
+
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="factory.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+        </div>
+      </div>
+				
+			
+      </div>
+      <br />
+    </div>
+  </section>
+<!--//features-->  
+
+
+<section class="examples blue">
+
+    <div class="content">
+      <h1> Default Dialogs </h1>
+      <hr />
+
+      <div class="grid two">
+        <div class="column">
+          <div class="dialog">
+            <div>AlertifyJS</div>
+            <h1> Alert </h1>
+            <div><div>OK</div></div>
+          </div>
+        </div>
+        <div class="column segment">
+
+<pre class="example"><code class="hljs javascript">
+alertify
+  .alert(<span class="hljs-string">"This is an alert dialog."</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    alertify.message(<span class="hljs-string">'OK'</span>);
+  });
+</code></pre> 
+
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="alert.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="grid two">
+        <div class="column">
+          <div class="dialog">
+            <div>AlertifyJS</div>
+            <h1> Confirm </h1>
+            <div>
+              <div>OK</div> <div>Cancel</div>
+            </div>
+          </div>
+        </div>
+        <div class="column segment">
+
+<pre class="example"><code class="hljs javascript">
+alertify.confirm(<span class="hljs-string">"This is a confirm dialog."</span>,
+  <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    alertify.success(<span class="hljs-string">'Ok'</span>);
+  },
+  <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    alertify.error(<span class="hljs-string">'Cancel'</span>);
+  });
+</code></pre> 
+
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="confirm.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>        </div>
+      </div>
+
+
+      <hr />
+
+      <div class="grid two">
+        <div class="column">
+          <div class="dialog">
+            <div>AlertifyJS</div>
+            <h1> Prompt </h1>
+            <div> Default value </div>
+            <div>
+              <div>OK</div> <div>Cancel</div>
+            </div>
+          </div>
+        </div>
+        <div class="column segment">
+
+<pre class="example"><code class="hljs javascript">
+alertify.prompt(<span class="hljs-string">"This is a prompt dialog."</span>, <span class="hljs-string">"Default value"</span>,
+  <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(evt, value )</span>{</span>
+    alertify.success(<span class="hljs-string">'Ok: '</span> + value);
+  },
+  <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    alertify.error(<span class="hljs-string">'Cancel'</span>);
+  })
+  ;
+</code></pre> 
+
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="prompt.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+				</div>
+      </div>
+
+
+
+      <h1> Default Notifications </h1>
+      <hr />
+      <div class="grid two">
+        <div class="right column">
+          <div class="right log">
+            <div>AlertifyJS</div>
+            <div>Success</div>
+          </div>
+        </div>
+        <div class="column segment">
+
+<pre class="example"><code class="hljs javascript">
+  <span class="hljs-comment">// success notification</span>
+  <span class="hljs-comment">// Shorthand for:</span>
+  <span class="hljs-comment">// alertify.notify( message, 'success', [wait, callback]);</span>
+  alertify.success(<span class="hljs-string">'Success message'</span>);
+</code></pre> 
+
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="notifier.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+				</div>
+      </div>
+
+      <hr />
+
+      <div class="grid two">
+        <div class="right column">
+          <div class="right log">
+            <div>AlertifyJS</div>
+            <div>Error</div>
+          </div>
+        </div>
+
+        <div class="column segment">
+
+<pre class="example"><code class="hljs javascript">
+  <span class="hljs-comment">// error notification</span>
+  <span class="hljs-comment">// Shorthand for:</span>
+  <span class="hljs-comment">// alertify.notify( message, 'error', [wait, callback]);</span>
+  alertify.error(<span class="hljs-string">'Error message'</span>);
+</code></pre> 
+
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="notifier.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+			
+			
+			 <div class="grid two">
+        <div class="right column">
+          <div class="right log">
+            <div>AlertifyJS</div>
+            <div>Warning</div>
+          </div>
+        </div>
+        <div class="column segment">
+
+<pre class="example"><code class="hljs javascript">
+  <span class="hljs-comment">// warning notification</span>
+  <span class="hljs-comment">// Shorthand for:</span>
+  <span class="hljs-comment">// alertify.notify( message, 'warning', [wait, callback]);</span>
+  alertify.warning(<span class="hljs-string">'Warning message'</span>);
+</code></pre> 
+
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="notifier.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+        </div>
+      </div>
+			
+			<hr/>
+
+      <div class="grid two">
+        <div class="right column">
+          <div class="right log">
+            <div>AlertifyJS</div>
+            <div>Message</div>
+          </div>
+        </div>
+        <div class="column segment">
+
+<pre class="example"><code class="hljs javascript">
+  <span class="hljs-comment">// default notification</span>
+  <span class="hljs-comment">// Shorthand for:</span>
+  <span class="hljs-comment">// alertify.notify( message, [type, wait, callback]);</span>
+  alertify.message(<span class="hljs-string">'Normal message'</span>);
+</code></pre> 
+
+          <div class="RIGHT">
+            <a class="right inverted button example" href="javascript:void(0);">
+              <span> Run Example </span>
+            </a>
+						<a class="right inverted button" href="notifier.html">
+              <span class="fa fa-book"></span> Documentation
+							
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+		<br/>
+		<br/>
+  </section>
+
+<!--footer-->
+<section>
+<div class="content">
+	<div class="links">
+		<div class="ui horizontal center list">
+			<div class="item"></div>
+			<div class="item">
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=watch&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="//ghbtns.com/github-btn.html?user=MohammadYounes&amp;repo=AlertifyJS&amp;type=fork&amp;count=true"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+
+			</div>
+			<div class="item">
+				<iframe src="//platform.twitter.com/widgets/follow_button.1404859412.html#_=1406289087792&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=AlertifyJS&amp;show_count=true&amp;show_screen_name=true&amp;size=m"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+			<div class="item">
+				<iframe src="//platform.twitter.com/widgets/tweet_button.1404859412.html#_=1405910492553&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https://alertifyjs.com/&amp;related=MohammadYounes:Author of AlertifyJS&amp;size=m&amp;text=AlertifyJS&amp;url=https://alertifyjs.com/&amp;via=alertifyjs"
+								allowtransparency="true" frameborder="0" scrolling="no" width="225" height="20"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<section class="dark">
+    <div class="content">
+      <div class="links">
+        <a href="//github.com/MohammadYounes/alertifyjs/issues" target="_blank">Report an issue</a> |
+        <a href="//github.com/MohammadYounes/alertifyjs" target="_blank">View on GitHub</a> |
+        Follow Me on <a href="//www.github.com/MohammadYounes" target="_blank"> <i class="fa fa-github"></i> GitHub</a> and
+        <a href="//www.twitter.com/AlertifyJS" target="_blank"> <i class="fa fa-twitter"></i> Twitter</a>
+      </div>
+      <div class="links">
+        Created by <a href="//www.github.com/MohammadYounes" style="color:orange" target="_blank">Mohammad Younes</a> | Licensed under <a href="https://opensource.org/licenses/gpl-3.0"> GPLv3 </a>
+      </div>
+		
+      
+      <div class="affiliates">
+        <a href="//rtlcss.com" target="_blank">
+          <img width="40" src="//avatars0.githubusercontent.com/u/7704547?s=140">
+          <div>www.rtlcss.com</div>
+        </a>
+        
+        <a href="http://www.isresponsive.com" target="_blank">
+          <img src="//rtlcss.com/img/isresponsive.png">
+          <div>www.isResponsive.com</div>
+        </a>
+        
+        <a href="//www.keycdn.com/?a=10668" target="_blank">
+          <img src="//logos.keycdn.com/keycdn-logo-white.png" alt="KeyCDN" width="115">
+          <div>www.keycdn.com</div>
+        </a>
+        
+      </div>
+    </div>
+ </section>	
+<!--//footer-->
+
+	<!-- DocPad Scripts + Our Own -->
+	<script defer="defer"  src="/build/alertify.js"></script><script defer="defer"  src="/js/jquery-1.11.1.min.js"></script><script defer="defer"  src="/js/jquery.mobile.custom.min.js"></script><script defer="defer"  src="/js/scrollLock.min.js"></script><script defer="defer"  src="/js/semantic.min.js"></script><script defer="defer"  src="/js/site.min.js"></script><script defer="defer"  src="/scripts/script.js"></script>
+	
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53445787-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
