@@ -41,7 +41,7 @@
     "grunt-contrib-connect": "~0.5.0",
     "grunt-contrib-copy": "x.x.x",
     "grunt-contrib-cssmin": "x.x.x",
-    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-jshint": "~3.2.0",
     "grunt-contrib-less": "x.x.x",
     "grunt-contrib-uglify": "~0.9.1",
     "grunt-contrib-watch": "~0.5.3",
