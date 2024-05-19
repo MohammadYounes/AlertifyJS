@@ -1,7 +1,7 @@
 /**
- * alertifyjs 1.13.1 http://alertifyjs.com
+ * alertifyjs 1.14.0 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
- * Copyright 2019 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
+ * Copyright 2024 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under GPL 3 <https://opensource.org/licenses/gpl-3.0>*/
 ( function ( window ) {
     'use strict';
@@ -157,6 +157,16 @@
             element.removeChild(element.lastChild);
         }
     }
+
+    /**
+     * detects strings, checks for both string and String instances
+     * this is unlike typeof(x) === 'string' which only accepts primitive strings
+     *
+     */
+    function isString(thing) {
+        return Object.prototype.toString.call(thing) === '[object String]';
+    }
+
     /**
      * Extends a given prototype by merging properties from base into sub.
      *
@@ -702,7 +712,7 @@
                 }
             }
         }
-		
+
         /**
          * Sets the name of the transition used to show/hide the dialog
          * 
@@ -710,7 +720,7 @@
          *
          */
         function updateTransition(instance, value, oldValue){
-            if(typeof oldValue === 'string'){
+            if(isString(oldValue)){
                 removeClass(instance.elements.root,classes.prefix +  oldValue);
             }
             addClass(instance.elements.root, classes.prefix + value);
@@ -1297,7 +1307,7 @@
             var target = event.srcElement || event.target;
             triggerCallback(instance, function (button) {
                 // if this button caused the click, cancel keyup event
-                return button.element === target && (cancelKeyup = true);
+                return button.element.contains(target) && (cancelKeyup = true);
             });
         }
 
@@ -2374,7 +2384,7 @@
             * @return {undefined}
             */
             setHeader:function(content){
-                if(typeof content === 'string'){
+                if(isString(content)){
                     clearContents(this.elements.header);
                     this.elements.header.innerHTML = content;
                 }else if (content instanceof window.HTMLElement && this.elements.header.firstChild !== content){
@@ -2390,7 +2400,7 @@
             * @return {undefined}
             */
             setContent:function(content){
-                if(typeof content === 'string'){
+                if(isString(content)){
                     clearContents(this.elements.content);
                     this.elements.content.innerHTML = content;
                 }else if (content instanceof window.HTMLElement && this.elements.content.firstChild !== content){
@@ -2595,6 +2605,7 @@
                 return this;
             },
         };
+
 	} () );
     var notifier = (function () {
         var reflow,
@@ -2819,7 +2830,7 @@
                  *
                  */
                 setContent: function (content) {
-                    if (typeof content === 'string') {
+                    if (isString(content)) {
                         clearContents(this.element);
                         this.element.innerHTML = content;
                     } else if (content instanceof window.HTMLElement && this.element.firstChild !== content) {
@@ -3553,7 +3564,7 @@
                 //nothing
             },
             setMessage: function (message) {
-                if (typeof message === 'string') {
+                if (isString(message)) {
                     clearContents(p);
                     p.innerHTML = message;
                 } else if (message instanceof window.HTMLElement && p.firstChild !== message) {

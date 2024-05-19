@@ -1,7 +1,7 @@
 /**
- * alertifyjs 1.13.1 http://alertifyjs.com
+ * alertifyjs 1.14.0 http://alertifyjs.com
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
- * Copyright 2019 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
+ * Copyright 2024 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under GPL 3 <https://opensource.org/licenses/gpl-3.0>*/
 .alertify .ajs-dimmer {
   position: fixed;
@@ -13,7 +13,7 @@
   padding: 0;
   margin: 0;
   background-color: #252525;
-  opacity: .5;
+  opacity: 0.5;
 }
 .alertify .ajs-modal {
   position: fixed;
@@ -335,8 +335,8 @@
 .alertify .ajs-dialog.ajs-shake {
   -webkit-animation-name: ajs-shake;
           animation-name: ajs-shake;
-  -webkit-animation-duration: .1s;
-          animation-duration: .1s;
+  -webkit-animation-duration: 0.1s;
+          animation-duration: 0.1s;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
 }

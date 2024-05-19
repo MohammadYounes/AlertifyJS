@@ -47,7 +47,7 @@ docpadConfig = {
 				'//fonts.googleapis.com/earlyaccess/droidarabickufi.css'
 				'//fonts.googleapis.com/css?family=Droid+Sans:400,700'
 				'/css/site.min.css',
-                '/styles/style.css'
+				'/styles/style.css'
 			]
 
 			# The website's scripts
@@ -58,7 +58,7 @@ docpadConfig = {
 				'/js/scrollLock.min.js'
 				'/js/semantic.min.js'
 				'/js/site.min.js',
-                '/scripts/script.js'	
+				'/scripts/script.js'	
 			]
 		
 		# Get the documentation data
@@ -97,12 +97,12 @@ docpadConfig = {
 		# Get the documentation data
 		getData: (name,type) ->
 			items = this.getDocData(name,null,false)
-            
+
 			if name.indexOf('notifi') < 0
-                items = items.concat(this.getDocData('dialog',name,false))
+				items = items.concat(this.getDocData('dialog',name,false))
 				
 			items = (item for item in items when item.type == type)
-            
+
 			items.sort (a,b) ->
 					if (a.name > b.name)
 						1
@@ -116,12 +116,12 @@ docpadConfig = {
 			items = this.getDocData(name,null,false)
 			isDialog = name.indexOf('notifi') < 0
 			if isDialog
-                items = items.concat(this.getDocData('dialog',name,false))
+				items = items.concat(this.getDocData('dialog',name,false))
 				
 			items = (item for item in items when item.name == prop)
-            
+
 			items[0].isDialog = isDialog
-    
+
 			items[0]
             
 		# Get the prepared site/document title
