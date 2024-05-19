@@ -111,7 +111,7 @@
         for (var x = 0; x < toBeRemoved.length; x += 1) {
             var index = original.indexOf(toBeRemoved[x]);
             if (index > -1){
-                original.splice(index,1);
+                original.splice(index, 1);
             }
         }
         element.className = original.join(' ');

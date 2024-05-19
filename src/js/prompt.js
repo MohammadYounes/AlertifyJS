@@ -9,8 +9,10 @@
      *	alertify.prompt(title, message, value, onok, oncancel);
      */
     alertify.dialog('prompt', function () {
-        var input = document.createElement('INPUT');
-        var p = document.createElement('P');
+        var input = document.createElement('INPUT'),
+            label = document.createElement('LABEL'),
+            labelText = document.createElement('P');
+
         return {
             main: function (_title, _message, _value, _onok, _oncancel) {
                 var title, message, value, onok, oncancel;
@@ -77,19 +79,21 @@
                 input.className = alertify.defaults.theme.input;
                 input.setAttribute('type', 'text');
                 input.value = this.get('value');
-                this.elements.content.appendChild(p);
-                this.elements.content.appendChild(input);
+
+                this.elements.content.appendChild(label);
+                label.appendChild(labelText);
+                label.appendChild(input);
             },
             prepare: function () {
                 //nothing
             },
             setMessage: function (message) {
                 if (isString(message)) {
-                    clearContents(p);
-                    p.innerHTML = message;
-                } else if (message instanceof window.HTMLElement && p.firstChild !== message) {
-                    clearContents(p);
-                    p.appendChild(message);
+                    clearContents(labelText);
+                    labelText.innerHTML = message;
+                } else if (message instanceof window.HTMLElement && labelText.firstChild !== message) {
+                    clearContents(labelText);
+                    labelText.appendChild(message);
                 }
             },
             settings: {
@@ -139,11 +143,7 @@
                     }
                     break;
                 case 'reverseButtons':
-                    if (newValue === true) {
-                        this.elements.buttons.primary.appendChild(this.__internal.buttons[0].element);
-                    } else {
-                        this.elements.buttons.primary.appendChild(this.__internal.buttons[1].element);
-                    }
+                    this.elements.buttons.primary.appendChild(this.__internal.buttons[newValue ? 0 : 1].element);
                     break;
                 }
             },

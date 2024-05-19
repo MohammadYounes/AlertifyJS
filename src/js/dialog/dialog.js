@@ -369,7 +369,7 @@
                         dispatchEvent('onclose', this);
 
                         //remove from open dialogs
-                        openDialogs.splice(openDialogs.indexOf(this),1);
+                        openDialogs.splice(openDialogs.indexOf(this), 1);
                         this.__internal.isOpen = false;
 
                         ensureNoOverflow();
