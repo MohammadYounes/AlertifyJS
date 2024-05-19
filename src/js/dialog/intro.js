@@ -478,7 +478,7 @@
             if(document.body.lastChild !== instance.elements.root){
                 document.body.appendChild(instance.elements.root);
                 //also make sure its at the end of the list
-                openDialogs.splice(openDialogs.indexOf(instance),1);
+                openDialogs.splice(openDialogs.indexOf(instance), 1);
                 openDialogs.push(instance);
                 setFocus(instance);
             }
