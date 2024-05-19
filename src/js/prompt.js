@@ -154,7 +154,7 @@
                     this.settings.value = input.value;
                     if (typeof this.get('onok') === 'function') {
                         returnValue = this.get('onok').call(this, closeEvent, this.settings.value);
-                        if (returnValue !== undefined) {
+                        if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }
                     }
@@ -162,7 +162,7 @@
                 case 1:
                     if (typeof this.get('oncancel') === 'function') {
                         returnValue = this.get('oncancel').call(this, closeEvent);
-                        if (returnValue !== undefined) {
+                        if (typeof returnValue !== 'undefined') {
                             closeEvent.cancel = !returnValue;
                         }
                     }
